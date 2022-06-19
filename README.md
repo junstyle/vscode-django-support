@@ -11,7 +11,7 @@ this extention inherit from https://github.com/vscode-django/vscode-django, than
 3. format and pretty code;
 4. auto completion for html tags, attributes, css, javascript;
 
-## Add file extension to django template syntax
+## Add file associations to django template syntax
 
 ```json
   "files.associations": {
@@ -20,7 +20,7 @@ this extention inherit from https://github.com/vscode-django/vscode-django, than
   },
 ```
 
-## How to format django files
+## How to format django template files
 
 1. shortcut: <kbd>shift+alt+f</kbd>
 2. context menu: <b>Format Document</b>
