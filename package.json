@@ -123,6 +123,6 @@
     "eslint": "^7.26.0",
     "typescript": "^4.5.5",
     "@types/prettier": "^2.6.3",
-    "@types/vscode": "1.67.0"
+    "@types/vscode": "^1.43.0"
   }
 }

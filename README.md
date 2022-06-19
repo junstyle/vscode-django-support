@@ -10,6 +10,7 @@ this extention inherit from https://github.com/vscode-django/vscode-django, than
 2. html, css, javascript syntax highlight;
 3. format and pretty code;
 4. auto completion for html tags, attributes, css, javascript;
+5. some error/problem tips when formatting;
 
 ## Add file associations to django template syntax
 
