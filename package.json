@@ -1,0 +1,128 @@
+{
+  "name": "vscode-django-support",
+  "displayName": "django template support",
+  "description": "vscode django template support, highlight, format, prettier, auto-complete",
+  "author": "junstyle",
+  "license": "MIT",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/junstyle/vscode-django-support"
+  },
+  "publisher": "junstyle",
+  "categories": [
+    "Programming Languages",
+    "Snippets"
+  ],
+  "keywords": [],
+  "engines": {
+    "vscode": "^1.43.0"
+  },
+  "activationEvents": [
+    "onLanguage:django-html",
+    "onLanguage:django-txt"
+  ],
+  "main": "./out/extension",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.Message",
+        "title": "Message"
+      }
+    ],
+    "languages": [
+      {
+        "id": "django-html",
+        "aliases": [
+          "Django HTML",
+          "django"
+        ],
+        "extensions": [
+          ".django",
+          ".dj"
+        ],
+        "filenamePatterns": [
+          "**/templates/**/*.html"
+        ],
+        "firstLine": "{%",
+        "configuration": "./language-configuration.json"
+      },
+      {
+        "id": "django-txt",
+        "aliases": [
+          "Django txt"
+        ],
+        "filenamePatterns": [
+          "**/templates/**/*"
+        ],
+        "firstLine": "{%",
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "django-html",
+        "scopeName": "text.html.django",
+        "path": "./syntaxes/django-html.tmLanguage.json"
+      },
+      {
+        "language": "django-txt",
+        "scopeName": "text.django",
+        "path": "./syntaxes/django-txt.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "django-html",
+        "path": "./snippets/tags.json"
+      },
+      {
+        "language": "django-html",
+        "path": "./snippets/filters.json"
+      },
+      {
+        "language": "django-txt",
+        "path": "./snippets/tags.json"
+      },
+      {
+        "language": "django-txt",
+        "path": "./snippets/filters.json"
+      }
+    ],
+    "configurationDefaults": {
+      "[django-html]": {
+        "editor.quickSuggestions": {
+          "other": true,
+          "comments": true,
+          "strings": true
+        }
+      }
+    },
+    "configuration": {
+      "type": "object",
+      "title": "Django Support",
+      "properties": {}
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -b",
+    "watch": "tsc -b -w",
+    "lint": "eslint ./src --ext .ts,.tsx"
+  },
+  "dependencies": {
+    "prettier": "^2.7.1",
+    "prettier-plugin-django": "github:junstyle/prettier-plugin-django",
+    "vscode-html-languageservice": "^5.0.0",
+    "vscode-languageclient": "^8.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.7",
+    "@typescript-eslint/eslint-plugin": "^4.23.0",
+    "@typescript-eslint/parser": "^4.23.0",
+    "eslint": "^7.26.0",
+    "typescript": "^4.5.5",
+    "@types/prettier": "^2.6.3",
+    "@types/vscode": "1.67.0"
+  }
+}
