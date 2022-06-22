@@ -421,7 +421,7 @@ path-parse@^1.0.7:
 
 "prettier-plugin-django@github:junstyle/prettier-plugin-django":
   version "0.5.1"
-  resolved "https://codeload.github.com/junstyle/prettier-plugin-django/tar.gz/73d3a9021c690458d65c74963975328d3c6aa53c"
+  resolved "https://codeload.github.com/junstyle/prettier-plugin-django/tar.gz/9a6cc70e30686bb8196d1bcd878f0aca7aff2416"
   dependencies:
     babel-template "^6.8.0"
     entities "^4.3.0"
