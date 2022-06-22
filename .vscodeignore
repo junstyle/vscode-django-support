@@ -6,9 +6,8 @@
 **/tsconfig.base.json
 contributing.md
 .travis.yml
-client/node_modules/**
-!client/node_modules/vscode-jsonrpc/**
-!client/node_modules/vscode-languageclient/**
-!client/node_modules/vscode-languageserver-protocol/**
-!client/node_modules/vscode-languageserver-types/**
-!client/node_modules/semver/**
+src/
+node_modules/
+!node_modules/prettier
+!node_modules/prettier-plugin-django
+yarn.lock

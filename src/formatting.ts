@@ -1,19 +1,9 @@
-import { format, Options, resolveConfig } from 'prettier';
-import { Diagnostic, DiagnosticCollection, Range, Uri } from 'vscode';
-import { getLanguageService, LanguageService, TokenType } from 'vscode-html-languageservice';
-import { ITextDocument } from './virtualDocument';
+import { format, Options, ParserOptions, resolveConfig } from 'prettier';
+import { Diagnostic, DiagnosticCollection, Range, Uri, TextDocument } from 'vscode';
+import * as htmlPlugin from 'prettier/parser-html';
+import * as djangoPlugin from 'prettier-plugin-django';
 
-export interface Options2 extends Options {
-	twigPrintWidth: number;
-	twigMultiTags: string[];
-	twigAlwaysBreakObjects: boolean;
-	twigSingleQuote: boolean;
-	overrides?: any;
-}
-
-const htmlLanguageService = getLanguageService();
-
-export function formatting(document: ITextDocument, diagnosticCollection?: DiagnosticCollection): string {
+export function formatting(document: TextDocument, diagnosticCollection?: DiagnosticCollection): string {
 	const uri = Uri.parse(document.uri.toString());
 	const options = {
 		"tabWidth": 2,
@@ -42,50 +32,80 @@ export function formatting(document: ITextDocument, diagnosticCollection?: Diagn
 		// "plugins": [
 		// 	"D:/npm/global/node_modules/prettier-plugin-django"
 		// ]
+		"plugins": [],
+		"htmlWhitespaceSensitivity": "ignore",
 	};
 	Object.assign(options, resolveConfig.sync(uri.fsPath) ?? []);
 	options.twigSingleQuote = true;
-	options.parser = "melody";
+	options.htmlWhitespaceSensitivity = 'ignore';
+	options.parser = 'html';
 
-	let text: string;
+	let text = document.getText();
+
 	try {
-		text = commendCSSAndScriptRegion(htmlLanguageService, document.getText());
+		//format html first
+		text = addIgnores(text);
 		text = format(text, options as Options);
-		text = text.replace(/\{# prettier-ignore \[special\] #\}\s*/g, "");
-		diagnosticCollection?.clear();
-		return text;
-	} catch (error) {
-		if (diagnosticCollection && typeof error == 'object') {
-			diagnosticCollection.clear();
-			const range = new Range(error.line - 1, error.column, error.line, 0);
-			setTimeout(() => diagnosticCollection.set(uri, [new Diagnostic(range, error.msg, 0)]), 300);
+		text = text.replace(/\<\!-- prettier-ignore --\>\n/g, '');
+
+		//format django template
+		options.plugins = [djangoPlugin];
+		options.parser = "melody";
+		const text2 = format(text, options as Options);
+		if (text2) {
+			text = text2.replace(/\{# prettier-ignore \[special\] #\}\s*/g, "");
+			diagnosticCollection?.clear();
+			return text;
+		} else {
+			throw new Error('django-html: formatting failed');
 		}
-		text = text.replace(/\{# prettier-ignore \[special\] #\}/g, "");
-		error.documentText = text;
-		throw error;
-	}
-}
-
-function commendCSSAndScriptRegion(languageService: LanguageService, documentText: string): string {
-	const scanner = languageService.createScanner(documentText);
-
-	let offset = 0;
-	let token = scanner.scan();
-	while (token !== TokenType.EOS) {
-		switch (token) {
-			case TokenType.StartTag: {
-				const tag = scanner.getTokenText().toLowerCase();
-				if (tag == "script" || tag == "style") {
-					const start = scanner.getTokenOffset() - 1;
-					const insertText = "{# prettier-ignore [special] #}";
-					documentText = documentText.slice(0, start + offset) + insertText + documentText.slice(start + offset);
-					offset += insertText.length;
+	} catch (error) {
+		if (diagnosticCollection && error.loc) {
+			diagnosticCollection.clear();
+			const loc = error.loc
+			let line = loc.start.line - 1, col = loc.start.column - 1;
+			let line2 = loc.end.line - 1, col2 = loc.end.column - 1;
+			const lines = text.split('\n');
+			//delete ingore lines and fix line, line2
+			for (let i = 0; i < lines.length; i++) {
+				if (lines[i].includes('<!-- prettier-ignore -->') || lines[i].includes('{# prettier-ignore [special] #}')) {
+					if (i < line) {
+						line--
+					}
+					if (i < line2) {
+						line2--
+					}
+					lines.splice(i, 1);
+					i--;
 				}
-				break;
+			}
+			text = lines.join('\n');
+			const range = new Range(line, col, line2, col2);
+			setTimeout(() => diagnosticCollection.set(uri, [new Diagnostic(range, error.message.split(' \t ')[0], 0)]), 250);
+			return text;
+		}
+		text = text.replace(/\<\!-- prettier-ignore --\>\n/g, '');
+		text = text.replace(/\{# prettier-ignore \[special\] #\}\s*/g, "");
+		return text;
+	}
+
+	function addIgnores(text: string): string {
+		const result = htmlPlugin.parsers.html.parse(text, null, {} as ParserOptions)
+		let increase = 0;
+		for (let i = 0; i < result.children.length; i++) {
+			const node = result.children[i];
+			if (node.type == 'element' && (node.name == 'script' || node.name == 'style')) {
+				const insertText = "{# prettier-ignore [special] #}";
+				const start = node.sourceSpan.start.offset;
+				text = text.slice(0, start + increase) + insertText + text.slice(start + increase);
+				increase += insertText.length;
+			} else if (node.type == 'text' && node.value.trim().length > 0) {
+				const insertText = "<!-- prettier-ignore -->";
+				const start = node.sourceSpan.start.offset;
+				text = text.slice(0, start + increase) + insertText + text.slice(start + increase);
+				increase += insertText.length;
 			}
 		}
-		token = scanner.scan();
+		return text;
 	}
-
-	return documentText;
 }

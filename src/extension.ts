@@ -1,6 +1,6 @@
 import { commands, CompletionList, ExtensionContext, Hover, languages, TextEdit, Range, DiagnosticCollection } from 'vscode';
 import { formatting } from './formatting';
-import { clearVirtualDocumentContents, createVirtualDoc, ITextDocument, registerTextDocumentEvents } from './virtualDocument';
+import { clearVirtualDocumentContents, createVirtualDoc, registerTextDocumentEvents } from './virtualDocument';
 
 const languageIds = ["django-html"];
 let diagnosticCollection: DiagnosticCollection;
@@ -14,37 +14,32 @@ export function activate(context: ExtensionContext) {
 
 	context.subscriptions.push(languages.registerDocumentFormattingEditProvider('django-html', {
 		provideDocumentFormattingEdits: async (document, options, token) => {
-			const vdocUri = createVirtualDoc(document);
-			let newDoc: ITextDocument;
-			try {
-				const textEdits = await commands.executeCommand<TextEdit[]>("vscode.executeFormatDocumentProvider", vdocUri, options);
-				const otext = document.getText();
-				let ntext = '';
-				let start = 0;
-				for (let i = 0; i < textEdits.length; i++) {
-					const te = textEdits[i];
-					ntext += otext.slice(start, document.offsetAt(te.range.start)) + te.newText;
-					start = document.offsetAt(te.range.end);
-				}
-				ntext += otext.slice(start);
-				newDoc = { uri: document.uri, getText() { return ntext; } };
-			} catch (err) {
-				console.log(err);
-				newDoc = document;
-			}
+			const otext = document.getText();
+			if (!otext) { return; }
+			let newDoc = document;
+			// try {
+			// const vdocUri = createVirtualDoc(document);
+			// 	const textEdits = await commands.executeCommand<TextEdit[]>("vscode.executeFormatDocumentProvider", vdocUri, options);
+			// 	let ntext = '';
+			// 	let start = 0;
+			// 	for (let i = 0; i < textEdits.length; i++) {
+			// 		const te = textEdits[i];
+			// 		ntext += otext.slice(start, document.offsetAt(te.range.start)) + te.newText;
+			// 		start = document.offsetAt(te.range.end);
+			// 	}
+			// 	ntext += otext.slice(start);
+			// 	newDoc = { uri: document.uri, getText() { return ntext; } };
+			// } catch (err) {
+			// 	console.log(err);
+			// 	newDoc = document;
+			// }
 
-			try {
-				const text = formatting(newDoc, diagnosticCollection);
-				const range = new Range(document.positionAt(0), document.positionAt(document.getText().length));
+			const range = new Range(document.positionAt(0), document.positionAt(otext.length));
+			const text = formatting(newDoc, diagnosticCollection);
+			if (text && text != otext) {
 				return [new TextEdit(range, text)];
-			} catch (err) {
-				const text = err.documentText;
-				delete err.documentText;
-				if (text && text != document.getText()) {
-					const range = new Range(document.positionAt(0), document.positionAt(document.getText().length));
-					return [new TextEdit(range, text)];
-				}
-				throw err;
+			} else {
+				return [];
 			}
 		},
 	}));

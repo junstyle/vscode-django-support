@@ -11,6 +11,7 @@ this extention inherit from https://github.com/vscode-django/vscode-django, than
 3. format and pretty code;
 4. auto completion for html tags, attributes, css, javascript;
 5. some error/problem tips when formatting;
+6. formatted by <b>prettier</b>, can automatic search prettier config file in the dirs, such as .prettierrc, .prettier.json...;
 
 ## Add file associations to django template syntax
 

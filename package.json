@@ -4,7 +4,7 @@
   "description": "vscode django template support, highlight, format, prettier, auto-complete",
   "author": "junstyle",
   "license": "MIT",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/junstyle/vscode-django-support"
@@ -105,24 +105,20 @@
     }
   },
   "scripts": {
-    "vscode:prepublish": "npm run compile",
-    "compile": "tsc -b",
-    "watch": "tsc -b -w",
-    "lint": "eslint ./src --ext .ts,.tsx"
+    "vscode:prepublish": "npm run -S esbuild-base -- --minify",
+    "esbuild-base": "rimraf out && esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --external:prettier --external:prettier-plugin-django --format=cjs --platform=node",
+    "build": "npm run -S esbuild-base -- --sourcemap",
+    "watch": "npm run -S esbuild-base -- --sourcemap --watch"
   },
   "dependencies": {
     "prettier": "^2.7.1",
-    "prettier-plugin-django": "github:junstyle/prettier-plugin-django",
-    "vscode-html-languageservice": "^5.0.0",
-    "vscode-languageclient": "^8.0.0"
+    "prettier-plugin-django": "github:junstyle/prettier-plugin-django"
   },
   "devDependencies": {
     "@types/node": "^16.11.7",
-    "@typescript-eslint/eslint-plugin": "^4.23.0",
-    "@typescript-eslint/parser": "^4.23.0",
-    "eslint": "^7.26.0",
-    "typescript": "^4.5.5",
     "@types/prettier": "^2.6.3",
-    "@types/vscode": "^1.43.0"
+    "@types/vscode": "^1.43.0",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.5.5"
   }
 }
