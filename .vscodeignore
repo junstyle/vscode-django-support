@@ -8,7 +8,12 @@ contributing.md
 .travis.yml
 src/
 node_modules/
-!node_modules/prettier/*.js
+!node_modules/prettier/index.js
+!node_modules/prettier/doc.js
+!node_modules/prettier/parse-babel.js
+!node_modules/prettier/parse-html.js
+!node_modules/prettier/parse-postcss.js
+!node_modules/prettier/third-party.js
 !node_modules/prettier/package.json
 !node_modules/prettier-plugin-django/out/index.js
 !node_modules/prettier-plugin-django/package.json
