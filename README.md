@@ -2,7 +2,7 @@
 
 ## About
 
-this extention inherit from https://github.com/vscode-django/vscode-django, thanks.
+this extention inherit from <https://github.com/vscode-django/vscode-django>, thanks.
 
 ## Features
 
@@ -11,9 +11,16 @@ this extention inherit from https://github.com/vscode-django/vscode-django, than
 3. format and pretty code;
 4. auto completion for html tags, attributes, css, javascript;
 5. some error/problem tips when formatting;
-6. formatted by <b>prettier</b>, can automatic search prettier config file in the dirs, such as .prettierrc, .prettier.json...;
+6. formatted by **prettier**, can automatic search prettier config file in the dirs, such as .prettierrc, .prettier.json...;
 
-## Add file associations to django template syntax
+## Default file associated to django template support
+
+```text
+.django
+.dj
+```
+
+## Add your file associations to django template support
 
 ```json
   "files.associations": {
@@ -24,8 +31,8 @@ this extention inherit from https://github.com/vscode-django/vscode-django, than
 
 ## How to format django template files
 
-1. shortcut: <kbd>shift+alt+f</kbd>
-2. context menu: <b>Format Document</b>
+1. shortcut: `shift+alt+f`
+2. context menu: `Format Document`
 3. set formatting on saving files:
 
 ```json

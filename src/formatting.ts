@@ -46,7 +46,7 @@ export function formatting(document: TextDocument, diagnosticCollection?: Diagno
 		//format html first
 		text = addIgnores(text);
 		text = format(text, options as Options);
-		text = text.replace(/\<\!-- prettier-ignore --\>\n/g, '');
+		text = text.replace(/<!-- prettier-ignore -->\n/g, '');
 
 		//format django template
 		options.plugins = [djangoPlugin];
@@ -84,7 +84,7 @@ export function formatting(document: TextDocument, diagnosticCollection?: Diagno
 			setTimeout(() => diagnosticCollection.set(uri, [new Diagnostic(range, error.message.split(' \t ')[0], 0)]), 250);
 			return text;
 		}
-		text = text.replace(/\<\!-- prettier-ignore --\>\n/g, '');
+		text = text.replace(/<!-- prettier-ignore -->\n/g, '');
 		text = text.replace(/\{# prettier-ignore \[special\] #\}\s*/g, "");
 		return text;
 	}
