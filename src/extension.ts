@@ -34,9 +34,9 @@ export function activate(context: ExtensionContext) {
 			// 	newDoc = document;
 			// }
 
-			const range = new Range(document.positionAt(0), document.positionAt(otext.length));
 			const text = formatting(newDoc, diagnosticCollection);
 			if (text && text != otext) {
+				const range = new Range(document.positionAt(0), document.positionAt(otext.length));
 				return [new TextEdit(range, text)];
 			} else {
 				return [];
