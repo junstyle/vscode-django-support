@@ -1,6 +1,6 @@
 import { format, Options, ParserOptions, resolveConfig } from 'prettier';
 import { Diagnostic, DiagnosticCollection, Range, TextDocument } from 'vscode';
-import * as htmlPlugin from 'prettier/parser-html';
+// import * as htmlPlugin from 'prettier/parser-html';
 import * as djangoPlugin from 'prettier-plugin-django';
 
 export function formatting(document: TextDocument, diagnosticCollection?: DiagnosticCollection): string {
@@ -47,7 +47,7 @@ export function formatting(document: TextDocument, diagnosticCollection?: Diagno
 			throw new Error('django-html: formatting failed');
 		}
 
-		formatStyleAndScript(doc, options as Options)
+		// formatStyleAndScript(doc, options as Options)
 		diagnosticCollection?.clear()
 	} catch (error) {
 		if (diagnosticCollection && error.loc) {
@@ -65,47 +65,47 @@ export function formatting(document: TextDocument, diagnosticCollection?: Diagno
 	return doc.text;
 }
 
-function formatStyleAndScript(doc: { text: string }, options: Options) {
-	let indent = '  '
-	if (options.useTabs) {
-		indent = '\t'
-	} else {
-		if (options.tabWidth) {
-			indent = ' '.repeat(options.tabWidth)
-		}
-	}
-	let eol = doc.text.includes('\r\n') ? '\r\n' : '\n';
+// function formatStyleAndScript(doc: { text: string }, options: Options) {
+// 	let indent = '  '
+// 	if (options.useTabs) {
+// 		indent = '\t'
+// 	} else {
+// 		if (options.tabWidth) {
+// 			indent = ' '.repeat(options.tabWidth)
+// 		}
+// 	}
+// 	let eol = doc.text.includes('\r\n') ? '\r\n' : '\n';
 
-	let result = htmlPlugin.parsers.html.parse(doc.text, null, {} as ParserOptions)
-	let incrChars = 0;
-	let incrLines = 0;
-	const doFormat = (root) => {
-		if (!root.children) return
-		for (let i = 0; i < root.children.length; i++) {
-			const node = root.children[i];
-			if (node.type == 'element' && (node.name == 'script' || node.name == 'style')) {
-				let tagOffset = node.sourceSpan.start.offset;
-				let tagOffset2 = tagOffset;
-				while (tagOffset2 > -1) {
-					if (doc.text[tagOffset2] == "\n") {
-						break;
-					}
-					tagOffset2--;
-				}
-				let tagIndent = doc.text.slice(tagOffset2 + 1, tagOffset);
+// 	let result = htmlPlugin.parsers.html.parse(doc.text, null, {} as ParserOptions)
+// 	let incrChars = 0;
+// 	let incrLines = 0;
+// 	const doFormat = (root) => {
+// 		if (!root.children) return
+// 		for (let i = 0; i < root.children.length; i++) {
+// 			const node = root.children[i];
+// 			if (node.type == 'element' && (node.name == 'script' || node.name == 'style')) {
+// 				let tagOffset = node.sourceSpan.start.offset;
+// 				let tagOffset2 = tagOffset;
+// 				while (tagOffset2 > -1) {
+// 					if (doc.text[tagOffset2] == "\n") {
+// 						break;
+// 					}
+// 					tagOffset2--;
+// 				}
+// 				let tagIndent = doc.text.slice(tagOffset2 + 1, tagOffset);
 
-				options.parser = node.name == 'script' ? 'babel' : 'css'
-				let child = node.children[0]
-				let ctext = '\n'.repeat(child.sourceSpan.start.line + incrLines) + ' '.repeat(child.sourceSpan.start.col) + child.value; //keep the line and column for error tips
-				ctext = eol + format(ctext, options).trim().split(eol).map(line => tagIndent + indent + line).join(eol) + eol + tagIndent;
-				const start = child.sourceSpan.start.offset;
-				doc.text = doc.text.slice(0, start + incrChars) + ctext + doc.text.slice(start + child.value.length + incrChars);
-				incrChars += ctext.length - child.value.length;
-				incrLines += ctext.split('\n').length - child.value.split('\n').length;
-			} else {
-				doFormat(node)
-			}
-		}
-	}
-	doFormat(result);
-}
+// 				options.parser = node.name == 'script' ? 'babel' : 'css'
+// 				let child = node.children[0]
+// 				let ctext = '\n'.repeat(child.sourceSpan.start.line + incrLines) + ' '.repeat(child.sourceSpan.start.col) + child.value; //keep the line and column for error tips
+// 				ctext = eol + format(ctext, options).trim().split(eol).map(line => tagIndent + indent + line).join(eol) + eol + tagIndent;
+// 				const start = child.sourceSpan.start.offset;
+// 				doc.text = doc.text.slice(0, start + incrChars) + ctext + doc.text.slice(start + child.value.length + incrChars);
+// 				incrChars += ctext.length - child.value.length;
+// 				incrLines += ctext.split('\n').length - child.value.split('\n').length;
+// 			} else {
+// 				doFormat(node)
+// 			}
+// 		}
+// 	}
+// 	doFormat(result);
+// }
