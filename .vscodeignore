@@ -15,6 +15,4 @@ node_modules/
 !node_modules/prettier/parser-postcss.js
 !node_modules/prettier/third-party.js
 !node_modules/prettier/package.json
-!node_modules/prettier-plugin-django/out/index.js
-!node_modules/prettier-plugin-django/package.json
 yarn.lock

@@ -4,7 +4,7 @@
   "description": "vscode django template support, highlight, format, prettier, auto-complete",
   "author": "junstyle",
   "license": "MIT",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "repository": {
     "type": "git",
     "url": "https://github.com/junstyle/vscode-django-support"
@@ -107,13 +107,13 @@
   },
   "scripts": {
     "vscode:prepublish": "npm run build",
-    "esbuild-base": "rimraf out && esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --external:prettier --external:prettier-plugin-django --format=cjs --platform=node",
+    "esbuild-base": "rimraf out && esbuild ./src/extension.ts --bundle --outfile=out/extension.js --external:vscode --external:prettier  --format=cjs --platform=node",
     "build": "npm run -S esbuild-base -- --minify",
     "watch": "npm run -S esbuild-base -- --sourcemap --watch"
   },
   "dependencies": {
     "prettier": "^2.7.1",
-    "prettier-plugin-django": "github:junstyle/prettier-plugin-django"
+    "prettier-plugin-django": "^0.5.4"
   },
   "devDependencies": {
     "@types/node": "^16.11.7",

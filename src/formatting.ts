@@ -62,6 +62,8 @@ export function formatting(document: TextDocument, diagnosticCollection?: Diagno
 			let line2 = loc.end.line - 1, col2 = loc.end.column - 1;
 			let range = new Range(line, col, line2, col2);
 			setTimeout(() => diagnosticCollection.set(document.uri, [new Diagnostic(range, error.message.split(' \t ')[0].split('\n')[0], 0)]), 250);
+		} else {
+			console.log(error)
 		}
 	}
 	return doc.text;
@@ -86,6 +88,9 @@ function formatStyleAndScript(doc: { text: string }, options: Options) {
 		for (let i = 0; i < root.children.length; i++) {
 			const node = root.children[i];
 			if (node.type == 'element' && (node.name == 'script' || node.name == 'style')) {
+				if (node.prev && node.prev.value && node.prev.value.trim().endsWith('{# prettier-ignore #}')) {
+					continue;
+				}
 				let tagOffset = node.sourceSpan.start.offset;
 				let tagOffset2 = tagOffset;
 				while (tagOffset2 > -1) {
@@ -94,7 +99,7 @@ function formatStyleAndScript(doc: { text: string }, options: Options) {
 					}
 					tagOffset2--;
 				}
-				let tagIndent = doc.text.slice(tagOffset2 + 1, tagOffset);
+				let tagIndent = doc.text.slice(tagOffset2 + 1, tagOffset).replace(/\S/g, ' ');
 
 				options.parser = node.name == 'script' ? 'babel' : 'css'
 				let child = node.children[0]
