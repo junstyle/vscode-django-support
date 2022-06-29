@@ -31,7 +31,7 @@
           }
         },
         {
-          "begin": "({%)\\s*(load) ",
+          "begin": "({%-?)\\s*(load) ",
           "end": "(%})",
           "name": "storage.type.templatetag.django",
           "patterns": [
@@ -52,7 +52,7 @@
           }
         },
         {
-          "begin": "({%)\\s*(autoescape|endautoescape|block|endblock|blocktrans|endblocktrans|trans|plural|comment|endcomment|debug|extends|filter|firstof|for|empty|endfor|if|elif|else|endif|include|ifchanged|endifchanged|ifequal|endifequal|ifnotequal|endifnotequal|from|low|regroup|ssi|spaceless|endspaceless|templatetag|widthratio|with|endwith|csrf_token|cycle|url|verbatim|endverbatim|lorem|thumbnail|endthumbnail|get_static_prefix)\\b",
+          "begin": "({%-?)\\s*(autoescape|endautoescape|block|endblock|blocktrans|endblocktrans|trans|plural|comment|endcomment|debug|extends|filter|firstof|for|empty|endfor|if|elif|else|endif|include|ifchanged|endifchanged|ifequal|endifequal|ifnotequal|endifnotequal|from|low|regroup|ssi|spaceless|endspaceless|templatetag|widthratio|with|endwith|csrf_token|cycle|url|verbatim|endverbatim|lorem|thumbnail|endthumbnail|get_static_prefix)\\b",
           "end": "(%})",
           "name": "storage.type.templatetag.django",
           "patterns": [
@@ -79,7 +79,7 @@
           }
         },
         {
-          "begin": "({%)\\s*([a-zA-Z0-9_.]+)",
+          "begin": "({%-?)\\s*([a-zA-Z0-9_.]+)",
           "end": "(%})",
           "name": "storage.type.customtemplatetag.django",
           "patterns": [
