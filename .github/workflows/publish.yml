@@ -28,4 +28,4 @@ jobs:
         cache: 'npm'
     - run: npm install
     - run: npm install vsce -SD
-    - run: vsce publish -p ${{VSC_TOKEN}}
+    - run: vsce publish -p ${{ secrets.VSC_TOKEN }}
