@@ -1,15 +1,14 @@
-import { commands, CompletionList, ExtensionContext, Hover, languages, TextEdit, Range, DiagnosticCollection } from 'vscode';
+import { commands, CompletionList, ExtensionContext, Hover, languages, TextEdit, Range } from 'vscode';
 import { formatting } from './formatting';
 import { clearVirtualDocumentContents, createVirtualDoc, registerTextDocumentEvents } from './virtualDocument';
 
 const languageIds = ["django-html"];
-let diagnosticCollection: DiagnosticCollection;
 
 export function activate(context: ExtensionContext) {
 
 	registerTextDocumentEvents(context, languageIds);
 
-	diagnosticCollection = languages.createDiagnosticCollection('django');
+	const diagnosticCollection = languages.createDiagnosticCollection('django');
 	context.subscriptions.push(diagnosticCollection);
 
 	context.subscriptions.push(languages.registerDocumentFormattingEditProvider('django-html', {

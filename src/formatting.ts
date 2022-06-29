@@ -88,12 +88,17 @@ function formatStyleAndScript(doc: { text: string }, options: Options) {
 		for (let i = 0; i < root.children.length; i++) {
 			const node = root.children[i];
 			if (node.type == 'element' && (node.name == 'script' || node.name == 'style')) {
+				if (node.children.length == 0) {
+					continue;
+				}
+
 				if (node.prev && node.prev.value) {
 					let pv = node.prev.value.trim()
 					if (pv.endsWith('{# prettier-ignore #}') || pv.endsWith('{% comment %}')) {
 						continue;
 					}
 				}
+
 				let tagOffset = node.sourceSpan.start.offset;
 				let tagOffset2 = tagOffset;
 				while (tagOffset2 > -1) {
