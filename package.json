@@ -1,10 +1,10 @@
 {
   "name": "vscode-django-support",
-  "displayName": "django template support",
-  "description": "vscode django template support, highlight, format, prettier, auto-complete",
+  "displayName": "Django Template Support",
+  "description": "📍formatter, django template support, highlight, format, prettier, auto-complete",
   "author": "junstyle",
   "license": "MIT",
-  "version": "1.0.21",
+  "version": "1.0.22",
   "repository": {
     "type": "git",
     "url": "https://github.com/junstyle/vscode-django-support"
@@ -13,7 +13,8 @@
   "publisher": "junstyle",
   "categories": [
     "Programming Languages",
-    "Snippets"
+    "Snippets",
+    "Formatters"
   ],
   "keywords": [],
   "engines": {

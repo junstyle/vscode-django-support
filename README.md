@@ -41,3 +41,7 @@ this extention inherit from <https://github.com/vscode-django/vscode-django>, th
     "editor.defaultFormatter": "junstyle.vscode-django-support"
   },
 ```
+
+## If you love this extension, you could
+
+[<img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" >](https://www.buymeacoffee.com/junstyle)
