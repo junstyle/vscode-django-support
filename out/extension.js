@@ -1,16 +1,7912 @@
-var Cr=Object.create;var Bt=Object.defineProperty;var br=Object.getOwnPropertyDescriptor;var Or=Object.getOwnPropertyNames;var Nr=Object.getPrototypeOf,Ir=Object.prototype.hasOwnProperty;var Kr=(e,t)=>()=>(t||e((t={exports:{}}).exports,t),t.exports),zr=(e,t)=>{for(var r in t)Bt(e,r,{get:t[r],enumerable:!0})},tr=(e,t,r,n)=>{if(t&&typeof t=="object"||typeof t=="function")for(let a of Or(t))!Ir.call(e,a)&&a!==r&&Bt(e,a,{get:()=>t[a],enumerable:!(n=br(t,a))||n.enumerable});return e};var rr=(e,t,r)=>(r=e!=null?Cr(Nr(e)):{},tr(t||!e||!e.__esModule?Bt(r,"default",{value:e,enumerable:!0}):r,e)),Qr=e=>tr(Bt({},"__esModule",{value:!0}),e);var dr=Kr((exports,module)=>{"use strict";var HT=Object.create,bn=Object.defineProperty,XT=Object.getOwnPropertyDescriptor,$T=Object.getOwnPropertyNames,JT=Object.getPrototypeOf,QT=Object.prototype.hasOwnProperty,i=(e,t)=>bn(e,"name",{value:t,configurable:!0}),c=(e,t)=>()=>(t||e((t={exports:{}}).exports,t),t.exports),al=(e,t)=>{for(var r in t)bn(e,r,{get:t[r],enumerable:!0})},ol=(e,t,r,n)=>{if(t&&typeof t=="object"||typeof t=="function")for(let a of $T(t))!QT.call(e,a)&&a!==r&&bn(e,a,{get:()=>t[a],enumerable:!(n=XT(t,a))||n.enumerable});return e},H=(e,t,r)=>(r=e!=null?HT(JT(e)):{},ol(t||!e||!e.__esModule?bn(r,"default",{value:e,enumerable:!0}):r,e)),zT=e=>ol(bn({},"__esModule",{value:!0}),e),Nu=c((e,t)=>{"use strict";var r=require("os");t.exports=r.homedir||i(function(){var n=process.env.HOME,a=process.env.LOGNAME||process.env.USER||process.env.LNAME||process.env.USERNAME;return process.platform==="win32"?process.env.USERPROFILE||process.env.HOMEDRIVE+process.env.HOMEPATH||n||null:process.platform==="darwin"?n||(a?"/Users/"+a:null):process.platform==="linux"?n||(process.getuid()===0?"/root":a?"/home/"+a:null):n||null},"homedir")}),Iu=c((e,t)=>{t.exports=function(){var r=Error.prepareStackTrace;Error.prepareStackTrace=function(a,u){return u};var n=new Error().stack;return Error.prepareStackTrace=r,n[2].getFileName()}}),fl=c((e,t)=>{"use strict";var r=process.platform==="win32",n=/^(((?:[a-zA-Z]:|[\\\/]{2}[^\\\/]+[\\\/]+[^\\\/]+)?[\\\/]?)(?:[^\\\/]*[\\\/])*)((\.{1,2}|[^\\\/]+?|)(\.[^.\/\\]*|))[\\\/]*$/,a={};function u(f){return n.exec(f).slice(1)}i(u,"win32SplitPath"),a.parse=function(f){if(typeof f!="string")throw new TypeError("Parameter 'pathString' must be a string, not "+typeof f);var m=u(f);if(!m||m.length!==5)throw new TypeError("Invalid path '"+f+"'");return{root:m[1],dir:m[0]===m[1]?m[0]:m[0].slice(0,-1),base:m[2],ext:m[4],name:m[3]}};var s=/^((\/?)(?:[^\/]*\/)*)((\.{1,2}|[^\/]+?|)(\.[^.\/]*|))[\/]*$/,l={};function p(f){return s.exec(f).slice(1)}i(p,"posixSplitPath"),l.parse=function(f){if(typeof f!="string")throw new TypeError("Parameter 'pathString' must be a string, not "+typeof f);var m=p(f);if(!m||m.length!==5)throw new TypeError("Invalid path '"+f+"'");return{root:m[1],dir:m[0].slice(0,-1),base:m[2],ext:m[4],name:m[3]}},r?t.exports=a.parse:t.exports=l.parse,t.exports.posix=l.parse,t.exports.win32=a.parse}),Pu=c((e,t)=>{var r=require("path"),n=r.parse||fl(),a=i(function(u,s){var l="/";/^([A-Za-z]:)/.test(u)?l="":/^\\\\/.test(u)&&(l="\\\\");for(var p=[u],f=n(u);f.dir!==p[p.length-1];)p.push(f.dir),f=n(f.dir);return p.reduce(function(m,h){return m.concat(s.map(function(A){return r.resolve(l,h,A)}))},[])},"getNodeModulesDirs");t.exports=i(function(u,s,l){var p=s&&s.moduleDirectory?[].concat(s.moduleDirectory):["node_modules"];if(s&&typeof s.paths=="function")return s.paths(l,u,function(){return a(u,p)},s);var f=a(u,p);return s&&s.paths?f.concat(s.paths):f},"nodeModulesPaths")}),Lu=c((e,t)=>{t.exports=function(r,n){return n||{}}}),yl=c((e,t)=>{"use strict";var r="Function.prototype.bind called on incompatible ",n=Array.prototype.slice,a=Object.prototype.toString,u="[object Function]";t.exports=i(function(s){var l=this;if(typeof l!="function"||a.call(l)!==u)throw new TypeError(r+l);for(var p=n.call(arguments,1),f,m=i(function(){if(this instanceof f){var k=l.apply(this,p.concat(n.call(arguments)));return Object(k)===k?k:this}else return l.apply(s,p.concat(n.call(arguments)))},"binder"),h=Math.max(0,l.length-p.length),A=[],g=0;g<h;g++)A.push("$"+g);if(f=Function("binder","return function ("+A.join(",")+"){ return binder.apply(this,arguments); }")(m),l.prototype){var y=i(function(){},"Empty");y.prototype=l.prototype,f.prototype=new y,y.prototype=null}return f},"bind")}),xl=c((e,t)=>{"use strict";var r=yl();t.exports=Function.prototype.bind||r}),vl=c((e,t)=>{"use strict";var r=xl();t.exports=r.call(Function.call,Object.prototype.hasOwnProperty)}),Sl=c((e,t)=>{t.exports={assert:!0,"node:assert":[">= 14.18 && < 15",">= 16"],"assert/strict":">= 15","node:assert/strict":">= 16",async_hooks:">= 8","node:async_hooks":[">= 14.18 && < 15",">= 16"],buffer_ieee754:">= 0.5 && < 0.9.7",buffer:!0,"node:buffer":[">= 14.18 && < 15",">= 16"],child_process:!0,"node:child_process":[">= 14.18 && < 15",">= 16"],cluster:">= 0.5","node:cluster":[">= 14.18 && < 15",">= 16"],console:!0,"node:console":[">= 14.18 && < 15",">= 16"],constants:!0,"node:constants":[">= 14.18 && < 15",">= 16"],crypto:!0,"node:crypto":[">= 14.18 && < 15",">= 16"],_debug_agent:">= 1 && < 8",_debugger:"< 8",dgram:!0,"node:dgram":[">= 14.18 && < 15",">= 16"],diagnostics_channel:[">= 14.17 && < 15",">= 15.1"],"node:diagnostics_channel":[">= 14.18 && < 15",">= 16"],dns:!0,"node:dns":[">= 14.18 && < 15",">= 16"],"dns/promises":">= 15","node:dns/promises":">= 16",domain:">= 0.7.12","node:domain":[">= 14.18 && < 15",">= 16"],events:!0,"node:events":[">= 14.18 && < 15",">= 16"],freelist:"< 6",fs:!0,"node:fs":[">= 14.18 && < 15",">= 16"],"fs/promises":[">= 10 && < 10.1",">= 14"],"node:fs/promises":[">= 14.18 && < 15",">= 16"],_http_agent:">= 0.11.1","node:_http_agent":[">= 14.18 && < 15",">= 16"],_http_client:">= 0.11.1","node:_http_client":[">= 14.18 && < 15",">= 16"],_http_common:">= 0.11.1","node:_http_common":[">= 14.18 && < 15",">= 16"],_http_incoming:">= 0.11.1","node:_http_incoming":[">= 14.18 && < 15",">= 16"],_http_outgoing:">= 0.11.1","node:_http_outgoing":[">= 14.18 && < 15",">= 16"],_http_server:">= 0.11.1","node:_http_server":[">= 14.18 && < 15",">= 16"],http:!0,"node:http":[">= 14.18 && < 15",">= 16"],http2:">= 8.8","node:http2":[">= 14.18 && < 15",">= 16"],https:!0,"node:https":[">= 14.18 && < 15",">= 16"],inspector:">= 8","node:inspector":[">= 14.18 && < 15",">= 16"],_linklist:"< 8",module:!0,"node:module":[">= 14.18 && < 15",">= 16"],net:!0,"node:net":[">= 14.18 && < 15",">= 16"],"node-inspect/lib/_inspect":">= 7.6 && < 12","node-inspect/lib/internal/inspect_client":">= 7.6 && < 12","node-inspect/lib/internal/inspect_repl":">= 7.6 && < 12",os:!0,"node:os":[">= 14.18 && < 15",">= 16"],path:!0,"node:path":[">= 14.18 && < 15",">= 16"],"path/posix":">= 15.3","node:path/posix":">= 16","path/win32":">= 15.3","node:path/win32":">= 16",perf_hooks:">= 8.5","node:perf_hooks":[">= 14.18 && < 15",">= 16"],process:">= 1","node:process":[">= 14.18 && < 15",">= 16"],punycode:">= 0.5","node:punycode":[">= 14.18 && < 15",">= 16"],querystring:!0,"node:querystring":[">= 14.18 && < 15",">= 16"],readline:!0,"node:readline":[">= 14.18 && < 15",">= 16"],"readline/promises":">= 17","node:readline/promises":">= 17",repl:!0,"node:repl":[">= 14.18 && < 15",">= 16"],smalloc:">= 0.11.5 && < 3",_stream_duplex:">= 0.9.4","node:_stream_duplex":[">= 14.18 && < 15",">= 16"],_stream_transform:">= 0.9.4","node:_stream_transform":[">= 14.18 && < 15",">= 16"],_stream_wrap:">= 1.4.1","node:_stream_wrap":[">= 14.18 && < 15",">= 16"],_stream_passthrough:">= 0.9.4","node:_stream_passthrough":[">= 14.18 && < 15",">= 16"],_stream_readable:">= 0.9.4","node:_stream_readable":[">= 14.18 && < 15",">= 16"],_stream_writable:">= 0.9.4","node:_stream_writable":[">= 14.18 && < 15",">= 16"],stream:!0,"node:stream":[">= 14.18 && < 15",">= 16"],"stream/consumers":">= 16.7","node:stream/consumers":">= 16.7","stream/promises":">= 15","node:stream/promises":">= 16","stream/web":">= 16.5","node:stream/web":">= 16.5",string_decoder:!0,"node:string_decoder":[">= 14.18 && < 15",">= 16"],sys:[">= 0.4 && < 0.7",">= 0.8"],"node:sys":[">= 14.18 && < 15",">= 16"],"node:test":">= 18",timers:!0,"node:timers":[">= 14.18 && < 15",">= 16"],"timers/promises":">= 15","node:timers/promises":">= 16",_tls_common:">= 0.11.13","node:_tls_common":[">= 14.18 && < 15",">= 16"],_tls_legacy:">= 0.11.3 && < 10",_tls_wrap:">= 0.11.3","node:_tls_wrap":[">= 14.18 && < 15",">= 16"],tls:!0,"node:tls":[">= 14.18 && < 15",">= 16"],trace_events:">= 10","node:trace_events":[">= 14.18 && < 15",">= 16"],tty:!0,"node:tty":[">= 14.18 && < 15",">= 16"],url:!0,"node:url":[">= 14.18 && < 15",">= 16"],util:!0,"node:util":[">= 14.18 && < 15",">= 16"],"util/types":">= 15.3","node:util/types":">= 16","v8/tools/arguments":">= 10 && < 12","v8/tools/codemap":[">= 4.4 && < 5",">= 5.2 && < 12"],"v8/tools/consarray":[">= 4.4 && < 5",">= 5.2 && < 12"],"v8/tools/csvparser":[">= 4.4 && < 5",">= 5.2 && < 12"],"v8/tools/logreader":[">= 4.4 && < 5",">= 5.2 && < 12"],"v8/tools/profile_view":[">= 4.4 && < 5",">= 5.2 && < 12"],"v8/tools/splaytree":[">= 4.4 && < 5",">= 5.2 && < 12"],v8:">= 1","node:v8":[">= 14.18 && < 15",">= 16"],vm:!0,"node:vm":[">= 14.18 && < 15",">= 16"],wasi:">= 13.4 && < 13.5",worker_threads:">= 11.7","node:worker_threads":[">= 14.18 && < 15",">= 16"],zlib:">= 0.5","node:zlib":[">= 14.18 && < 15",">= 16"]}}),Pi=c((e,t)=>{"use strict";var r=vl();function n(l,p){for(var f=l.split("."),m=p.split(" "),h=m.length>1?m[0]:"=",A=(m.length>1?m[1]:m[0]).split("."),g=0;g<3;++g){var y=parseInt(f[g]||0,10),k=parseInt(A[g]||0,10);if(y!==k)return h==="<"?y<k:h===">="?y>=k:!1}return h===">="}i(n,"specifierIncluded");function a(l,p){var f=p.split(/ ?&& ?/);if(f.length===0)return!1;for(var m=0;m<f.length;++m)if(!n(l,f[m]))return!1;return!0}i(a,"matchesRange");function u(l,p){if(typeof p=="boolean")return p;var f=typeof l>"u"?process.versions&&process.versions.node:l;if(typeof f!="string")throw new TypeError(typeof l>"u"?"Unable to determine current node version":"If provided, a valid node version is required");if(p&&typeof p=="object"){for(var m=0;m<p.length;++m)if(a(f,p[m]))return!0;return!1}return a(f,p)}i(u,"versionIncluded");var s=Sl();t.exports=i(function(l,p){return r(s,l)&&u(p,s[l])},"isCore")}),Nl=c((e,t)=>{var r=require("fs"),n=Nu(),a=require("path"),u=Iu(),s=Pu(),l=Lu(),p=Pi(),f=process.platform!=="win32"&&r.realpath&&typeof r.realpath.native=="function"?r.realpath.native:r.realpath,m=n(),h=i(function(){return[a.join(m,".node_modules"),a.join(m,".node_libraries")]},"defaultPaths"),A=i(function(F,G){r.stat(F,function(w,q){return w?w.code==="ENOENT"||w.code==="ENOTDIR"?G(null,!1):G(w):G(null,q.isFile()||q.isFIFO())})},"isFile"),g=i(function(F,G){r.stat(F,function(w,q){return w?w.code==="ENOENT"||w.code==="ENOTDIR"?G(null,!1):G(w):G(null,q.isDirectory())})},"isDirectory"),y=i(function(F,G){f(F,function(w,q){w&&w.code!=="ENOENT"?G(w):G(null,w?F:q)})},"realpath"),k=i(function(F,G,w,q){w&&w.preserveSymlinks===!1?F(G,q):q(null,G)},"maybeRealpath"),oe=i(function(F,G,w){F(G,function(q,V){if(q)w(q);else try{var De=JSON.parse(V);w(null,De)}catch{w(null)}})},"defaultReadPackage"),J=i(function(F,G,w){for(var q=s(G,w,F),V=0;V<q.length;V++)q[V]=a.join(q[V],F);return q},"getPackageCandidates");t.exports=i(function(F,G,w){var q=w,V=G;if(typeof G=="function"&&(q=V,V={}),typeof F!="string"){var De=new TypeError("Path must be a string.");return process.nextTick(function(){q(De)})}V=l(F,V);var le=V.isFile||A,E=V.isDirectory||g,T=V.readFile||r.readFile,U=V.realpath||y,ee=V.readPackage||oe;if(V.readFile&&V.readPackage){var z=new TypeError("`readFile` and `readPackage` are mutually exclusive.");return process.nextTick(function(){q(z)})}var Q=V.packageIterator,ce=V.extensions||[".js"],me=V.includeCoreModules!==!1,ye=V.basedir||a.dirname(u()),de=V.filename||ye;V.paths=V.paths||h();var be=a.resolve(ye);k(U,be,V,function(x,K){x?q(x):Ne(K)});var Te;function Ne(x){if(/^(?:\.\.?(?:\/|$)|\/|([A-Za-z]:)?[/\\])/.test(F))Te=a.resolve(x,F),(F==="."||F===".."||F.slice(-1)==="/")&&(Te+="/"),/\/$/.test(F)&&Te===x?_e(Te,V.package,we):ke(Te,V.package,we);else{if(me&&p(F))return q(null,F);M(F,x,function(K,X,te){if(K)q(K);else{if(X)return k(U,X,V,function(Ue,Me){Ue?q(Ue):q(null,Me,te)});var Ae=new Error("Cannot find module '"+F+"' from '"+de+"'");Ae.code="MODULE_NOT_FOUND",q(Ae)}})}}i(Ne,"init");function we(x,K,X){x?q(x):K?q(null,K,X):_e(Te,function(te,Ae,Ue){if(te)q(te);else if(Ae)k(U,Ae,V,function(Ie,Ke){Ie?q(Ie):q(null,Ke,Ue)});else{var Me=new Error("Cannot find module '"+F+"' from '"+de+"'");Me.code="MODULE_NOT_FOUND",q(Me)}})}i(we,"onfile");function ke(x,K,X){var te=K,Ae=X;typeof te=="function"&&(Ae=te,te=void 0);var Ue=[""].concat(ce);Me(Ue,x,te);function Me(Ie,Ke,Be){if(Ie.length===0)return Ae(null,void 0,Be);var Qe=Ke+Ie[0],Fe=Be;Fe?O(null,Fe):xe(a.dirname(Qe),O);function O(pe,j,W){if(Fe=j,pe)return Ae(pe);if(W&&Fe&&V.pathFilter){var ie=a.relative(W,Qe),he=ie.slice(0,ie.length-Ie[0].length),ge=V.pathFilter(Fe,Ke,he);if(ge)return Me([""].concat(ce.slice()),a.resolve(W,ge),Fe)}le(Qe,Z)}i(O,"onpkg");function Z(pe,j){if(pe)return Ae(pe);if(j)return Ae(null,Qe,Fe);Me(Ie.slice(1),Ke,Fe)}i(Z,"onex")}i(Me,"load")}i(ke,"loadAsFile");function xe(x,K){if(x===""||x==="/"||process.platform==="win32"&&/^\w:[/\\]*$/.test(x)||/[/\\]node_modules[/\\]*$/.test(x))return K(null);k(U,x,V,function(X,te){if(X)return xe(a.dirname(x),K);var Ae=a.join(te,"package.json");le(Ae,function(Ue,Me){if(!Me)return xe(a.dirname(x),K);ee(T,Ae,function(Ie,Ke){Ie&&K(Ie);var Be=Ke;Be&&V.packageFilter&&(Be=V.packageFilter(Be,Ae)),K(null,Be,x)})})})}i(xe,"loadpkg");function _e(x,K,X){var te=X,Ae=K;typeof Ae=="function"&&(te=Ae,Ae=V.package),k(U,x,V,function(Ue,Me){if(Ue)return te(Ue);var Ie=a.join(Me,"package.json");le(Ie,function(Ke,Be){if(Ke)return te(Ke);if(!Be)return ke(a.join(x,"index"),Ae,te);ee(T,Ie,function(Qe,Fe){if(Qe)return te(Qe);var O=Fe;if(O&&V.packageFilter&&(O=V.packageFilter(O,Ie)),O&&O.main){if(typeof O.main!="string"){var Z=new TypeError("package \u201C"+O.name+"\u201D `main` must be a string");return Z.code="INVALID_PACKAGE_MAIN",te(Z)}(O.main==="."||O.main==="./")&&(O.main="index"),ke(a.resolve(x,O.main),O,function(pe,j,W){if(pe)return te(pe);if(j)return te(null,j,W);if(!W)return ke(a.join(x,"index"),W,te);var ie=a.resolve(x,W.main);_e(ie,W,function(he,ge,Ge){if(he)return te(he);if(ge)return te(null,ge,Ge);ke(a.join(x,"index"),Ge,te)})});return}ke(a.join(x,"/index"),O,te)})})})}i(_e,"loadAsDirectory");function Se(x,K){if(K.length===0)return x(null,void 0);var X=K[0];E(a.dirname(X),te);function te(Me,Ie){if(Me)return x(Me);if(!Ie)return Se(x,K.slice(1));ke(X,V.package,Ae)}i(te,"isdir");function Ae(Me,Ie,Ke){if(Me)return x(Me);if(Ie)return x(null,Ie,Ke);_e(X,V.package,Ue)}i(Ae,"onfile");function Ue(Me,Ie,Ke){if(Me)return x(Me);if(Ie)return x(null,Ie,Ke);Se(x,K.slice(1))}i(Ue,"ondir")}i(Se,"processDirs");function M(x,K,X){var te=i(function(){return J(x,K,V)},"thunk");Se(X,Q?Q(x,K,te,V):te())}i(M,"loadNodeModules")},"resolve")}),Il=c((e,t)=>{t.exports={assert:!0,"node:assert":[">= 14.18 && < 15",">= 16"],"assert/strict":">= 15","node:assert/strict":">= 16",async_hooks:">= 8","node:async_hooks":[">= 14.18 && < 15",">= 16"],buffer_ieee754:">= 0.5 && < 0.9.7",buffer:!0,"node:buffer":[">= 14.18 && < 15",">= 16"],child_process:!0,"node:child_process":[">= 14.18 && < 15",">= 16"],cluster:">= 0.5","node:cluster":[">= 14.18 && < 15",">= 16"],console:!0,"node:console":[">= 14.18 && < 15",">= 16"],constants:!0,"node:constants":[">= 14.18 && < 15",">= 16"],crypto:!0,"node:crypto":[">= 14.18 && < 15",">= 16"],_debug_agent:">= 1 && < 8",_debugger:"< 8",dgram:!0,"node:dgram":[">= 14.18 && < 15",">= 16"],diagnostics_channel:[">= 14.17 && < 15",">= 15.1"],"node:diagnostics_channel":[">= 14.18 && < 15",">= 16"],dns:!0,"node:dns":[">= 14.18 && < 15",">= 16"],"dns/promises":">= 15","node:dns/promises":">= 16",domain:">= 0.7.12","node:domain":[">= 14.18 && < 15",">= 16"],events:!0,"node:events":[">= 14.18 && < 15",">= 16"],freelist:"< 6",fs:!0,"node:fs":[">= 14.18 && < 15",">= 16"],"fs/promises":[">= 10 && < 10.1",">= 14"],"node:fs/promises":[">= 14.18 && < 15",">= 16"],_http_agent:">= 0.11.1","node:_http_agent":[">= 14.18 && < 15",">= 16"],_http_client:">= 0.11.1","node:_http_client":[">= 14.18 && < 15",">= 16"],_http_common:">= 0.11.1","node:_http_common":[">= 14.18 && < 15",">= 16"],_http_incoming:">= 0.11.1","node:_http_incoming":[">= 14.18 && < 15",">= 16"],_http_outgoing:">= 0.11.1","node:_http_outgoing":[">= 14.18 && < 15",">= 16"],_http_server:">= 0.11.1","node:_http_server":[">= 14.18 && < 15",">= 16"],http:!0,"node:http":[">= 14.18 && < 15",">= 16"],http2:">= 8.8","node:http2":[">= 14.18 && < 15",">= 16"],https:!0,"node:https":[">= 14.18 && < 15",">= 16"],inspector:">= 8","node:inspector":[">= 14.18 && < 15",">= 16"],_linklist:"< 8",module:!0,"node:module":[">= 14.18 && < 15",">= 16"],net:!0,"node:net":[">= 14.18 && < 15",">= 16"],"node-inspect/lib/_inspect":">= 7.6 && < 12","node-inspect/lib/internal/inspect_client":">= 7.6 && < 12","node-inspect/lib/internal/inspect_repl":">= 7.6 && < 12",os:!0,"node:os":[">= 14.18 && < 15",">= 16"],path:!0,"node:path":[">= 14.18 && < 15",">= 16"],"path/posix":">= 15.3","node:path/posix":">= 16","path/win32":">= 15.3","node:path/win32":">= 16",perf_hooks:">= 8.5","node:perf_hooks":[">= 14.18 && < 15",">= 16"],process:">= 1","node:process":[">= 14.18 && < 15",">= 16"],punycode:">= 0.5","node:punycode":[">= 14.18 && < 15",">= 16"],querystring:!0,"node:querystring":[">= 14.18 && < 15",">= 16"],readline:!0,"node:readline":[">= 14.18 && < 15",">= 16"],"readline/promises":">= 17","node:readline/promises":">= 17",repl:!0,"node:repl":[">= 14.18 && < 15",">= 16"],smalloc:">= 0.11.5 && < 3",_stream_duplex:">= 0.9.4","node:_stream_duplex":[">= 14.18 && < 15",">= 16"],_stream_transform:">= 0.9.4","node:_stream_transform":[">= 14.18 && < 15",">= 16"],_stream_wrap:">= 1.4.1","node:_stream_wrap":[">= 14.18 && < 15",">= 16"],_stream_passthrough:">= 0.9.4","node:_stream_passthrough":[">= 14.18 && < 15",">= 16"],_stream_readable:">= 0.9.4","node:_stream_readable":[">= 14.18 && < 15",">= 16"],_stream_writable:">= 0.9.4","node:_stream_writable":[">= 14.18 && < 15",">= 16"],stream:!0,"node:stream":[">= 14.18 && < 15",">= 16"],"stream/consumers":">= 16.7","node:stream/consumers":">= 16.7","stream/promises":">= 15","node:stream/promises":">= 16","stream/web":">= 16.5","node:stream/web":">= 16.5",string_decoder:!0,"node:string_decoder":[">= 14.18 && < 15",">= 16"],sys:[">= 0.4 && < 0.7",">= 0.8"],"node:sys":[">= 14.18 && < 15",">= 16"],"node:test":">= 18",timers:!0,"node:timers":[">= 14.18 && < 15",">= 16"],"timers/promises":">= 15","node:timers/promises":">= 16",_tls_common:">= 0.11.13","node:_tls_common":[">= 14.18 && < 15",">= 16"],_tls_legacy:">= 0.11.3 && < 10",_tls_wrap:">= 0.11.3","node:_tls_wrap":[">= 14.18 && < 15",">= 16"],tls:!0,"node:tls":[">= 14.18 && < 15",">= 16"],trace_events:">= 10","node:trace_events":[">= 14.18 && < 15",">= 16"],tty:!0,"node:tty":[">= 14.18 && < 15",">= 16"],url:!0,"node:url":[">= 14.18 && < 15",">= 16"],util:!0,"node:util":[">= 14.18 && < 15",">= 16"],"util/types":">= 15.3","node:util/types":">= 16","v8/tools/arguments":">= 10 && < 12","v8/tools/codemap":[">= 4.4 && < 5",">= 5.2 && < 12"],"v8/tools/consarray":[">= 4.4 && < 5",">= 5.2 && < 12"],"v8/tools/csvparser":[">= 4.4 && < 5",">= 5.2 && < 12"],"v8/tools/logreader":[">= 4.4 && < 5",">= 5.2 && < 12"],"v8/tools/profile_view":[">= 4.4 && < 5",">= 5.2 && < 12"],"v8/tools/splaytree":[">= 4.4 && < 5",">= 5.2 && < 12"],v8:">= 1","node:v8":[">= 14.18 && < 15",">= 16"],vm:!0,"node:vm":[">= 14.18 && < 15",">= 16"],wasi:">= 13.4 && < 13.5",worker_threads:">= 11.7","node:worker_threads":[">= 14.18 && < 15",">= 16"],zlib:">= 0.5","node:zlib":[">= 14.18 && < 15",">= 16"]}}),Ll=c((e,t)=>{var r=process.versions&&process.versions.node&&process.versions.node.split(".")||[];function n(f){for(var m=f.split(" "),h=m.length>1?m[0]:"=",A=(m.length>1?m[1]:m[0]).split("."),g=0;g<3;++g){var y=parseInt(r[g]||0,10),k=parseInt(A[g]||0,10);if(y!==k)return h==="<"?y<k:h===">="?y>=k:!1}return h===">="}i(n,"specifierIncluded");function a(f){var m=f.split(/ ?&& ?/);if(m.length===0)return!1;for(var h=0;h<m.length;++h)if(!n(m[h]))return!1;return!0}i(a,"matchesRange");function u(f){if(typeof f=="boolean")return f;if(f&&typeof f=="object"){for(var m=0;m<f.length;++m)if(a(f[m]))return!0;return!1}return a(f)}i(u,"versionIncluded");var s=Il(),l={};for(p in s)Object.prototype.hasOwnProperty.call(s,p)&&(l[p]=u(s[p]));var p;t.exports=l}),ql=c((e,t)=>{var r=Pi();t.exports=i(function(n){return r(n)},"isCore")}),Gl=c((e,t)=>{var r=Pi(),n=require("fs"),a=require("path"),u=Nu(),s=Iu(),l=Pu(),p=Lu(),f=process.platform!=="win32"&&n.realpathSync&&typeof n.realpathSync.native=="function"?n.realpathSync.native:n.realpathSync,m=u(),h=i(function(){return[a.join(m,".node_modules"),a.join(m,".node_libraries")]},"defaultPaths"),A=i(function(F){try{var G=n.statSync(F,{throwIfNoEntry:!1})}catch(w){if(w&&(w.code==="ENOENT"||w.code==="ENOTDIR"))return!1;throw w}return!!G&&(G.isFile()||G.isFIFO())},"isFile"),g=i(function(F){try{var G=n.statSync(F,{throwIfNoEntry:!1})}catch(w){if(w&&(w.code==="ENOENT"||w.code==="ENOTDIR"))return!1;throw w}return!!G&&G.isDirectory()},"isDirectory"),y=i(function(F){try{return f(F)}catch(G){if(G.code!=="ENOENT")throw G}return F},"realpathSync"),k=i(function(F,G,w){return w&&w.preserveSymlinks===!1?F(G):G},"maybeRealpathSync"),oe=i(function(F,G){var w=F(G);try{var q=JSON.parse(w);return q}catch{}},"defaultReadPackageSync"),J=i(function(F,G,w){for(var q=l(G,w,F),V=0;V<q.length;V++)q[V]=a.join(q[V],F);return q},"getPackageCandidates");t.exports=i(function(F,G){if(typeof F!="string")throw new TypeError("Path must be a string.");var w=p(F,G),q=w.isFile||A,V=w.readFileSync||n.readFileSync,De=w.isDirectory||g,le=w.realpathSync||y,E=w.readPackageSync||oe;if(w.readFileSync&&w.readPackageSync)throw new TypeError("`readFileSync` and `readPackageSync` are mutually exclusive.");var T=w.packageIterator,U=w.extensions||[".js"],ee=w.includeCoreModules!==!1,z=w.basedir||a.dirname(s()),Q=w.filename||z;w.paths=w.paths||h();var ce=k(le,a.resolve(z),w);if(/^(?:\.\.?(?:\/|$)|\/|([A-Za-z]:)?[/\\])/.test(F)){var me=a.resolve(ce,F);(F==="."||F===".."||F.slice(-1)==="/")&&(me+="/");var ye=Te(me)||we(me);if(ye)return k(le,ye,w)}else{if(ee&&r(F))return F;var de=ke(F,ce);if(de)return k(le,de,w)}var be=new Error("Cannot find module '"+F+"' from '"+Q+"'");throw be.code="MODULE_NOT_FOUND",be;function Te(xe){var _e=Ne(a.dirname(xe));if(_e&&_e.dir&&_e.pkg&&w.pathFilter){var Se=a.relative(_e.dir,xe),M=w.pathFilter(_e.pkg,xe,Se);M&&(xe=a.resolve(_e.dir,M))}if(q(xe))return xe;for(var x=0;x<U.length;x++){var K=xe+U[x];if(q(K))return K}}function Ne(xe){if(!(xe===""||xe==="/")&&!(process.platform==="win32"&&/^\w:[/\\]*$/.test(xe))&&!/[/\\]node_modules[/\\]*$/.test(xe)){var _e=a.join(k(le,xe,w),"package.json");if(!q(_e))return Ne(a.dirname(xe));var Se=E(V,_e);return Se&&w.packageFilter&&(Se=w.packageFilter(Se,xe)),{pkg:Se,dir:xe}}}function we(xe){var _e=a.join(k(le,xe,w),"/package.json");if(q(_e)){try{var Se=E(V,_e)}catch{}if(Se&&w.packageFilter&&(Se=w.packageFilter(Se,xe)),Se&&Se.main){if(typeof Se.main!="string"){var M=new TypeError("package \u201C"+Se.name+"\u201D `main` must be a string");throw M.code="INVALID_PACKAGE_MAIN",M}(Se.main==="."||Se.main==="./")&&(Se.main="index");try{var x=Te(a.resolve(xe,Se.main));if(x)return x;var K=we(a.resolve(xe,Se.main));if(K)return K}catch{}}}return Te(a.join(xe,"/index"))}function ke(xe,_e){for(var Se=i(function(){return J(xe,_e,w)},"thunk"),M=T?T(xe,_e,Se,w):Se(),x=0;x<M.length;x++){var K=M[x];if(De(a.dirname(K))){var X=Te(K);if(X)return X;var te=we(K);if(te)return te}}}},"resolveSync")}),Yl=c((e,t)=>{var r=Nl();r.core=Ll(),r.isCore=ql(),r.sync=Gl(),t.exports=r}),bt=c((e,t)=>{var r=t.exports=typeof window<"u"&&window.Math==Math?window:typeof self<"u"&&self.Math==Math?self:Function("return this")();typeof __g=="number"&&(__g=r)}),er=c((e,t)=>{var r={}.hasOwnProperty;t.exports=function(n,a){return r.call(n,a)}}),Hr=c((e,t)=>{t.exports=function(r){try{return!!r()}catch{return!0}}}),Tr=c((e,t)=>{t.exports=!Hr()(function(){return Object.defineProperty({},"a",{get:function(){return 7}}).a!=7})}),Ve=c((e,t)=>{var r=t.exports={version:"2.6.12"};typeof __e=="number"&&(__e=r)}),Ql=c((e,t)=>{t.exports=function(r){if(typeof r!="function")throw TypeError(r+" is not a function!");return r}}),Zl=c((e,t)=>{var r=Ql();t.exports=function(n,a,u){if(r(n),a===void 0)return n;switch(u){case 1:return function(s){return n.call(a,s)};case 2:return function(s,l){return n.call(a,s,l)};case 3:return function(s,l,p){return n.call(a,s,l,p)}}return function(){return n.apply(a,arguments)}}}),Xr=c((e,t)=>{t.exports=function(r){return typeof r=="object"?r!==null:typeof r=="function"}}),$r=c((e,t)=>{var r=Xr();t.exports=function(n){if(!r(n))throw TypeError(n+" is not an object!");return n}}),Gu=c((e,t)=>{var r=Xr(),n=bt().document,a=r(n)&&r(n.createElement);t.exports=function(u){return a?n.createElement(u):{}}}),Uu=c((e,t)=>{t.exports=!Tr()&&!Hr()(function(){return Object.defineProperty(Gu()("div"),"a",{get:function(){return 7}}).a!=7})}),Gi=c((e,t)=>{var r=Xr();t.exports=function(n,a){if(!r(n))return n;var u,s;if(a&&typeof(u=n.toString)=="function"&&!r(s=u.call(n))||typeof(u=n.valueOf)=="function"&&!r(s=u.call(n))||!a&&typeof(u=n.toString)=="function"&&!r(s=u.call(n)))return s;throw TypeError("Can't convert object to primitive value")}}),xr=c(e=>{var t=$r(),r=Uu(),n=Gi(),a=Object.defineProperty;e.f=Tr()?Object.defineProperty:i(function(u,s,l){if(t(u),s=n(s,!0),t(l),r)try{return a(u,s,l)}catch{}if("get"in l||"set"in l)throw TypeError("Accessors not supported!");return"value"in l&&(u[s]=l.value),u},"defineProperty")}),qn=c((e,t)=>{t.exports=function(r,n){return{enumerable:!(r&1),configurable:!(r&2),writable:!(r&4),value:n}}}),gr=c((e,t)=>{var r=xr(),n=qn();t.exports=Tr()?function(a,u,s){return r.f(a,u,n(1,s))}:function(a,u,s){return a[u]=s,a}}),Jr=c((e,t)=>{var r=bt(),n=Ve(),a=Zl(),u=gr(),s=er(),l="prototype",p=i(function(f,m,h){var A=f&p.F,g=f&p.G,y=f&p.S,k=f&p.P,oe=f&p.B,J=f&p.W,F=g?n:n[m]||(n[m]={}),G=F[l],w=g?r:y?r[m]:(r[m]||{})[l],q,V,De;g&&(h=m);for(q in h)V=!A&&w&&w[q]!==void 0,!(V&&s(F,q))&&(De=V?w[q]:h[q],F[q]=g&&typeof w[q]!="function"?h[q]:oe&&V?a(De,r):J&&w[q]==De?function(le){var E=i(function(T,U,ee){if(this instanceof le){switch(arguments.length){case 0:return new le;case 1:return new le(T);case 2:return new le(T,U)}return new le(T,U,ee)}return le.apply(this,arguments)},"F");return E[l]=le[l],E}(De):k&&typeof De=="function"?a(Function.call,De):De,k&&((F.virtual||(F.virtual={}))[q]=De,f&p.R&&G&&!G[q]&&u(G,q,De)))},"$export");p.F=1,p.G=2,p.S=4,p.P=8,p.B=16,p.W=32,p.U=64,p.R=128,t.exports=p}),ju=c((e,t)=>{t.exports=gr()}),kn=c((e,t)=>{var r=0,n=Math.random();t.exports=function(a){return"Symbol(".concat(a===void 0?"":a,")_",(++r+n).toString(36))}}),Dc=c((e,t)=>{var r=kn()("meta"),n=Xr(),a=er(),u=xr().f,s=0,l=Object.isExtensible||function(){return!0},p=!Hr()(function(){return l(Object.preventExtensions({}))}),f=i(function(y){u(y,r,{value:{i:"O"+ ++s,w:{}}})},"setMeta"),m=i(function(y,k){if(!n(y))return typeof y=="symbol"?y:(typeof y=="string"?"S":"P")+y;if(!a(y,r)){if(!l(y))return"F";if(!k)return"E";f(y)}return y[r].i},"fastKey"),h=i(function(y,k){if(!a(y,r)){if(!l(y))return!0;if(!k)return!1;f(y)}return y[r].w},"getWeak"),A=i(function(y){return p&&g.NEED&&l(y)&&!a(y,r)&&f(y),y},"onFreeze"),g=t.exports={KEY:r,NEED:!1,fastKey:m,getWeak:h,onFreeze:A}}),Mn=c((e,t)=>{t.exports=!0}),Vi=c((e,t)=>{var r=Ve(),n=bt(),a="__core-js_shared__",u=n[a]||(n[a]={});(t.exports=function(s,l){return u[s]||(u[s]=l!==void 0?l:{})})("versions",[]).push({version:r.version,mode:Mn()?"pure":"global",copyright:"\xA9 2020 Denis Pushkarev (zloirock.ru)"})}),Nt=c((e,t)=>{var r=Vi()("wks"),n=kn(),a=bt().Symbol,u=typeof a=="function",s=t.exports=function(l){return r[l]||(r[l]=u&&a[l]||(u?a:n)("Symbol."+l))};s.store=r}),Ki=c((e,t)=>{var r=xr().f,n=er(),a=Nt()("toStringTag");t.exports=function(u,s,l){u&&!n(u=l?u:u.prototype,a)&&r(u,a,{configurable:!0,value:s})}}),Wi=c(e=>{e.f=Nt()}),Hi=c((e,t)=>{var r=bt(),n=Ve(),a=Mn(),u=Wi(),s=xr().f;t.exports=function(l){var p=n.Symbol||(n.Symbol=a?{}:r.Symbol||{});l.charAt(0)!="_"&&!(l in p)&&s(p,l,{value:u.f(l)})}}),Xi=c((e,t)=>{var r={}.toString;t.exports=function(n){return r.call(n).slice(8,-1)}}),Ic=c((e,t)=>{var r=Xi();t.exports=Object("z").propertyIsEnumerable(0)?Object:function(n){return r(n)=="String"?n.split(""):Object(n)}}),$i=c((e,t)=>{t.exports=function(r){if(r==null)throw TypeError("Can't call method on  "+r);return r}}),Sr=c((e,t)=>{var r=Ic(),n=$i();t.exports=function(a){return r(n(a))}}),Ji=c((e,t)=>{var r=Math.ceil,n=Math.floor;t.exports=function(a){return isNaN(a=+a)?0:(a>0?n:r)(a)}}),wc=c((e,t)=>{var r=Ji(),n=Math.min;t.exports=function(a){return a>0?n(r(a),9007199254740991):0}}),kc=c((e,t)=>{var r=Ji(),n=Math.max,a=Math.min;t.exports=function(u,s){return u=r(u),u<0?n(u+s,0):a(u,s)}}),Gc=c((e,t)=>{var r=Sr(),n=wc(),a=kc();t.exports=function(u){return function(s,l,p){var f=r(s),m=n(f.length),h=a(p,m),A;if(u&&l!=l){for(;m>h;)if(A=f[h++],A!=A)return!0}else for(;m>h;h++)if((u||h in f)&&f[h]===l)return u||h||0;return!u&&-1}}}),Qi=c((e,t)=>{var r=Vi()("keys"),n=kn();t.exports=function(a){return r[a]||(r[a]=n(a))}}),Xu=c((e,t)=>{var r=er(),n=Sr(),a=Gc()(!1),u=Qi()("IE_PROTO");t.exports=function(s,l){var p=n(s),f=0,m=[],h;for(h in p)h!=u&&r(p,h)&&m.push(h);for(;l.length>f;)r(p,h=l[f++])&&(~a(m,h)||m.push(h));return m}}),zi=c((e,t)=>{t.exports="constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf".split(",")}),Gn=c((e,t)=>{var r=Xu(),n=zi();t.exports=Object.keys||i(function(a){return r(a,n)},"keys")}),$u=c(e=>{e.f=Object.getOwnPropertySymbols}),Zi=c(e=>{e.f={}.propertyIsEnumerable}),Jc=c((e,t)=>{var r=Gn(),n=$u(),a=Zi();t.exports=function(u){var s=r(u),l=n.f;if(l)for(var p=l(u),f=a.f,m=0,h;p.length>m;)f.call(u,h=p[m++])&&s.push(h);return s}}),zc=c((e,t)=>{var r=Xi();t.exports=Array.isArray||i(function(n){return r(n)=="Array"},"isArray")}),es=c((e,t)=>{var r=$i();t.exports=function(n){return Object(r(n))}}),tp=c((e,t)=>{var r=xr(),n=$r(),a=Gn();t.exports=Tr()?Object.defineProperties:i(function(u,s){n(u);for(var l=a(s),p=l.length,f=0,m;p>f;)r.f(u,m=l[f++],s[m]);return u},"defineProperties")}),ip=c((e,t)=>{var r=bt().document;t.exports=r&&r.documentElement}),rs=c((e,t)=>{var r=$r(),n=tp(),a=zi(),u=Qi()("IE_PROTO"),s=i(function(){},"Empty"),l="prototype",p=i(function(){var f=Gu()("iframe"),m=a.length,h="<",A=">",g;for(f.style.display="none",ip().appendChild(f),f.src="javascript:",g=f.contentWindow.document,g.open(),g.write(h+"script"+A+"document.F=Object"+h+"/script"+A),g.close(),p=g.F;m--;)delete p[l][a[m]];return p()},"createDict");t.exports=Object.create||i(function(f,m){var h;return f!==null?(s[l]=r(f),h=new s,s[l]=null,h[u]=f):h=p(),m===void 0?h:n(h,m)},"create")}),zu=c(e=>{var t=Xu(),r=zi().concat("length","prototype");e.f=Object.getOwnPropertyNames||i(function(n){return t(n,r)},"getOwnPropertyNames")}),pp=c((e,t)=>{var r=Sr(),n=zu().f,a={}.toString,u=typeof window=="object"&&window&&Object.getOwnPropertyNames?Object.getOwnPropertyNames(window):[],s=i(function(l){try{return n(l)}catch{return u.slice()}},"getWindowNames");t.exports.f=i(function(l){return u&&a.call(l)=="[object Window]"?s(l):n(r(l))},"getOwnPropertyNames")}),dp=c(e=>{var t=Zi(),r=qn(),n=Sr(),a=Gi(),u=er(),s=Uu(),l=Object.getOwnPropertyDescriptor;e.f=Tr()?l:i(function(p,f){if(p=n(p),f=a(f,!0),s)try{return l(p,f)}catch{}if(u(p,f))return r(!t.f.call(p,f),p[f])},"getOwnPropertyDescriptor")}),ls=c(()=>{"use strict";var e=bt(),t=er(),r=Tr(),n=Jr(),a=ju(),u=Dc().KEY,s=Hr(),l=Vi(),p=Ki(),f=kn(),m=Nt(),h=Wi(),A=Hi(),g=Jc(),y=zc(),k=$r(),oe=Xr(),J=es(),F=Sr(),G=Gi(),w=qn(),q=rs(),V=pp(),De=dp(),le=$u(),E=xr(),T=Gn(),U=De.f,ee=E.f,z=V.f,Q=e.Symbol,ce=e.JSON,me=ce&&ce.stringify,ye="prototype",de=m("_hidden"),be=m("toPrimitive"),Te={}.propertyIsEnumerable,Ne=l("symbol-registry"),we=l("symbols"),ke=l("op-symbols"),xe=Object[ye],_e=typeof Q=="function"&&!!le.f,Se=e.QObject,M=!Se||!Se[ye]||!Se[ye].findChild,x=r&&s(function(){return q(ee({},"a",{get:function(){return ee(this,"a",{value:7}).a}})).a!=7})?function(j,W,ie){var he=U(xe,W);he&&delete xe[W],ee(j,W,ie),he&&j!==xe&&ee(xe,W,he)}:ee,K=i(function(j){var W=we[j]=q(Q[ye]);return W._k=j,W},"wrap"),X=_e&&typeof Q.iterator=="symbol"?function(j){return typeof j=="symbol"}:function(j){return j instanceof Q},te=i(function(j,W,ie){return j===xe&&te(ke,W,ie),k(j),W=G(W,!0),k(ie),t(we,W)?(ie.enumerable?(t(j,de)&&j[de][W]&&(j[de][W]=!1),ie=q(ie,{enumerable:w(0,!1)})):(t(j,de)||ee(j,de,w(1,{})),j[de][W]=!0),x(j,W,ie)):ee(j,W,ie)},"defineProperty"),Ae=i(function(j,W){k(j);for(var ie=g(W=F(W)),he=0,ge=ie.length,Ge;ge>he;)te(j,Ge=ie[he++],W[Ge]);return j},"defineProperties"),Ue=i(function(j,W){return W===void 0?q(j):Ae(q(j),W)},"create"),Me=i(function(j){var W=Te.call(this,j=G(j,!0));return this===xe&&t(we,j)&&!t(ke,j)?!1:W||!t(this,j)||!t(we,j)||t(this,de)&&this[de][j]?W:!0},"propertyIsEnumerable"),Ie=i(function(j,W){if(j=F(j),W=G(W,!0),!(j===xe&&t(we,W)&&!t(ke,W))){var ie=U(j,W);return ie&&t(we,W)&&!(t(j,de)&&j[de][W])&&(ie.enumerable=!0),ie}},"getOwnPropertyDescriptor"),Ke=i(function(j){for(var W=z(F(j)),ie=[],he=0,ge;W.length>he;)!t(we,ge=W[he++])&&ge!=de&&ge!=u&&ie.push(ge);return ie},"getOwnPropertyNames"),Be=i(function(j){for(var W=j===xe,ie=z(W?ke:F(j)),he=[],ge=0,Ge;ie.length>ge;)t(we,Ge=ie[ge++])&&(W?t(xe,Ge):!0)&&he.push(we[Ge]);return he},"getOwnPropertySymbols");for(_e||(Q=i(function(){if(this instanceof Q)throw TypeError("Symbol is not a constructor!");var j=f(arguments.length>0?arguments[0]:void 0),W=i(function(ie){this===xe&&W.call(ke,ie),t(this,de)&&t(this[de],j)&&(this[de][j]=!1),x(this,j,w(1,ie))},"$set");return r&&M&&x(xe,j,{configurable:!0,set:W}),K(j)},"Symbol"),a(Q[ye],"toString",i(function(){return this._k},"toString")),De.f=Ie,E.f=te,zu().f=V.f=Ke,Zi().f=Me,le.f=Be,r&&!Mn()&&a(xe,"propertyIsEnumerable",Me,!0),h.f=function(j){return K(m(j))}),n(n.G+n.W+n.F*!_e,{Symbol:Q}),Qe="hasInstance,isConcatSpreadable,iterator,match,replace,search,species,split,toPrimitive,toStringTag,unscopables".split(","),Fe=0;Qe.length>Fe;)m(Qe[Fe++]);var Qe,Fe;for(O=T(m.store),Z=0;O.length>Z;)A(O[Z++]);var O,Z;n(n.S+n.F*!_e,"Symbol",{for:function(j){return t(Ne,j+="")?Ne[j]:Ne[j]=Q(j)},keyFor:i(function(j){if(!X(j))throw TypeError(j+" is not a symbol!");for(var W in Ne)if(Ne[W]===j)return W},"keyFor"),useSetter:function(){M=!0},useSimple:function(){M=!1}}),n(n.S+n.F*!_e,"Object",{create:Ue,defineProperty:te,defineProperties:Ae,getOwnPropertyDescriptor:Ie,getOwnPropertyNames:Ke,getOwnPropertySymbols:Be});var pe=s(function(){le.f(1)});n(n.S+n.F*pe,"Object",{getOwnPropertySymbols:i(function(j){return le.f(J(j))},"getOwnPropertySymbols")}),ce&&n(n.S+n.F*(!_e||s(function(){var j=Q();return me([j])!="[null]"||me({a:j})!="{}"||me(Object(j))!="{}"})),"JSON",{stringify:i(function(j){for(var W=[j],ie=1,he,ge;arguments.length>ie;)W.push(arguments[ie++]);if(ge=he=W[1],!(!oe(he)&&j===void 0||X(j)))return y(he)||(he=i(function(Ge,$e){if(typeof ge=="function"&&($e=ge.call(this,Ge,$e)),!X($e))return $e},"replacer")),W[1]=he,me.apply(ce,W)},"stringify")}),Q[ye][be]||gr()(Q[ye],be,Q[ye].valueOf),p(Q,"Symbol"),p(Math,"Math",!0),p(e.JSON,"JSON",!0)}),bp=c((e,t)=>{ls(),t.exports=Ve().Object.getOwnPropertySymbols}),Ip=c((e,t)=>{t.exports={default:bp(),__esModule:!0}}),Rp=c((e,t)=>{t.exports=function(){}}),Lp=c((e,t)=>{t.exports=function(r,n){return{value:n,done:!!r}}}),Kn=c((e,t)=>{t.exports={}}),Mp=c((e,t)=>{"use strict";var r=rs(),n=qn(),a=Ki(),u={};gr()(u,Nt()("iterator"),function(){return this}),t.exports=function(s,l,p){s.prototype=r(u,{next:n(1,p)}),a(s,l+" Iterator")}}),Yp=c((e,t)=>{var r=er(),n=es(),a=Qi()("IE_PROTO"),u=Object.prototype;t.exports=Object.getPrototypeOf||function(s){return s=n(s),r(s,a)?s[a]:typeof s.constructor=="function"&&s instanceof s.constructor?s.constructor.prototype:s instanceof Object?u:null}}),Da=c((e,t)=>{"use strict";var r=Mn(),n=Jr(),a=ju(),u=gr(),s=Kn(),l=Mp(),p=Ki(),f=Yp(),m=Nt()("iterator"),h=!([].keys&&"next"in[].keys()),A="@@iterator",g="keys",y="values",k=i(function(){return this},"returnThis");t.exports=function(oe,J,F,G,w,q,V){l(F,J,G);var De=i(function(be){if(!h&&be in U)return U[be];switch(be){case g:return i(function(){return new F(this,be)},"keys");case y:return i(function(){return new F(this,be)},"values")}return i(function(){return new F(this,be)},"entries")},"getMethod"),le=J+" Iterator",E=w==y,T=!1,U=oe.prototype,ee=U[m]||U[A]||w&&U[w],z=ee||De(w),Q=w?E?De("entries"):z:void 0,ce=J=="Array"&&U.entries||ee,me,ye,de;if(ce&&(de=f(ce.call(new oe)),de!==Object.prototype&&de.next&&(p(de,le,!0),!r&&typeof de[m]!="function"&&u(de,m,k))),E&&ee&&ee.name!==y&&(T=!0,z=i(function(){return ee.call(this)},"values")),(!r||V)&&(h||T||!U[m])&&u(U,m,z),s[J]=z,s[le]=k,w)if(me={values:E?z:De(y),keys:q?z:De(g),entries:Q},V)for(ye in me)ye in U||a(U,ye,me[ye]);else n(n.P+n.F*(h||T),J,me);return me}}),Qp=c((e,t)=>{"use strict";var r=Rp(),n=Lp(),a=Kn(),u=Sr();t.exports=Da()(Array,"Array",function(s,l){this._t=u(s),this._i=0,this._k=l},function(){var s=this._t,l=this._k,p=this._i++;return!s||p>=s.length?(this._t=void 0,n(1)):l=="keys"?n(0,p):l=="values"?n(0,s[p]):n(0,[p,s[p]])},"values"),a.Arguments=a.Array,r("keys"),r("values"),r("entries")}),ya=c(()=>{Qp();var e=bt(),t=gr(),r=Kn(),n=Nt()("toStringTag"),a="CSSRuleList,CSSStyleDeclaration,CSSValueList,ClientRectList,DOMRectList,DOMStringList,DOMTokenList,DataTransferItemList,FileList,HTMLAllCollection,HTMLCollection,HTMLFormElement,HTMLSelectElement,MediaList,MimeTypeArray,NamedNodeMap,NodeList,PaintRequestList,Plugin,PluginArray,SVGLengthList,SVGNumberList,SVGPathSegList,SVGPointList,SVGStringList,SVGTransformList,SourceBufferList,StyleSheetList,TextTrackCueList,TextTrackList,TouchList".split(",");for(p=0;p<a.length;p++)u=a[p],s=e[u],l=s&&s.prototype,l&&!l[n]&&t(l,n,u),r[u]=r.Array;var u,s,l,p}),rf=c((e,t)=>{var r=Ji(),n=$i();t.exports=function(a){return function(u,s){var l=String(n(u)),p=r(s),f=l.length,m,h;return p<0||p>=f?a?"":void 0:(m=l.charCodeAt(p),m<55296||m>56319||p+1===f||(h=l.charCodeAt(p+1))<56320||h>57343?a?l.charAt(p):m:a?l.slice(p,p+2):(m-55296<<10)+(h-56320)+65536)}}}),Ta=c(()=>{"use strict";var e=rf()(!0);Da()(String,"String",function(t){this._t=String(t),this._i=0},function(){var t=this._t,r=this._i,n;return r>=t.length?{value:void 0,done:!0}:(n=e(t,r),this._i+=n.length,{value:n,done:!1})})}),sf=c((e,t)=>{var r=Xi(),n=Nt()("toStringTag"),a=r(function(){return arguments}())=="Arguments",u=i(function(s,l){try{return s[l]}catch{}},"tryGet");t.exports=function(s){var l,p,f;return s===void 0?"Undefined":s===null?"Null":typeof(p=u(l=Object(s),n))=="string"?p:a?r(l):(f=r(l))=="Object"&&typeof l.callee=="function"?"Arguments":f}}),af=c((e,t)=>{var r=sf(),n=Nt()("iterator"),a=Kn();t.exports=Ve().getIteratorMethod=function(u){if(u!=null)return u[n]||u["@@iterator"]||a[r(u)]}}),lf=c((e,t)=>{var r=$r(),n=af();t.exports=Ve().getIterator=function(a){var u=n(a);if(typeof u!="function")throw TypeError(a+" is not iterable!");return r(u.call(a))}}),pf=c((e,t)=>{ya(),Ta(),t.exports=lf()}),Hn=c((e,t)=>{t.exports={default:pf(),__esModule:!0}}),df=c((e,t)=>{var r=Jr(),n=Ve(),a=Hr();t.exports=function(u,s){var l=(n.Object||{})[u]||Object[u],p={};p[u]=s(l),r(r.S+r.F*a(function(){l(1)}),"Object",p)}}),mf=c(()=>{var e=es(),t=Gn();df()("keys",function(){return i(function(r){return t(e(r))},"keys")})}),Af=c((e,t)=>{mf(),t.exports=Ve().Object.keys}),va=c((e,t)=>{t.exports={default:Af(),__esModule:!0}}),gf=c((e,t)=>{var r=Ve(),n=r.JSON||(r.JSON={stringify:JSON.stringify});t.exports=i(function(a){return n.stringify.apply(n,arguments)},"stringify")}),ms=c((e,t)=>{t.exports={default:gf(),__esModule:!0}}),Ff=c((e,t)=>{ls(),t.exports=Ve().Symbol.for}),Bf=c((e,t)=>{t.exports={default:Ff(),__esModule:!0}}),Ds=c(e=>{"use strict";e.__esModule=!0,e.NOT_LOCAL_BINDING=e.BLOCK_SCOPED_SYMBOL=e.INHERIT_KEYS=e.UNARY_OPERATORS=e.STRING_UNARY_OPERATORS=e.NUMBER_UNARY_OPERATORS=e.BOOLEAN_UNARY_OPERATORS=e.BINARY_OPERATORS=e.NUMBER_BINARY_OPERATORS=e.BOOLEAN_BINARY_OPERATORS=e.COMPARISON_BINARY_OPERATORS=e.EQUALITY_BINARY_OPERATORS=e.BOOLEAN_NUMBER_BINARY_OPERATORS=e.UPDATE_OPERATORS=e.LOGICAL_OPERATORS=e.COMMENT_KEYS=e.FOR_INIT_KEYS=e.FLATTENABLE_KEYS=e.STATEMENT_OR_BLOCK_KEYS=void 0;var t=Bf(),r=n(t);function n(De){return De&&De.__esModule?De:{default:De}}i(n,"_interopRequireDefault");var a=e.STATEMENT_OR_BLOCK_KEYS=["consequent","body","alternate"],u=e.FLATTENABLE_KEYS=["body","expressions"],s=e.FOR_INIT_KEYS=["left","init"],l=e.COMMENT_KEYS=["leadingComments","trailingComments","innerComments"],p=e.LOGICAL_OPERATORS=["||","&&"],f=e.UPDATE_OPERATORS=["++","--"],m=e.BOOLEAN_NUMBER_BINARY_OPERATORS=[">","<",">=","<="],h=e.EQUALITY_BINARY_OPERATORS=["==","===","!=","!=="],A=e.COMPARISON_BINARY_OPERATORS=[].concat(h,["in","instanceof"]),g=e.BOOLEAN_BINARY_OPERATORS=[].concat(A,m),y=e.NUMBER_BINARY_OPERATORS=["-","/","%","*","**","&","|",">>",">>>","<<","^"],k=e.BINARY_OPERATORS=["+"].concat(y,g),oe=e.BOOLEAN_UNARY_OPERATORS=["delete","!"],J=e.NUMBER_UNARY_OPERATORS=["+","-","++","--","~"],F=e.STRING_UNARY_OPERATORS=["typeof"],G=e.UNARY_OPERATORS=["void"].concat(oe,J,F),w=e.INHERIT_KEYS={optional:["typeAnnotation","typeParameters","returnType"],force:["start","loc","end"]},q=e.BLOCK_SCOPED_SYMBOL=(0,r.default)("var used to be block scoped"),V=e.NOT_LOCAL_BINDING=(0,r.default)("should not be considered a local binding")}),Nf=c(()=>{var e=Jr();e(e.S,"Object",{create:rs()})}),_f=c((e,t)=>{Nf();var r=Ve().Object;t.exports=i(function(n,a){return r.create(n,a)},"create")}),Pf=c((e,t)=>{t.exports={default:_f(),__esModule:!0}}),Fa=c(e=>{"use strict";e.__esModule=!0;var t=Pf(),r=s(t);e.getBindingIdentifiers=l,e.getOuterBindingIdentifiers=p;var n=_t(),a=u(n);function u(f){if(f&&f.__esModule)return f;var m={};if(f!=null)for(var h in f)Object.prototype.hasOwnProperty.call(f,h)&&(m[h]=f[h]);return m.default=f,m}i(u,"_interopRequireWildcard");function s(f){return f&&f.__esModule?f:{default:f}}i(s,"_interopRequireDefault");function l(f,m,h){for(var A=[].concat(f),g=(0,r.default)(null);A.length;){var y=A.shift();if(y){var k=a.getBindingIdentifiers.keys[y.type];if(a.isIdentifier(y)){if(m){var oe=g[y.name]=g[y.name]||[];oe.push(y)}else g[y.name]=y;continue}if(a.isExportDeclaration(y)){a.isDeclaration(y.declaration)&&A.push(y.declaration);continue}if(h){if(a.isFunctionDeclaration(y)){A.push(y.id);continue}if(a.isFunctionExpression(y))continue}if(k)for(var J=0;J<k.length;J++){var F=k[J];y[F]&&(A=A.concat(y[F]))}}}return g}i(l,"getBindingIdentifiers"),l.keys={DeclareClass:["id"],DeclareFunction:["id"],DeclareModule:["id"],DeclareVariable:["id"],InterfaceDeclaration:["id"],TypeAlias:["id"],OpaqueType:["id"],CatchClause:["param"],LabeledStatement:["label"],UnaryExpression:["argument"],AssignmentExpression:["left"],ImportSpecifier:["local"],ImportNamespaceSpecifier:["local"],ImportDefaultSpecifier:["local"],ImportDeclaration:["specifiers"],ExportSpecifier:["exported"],ExportNamespaceSpecifier:["exported"],ExportDefaultSpecifier:["exported"],FunctionDeclaration:["id","params"],FunctionExpression:["id","params"],ClassDeclaration:["id"],ClassExpression:["id"],RestElement:["argument"],UpdateExpression:["argument"],RestProperty:["argument"],ObjectProperty:["value"],AssignmentPattern:["left"],ArrayPattern:["elements"],ObjectPattern:["properties"],VariableDeclaration:["declarations"],VariableDeclarator:["id"]};function p(f,m){return l(f,m,!0)}i(p,"getOuterBindingIdentifiers")}),wf=c((e,t)=>{Ta(),ya(),t.exports=Wi().f("iterator")}),kf=c((e,t)=>{t.exports={default:wf(),__esModule:!0}}),Mf=c(()=>{}),Gf=c(()=>{Hi()("asyncIterator")}),Uf=c(()=>{Hi()("observable")}),jf=c((e,t)=>{ls(),Mf(),Gf(),Uf(),t.exports=Ve().Symbol}),Kf=c((e,t)=>{t.exports={default:jf(),__esModule:!0}}),Oa=c(e=>{"use strict";e.__esModule=!0;var t=kf(),r=s(t),n=Kf(),a=s(n),u=typeof a.default=="function"&&typeof r.default=="symbol"?function(l){return typeof l}:function(l){return l&&typeof a.default=="function"&&l.constructor===a.default&&l!==a.default.prototype?"symbol":typeof l};function s(l){return l&&l.__esModule?l:{default:l}}i(s,"_interopRequireDefault"),e.default=typeof a.default=="function"&&u(r.default)==="symbol"?function(l){return typeof l>"u"?"undefined":u(l)}:function(l){return l&&typeof a.default=="function"&&l.constructor===a.default&&l!==a.default.prototype?"symbol":typeof l>"u"?"undefined":u(l)}}),$f=c((e,t)=>{(function(){"use strict";function r(p){if(p==null)return!1;switch(p.type){case"ArrayExpression":case"AssignmentExpression":case"BinaryExpression":case"CallExpression":case"ConditionalExpression":case"FunctionExpression":case"Identifier":case"Literal":case"LogicalExpression":case"MemberExpression":case"NewExpression":case"ObjectExpression":case"SequenceExpression":case"ThisExpression":case"UnaryExpression":case"UpdateExpression":return!0}return!1}i(r,"isExpression");function n(p){if(p==null)return!1;switch(p.type){case"DoWhileStatement":case"ForInStatement":case"ForStatement":case"WhileStatement":return!0}return!1}i(n,"isIterationStatement");function a(p){if(p==null)return!1;switch(p.type){case"BlockStatement":case"BreakStatement":case"ContinueStatement":case"DebuggerStatement":case"DoWhileStatement":case"EmptyStatement":case"ExpressionStatement":case"ForInStatement":case"ForStatement":case"IfStatement":case"LabeledStatement":case"ReturnStatement":case"SwitchStatement":case"ThrowStatement":case"TryStatement":case"VariableDeclaration":case"WhileStatement":case"WithStatement":return!0}return!1}i(a,"isStatement");function u(p){return a(p)||p!=null&&p.type==="FunctionDeclaration"}i(u,"isSourceElement");function s(p){switch(p.type){case"IfStatement":return p.alternate!=null?p.alternate:p.consequent;case"LabeledStatement":case"ForStatement":case"ForInStatement":case"WhileStatement":case"WithStatement":return p.body}return null}i(s,"trailingStatement");function l(p){var f;if(p.type!=="IfStatement"||p.alternate==null)return!1;f=p.consequent;do{if(f.type==="IfStatement"&&f.alternate==null)return!0;f=s(f)}while(f);return!1}i(l,"isProblematicIfStatement"),t.exports={isExpression:r,isStatement:a,isIterationStatement:n,isSourceElement:u,isProblematicIfStatement:l,trailingStatement:s}})()}),ba=c((e,t)=>{(function(){"use strict";var r,n,a,u,s,l;n={NonAsciiIdentifierStart:/[\xAA\xB5\xBA\xC0-\xD6\xD8-\xF6\xF8-\u02C1\u02C6-\u02D1\u02E0-\u02E4\u02EC\u02EE\u0370-\u0374\u0376\u0377\u037A-\u037D\u037F\u0386\u0388-\u038A\u038C\u038E-\u03A1\u03A3-\u03F5\u03F7-\u0481\u048A-\u052F\u0531-\u0556\u0559\u0561-\u0587\u05D0-\u05EA\u05F0-\u05F2\u0620-\u064A\u066E\u066F\u0671-\u06D3\u06D5\u06E5\u06E6\u06EE\u06EF\u06FA-\u06FC\u06FF\u0710\u0712-\u072F\u074D-\u07A5\u07B1\u07CA-\u07EA\u07F4\u07F5\u07FA\u0800-\u0815\u081A\u0824\u0828\u0840-\u0858\u08A0-\u08B4\u08B6-\u08BD\u0904-\u0939\u093D\u0950\u0958-\u0961\u0971-\u0980\u0985-\u098C\u098F\u0990\u0993-\u09A8\u09AA-\u09B0\u09B2\u09B6-\u09B9\u09BD\u09CE\u09DC\u09DD\u09DF-\u09E1\u09F0\u09F1\u0A05-\u0A0A\u0A0F\u0A10\u0A13-\u0A28\u0A2A-\u0A30\u0A32\u0A33\u0A35\u0A36\u0A38\u0A39\u0A59-\u0A5C\u0A5E\u0A72-\u0A74\u0A85-\u0A8D\u0A8F-\u0A91\u0A93-\u0AA8\u0AAA-\u0AB0\u0AB2\u0AB3\u0AB5-\u0AB9\u0ABD\u0AD0\u0AE0\u0AE1\u0AF9\u0B05-\u0B0C\u0B0F\u0B10\u0B13-\u0B28\u0B2A-\u0B30\u0B32\u0B33\u0B35-\u0B39\u0B3D\u0B5C\u0B5D\u0B5F-\u0B61\u0B71\u0B83\u0B85-\u0B8A\u0B8E-\u0B90\u0B92-\u0B95\u0B99\u0B9A\u0B9C\u0B9E\u0B9F\u0BA3\u0BA4\u0BA8-\u0BAA\u0BAE-\u0BB9\u0BD0\u0C05-\u0C0C\u0C0E-\u0C10\u0C12-\u0C28\u0C2A-\u0C39\u0C3D\u0C58-\u0C5A\u0C60\u0C61\u0C80\u0C85-\u0C8C\u0C8E-\u0C90\u0C92-\u0CA8\u0CAA-\u0CB3\u0CB5-\u0CB9\u0CBD\u0CDE\u0CE0\u0CE1\u0CF1\u0CF2\u0D05-\u0D0C\u0D0E-\u0D10\u0D12-\u0D3A\u0D3D\u0D4E\u0D54-\u0D56\u0D5F-\u0D61\u0D7A-\u0D7F\u0D85-\u0D96\u0D9A-\u0DB1\u0DB3-\u0DBB\u0DBD\u0DC0-\u0DC6\u0E01-\u0E30\u0E32\u0E33\u0E40-\u0E46\u0E81\u0E82\u0E84\u0E87\u0E88\u0E8A\u0E8D\u0E94-\u0E97\u0E99-\u0E9F\u0EA1-\u0EA3\u0EA5\u0EA7\u0EAA\u0EAB\u0EAD-\u0EB0\u0EB2\u0EB3\u0EBD\u0EC0-\u0EC4\u0EC6\u0EDC-\u0EDF\u0F00\u0F40-\u0F47\u0F49-\u0F6C\u0F88-\u0F8C\u1000-\u102A\u103F\u1050-\u1055\u105A-\u105D\u1061\u1065\u1066\u106E-\u1070\u1075-\u1081\u108E\u10A0-\u10C5\u10C7\u10CD\u10D0-\u10FA\u10FC-\u1248\u124A-\u124D\u1250-\u1256\u1258\u125A-\u125D\u1260-\u1288\u128A-\u128D\u1290-\u12B0\u12B2-\u12B5\u12B8-\u12BE\u12C0\u12C2-\u12C5\u12C8-\u12D6\u12D8-\u1310\u1312-\u1315\u1318-\u135A\u1380-\u138F\u13A0-\u13F5\u13F8-\u13FD\u1401-\u166C\u166F-\u167F\u1681-\u169A\u16A0-\u16EA\u16EE-\u16F8\u1700-\u170C\u170E-\u1711\u1720-\u1731\u1740-\u1751\u1760-\u176C\u176E-\u1770\u1780-\u17B3\u17D7\u17DC\u1820-\u1877\u1880-\u1884\u1887-\u18A8\u18AA\u18B0-\u18F5\u1900-\u191E\u1950-\u196D\u1970-\u1974\u1980-\u19AB\u19B0-\u19C9\u1A00-\u1A16\u1A20-\u1A54\u1AA7\u1B05-\u1B33\u1B45-\u1B4B\u1B83-\u1BA0\u1BAE\u1BAF\u1BBA-\u1BE5\u1C00-\u1C23\u1C4D-\u1C4F\u1C5A-\u1C7D\u1C80-\u1C88\u1CE9-\u1CEC\u1CEE-\u1CF1\u1CF5\u1CF6\u1D00-\u1DBF\u1E00-\u1F15\u1F18-\u1F1D\u1F20-\u1F45\u1F48-\u1F4D\u1F50-\u1F57\u1F59\u1F5B\u1F5D\u1F5F-\u1F7D\u1F80-\u1FB4\u1FB6-\u1FBC\u1FBE\u1FC2-\u1FC4\u1FC6-\u1FCC\u1FD0-\u1FD3\u1FD6-\u1FDB\u1FE0-\u1FEC\u1FF2-\u1FF4\u1FF6-\u1FFC\u2071\u207F\u2090-\u209C\u2102\u2107\u210A-\u2113\u2115\u2119-\u211D\u2124\u2126\u2128\u212A-\u212D\u212F-\u2139\u213C-\u213F\u2145-\u2149\u214E\u2160-\u2188\u2C00-\u2C2E\u2C30-\u2C5E\u2C60-\u2CE4\u2CEB-\u2CEE\u2CF2\u2CF3\u2D00-\u2D25\u2D27\u2D2D\u2D30-\u2D67\u2D6F\u2D80-\u2D96\u2DA0-\u2DA6\u2DA8-\u2DAE\u2DB0-\u2DB6\u2DB8-\u2DBE\u2DC0-\u2DC6\u2DC8-\u2DCE\u2DD0-\u2DD6\u2DD8-\u2DDE\u2E2F\u3005-\u3007\u3021-\u3029\u3031-\u3035\u3038-\u303C\u3041-\u3096\u309D-\u309F\u30A1-\u30FA\u30FC-\u30FF\u3105-\u312D\u3131-\u318E\u31A0-\u31BA\u31F0-\u31FF\u3400-\u4DB5\u4E00-\u9FD5\uA000-\uA48C\uA4D0-\uA4FD\uA500-\uA60C\uA610-\uA61F\uA62A\uA62B\uA640-\uA66E\uA67F-\uA69D\uA6A0-\uA6EF\uA717-\uA71F\uA722-\uA788\uA78B-\uA7AE\uA7B0-\uA7B7\uA7F7-\uA801\uA803-\uA805\uA807-\uA80A\uA80C-\uA822\uA840-\uA873\uA882-\uA8B3\uA8F2-\uA8F7\uA8FB\uA8FD\uA90A-\uA925\uA930-\uA946\uA960-\uA97C\uA984-\uA9B2\uA9CF\uA9E0-\uA9E4\uA9E6-\uA9EF\uA9FA-\uA9FE\uAA00-\uAA28\uAA40-\uAA42\uAA44-\uAA4B\uAA60-\uAA76\uAA7A\uAA7E-\uAAAF\uAAB1\uAAB5\uAAB6\uAAB9-\uAABD\uAAC0\uAAC2\uAADB-\uAADD\uAAE0-\uAAEA\uAAF2-\uAAF4\uAB01-\uAB06\uAB09-\uAB0E\uAB11-\uAB16\uAB20-\uAB26\uAB28-\uAB2E\uAB30-\uAB5A\uAB5C-\uAB65\uAB70-\uABE2\uAC00-\uD7A3\uD7B0-\uD7C6\uD7CB-\uD7FB\uF900-\uFA6D\uFA70-\uFAD9\uFB00-\uFB06\uFB13-\uFB17\uFB1D\uFB1F-\uFB28\uFB2A-\uFB36\uFB38-\uFB3C\uFB3E\uFB40\uFB41\uFB43\uFB44\uFB46-\uFBB1\uFBD3-\uFD3D\uFD50-\uFD8F\uFD92-\uFDC7\uFDF0-\uFDFB\uFE70-\uFE74\uFE76-\uFEFC\uFF21-\uFF3A\uFF41-\uFF5A\uFF66-\uFFBE\uFFC2-\uFFC7\uFFCA-\uFFCF\uFFD2-\uFFD7\uFFDA-\uFFDC]/,NonAsciiIdentifierPart:/[\xAA\xB5\xBA\xC0-\xD6\xD8-\xF6\xF8-\u02C1\u02C6-\u02D1\u02E0-\u02E4\u02EC\u02EE\u0300-\u0374\u0376\u0377\u037A-\u037D\u037F\u0386\u0388-\u038A\u038C\u038E-\u03A1\u03A3-\u03F5\u03F7-\u0481\u0483-\u0487\u048A-\u052F\u0531-\u0556\u0559\u0561-\u0587\u0591-\u05BD\u05BF\u05C1\u05C2\u05C4\u05C5\u05C7\u05D0-\u05EA\u05F0-\u05F2\u0610-\u061A\u0620-\u0669\u066E-\u06D3\u06D5-\u06DC\u06DF-\u06E8\u06EA-\u06FC\u06FF\u0710-\u074A\u074D-\u07B1\u07C0-\u07F5\u07FA\u0800-\u082D\u0840-\u085B\u08A0-\u08B4\u08B6-\u08BD\u08D4-\u08E1\u08E3-\u0963\u0966-\u096F\u0971-\u0983\u0985-\u098C\u098F\u0990\u0993-\u09A8\u09AA-\u09B0\u09B2\u09B6-\u09B9\u09BC-\u09C4\u09C7\u09C8\u09CB-\u09CE\u09D7\u09DC\u09DD\u09DF-\u09E3\u09E6-\u09F1\u0A01-\u0A03\u0A05-\u0A0A\u0A0F\u0A10\u0A13-\u0A28\u0A2A-\u0A30\u0A32\u0A33\u0A35\u0A36\u0A38\u0A39\u0A3C\u0A3E-\u0A42\u0A47\u0A48\u0A4B-\u0A4D\u0A51\u0A59-\u0A5C\u0A5E\u0A66-\u0A75\u0A81-\u0A83\u0A85-\u0A8D\u0A8F-\u0A91\u0A93-\u0AA8\u0AAA-\u0AB0\u0AB2\u0AB3\u0AB5-\u0AB9\u0ABC-\u0AC5\u0AC7-\u0AC9\u0ACB-\u0ACD\u0AD0\u0AE0-\u0AE3\u0AE6-\u0AEF\u0AF9\u0B01-\u0B03\u0B05-\u0B0C\u0B0F\u0B10\u0B13-\u0B28\u0B2A-\u0B30\u0B32\u0B33\u0B35-\u0B39\u0B3C-\u0B44\u0B47\u0B48\u0B4B-\u0B4D\u0B56\u0B57\u0B5C\u0B5D\u0B5F-\u0B63\u0B66-\u0B6F\u0B71\u0B82\u0B83\u0B85-\u0B8A\u0B8E-\u0B90\u0B92-\u0B95\u0B99\u0B9A\u0B9C\u0B9E\u0B9F\u0BA3\u0BA4\u0BA8-\u0BAA\u0BAE-\u0BB9\u0BBE-\u0BC2\u0BC6-\u0BC8\u0BCA-\u0BCD\u0BD0\u0BD7\u0BE6-\u0BEF\u0C00-\u0C03\u0C05-\u0C0C\u0C0E-\u0C10\u0C12-\u0C28\u0C2A-\u0C39\u0C3D-\u0C44\u0C46-\u0C48\u0C4A-\u0C4D\u0C55\u0C56\u0C58-\u0C5A\u0C60-\u0C63\u0C66-\u0C6F\u0C80-\u0C83\u0C85-\u0C8C\u0C8E-\u0C90\u0C92-\u0CA8\u0CAA-\u0CB3\u0CB5-\u0CB9\u0CBC-\u0CC4\u0CC6-\u0CC8\u0CCA-\u0CCD\u0CD5\u0CD6\u0CDE\u0CE0-\u0CE3\u0CE6-\u0CEF\u0CF1\u0CF2\u0D01-\u0D03\u0D05-\u0D0C\u0D0E-\u0D10\u0D12-\u0D3A\u0D3D-\u0D44\u0D46-\u0D48\u0D4A-\u0D4E\u0D54-\u0D57\u0D5F-\u0D63\u0D66-\u0D6F\u0D7A-\u0D7F\u0D82\u0D83\u0D85-\u0D96\u0D9A-\u0DB1\u0DB3-\u0DBB\u0DBD\u0DC0-\u0DC6\u0DCA\u0DCF-\u0DD4\u0DD6\u0DD8-\u0DDF\u0DE6-\u0DEF\u0DF2\u0DF3\u0E01-\u0E3A\u0E40-\u0E4E\u0E50-\u0E59\u0E81\u0E82\u0E84\u0E87\u0E88\u0E8A\u0E8D\u0E94-\u0E97\u0E99-\u0E9F\u0EA1-\u0EA3\u0EA5\u0EA7\u0EAA\u0EAB\u0EAD-\u0EB9\u0EBB-\u0EBD\u0EC0-\u0EC4\u0EC6\u0EC8-\u0ECD\u0ED0-\u0ED9\u0EDC-\u0EDF\u0F00\u0F18\u0F19\u0F20-\u0F29\u0F35\u0F37\u0F39\u0F3E-\u0F47\u0F49-\u0F6C\u0F71-\u0F84\u0F86-\u0F97\u0F99-\u0FBC\u0FC6\u1000-\u1049\u1050-\u109D\u10A0-\u10C5\u10C7\u10CD\u10D0-\u10FA\u10FC-\u1248\u124A-\u124D\u1250-\u1256\u1258\u125A-\u125D\u1260-\u1288\u128A-\u128D\u1290-\u12B0\u12B2-\u12B5\u12B8-\u12BE\u12C0\u12C2-\u12C5\u12C8-\u12D6\u12D8-\u1310\u1312-\u1315\u1318-\u135A\u135D-\u135F\u1380-\u138F\u13A0-\u13F5\u13F8-\u13FD\u1401-\u166C\u166F-\u167F\u1681-\u169A\u16A0-\u16EA\u16EE-\u16F8\u1700-\u170C\u170E-\u1714\u1720-\u1734\u1740-\u1753\u1760-\u176C\u176E-\u1770\u1772\u1773\u1780-\u17D3\u17D7\u17DC\u17DD\u17E0-\u17E9\u180B-\u180D\u1810-\u1819\u1820-\u1877\u1880-\u18AA\u18B0-\u18F5\u1900-\u191E\u1920-\u192B\u1930-\u193B\u1946-\u196D\u1970-\u1974\u1980-\u19AB\u19B0-\u19C9\u19D0-\u19D9\u1A00-\u1A1B\u1A20-\u1A5E\u1A60-\u1A7C\u1A7F-\u1A89\u1A90-\u1A99\u1AA7\u1AB0-\u1ABD\u1B00-\u1B4B\u1B50-\u1B59\u1B6B-\u1B73\u1B80-\u1BF3\u1C00-\u1C37\u1C40-\u1C49\u1C4D-\u1C7D\u1C80-\u1C88\u1CD0-\u1CD2\u1CD4-\u1CF6\u1CF8\u1CF9\u1D00-\u1DF5\u1DFB-\u1F15\u1F18-\u1F1D\u1F20-\u1F45\u1F48-\u1F4D\u1F50-\u1F57\u1F59\u1F5B\u1F5D\u1F5F-\u1F7D\u1F80-\u1FB4\u1FB6-\u1FBC\u1FBE\u1FC2-\u1FC4\u1FC6-\u1FCC\u1FD0-\u1FD3\u1FD6-\u1FDB\u1FE0-\u1FEC\u1FF2-\u1FF4\u1FF6-\u1FFC\u200C\u200D\u203F\u2040\u2054\u2071\u207F\u2090-\u209C\u20D0-\u20DC\u20E1\u20E5-\u20F0\u2102\u2107\u210A-\u2113\u2115\u2119-\u211D\u2124\u2126\u2128\u212A-\u212D\u212F-\u2139\u213C-\u213F\u2145-\u2149\u214E\u2160-\u2188\u2C00-\u2C2E\u2C30-\u2C5E\u2C60-\u2CE4\u2CEB-\u2CF3\u2D00-\u2D25\u2D27\u2D2D\u2D30-\u2D67\u2D6F\u2D7F-\u2D96\u2DA0-\u2DA6\u2DA8-\u2DAE\u2DB0-\u2DB6\u2DB8-\u2DBE\u2DC0-\u2DC6\u2DC8-\u2DCE\u2DD0-\u2DD6\u2DD8-\u2DDE\u2DE0-\u2DFF\u2E2F\u3005-\u3007\u3021-\u302F\u3031-\u3035\u3038-\u303C\u3041-\u3096\u3099\u309A\u309D-\u309F\u30A1-\u30FA\u30FC-\u30FF\u3105-\u312D\u3131-\u318E\u31A0-\u31BA\u31F0-\u31FF\u3400-\u4DB5\u4E00-\u9FD5\uA000-\uA48C\uA4D0-\uA4FD\uA500-\uA60C\uA610-\uA62B\uA640-\uA66F\uA674-\uA67D\uA67F-\uA6F1\uA717-\uA71F\uA722-\uA788\uA78B-\uA7AE\uA7B0-\uA7B7\uA7F7-\uA827\uA840-\uA873\uA880-\uA8C5\uA8D0-\uA8D9\uA8E0-\uA8F7\uA8FB\uA8FD\uA900-\uA92D\uA930-\uA953\uA960-\uA97C\uA980-\uA9C0\uA9CF-\uA9D9\uA9E0-\uA9FE\uAA00-\uAA36\uAA40-\uAA4D\uAA50-\uAA59\uAA60-\uAA76\uAA7A-\uAAC2\uAADB-\uAADD\uAAE0-\uAAEF\uAAF2-\uAAF6\uAB01-\uAB06\uAB09-\uAB0E\uAB11-\uAB16\uAB20-\uAB26\uAB28-\uAB2E\uAB30-\uAB5A\uAB5C-\uAB65\uAB70-\uABEA\uABEC\uABED\uABF0-\uABF9\uAC00-\uD7A3\uD7B0-\uD7C6\uD7CB-\uD7FB\uF900-\uFA6D\uFA70-\uFAD9\uFB00-\uFB06\uFB13-\uFB17\uFB1D-\uFB28\uFB2A-\uFB36\uFB38-\uFB3C\uFB3E\uFB40\uFB41\uFB43\uFB44\uFB46-\uFBB1\uFBD3-\uFD3D\uFD50-\uFD8F\uFD92-\uFDC7\uFDF0-\uFDFB\uFE00-\uFE0F\uFE20-\uFE2F\uFE33\uFE34\uFE4D-\uFE4F\uFE70-\uFE74\uFE76-\uFEFC\uFF10-\uFF19\uFF21-\uFF3A\uFF3F\uFF41-\uFF5A\uFF66-\uFFBE\uFFC2-\uFFC7\uFFCA-\uFFCF\uFFD2-\uFFD7\uFFDA-\uFFDC]/},r={NonAsciiIdentifierStart:/[\xAA\xB5\xBA\xC0-\xD6\xD8-\xF6\xF8-\u02C1\u02C6-\u02D1\u02E0-\u02E4\u02EC\u02EE\u0370-\u0374\u0376\u0377\u037A-\u037D\u037F\u0386\u0388-\u038A\u038C\u038E-\u03A1\u03A3-\u03F5\u03F7-\u0481\u048A-\u052F\u0531-\u0556\u0559\u0561-\u0587\u05D0-\u05EA\u05F0-\u05F2\u0620-\u064A\u066E\u066F\u0671-\u06D3\u06D5\u06E5\u06E6\u06EE\u06EF\u06FA-\u06FC\u06FF\u0710\u0712-\u072F\u074D-\u07A5\u07B1\u07CA-\u07EA\u07F4\u07F5\u07FA\u0800-\u0815\u081A\u0824\u0828\u0840-\u0858\u08A0-\u08B4\u08B6-\u08BD\u0904-\u0939\u093D\u0950\u0958-\u0961\u0971-\u0980\u0985-\u098C\u098F\u0990\u0993-\u09A8\u09AA-\u09B0\u09B2\u09B6-\u09B9\u09BD\u09CE\u09DC\u09DD\u09DF-\u09E1\u09F0\u09F1\u0A05-\u0A0A\u0A0F\u0A10\u0A13-\u0A28\u0A2A-\u0A30\u0A32\u0A33\u0A35\u0A36\u0A38\u0A39\u0A59-\u0A5C\u0A5E\u0A72-\u0A74\u0A85-\u0A8D\u0A8F-\u0A91\u0A93-\u0AA8\u0AAA-\u0AB0\u0AB2\u0AB3\u0AB5-\u0AB9\u0ABD\u0AD0\u0AE0\u0AE1\u0AF9\u0B05-\u0B0C\u0B0F\u0B10\u0B13-\u0B28\u0B2A-\u0B30\u0B32\u0B33\u0B35-\u0B39\u0B3D\u0B5C\u0B5D\u0B5F-\u0B61\u0B71\u0B83\u0B85-\u0B8A\u0B8E-\u0B90\u0B92-\u0B95\u0B99\u0B9A\u0B9C\u0B9E\u0B9F\u0BA3\u0BA4\u0BA8-\u0BAA\u0BAE-\u0BB9\u0BD0\u0C05-\u0C0C\u0C0E-\u0C10\u0C12-\u0C28\u0C2A-\u0C39\u0C3D\u0C58-\u0C5A\u0C60\u0C61\u0C80\u0C85-\u0C8C\u0C8E-\u0C90\u0C92-\u0CA8\u0CAA-\u0CB3\u0CB5-\u0CB9\u0CBD\u0CDE\u0CE0\u0CE1\u0CF1\u0CF2\u0D05-\u0D0C\u0D0E-\u0D10\u0D12-\u0D3A\u0D3D\u0D4E\u0D54-\u0D56\u0D5F-\u0D61\u0D7A-\u0D7F\u0D85-\u0D96\u0D9A-\u0DB1\u0DB3-\u0DBB\u0DBD\u0DC0-\u0DC6\u0E01-\u0E30\u0E32\u0E33\u0E40-\u0E46\u0E81\u0E82\u0E84\u0E87\u0E88\u0E8A\u0E8D\u0E94-\u0E97\u0E99-\u0E9F\u0EA1-\u0EA3\u0EA5\u0EA7\u0EAA\u0EAB\u0EAD-\u0EB0\u0EB2\u0EB3\u0EBD\u0EC0-\u0EC4\u0EC6\u0EDC-\u0EDF\u0F00\u0F40-\u0F47\u0F49-\u0F6C\u0F88-\u0F8C\u1000-\u102A\u103F\u1050-\u1055\u105A-\u105D\u1061\u1065\u1066\u106E-\u1070\u1075-\u1081\u108E\u10A0-\u10C5\u10C7\u10CD\u10D0-\u10FA\u10FC-\u1248\u124A-\u124D\u1250-\u1256\u1258\u125A-\u125D\u1260-\u1288\u128A-\u128D\u1290-\u12B0\u12B2-\u12B5\u12B8-\u12BE\u12C0\u12C2-\u12C5\u12C8-\u12D6\u12D8-\u1310\u1312-\u1315\u1318-\u135A\u1380-\u138F\u13A0-\u13F5\u13F8-\u13FD\u1401-\u166C\u166F-\u167F\u1681-\u169A\u16A0-\u16EA\u16EE-\u16F8\u1700-\u170C\u170E-\u1711\u1720-\u1731\u1740-\u1751\u1760-\u176C\u176E-\u1770\u1780-\u17B3\u17D7\u17DC\u1820-\u1877\u1880-\u18A8\u18AA\u18B0-\u18F5\u1900-\u191E\u1950-\u196D\u1970-\u1974\u1980-\u19AB\u19B0-\u19C9\u1A00-\u1A16\u1A20-\u1A54\u1AA7\u1B05-\u1B33\u1B45-\u1B4B\u1B83-\u1BA0\u1BAE\u1BAF\u1BBA-\u1BE5\u1C00-\u1C23\u1C4D-\u1C4F\u1C5A-\u1C7D\u1C80-\u1C88\u1CE9-\u1CEC\u1CEE-\u1CF1\u1CF5\u1CF6\u1D00-\u1DBF\u1E00-\u1F15\u1F18-\u1F1D\u1F20-\u1F45\u1F48-\u1F4D\u1F50-\u1F57\u1F59\u1F5B\u1F5D\u1F5F-\u1F7D\u1F80-\u1FB4\u1FB6-\u1FBC\u1FBE\u1FC2-\u1FC4\u1FC6-\u1FCC\u1FD0-\u1FD3\u1FD6-\u1FDB\u1FE0-\u1FEC\u1FF2-\u1FF4\u1FF6-\u1FFC\u2071\u207F\u2090-\u209C\u2102\u2107\u210A-\u2113\u2115\u2118-\u211D\u2124\u2126\u2128\u212A-\u2139\u213C-\u213F\u2145-\u2149\u214E\u2160-\u2188\u2C00-\u2C2E\u2C30-\u2C5E\u2C60-\u2CE4\u2CEB-\u2CEE\u2CF2\u2CF3\u2D00-\u2D25\u2D27\u2D2D\u2D30-\u2D67\u2D6F\u2D80-\u2D96\u2DA0-\u2DA6\u2DA8-\u2DAE\u2DB0-\u2DB6\u2DB8-\u2DBE\u2DC0-\u2DC6\u2DC8-\u2DCE\u2DD0-\u2DD6\u2DD8-\u2DDE\u3005-\u3007\u3021-\u3029\u3031-\u3035\u3038-\u303C\u3041-\u3096\u309B-\u309F\u30A1-\u30FA\u30FC-\u30FF\u3105-\u312D\u3131-\u318E\u31A0-\u31BA\u31F0-\u31FF\u3400-\u4DB5\u4E00-\u9FD5\uA000-\uA48C\uA4D0-\uA4FD\uA500-\uA60C\uA610-\uA61F\uA62A\uA62B\uA640-\uA66E\uA67F-\uA69D\uA6A0-\uA6EF\uA717-\uA71F\uA722-\uA788\uA78B-\uA7AE\uA7B0-\uA7B7\uA7F7-\uA801\uA803-\uA805\uA807-\uA80A\uA80C-\uA822\uA840-\uA873\uA882-\uA8B3\uA8F2-\uA8F7\uA8FB\uA8FD\uA90A-\uA925\uA930-\uA946\uA960-\uA97C\uA984-\uA9B2\uA9CF\uA9E0-\uA9E4\uA9E6-\uA9EF\uA9FA-\uA9FE\uAA00-\uAA28\uAA40-\uAA42\uAA44-\uAA4B\uAA60-\uAA76\uAA7A\uAA7E-\uAAAF\uAAB1\uAAB5\uAAB6\uAAB9-\uAABD\uAAC0\uAAC2\uAADB-\uAADD\uAAE0-\uAAEA\uAAF2-\uAAF4\uAB01-\uAB06\uAB09-\uAB0E\uAB11-\uAB16\uAB20-\uAB26\uAB28-\uAB2E\uAB30-\uAB5A\uAB5C-\uAB65\uAB70-\uABE2\uAC00-\uD7A3\uD7B0-\uD7C6\uD7CB-\uD7FB\uF900-\uFA6D\uFA70-\uFAD9\uFB00-\uFB06\uFB13-\uFB17\uFB1D\uFB1F-\uFB28\uFB2A-\uFB36\uFB38-\uFB3C\uFB3E\uFB40\uFB41\uFB43\uFB44\uFB46-\uFBB1\uFBD3-\uFD3D\uFD50-\uFD8F\uFD92-\uFDC7\uFDF0-\uFDFB\uFE70-\uFE74\uFE76-\uFEFC\uFF21-\uFF3A\uFF41-\uFF5A\uFF66-\uFFBE\uFFC2-\uFFC7\uFFCA-\uFFCF\uFFD2-\uFFD7\uFFDA-\uFFDC]|\uD800[\uDC00-\uDC0B\uDC0D-\uDC26\uDC28-\uDC3A\uDC3C\uDC3D\uDC3F-\uDC4D\uDC50-\uDC5D\uDC80-\uDCFA\uDD40-\uDD74\uDE80-\uDE9C\uDEA0-\uDED0\uDF00-\uDF1F\uDF30-\uDF4A\uDF50-\uDF75\uDF80-\uDF9D\uDFA0-\uDFC3\uDFC8-\uDFCF\uDFD1-\uDFD5]|\uD801[\uDC00-\uDC9D\uDCB0-\uDCD3\uDCD8-\uDCFB\uDD00-\uDD27\uDD30-\uDD63\uDE00-\uDF36\uDF40-\uDF55\uDF60-\uDF67]|\uD802[\uDC00-\uDC05\uDC08\uDC0A-\uDC35\uDC37\uDC38\uDC3C\uDC3F-\uDC55\uDC60-\uDC76\uDC80-\uDC9E\uDCE0-\uDCF2\uDCF4\uDCF5\uDD00-\uDD15\uDD20-\uDD39\uDD80-\uDDB7\uDDBE\uDDBF\uDE00\uDE10-\uDE13\uDE15-\uDE17\uDE19-\uDE33\uDE60-\uDE7C\uDE80-\uDE9C\uDEC0-\uDEC7\uDEC9-\uDEE4\uDF00-\uDF35\uDF40-\uDF55\uDF60-\uDF72\uDF80-\uDF91]|\uD803[\uDC00-\uDC48\uDC80-\uDCB2\uDCC0-\uDCF2]|\uD804[\uDC03-\uDC37\uDC83-\uDCAF\uDCD0-\uDCE8\uDD03-\uDD26\uDD50-\uDD72\uDD76\uDD83-\uDDB2\uDDC1-\uDDC4\uDDDA\uDDDC\uDE00-\uDE11\uDE13-\uDE2B\uDE80-\uDE86\uDE88\uDE8A-\uDE8D\uDE8F-\uDE9D\uDE9F-\uDEA8\uDEB0-\uDEDE\uDF05-\uDF0C\uDF0F\uDF10\uDF13-\uDF28\uDF2A-\uDF30\uDF32\uDF33\uDF35-\uDF39\uDF3D\uDF50\uDF5D-\uDF61]|\uD805[\uDC00-\uDC34\uDC47-\uDC4A\uDC80-\uDCAF\uDCC4\uDCC5\uDCC7\uDD80-\uDDAE\uDDD8-\uDDDB\uDE00-\uDE2F\uDE44\uDE80-\uDEAA\uDF00-\uDF19]|\uD806[\uDCA0-\uDCDF\uDCFF\uDEC0-\uDEF8]|\uD807[\uDC00-\uDC08\uDC0A-\uDC2E\uDC40\uDC72-\uDC8F]|\uD808[\uDC00-\uDF99]|\uD809[\uDC00-\uDC6E\uDC80-\uDD43]|[\uD80C\uD81C-\uD820\uD840-\uD868\uD86A-\uD86C\uD86F-\uD872][\uDC00-\uDFFF]|\uD80D[\uDC00-\uDC2E]|\uD811[\uDC00-\uDE46]|\uD81A[\uDC00-\uDE38\uDE40-\uDE5E\uDED0-\uDEED\uDF00-\uDF2F\uDF40-\uDF43\uDF63-\uDF77\uDF7D-\uDF8F]|\uD81B[\uDF00-\uDF44\uDF50\uDF93-\uDF9F\uDFE0]|\uD821[\uDC00-\uDFEC]|\uD822[\uDC00-\uDEF2]|\uD82C[\uDC00\uDC01]|\uD82F[\uDC00-\uDC6A\uDC70-\uDC7C\uDC80-\uDC88\uDC90-\uDC99]|\uD835[\uDC00-\uDC54\uDC56-\uDC9C\uDC9E\uDC9F\uDCA2\uDCA5\uDCA6\uDCA9-\uDCAC\uDCAE-\uDCB9\uDCBB\uDCBD-\uDCC3\uDCC5-\uDD05\uDD07-\uDD0A\uDD0D-\uDD14\uDD16-\uDD1C\uDD1E-\uDD39\uDD3B-\uDD3E\uDD40-\uDD44\uDD46\uDD4A-\uDD50\uDD52-\uDEA5\uDEA8-\uDEC0\uDEC2-\uDEDA\uDEDC-\uDEFA\uDEFC-\uDF14\uDF16-\uDF34\uDF36-\uDF4E\uDF50-\uDF6E\uDF70-\uDF88\uDF8A-\uDFA8\uDFAA-\uDFC2\uDFC4-\uDFCB]|\uD83A[\uDC00-\uDCC4\uDD00-\uDD43]|\uD83B[\uDE00-\uDE03\uDE05-\uDE1F\uDE21\uDE22\uDE24\uDE27\uDE29-\uDE32\uDE34-\uDE37\uDE39\uDE3B\uDE42\uDE47\uDE49\uDE4B\uDE4D-\uDE4F\uDE51\uDE52\uDE54\uDE57\uDE59\uDE5B\uDE5D\uDE5F\uDE61\uDE62\uDE64\uDE67-\uDE6A\uDE6C-\uDE72\uDE74-\uDE77\uDE79-\uDE7C\uDE7E\uDE80-\uDE89\uDE8B-\uDE9B\uDEA1-\uDEA3\uDEA5-\uDEA9\uDEAB-\uDEBB]|\uD869[\uDC00-\uDED6\uDF00-\uDFFF]|\uD86D[\uDC00-\uDF34\uDF40-\uDFFF]|\uD86E[\uDC00-\uDC1D\uDC20-\uDFFF]|\uD873[\uDC00-\uDEA1]|\uD87E[\uDC00-\uDE1D]/,NonAsciiIdentifierPart:/[\xAA\xB5\xB7\xBA\xC0-\xD6\xD8-\xF6\xF8-\u02C1\u02C6-\u02D1\u02E0-\u02E4\u02EC\u02EE\u0300-\u0374\u0376\u0377\u037A-\u037D\u037F\u0386-\u038A\u038C\u038E-\u03A1\u03A3-\u03F5\u03F7-\u0481\u0483-\u0487\u048A-\u052F\u0531-\u0556\u0559\u0561-\u0587\u0591-\u05BD\u05BF\u05C1\u05C2\u05C4\u05C5\u05C7\u05D0-\u05EA\u05F0-\u05F2\u0610-\u061A\u0620-\u0669\u066E-\u06D3\u06D5-\u06DC\u06DF-\u06E8\u06EA-\u06FC\u06FF\u0710-\u074A\u074D-\u07B1\u07C0-\u07F5\u07FA\u0800-\u082D\u0840-\u085B\u08A0-\u08B4\u08B6-\u08BD\u08D4-\u08E1\u08E3-\u0963\u0966-\u096F\u0971-\u0983\u0985-\u098C\u098F\u0990\u0993-\u09A8\u09AA-\u09B0\u09B2\u09B6-\u09B9\u09BC-\u09C4\u09C7\u09C8\u09CB-\u09CE\u09D7\u09DC\u09DD\u09DF-\u09E3\u09E6-\u09F1\u0A01-\u0A03\u0A05-\u0A0A\u0A0F\u0A10\u0A13-\u0A28\u0A2A-\u0A30\u0A32\u0A33\u0A35\u0A36\u0A38\u0A39\u0A3C\u0A3E-\u0A42\u0A47\u0A48\u0A4B-\u0A4D\u0A51\u0A59-\u0A5C\u0A5E\u0A66-\u0A75\u0A81-\u0A83\u0A85-\u0A8D\u0A8F-\u0A91\u0A93-\u0AA8\u0AAA-\u0AB0\u0AB2\u0AB3\u0AB5-\u0AB9\u0ABC-\u0AC5\u0AC7-\u0AC9\u0ACB-\u0ACD\u0AD0\u0AE0-\u0AE3\u0AE6-\u0AEF\u0AF9\u0B01-\u0B03\u0B05-\u0B0C\u0B0F\u0B10\u0B13-\u0B28\u0B2A-\u0B30\u0B32\u0B33\u0B35-\u0B39\u0B3C-\u0B44\u0B47\u0B48\u0B4B-\u0B4D\u0B56\u0B57\u0B5C\u0B5D\u0B5F-\u0B63\u0B66-\u0B6F\u0B71\u0B82\u0B83\u0B85-\u0B8A\u0B8E-\u0B90\u0B92-\u0B95\u0B99\u0B9A\u0B9C\u0B9E\u0B9F\u0BA3\u0BA4\u0BA8-\u0BAA\u0BAE-\u0BB9\u0BBE-\u0BC2\u0BC6-\u0BC8\u0BCA-\u0BCD\u0BD0\u0BD7\u0BE6-\u0BEF\u0C00-\u0C03\u0C05-\u0C0C\u0C0E-\u0C10\u0C12-\u0C28\u0C2A-\u0C39\u0C3D-\u0C44\u0C46-\u0C48\u0C4A-\u0C4D\u0C55\u0C56\u0C58-\u0C5A\u0C60-\u0C63\u0C66-\u0C6F\u0C80-\u0C83\u0C85-\u0C8C\u0C8E-\u0C90\u0C92-\u0CA8\u0CAA-\u0CB3\u0CB5-\u0CB9\u0CBC-\u0CC4\u0CC6-\u0CC8\u0CCA-\u0CCD\u0CD5\u0CD6\u0CDE\u0CE0-\u0CE3\u0CE6-\u0CEF\u0CF1\u0CF2\u0D01-\u0D03\u0D05-\u0D0C\u0D0E-\u0D10\u0D12-\u0D3A\u0D3D-\u0D44\u0D46-\u0D48\u0D4A-\u0D4E\u0D54-\u0D57\u0D5F-\u0D63\u0D66-\u0D6F\u0D7A-\u0D7F\u0D82\u0D83\u0D85-\u0D96\u0D9A-\u0DB1\u0DB3-\u0DBB\u0DBD\u0DC0-\u0DC6\u0DCA\u0DCF-\u0DD4\u0DD6\u0DD8-\u0DDF\u0DE6-\u0DEF\u0DF2\u0DF3\u0E01-\u0E3A\u0E40-\u0E4E\u0E50-\u0E59\u0E81\u0E82\u0E84\u0E87\u0E88\u0E8A\u0E8D\u0E94-\u0E97\u0E99-\u0E9F\u0EA1-\u0EA3\u0EA5\u0EA7\u0EAA\u0EAB\u0EAD-\u0EB9\u0EBB-\u0EBD\u0EC0-\u0EC4\u0EC6\u0EC8-\u0ECD\u0ED0-\u0ED9\u0EDC-\u0EDF\u0F00\u0F18\u0F19\u0F20-\u0F29\u0F35\u0F37\u0F39\u0F3E-\u0F47\u0F49-\u0F6C\u0F71-\u0F84\u0F86-\u0F97\u0F99-\u0FBC\u0FC6\u1000-\u1049\u1050-\u109D\u10A0-\u10C5\u10C7\u10CD\u10D0-\u10FA\u10FC-\u1248\u124A-\u124D\u1250-\u1256\u1258\u125A-\u125D\u1260-\u1288\u128A-\u128D\u1290-\u12B0\u12B2-\u12B5\u12B8-\u12BE\u12C0\u12C2-\u12C5\u12C8-\u12D6\u12D8-\u1310\u1312-\u1315\u1318-\u135A\u135D-\u135F\u1369-\u1371\u1380-\u138F\u13A0-\u13F5\u13F8-\u13FD\u1401-\u166C\u166F-\u167F\u1681-\u169A\u16A0-\u16EA\u16EE-\u16F8\u1700-\u170C\u170E-\u1714\u1720-\u1734\u1740-\u1753\u1760-\u176C\u176E-\u1770\u1772\u1773\u1780-\u17D3\u17D7\u17DC\u17DD\u17E0-\u17E9\u180B-\u180D\u1810-\u1819\u1820-\u1877\u1880-\u18AA\u18B0-\u18F5\u1900-\u191E\u1920-\u192B\u1930-\u193B\u1946-\u196D\u1970-\u1974\u1980-\u19AB\u19B0-\u19C9\u19D0-\u19DA\u1A00-\u1A1B\u1A20-\u1A5E\u1A60-\u1A7C\u1A7F-\u1A89\u1A90-\u1A99\u1AA7\u1AB0-\u1ABD\u1B00-\u1B4B\u1B50-\u1B59\u1B6B-\u1B73\u1B80-\u1BF3\u1C00-\u1C37\u1C40-\u1C49\u1C4D-\u1C7D\u1C80-\u1C88\u1CD0-\u1CD2\u1CD4-\u1CF6\u1CF8\u1CF9\u1D00-\u1DF5\u1DFB-\u1F15\u1F18-\u1F1D\u1F20-\u1F45\u1F48-\u1F4D\u1F50-\u1F57\u1F59\u1F5B\u1F5D\u1F5F-\u1F7D\u1F80-\u1FB4\u1FB6-\u1FBC\u1FBE\u1FC2-\u1FC4\u1FC6-\u1FCC\u1FD0-\u1FD3\u1FD6-\u1FDB\u1FE0-\u1FEC\u1FF2-\u1FF4\u1FF6-\u1FFC\u200C\u200D\u203F\u2040\u2054\u2071\u207F\u2090-\u209C\u20D0-\u20DC\u20E1\u20E5-\u20F0\u2102\u2107\u210A-\u2113\u2115\u2118-\u211D\u2124\u2126\u2128\u212A-\u2139\u213C-\u213F\u2145-\u2149\u214E\u2160-\u2188\u2C00-\u2C2E\u2C30-\u2C5E\u2C60-\u2CE4\u2CEB-\u2CF3\u2D00-\u2D25\u2D27\u2D2D\u2D30-\u2D67\u2D6F\u2D7F-\u2D96\u2DA0-\u2DA6\u2DA8-\u2DAE\u2DB0-\u2DB6\u2DB8-\u2DBE\u2DC0-\u2DC6\u2DC8-\u2DCE\u2DD0-\u2DD6\u2DD8-\u2DDE\u2DE0-\u2DFF\u3005-\u3007\u3021-\u302F\u3031-\u3035\u3038-\u303C\u3041-\u3096\u3099-\u309F\u30A1-\u30FA\u30FC-\u30FF\u3105-\u312D\u3131-\u318E\u31A0-\u31BA\u31F0-\u31FF\u3400-\u4DB5\u4E00-\u9FD5\uA000-\uA48C\uA4D0-\uA4FD\uA500-\uA60C\uA610-\uA62B\uA640-\uA66F\uA674-\uA67D\uA67F-\uA6F1\uA717-\uA71F\uA722-\uA788\uA78B-\uA7AE\uA7B0-\uA7B7\uA7F7-\uA827\uA840-\uA873\uA880-\uA8C5\uA8D0-\uA8D9\uA8E0-\uA8F7\uA8FB\uA8FD\uA900-\uA92D\uA930-\uA953\uA960-\uA97C\uA980-\uA9C0\uA9CF-\uA9D9\uA9E0-\uA9FE\uAA00-\uAA36\uAA40-\uAA4D\uAA50-\uAA59\uAA60-\uAA76\uAA7A-\uAAC2\uAADB-\uAADD\uAAE0-\uAAEF\uAAF2-\uAAF6\uAB01-\uAB06\uAB09-\uAB0E\uAB11-\uAB16\uAB20-\uAB26\uAB28-\uAB2E\uAB30-\uAB5A\uAB5C-\uAB65\uAB70-\uABEA\uABEC\uABED\uABF0-\uABF9\uAC00-\uD7A3\uD7B0-\uD7C6\uD7CB-\uD7FB\uF900-\uFA6D\uFA70-\uFAD9\uFB00-\uFB06\uFB13-\uFB17\uFB1D-\uFB28\uFB2A-\uFB36\uFB38-\uFB3C\uFB3E\uFB40\uFB41\uFB43\uFB44\uFB46-\uFBB1\uFBD3-\uFD3D\uFD50-\uFD8F\uFD92-\uFDC7\uFDF0-\uFDFB\uFE00-\uFE0F\uFE20-\uFE2F\uFE33\uFE34\uFE4D-\uFE4F\uFE70-\uFE74\uFE76-\uFEFC\uFF10-\uFF19\uFF21-\uFF3A\uFF3F\uFF41-\uFF5A\uFF66-\uFFBE\uFFC2-\uFFC7\uFFCA-\uFFCF\uFFD2-\uFFD7\uFFDA-\uFFDC]|\uD800[\uDC00-\uDC0B\uDC0D-\uDC26\uDC28-\uDC3A\uDC3C\uDC3D\uDC3F-\uDC4D\uDC50-\uDC5D\uDC80-\uDCFA\uDD40-\uDD74\uDDFD\uDE80-\uDE9C\uDEA0-\uDED0\uDEE0\uDF00-\uDF1F\uDF30-\uDF4A\uDF50-\uDF7A\uDF80-\uDF9D\uDFA0-\uDFC3\uDFC8-\uDFCF\uDFD1-\uDFD5]|\uD801[\uDC00-\uDC9D\uDCA0-\uDCA9\uDCB0-\uDCD3\uDCD8-\uDCFB\uDD00-\uDD27\uDD30-\uDD63\uDE00-\uDF36\uDF40-\uDF55\uDF60-\uDF67]|\uD802[\uDC00-\uDC05\uDC08\uDC0A-\uDC35\uDC37\uDC38\uDC3C\uDC3F-\uDC55\uDC60-\uDC76\uDC80-\uDC9E\uDCE0-\uDCF2\uDCF4\uDCF5\uDD00-\uDD15\uDD20-\uDD39\uDD80-\uDDB7\uDDBE\uDDBF\uDE00-\uDE03\uDE05\uDE06\uDE0C-\uDE13\uDE15-\uDE17\uDE19-\uDE33\uDE38-\uDE3A\uDE3F\uDE60-\uDE7C\uDE80-\uDE9C\uDEC0-\uDEC7\uDEC9-\uDEE6\uDF00-\uDF35\uDF40-\uDF55\uDF60-\uDF72\uDF80-\uDF91]|\uD803[\uDC00-\uDC48\uDC80-\uDCB2\uDCC0-\uDCF2]|\uD804[\uDC00-\uDC46\uDC66-\uDC6F\uDC7F-\uDCBA\uDCD0-\uDCE8\uDCF0-\uDCF9\uDD00-\uDD34\uDD36-\uDD3F\uDD50-\uDD73\uDD76\uDD80-\uDDC4\uDDCA-\uDDCC\uDDD0-\uDDDA\uDDDC\uDE00-\uDE11\uDE13-\uDE37\uDE3E\uDE80-\uDE86\uDE88\uDE8A-\uDE8D\uDE8F-\uDE9D\uDE9F-\uDEA8\uDEB0-\uDEEA\uDEF0-\uDEF9\uDF00-\uDF03\uDF05-\uDF0C\uDF0F\uDF10\uDF13-\uDF28\uDF2A-\uDF30\uDF32\uDF33\uDF35-\uDF39\uDF3C-\uDF44\uDF47\uDF48\uDF4B-\uDF4D\uDF50\uDF57\uDF5D-\uDF63\uDF66-\uDF6C\uDF70-\uDF74]|\uD805[\uDC00-\uDC4A\uDC50-\uDC59\uDC80-\uDCC5\uDCC7\uDCD0-\uDCD9\uDD80-\uDDB5\uDDB8-\uDDC0\uDDD8-\uDDDD\uDE00-\uDE40\uDE44\uDE50-\uDE59\uDE80-\uDEB7\uDEC0-\uDEC9\uDF00-\uDF19\uDF1D-\uDF2B\uDF30-\uDF39]|\uD806[\uDCA0-\uDCE9\uDCFF\uDEC0-\uDEF8]|\uD807[\uDC00-\uDC08\uDC0A-\uDC36\uDC38-\uDC40\uDC50-\uDC59\uDC72-\uDC8F\uDC92-\uDCA7\uDCA9-\uDCB6]|\uD808[\uDC00-\uDF99]|\uD809[\uDC00-\uDC6E\uDC80-\uDD43]|[\uD80C\uD81C-\uD820\uD840-\uD868\uD86A-\uD86C\uD86F-\uD872][\uDC00-\uDFFF]|\uD80D[\uDC00-\uDC2E]|\uD811[\uDC00-\uDE46]|\uD81A[\uDC00-\uDE38\uDE40-\uDE5E\uDE60-\uDE69\uDED0-\uDEED\uDEF0-\uDEF4\uDF00-\uDF36\uDF40-\uDF43\uDF50-\uDF59\uDF63-\uDF77\uDF7D-\uDF8F]|\uD81B[\uDF00-\uDF44\uDF50-\uDF7E\uDF8F-\uDF9F\uDFE0]|\uD821[\uDC00-\uDFEC]|\uD822[\uDC00-\uDEF2]|\uD82C[\uDC00\uDC01]|\uD82F[\uDC00-\uDC6A\uDC70-\uDC7C\uDC80-\uDC88\uDC90-\uDC99\uDC9D\uDC9E]|\uD834[\uDD65-\uDD69\uDD6D-\uDD72\uDD7B-\uDD82\uDD85-\uDD8B\uDDAA-\uDDAD\uDE42-\uDE44]|\uD835[\uDC00-\uDC54\uDC56-\uDC9C\uDC9E\uDC9F\uDCA2\uDCA5\uDCA6\uDCA9-\uDCAC\uDCAE-\uDCB9\uDCBB\uDCBD-\uDCC3\uDCC5-\uDD05\uDD07-\uDD0A\uDD0D-\uDD14\uDD16-\uDD1C\uDD1E-\uDD39\uDD3B-\uDD3E\uDD40-\uDD44\uDD46\uDD4A-\uDD50\uDD52-\uDEA5\uDEA8-\uDEC0\uDEC2-\uDEDA\uDEDC-\uDEFA\uDEFC-\uDF14\uDF16-\uDF34\uDF36-\uDF4E\uDF50-\uDF6E\uDF70-\uDF88\uDF8A-\uDFA8\uDFAA-\uDFC2\uDFC4-\uDFCB\uDFCE-\uDFFF]|\uD836[\uDE00-\uDE36\uDE3B-\uDE6C\uDE75\uDE84\uDE9B-\uDE9F\uDEA1-\uDEAF]|\uD838[\uDC00-\uDC06\uDC08-\uDC18\uDC1B-\uDC21\uDC23\uDC24\uDC26-\uDC2A]|\uD83A[\uDC00-\uDCC4\uDCD0-\uDCD6\uDD00-\uDD4A\uDD50-\uDD59]|\uD83B[\uDE00-\uDE03\uDE05-\uDE1F\uDE21\uDE22\uDE24\uDE27\uDE29-\uDE32\uDE34-\uDE37\uDE39\uDE3B\uDE42\uDE47\uDE49\uDE4B\uDE4D-\uDE4F\uDE51\uDE52\uDE54\uDE57\uDE59\uDE5B\uDE5D\uDE5F\uDE61\uDE62\uDE64\uDE67-\uDE6A\uDE6C-\uDE72\uDE74-\uDE77\uDE79-\uDE7C\uDE7E\uDE80-\uDE89\uDE8B-\uDE9B\uDEA1-\uDEA3\uDEA5-\uDEA9\uDEAB-\uDEBB]|\uD869[\uDC00-\uDED6\uDF00-\uDFFF]|\uD86D[\uDC00-\uDF34\uDF40-\uDFFF]|\uD86E[\uDC00-\uDC1D\uDC20-\uDFFF]|\uD873[\uDC00-\uDEA1]|\uD87E[\uDC00-\uDE1D]|\uDB40[\uDD00-\uDDEF]/};function p(F){return 48<=F&&F<=57}i(p,"isDecimalDigit");function f(F){return 48<=F&&F<=57||97<=F&&F<=102||65<=F&&F<=70}i(f,"isHexDigit");function m(F){return F>=48&&F<=55}i(m,"isOctalDigit"),a=[5760,8192,8193,8194,8195,8196,8197,8198,8199,8200,8201,8202,8239,8287,12288,65279];function h(F){return F===32||F===9||F===11||F===12||F===160||F>=5760&&a.indexOf(F)>=0}i(h,"isWhiteSpace");function A(F){return F===10||F===13||F===8232||F===8233}i(A,"isLineTerminator");function g(F){if(F<=65535)return String.fromCharCode(F);var G=String.fromCharCode(Math.floor((F-65536)/1024)+55296),w=String.fromCharCode((F-65536)%1024+56320);return G+w}for(i(g,"fromCodePoint"),u=new Array(128),l=0;l<128;++l)u[l]=l>=97&&l<=122||l>=65&&l<=90||l===36||l===95;for(s=new Array(128),l=0;l<128;++l)s[l]=l>=97&&l<=122||l>=65&&l<=90||l>=48&&l<=57||l===36||l===95;function y(F){return F<128?u[F]:n.NonAsciiIdentifierStart.test(g(F))}i(y,"isIdentifierStartES5");function k(F){return F<128?s[F]:n.NonAsciiIdentifierPart.test(g(F))}i(k,"isIdentifierPartES5");function oe(F){return F<128?u[F]:r.NonAsciiIdentifierStart.test(g(F))}i(oe,"isIdentifierStartES6");function J(F){return F<128?s[F]:r.NonAsciiIdentifierPart.test(g(F))}i(J,"isIdentifierPartES6"),t.exports={isDecimalDigit:p,isHexDigit:f,isOctalDigit:m,isWhiteSpace:h,isLineTerminator:A,isIdentifierStartES5:y,isIdentifierPartES5:k,isIdentifierStartES6:oe,isIdentifierPartES6:J}})()}),zf=c((e,t)=>{(function(){"use strict";var r=ba();function n(y){switch(y){case"implements":case"interface":case"package":case"private":case"protected":case"public":case"static":case"let":return!0;default:return!1}}i(n,"isStrictModeReservedWordES6");function a(y,k){return!k&&y==="yield"?!1:u(y,k)}i(a,"isKeywordES5");function u(y,k){if(k&&n(y))return!0;switch(y.length){case 2:return y==="if"||y==="in"||y==="do";case 3:return y==="var"||y==="for"||y==="new"||y==="try";case 4:return y==="this"||y==="else"||y==="case"||y==="void"||y==="with"||y==="enum";case 5:return y==="while"||y==="break"||y==="catch"||y==="throw"||y==="const"||y==="yield"||y==="class"||y==="super";case 6:return y==="return"||y==="typeof"||y==="delete"||y==="switch"||y==="export"||y==="import";case 7:return y==="default"||y==="finally"||y==="extends";case 8:return y==="function"||y==="continue"||y==="debugger";case 10:return y==="instanceof";default:return!1}}i(u,"isKeywordES6");function s(y,k){return y==="null"||y==="true"||y==="false"||a(y,k)}i(s,"isReservedWordES5");function l(y,k){return y==="null"||y==="true"||y==="false"||u(y,k)}i(l,"isReservedWordES6");function p(y){return y==="eval"||y==="arguments"}i(p,"isRestrictedWord");function f(y){var k,oe,J;if(y.length===0||(J=y.charCodeAt(0),!r.isIdentifierStartES5(J)))return!1;for(k=1,oe=y.length;k<oe;++k)if(J=y.charCodeAt(k),!r.isIdentifierPartES5(J))return!1;return!0}i(f,"isIdentifierNameES5");function m(y,k){return(y-55296)*1024+(k-56320)+65536}i(m,"decodeUtf16");function h(y){var k,oe,J,F,G;if(y.length===0)return!1;for(G=r.isIdentifierStartES6,k=0,oe=y.length;k<oe;++k){if(J=y.charCodeAt(k),55296<=J&&J<=56319){if(++k,k>=oe||(F=y.charCodeAt(k),!(56320<=F&&F<=57343)))return!1;J=m(J,F)}if(!G(J))return!1;G=r.isIdentifierPartES6}return!0}i(h,"isIdentifierNameES6");function A(y,k){return f(y)&&!s(y,k)}i(A,"isIdentifierES5");function g(y,k){return h(y)&&!l(y,k)}i(g,"isIdentifierES6"),t.exports={isKeywordES5:a,isKeywordES6:u,isReservedWordES5:s,isReservedWordES6:l,isRestrictedWord:p,isIdentifierNameES5:f,isIdentifierNameES6:h,isIdentifierES5:A,isIdentifierES6:g}})()}),Zf=c(e=>{(function(){"use strict";e.ast=$f(),e.code=ba(),e.keyword=zf()})()}),n0=c(e=>{"use strict";e.__esModule=!0;var t=va(),r=y(t),n=Oa(),a=y(n),u=Hn(),s=y(u);e.isBinding=k,e.isReferenced=oe,e.isValidIdentifier=J,e.isLet=F,e.isBlockScoped=G,e.isVar=w,e.isSpecifierDefault=q,e.isScope=V,e.isImmutable=De,e.isNodesEquivalent=le;var l=Fa(),p=Zf(),f=y(p),m=_t(),h=g(m),A=Ds();function g(E){if(E&&E.__esModule)return E;var T={};if(E!=null)for(var U in E)Object.prototype.hasOwnProperty.call(E,U)&&(T[U]=E[U]);return T.default=E,T}i(g,"_interopRequireWildcard");function y(E){return E&&E.__esModule?E:{default:E}}i(y,"_interopRequireDefault");function k(E,T){var U=l.getBindingIdentifiers.keys[T.type];if(U)for(var ee=0;ee<U.length;ee++){var z=U[ee],Q=T[z];if(Array.isArray(Q)){if(Q.indexOf(E)>=0)return!0}else if(Q===E)return!0}return!1}i(k,"isBinding");function oe(E,T){switch(T.type){case"BindExpression":return T.object===E||T.callee===E;case"MemberExpression":case"JSXMemberExpression":return T.property===E&&T.computed?!0:T.object===E;case"MetaProperty":return!1;case"ObjectProperty":if(T.key===E)return T.computed;case"VariableDeclarator":return T.id!==E;case"ArrowFunctionExpression":case"FunctionDeclaration":case"FunctionExpression":for(var z=T.params,U=Array.isArray(z),ee=0,z=U?z:(0,s.default)(z);;){var Q;if(U){if(ee>=z.length)break;Q=z[ee++]}else{if(ee=z.next(),ee.done)break;Q=ee.value}var ce=Q;if(ce===E)return!1}return T.id!==E;case"ExportSpecifier":return T.source?!1:T.local===E;case"ExportNamespaceSpecifier":case"ExportDefaultSpecifier":return!1;case"JSXAttribute":return T.name!==E;case"ClassProperty":return T.key===E?T.computed:T.value===E;case"ImportDefaultSpecifier":case"ImportNamespaceSpecifier":case"ImportSpecifier":return!1;case"ClassDeclaration":case"ClassExpression":return T.id!==E;case"ClassMethod":case"ObjectMethod":return T.key===E&&T.computed;case"LabeledStatement":return!1;case"CatchClause":return T.param!==E;case"RestElement":return!1;case"AssignmentExpression":return T.right===E;case"AssignmentPattern":return T.right===E;case"ObjectPattern":case"ArrayPattern":return!1}return!0}i(oe,"isReferenced");function J(E){return typeof E!="string"||f.default.keyword.isReservedWordES6(E,!0)||E==="await"?!1:f.default.keyword.isIdentifierNameES6(E)}i(J,"isValidIdentifier");function F(E){return h.isVariableDeclaration(E)&&(E.kind!=="var"||E[A.BLOCK_SCOPED_SYMBOL])}i(F,"isLet");function G(E){return h.isFunctionDeclaration(E)||h.isClassDeclaration(E)||h.isLet(E)}i(G,"isBlockScoped");function w(E){return h.isVariableDeclaration(E,{kind:"var"})&&!E[A.BLOCK_SCOPED_SYMBOL]}i(w,"isVar");function q(E){return h.isImportDefaultSpecifier(E)||h.isIdentifier(E.imported||E.exported,{name:"default"})}i(q,"isSpecifierDefault");function V(E,T){return h.isBlockStatement(E)&&h.isFunction(T,{body:E})?!1:h.isScopable(E)}i(V,"isScope");function De(E){return h.isType(E.type,"Immutable")?!0:h.isIdentifier(E)?E.name==="undefined":!1}i(De,"isImmutable");function le(E,T){if((typeof E>"u"?"undefined":(0,a.default)(E))!=="object"||(typeof E>"u"?"undefined":(0,a.default)(E))!=="object"||E==null||T==null)return E===T;if(E.type!==T.type)return!1;for(var U=(0,r.default)(h.NODE_FIELDS[E.type]||E.type),Q=U,ee=Array.isArray(Q),z=0,Q=ee?Q:(0,s.default)(Q);;){var ce;if(ee){if(z>=Q.length)break;ce=Q[z++]}else{if(z=Q.next(),z.done)break;ce=z.value}var me=ce;if((0,a.default)(E[me])!==(0,a.default)(T[me]))return!1;if(Array.isArray(E[me])){if(!Array.isArray(T[me])||E[me].length!==T[me].length)return!1;for(var ye=0;ye<E[me].length;ye++)if(!le(E[me][ye],T[me][ye]))return!1;continue}if(!le(E[me],T[me]))return!1}return!0}i(le,"isNodesEquivalent")}),s0=c(()=>{var e=Jr();e(e.S,"Number",{MAX_SAFE_INTEGER:9007199254740991})}),a0=c((e,t)=>{s0(),t.exports=9007199254740991}),l0=c((e,t)=>{t.exports={default:a0(),__esModule:!0}}),Ia=c((e,t)=>{var r=typeof global=="object"&&global&&global.Object===Object&&global;t.exports=r}),tt=c((e,t)=>{var r=Ia(),n=typeof self=="object"&&self&&self.Object===Object&&self,a=r||n||Function("return this")();t.exports=a}),Zr=c((e,t)=>{var r=tt(),n=r.Symbol;t.exports=n}),D0=c((e,t)=>{var r=Zr(),n=Object.prototype,a=n.hasOwnProperty,u=n.toString,s=r?r.toStringTag:void 0;function l(p){var f=a.call(p,s),m=p[s];try{p[s]=void 0;var h=!0}catch{}var A=u.call(p);return h&&(f?p[s]=m:delete p[s]),A}i(l,"getRawTag"),t.exports=l}),h0=c((e,t)=>{var r=Object.prototype,n=r.toString;function a(u){return n.call(u)}i(a,"objectToString"),t.exports=a}),nr=c((e,t)=>{var r=Zr(),n=D0(),a=h0(),u="[object Null]",s="[object Undefined]",l=r?r.toStringTag:void 0;function p(f){return f==null?f===void 0?s:u:l&&l in Object(f)?n(f):a(f)}i(p,"baseGetTag"),t.exports=p}),_a=c((e,t)=>{function r(n,a){return function(u){return n(a(u))}}i(r,"overArg"),t.exports=r}),xs=c((e,t)=>{var r=_a(),n=r(Object.getPrototypeOf,Object);t.exports=n}),Et=c((e,t)=>{function r(n){return n!=null&&typeof n=="object"}i(r,"isObjectLike"),t.exports=r}),B0=c((e,t)=>{var r=nr(),n=xs(),a=Et(),u="[object Object]",s=Function.prototype,l=Object.prototype,p=s.toString,f=l.hasOwnProperty,m=p.call(Object);function h(A){if(!a(A)||r(A)!=u)return!1;var g=n(A);if(g===null)return!0;var y=f.call(g,"constructor")&&g.constructor;return typeof y=="function"&&y instanceof y&&p.call(y)==m}i(h,"isPlainObject"),t.exports=h}),b0=c((e,t)=>{var r=nr(),n=Et(),a="[object RegExp]";function u(s){return n(s)&&r(s)==a}i(u,"baseIsRegExp"),t.exports=u}),$n=c((e,t)=>{function r(n){return function(a){return n(a)}}i(r,"baseUnary"),t.exports=r}),zn=c((e,t)=>{var r=Ia(),n=typeof e=="object"&&e&&!e.nodeType&&e,a=n&&typeof t=="object"&&t&&!t.nodeType&&t,u=a&&a.exports===n,s=u&&r.process,l=function(){try{var p=a&&a.require&&a.require("util").types;return p||s&&s.binding&&s.binding("util")}catch{}}();t.exports=l}),L0=c((e,t)=>{var r=b0(),n=$n(),a=zn(),u=a&&a.isRegExp,s=u?n(u):r;t.exports=s}),k0=c(e=>{"use strict";e.__esModule=!0;var t=l0(),r=y(t),n=ms(),a=y(n),u=Hn(),s=y(u);e.toComputedKey=k,e.toSequenceExpression=J,e.toKeyAlias=F,e.toIdentifier=G,e.toBindingIdentifierName=w,e.toStatement=q,e.toExpression=V,e.toBlock=De,e.valueToNode=le;var l=B0(),p=y(l),f=L0(),m=y(f),h=_t(),A=g(h);function g(E){if(E&&E.__esModule)return E;var T={};if(E!=null)for(var U in E)Object.prototype.hasOwnProperty.call(E,U)&&(T[U]=E[U]);return T.default=E,T}i(g,"_interopRequireWildcard");function y(E){return E&&E.__esModule?E:{default:E}}i(y,"_interopRequireDefault");function k(E){var T=arguments.length>1&&arguments[1]!==void 0?arguments[1]:E.key||E.property;return E.computed||A.isIdentifier(T)&&(T=A.stringLiteral(T.name)),T}i(k,"toComputedKey");function oe(E,T,U){for(var ee=[],z=!0,me=E,Q=Array.isArray(me),ce=0,me=Q?me:(0,s.default)(me);;){var ye;if(Q){if(ce>=me.length)break;ye=me[ce++]}else{if(ce=me.next(),ce.done)break;ye=ce.value}var de=ye;if(z=!1,A.isExpression(de))ee.push(de);else if(A.isExpressionStatement(de))ee.push(de.expression);else if(A.isVariableDeclaration(de)){if(de.kind!=="var")return;for(var Ne=de.declarations,be=Array.isArray(Ne),Te=0,Ne=be?Ne:(0,s.default)(Ne);;){var we;if(be){if(Te>=Ne.length)break;we=Ne[Te++]}else{if(Te=Ne.next(),Te.done)break;we=Te.value}var ke=we,xe=A.getBindingIdentifiers(ke);for(var _e in xe)U.push({kind:de.kind,id:xe[_e]});ke.init&&ee.push(A.assignmentExpression("=",ke.id,ke.init))}z=!0}else if(A.isIfStatement(de)){var Se=de.consequent?oe([de.consequent],T,U):T.buildUndefinedNode(),M=de.alternate?oe([de.alternate],T,U):T.buildUndefinedNode();if(!Se||!M)return;ee.push(A.conditionalExpression(de.test,Se,M))}else if(A.isBlockStatement(de)){var x=oe(de.body,T,U);if(!x)return;ee.push(x)}else if(A.isEmptyStatement(de))z=!0;else return}return z&&ee.push(T.buildUndefinedNode()),ee.length===1?ee[0]:A.sequenceExpression(ee)}i(oe,"gatherSequenceExpressions");function J(E,T){if(!(!E||!E.length)){var U=[],ee=oe(E,T,U);if(ee){for(var ce=U,z=Array.isArray(ce),Q=0,ce=z?ce:(0,s.default)(ce);;){var me;if(z){if(Q>=ce.length)break;me=ce[Q++]}else{if(Q=ce.next(),Q.done)break;me=Q.value}var ye=me;T.push(ye)}return ee}}}i(J,"toSequenceExpression");function F(E){var T=arguments.length>1&&arguments[1]!==void 0?arguments[1]:E.key,U=void 0;return E.kind==="method"?F.increment()+"":(A.isIdentifier(T)?U=T.name:A.isStringLiteral(T)?U=(0,a.default)(T.value):U=(0,a.default)(A.removePropertiesDeep(A.cloneDeep(T))),E.computed&&(U="["+U+"]"),E.static&&(U="static:"+U),U)}i(F,"toKeyAlias"),F.uid=0,F.increment=function(){return F.uid>=r.default?F.uid=0:F.uid++};function G(E){return E=E+"",E=E.replace(/[^a-zA-Z0-9$_]/g,"-"),E=E.replace(/^[-0-9]+/,""),E=E.replace(/[-\s]+(.)?/g,function(T,U){return U?U.toUpperCase():""}),A.isValidIdentifier(E)||(E="_"+E),E||"_"}i(G,"toIdentifier");function w(E){return E=G(E),(E==="eval"||E==="arguments")&&(E="_"+E),E}i(w,"toBindingIdentifierName");function q(E,T){if(A.isStatement(E))return E;var U=!1,ee=void 0;if(A.isClass(E))U=!0,ee="ClassDeclaration";else if(A.isFunction(E))U=!0,ee="FunctionDeclaration";else if(A.isAssignmentExpression(E))return A.expressionStatement(E);if(U&&!E.id&&(ee=!1),!ee){if(T)return!1;throw new Error("cannot turn "+E.type+" to a statement")}return E.type=ee,E}i(q,"toStatement");function V(E){if(A.isExpressionStatement(E)&&(E=E.expression),A.isExpression(E))return E;if(A.isClass(E)?E.type="ClassExpression":A.isFunction(E)&&(E.type="FunctionExpression"),!A.isExpression(E))throw new Error("cannot turn "+E.type+" to an expression");return E}i(V,"toExpression");function De(E,T){return A.isBlockStatement(E)?E:(A.isEmptyStatement(E)&&(E=[]),Array.isArray(E)||(A.isStatement(E)||(A.isFunction(T)?E=A.returnStatement(E):E=A.expressionStatement(E)),E=[E]),A.blockStatement(E))}i(De,"toBlock");function le(E){if(E===void 0)return A.identifier("undefined");if(E===!0||E===!1)return A.booleanLiteral(E);if(E===null)return A.nullLiteral();if(typeof E=="string")return A.stringLiteral(E);if(typeof E=="number")return A.numericLiteral(E);if((0,m.default)(E)){var T=E.source,U=E.toString().match(/\/([a-z]+|)$/)[1];return A.regExpLiteral(T,U)}if(Array.isArray(E))return A.arrayExpression(E.map(A.valueToNode));if((0,p.default)(E)){var ee=[];for(var z in E){var Q=void 0;A.isValidIdentifier(z)?Q=A.identifier(z):Q=A.stringLiteral(z),ee.push(A.objectProperty(Q,A.valueToNode(E[z])))}return A.objectExpression(ee)}throw new Error("don't know how to turn this value into a node")}i(le,"valueToNode")}),M0=c(e=>{"use strict";e.__esModule=!0,e.createUnionTypeAnnotation=a,e.removeTypeDuplicates=u,e.createTypeAnnotationBasedOnTypeof=s;var t=_t(),r=n(t);function n(l){if(l&&l.__esModule)return l;var p={};if(l!=null)for(var f in l)Object.prototype.hasOwnProperty.call(l,f)&&(p[f]=l[f]);return p.default=l,p}i(n,"_interopRequireWildcard");function a(l){var p=u(l);return p.length===1?p[0]:r.unionTypeAnnotation(p)}i(a,"createUnionTypeAnnotation");function u(l){for(var p={},f={},m=[],h=[],A=0;A<l.length;A++){var g=l[A];if(!!g&&!(h.indexOf(g)>=0)){if(r.isAnyTypeAnnotation(g))return[g];if(r.isFlowBaseAnnotation(g)){f[g.type]=g;continue}if(r.isUnionTypeAnnotation(g)){m.indexOf(g.types)<0&&(l=l.concat(g.types),m.push(g.types));continue}if(r.isGenericTypeAnnotation(g)){var y=g.id.name;if(p[y]){var k=p[y];k.typeParameters?g.typeParameters&&(k.typeParameters.params=u(k.typeParameters.params.concat(g.typeParameters.params))):k=g.typeParameters}else p[y]=g;continue}h.push(g)}}for(var oe in f)h.push(f[oe]);for(var J in p)h.push(p[J]);return h}i(u,"removeTypeDuplicates");function s(l){if(l==="string")return r.stringTypeAnnotation();if(l==="number")return r.numberTypeAnnotation();if(l==="undefined")return r.voidTypeAnnotation();if(l==="boolean")return r.booleanTypeAnnotation();if(l==="function")return r.genericTypeAnnotation(r.identifier("Function"));if(l==="object")return r.genericTypeAnnotation(r.identifier("Object"));if(l==="symbol")return r.genericTypeAnnotation(r.identifier("Symbol"));throw new Error("Invalid typeof value")}i(s,"createTypeAnnotationBasedOnTypeof")}),G0=c((exports,module)=>{"use strict";module.exports=i(function toFastproperties(o){function Sub(){}i(Sub,"Sub"),Sub.prototype=o;var receiver=new Sub;function ic(){return typeof receiver.foo}return i(ic,"ic"),ic(),ic(),o},"toFastproperties")}),Y0=c((e,t)=>{function r(){this.__data__=[],this.size=0}i(r,"listCacheClear"),t.exports=r}),vs=c((e,t)=>{function r(n,a){return n===a||n!==n&&a!==a}i(r,"eq"),t.exports=r}),ti=c((e,t)=>{var r=vs();function n(a,u){for(var s=a.length;s--;)if(r(a[s][0],u))return s;return-1}i(n,"assocIndexOf"),t.exports=n}),W0=c((e,t)=>{var r=ti(),n=Array.prototype,a=n.splice;function u(s){var l=this.__data__,p=r(l,s);if(p<0)return!1;var f=l.length-1;return p==f?l.pop():a.call(l,p,1),--this.size,!0}i(u,"listCacheDelete"),t.exports=u}),X0=c((e,t)=>{var r=ti();function n(a){var u=this.__data__,s=r(u,a);return s<0?void 0:u[s][1]}i(n,"listCacheGet"),t.exports=n}),J0=c((e,t)=>{var r=ti();function n(a){return r(this.__data__,a)>-1}i(n,"listCacheHas"),t.exports=n}),z0=c((e,t)=>{var r=ti();function n(a,u){var s=this.__data__,l=r(s,a);return l<0?(++this.size,s.push([a,u])):s[l][1]=u,this}i(n,"listCacheSet"),t.exports=n}),ri=c((e,t)=>{var r=Y0(),n=W0(),a=X0(),u=J0(),s=z0();function l(p){var f=-1,m=p==null?0:p.length;for(this.clear();++f<m;){var h=p[f];this.set(h[0],h[1])}}i(l,"ListCache"),l.prototype.clear=r,l.prototype.delete=n,l.prototype.get=a,l.prototype.has=u,l.prototype.set=s,t.exports=l}),tE=c((e,t)=>{var r=ri();function n(){this.__data__=new r,this.size=0}i(n,"stackClear"),t.exports=n}),nE=c((e,t)=>{function r(n){var a=this.__data__,u=a.delete(n);return this.size=a.size,u}i(r,"stackDelete"),t.exports=r}),sE=c((e,t)=>{function r(n){return this.__data__.get(n)}i(r,"stackGet"),t.exports=r}),aE=c((e,t)=>{function r(n){return this.__data__.has(n)}i(r,"stackHas"),t.exports=r}),Br=c((e,t)=>{function r(n){var a=typeof n;return n!=null&&(a=="object"||a=="function")}i(r,"isObject"),t.exports=r}),wa=c((e,t)=>{var r=nr(),n=Br(),a="[object AsyncFunction]",u="[object Function]",s="[object GeneratorFunction]",l="[object Proxy]";function p(f){if(!n(f))return!1;var m=r(f);return m==u||m==s||m==a||m==l}i(p,"isFunction"),t.exports=p}),pE=c((e,t)=>{var r=tt(),n=r["__core-js_shared__"];t.exports=n}),dE=c((e,t)=>{var r=pE(),n=function(){var u=/[^.]+$/.exec(r&&r.keys&&r.keys.IE_PROTO||"");return u?"Symbol(src)_1."+u:""}();function a(u){return!!n&&n in u}i(a,"isMasked"),t.exports=a}),ka=c((e,t)=>{var r=Function.prototype,n=r.toString;function a(u){if(u!=null){try{return n.call(u)}catch{}try{return u+""}catch{}}return""}i(a,"toSource"),t.exports=a}),AE=c((e,t)=>{var r=wa(),n=dE(),a=Br(),u=ka(),s=/[\\^$.*+?()[\]{}|]/g,l=/^\[object .+?Constructor\]$/,p=Function.prototype,f=Object.prototype,m=p.toString,h=f.hasOwnProperty,A=RegExp("^"+m.call(h).replace(s,"\\$&").replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g,"$1.*?")+"$");function g(y){if(!a(y)||n(y))return!1;var k=r(y)?A:l;return k.test(u(y))}i(g,"baseIsNative"),t.exports=g}),yE=c((e,t)=>{function r(n,a){return n?.[a]}i(r,"getValue"),t.exports=r}),ir=c((e,t)=>{var r=AE(),n=yE();function a(u,s){var l=n(u,s);return r(l)?l:void 0}i(a,"getNative"),t.exports=a}),Ss=c((e,t)=>{var r=ir(),n=tt(),a=r(n,"Map");t.exports=a}),ni=c((e,t)=>{var r=ir(),n=r(Object,"create");t.exports=n}),FE=c((e,t)=>{var r=ni();function n(){this.__data__=r?r(null):{},this.size=0}i(n,"hashClear"),t.exports=n}),BE=c((e,t)=>{function r(n){var a=this.has(n)&&delete this.__data__[n];return this.size-=a?1:0,a}i(r,"hashDelete"),t.exports=r}),bE=c((e,t)=>{var r=ni(),n="__lodash_hash_undefined__",a=Object.prototype,u=a.hasOwnProperty;function s(l){var p=this.__data__;if(r){var f=p[l];return f===n?void 0:f}return u.call(p,l)?p[l]:void 0}i(s,"hashGet"),t.exports=s}),IE=c((e,t)=>{var r=ni(),n=Object.prototype,a=n.hasOwnProperty;function u(s){var l=this.__data__;return r?l[s]!==void 0:a.call(l,s)}i(u,"hashHas"),t.exports=u}),RE=c((e,t)=>{var r=ni(),n="__lodash_hash_undefined__";function a(u,s){var l=this.__data__;return this.size+=this.has(u)?0:1,l[u]=r&&s===void 0?n:s,this}i(a,"hashSet"),t.exports=a}),LE=c((e,t)=>{var r=FE(),n=BE(),a=bE(),u=IE(),s=RE();function l(p){var f=-1,m=p==null?0:p.length;for(this.clear();++f<m;){var h=p[f];this.set(h[0],h[1])}}i(l,"Hash"),l.prototype.clear=r,l.prototype.delete=n,l.prototype.get=a,l.prototype.has=u,l.prototype.set=s,t.exports=l}),kE=c((e,t)=>{var r=LE(),n=ri(),a=Ss();function u(){this.size=0,this.__data__={hash:new r,map:new(a||n),string:new r}}i(u,"mapCacheClear"),t.exports=u}),GE=c((e,t)=>{function r(n){var a=typeof n;return a=="string"||a=="number"||a=="symbol"||a=="boolean"?n!=="__proto__":n===null}i(r,"isKeyable"),t.exports=r}),ii=c((e,t)=>{var r=GE();function n(a,u){var s=a.__data__;return r(u)?s[typeof u=="string"?"string":"hash"]:s.map}i(n,"getMapData"),t.exports=n}),jE=c((e,t)=>{var r=ii();function n(a){var u=r(this,a).delete(a);return this.size-=u?1:0,u}i(n,"mapCacheDelete"),t.exports=n}),KE=c((e,t)=>{var r=ii();function n(a){return r(this,a).get(a)}i(n,"mapCacheGet"),t.exports=n}),HE=c((e,t)=>{var r=ii();function n(a){return r(this,a).has(a)}i(n,"mapCacheHas"),t.exports=n}),$E=c((e,t)=>{var r=ii();function n(a,u){var s=r(this,a),l=s.size;return s.set(a,u),this.size+=s.size==l?0:1,this}i(n,"mapCacheSet"),t.exports=n}),Fs=c((e,t)=>{var r=kE(),n=jE(),a=KE(),u=HE(),s=$E();function l(p){var f=-1,m=p==null?0:p.length;for(this.clear();++f<m;){var h=p[f];this.set(h[0],h[1])}}i(l,"MapCache"),l.prototype.clear=r,l.prototype.delete=n,l.prototype.get=a,l.prototype.has=u,l.prototype.set=s,t.exports=l}),zE=c((e,t)=>{var r=ri(),n=Ss(),a=Fs(),u=200;function s(l,p){var f=this.__data__;if(f instanceof r){var m=f.__data__;if(!n||m.length<u-1)return m.push([l,p]),this.size=++f.size,this;f=this.__data__=new a(m)}return f.set(l,p),this.size=f.size,this}i(s,"stackSet"),t.exports=s}),Cs=c((e,t)=>{var r=ri(),n=tE(),a=nE(),u=sE(),s=aE(),l=zE();function p(f){var m=this.__data__=new r(f);this.size=m.size}i(p,"Stack"),p.prototype.clear=n,p.prototype.delete=a,p.prototype.get=u,p.prototype.has=s,p.prototype.set=l,t.exports=p}),td=c((e,t)=>{function r(n,a){for(var u=-1,s=n==null?0:n.length;++u<s&&a(n[u],u,n)!==!1;);return n}i(r,"arrayEach"),t.exports=r}),nd=c((e,t)=>{var r=ir(),n=function(){try{var a=r(Object,"defineProperty");return a({},"",{}),a}catch{}}();t.exports=n}),Ma=c((e,t)=>{var r=nd();function n(a,u,s){u=="__proto__"&&r?r(a,u,{configurable:!0,enumerable:!0,value:s,writable:!0}):a[u]=s}i(n,"baseAssignValue"),t.exports=n}),Ga=c((e,t)=>{var r=Ma(),n=vs(),a=Object.prototype,u=a.hasOwnProperty;function s(l,p,f){var m=l[p];(!(u.call(l,p)&&n(m,f))||f===void 0&&!(p in l))&&r(l,p,f)}i(s,"assignValue"),t.exports=s}),si=c((e,t)=>{var r=Ga(),n=Ma();function a(u,s,l,p){var f=!l;l||(l={});for(var m=-1,h=s.length;++m<h;){var A=s[m],g=p?p(l[A],u[A],A,l,u):void 0;g===void 0&&(g=u[A]),f?n(l,A,g):r(l,A,g)}return l}i(a,"copyObject"),t.exports=a}),ld=c((e,t)=>{function r(n,a){for(var u=-1,s=Array(n);++u<n;)s[u]=a(u);return s}i(r,"baseTimes"),t.exports=r}),pd=c((e,t)=>{var r=nr(),n=Et(),a="[object Arguments]";function u(s){return n(s)&&r(s)==a}i(u,"baseIsArguments"),t.exports=u}),Ua=c((e,t)=>{var r=pd(),n=Et(),a=Object.prototype,u=a.hasOwnProperty,s=a.propertyIsEnumerable,l=r(function(){return arguments}())?r:function(p){return n(p)&&u.call(p,"callee")&&!s.call(p,"callee")};t.exports=l}),nt=c((e,t)=>{var r=Array.isArray;t.exports=r}),Ad=c((e,t)=>{function r(){return!1}i(r,"stubFalse"),t.exports=r}),Bs=c((e,t)=>{var r=tt(),n=Ad(),a=typeof e=="object"&&e&&!e.nodeType&&e,u=a&&typeof t=="object"&&t&&!t.nodeType&&t,s=u&&u.exports===a,l=s?r.Buffer:void 0,p=l?l.isBuffer:void 0,f=p||n;t.exports=f}),Ya=c((e,t)=>{var r=9007199254740991,n=/^(?:0|[1-9]\d*)$/;function a(u,s){var l=typeof u;return s=s??r,!!s&&(l=="number"||l!="symbol"&&n.test(u))&&u>-1&&u%1==0&&u<s}i(a,"isIndex"),t.exports=a}),Os=c((e,t)=>{var r=9007199254740991;function n(a){return typeof a=="number"&&a>-1&&a%1==0&&a<=r}i(n,"isLength"),t.exports=n}),Sd=c((e,t)=>{var r=nr(),n=Os(),a=Et(),u="[object Arguments]",s="[object Array]",l="[object Boolean]",p="[object Date]",f="[object Error]",m="[object Function]",h="[object Map]",A="[object Number]",g="[object Object]",y="[object RegExp]",k="[object Set]",oe="[object String]",J="[object WeakMap]",F="[object ArrayBuffer]",G="[object DataView]",w="[object Float32Array]",q="[object Float64Array]",V="[object Int8Array]",De="[object Int16Array]",le="[object Int32Array]",E="[object Uint8Array]",T="[object Uint8ClampedArray]",U="[object Uint16Array]",ee="[object Uint32Array]",z={};z[w]=z[q]=z[V]=z[De]=z[le]=z[E]=z[T]=z[U]=z[ee]=!0,z[u]=z[s]=z[F]=z[l]=z[G]=z[p]=z[f]=z[m]=z[h]=z[A]=z[g]=z[y]=z[k]=z[oe]=z[J]=!1;function Q(ce){return a(ce)&&n(ce.length)&&!!z[r(ce)]}i(Q,"baseIsTypedArray"),t.exports=Q}),ja=c((e,t)=>{var r=Sd(),n=$n(),a=zn(),u=a&&a.isTypedArray,s=u?n(u):r;t.exports=s}),Va=c((e,t)=>{var r=ld(),n=Ua(),a=nt(),u=Bs(),s=Ya(),l=ja(),p=Object.prototype,f=p.hasOwnProperty;function m(h,A){var g=a(h),y=!g&&n(h),k=!g&&!y&&u(h),oe=!g&&!y&&!k&&l(h),J=g||y||k||oe,F=J?r(h.length,String):[],G=F.length;for(var w in h)(A||f.call(h,w))&&!(J&&(w=="length"||k&&(w=="offset"||w=="parent")||oe&&(w=="buffer"||w=="byteLength"||w=="byteOffset")||s(w,G)))&&F.push(w);return F}i(m,"arrayLikeKeys"),t.exports=m}),bs=c((e,t)=>{var r=Object.prototype;function n(a){var u=a&&a.constructor,s=typeof u=="function"&&u.prototype||r;return a===s}i(n,"isPrototype"),t.exports=n}),Id=c((e,t)=>{var r=_a(),n=r(Object.keys,Object);t.exports=n}),Rd=c((e,t)=>{var r=bs(),n=Id(),a=Object.prototype,u=a.hasOwnProperty;function s(l){if(!r(l))return n(l);var p=[];for(var f in Object(l))u.call(l,f)&&f!="constructor"&&p.push(f);return p}i(s,"baseKeys"),t.exports=s}),Ns=c((e,t)=>{var r=wa(),n=Os();function a(u){return u!=null&&n(u.length)&&!r(u)}i(a,"isArrayLike"),t.exports=a}),an=c((e,t)=>{var r=Va(),n=Rd(),a=Ns();function u(s){return a(s)?r(s):n(s)}i(u,"keys"),t.exports=u}),qd=c((e,t)=>{var r=si(),n=an();function a(u,s){return u&&r(s,n(s),u)}i(a,"baseAssign"),t.exports=a}),Md=c((e,t)=>{function r(n){var a=[];if(n!=null)for(var u in Object(n))a.push(u);return a}i(r,"nativeKeysIn"),t.exports=r}),Ud=c((e,t)=>{var r=Br(),n=bs(),a=Md(),u=Object.prototype,s=u.hasOwnProperty;function l(p){if(!r(p))return a(p);var f=n(p),m=[];for(var h in p)h=="constructor"&&(f||!s.call(p,h))||m.push(h);return m}i(l,"baseKeysIn"),t.exports=l}),Is=c((e,t)=>{var r=Va(),n=Ud(),a=Ns();function u(s){return a(s)?r(s,!0):n(s)}i(u,"keysIn"),t.exports=u}),Vd=c((e,t)=>{var r=si(),n=Is();function a(u,s){return u&&r(s,n(s),u)}i(a,"baseAssignIn"),t.exports=a}),$d=c((e,t)=>{var r=tt(),n=typeof e=="object"&&e&&!e.nodeType&&e,a=n&&typeof t=="object"&&t&&!t.nodeType&&t,u=a&&a.exports===n,s=u?r.Buffer:void 0,l=s?s.allocUnsafe:void 0;function p(f,m){if(m)return f.slice();var h=f.length,A=l?l(h):new f.constructor(h);return f.copy(A),A}i(p,"cloneBuffer"),t.exports=p}),Qd=c((e,t)=>{function r(n,a){var u=-1,s=n.length;for(a||(a=Array(s));++u<s;)a[u]=n[u];return a}i(r,"copyArray"),t.exports=r}),Ka=c((e,t)=>{function r(n,a){for(var u=-1,s=n==null?0:n.length,l=0,p=[];++u<s;){var f=n[u];a(f,u,n)&&(p[l++]=f)}return p}i(r,"arrayFilter"),t.exports=r}),Wa=c((e,t)=>{function r(){return[]}i(r,"stubArray"),t.exports=r}),_s=c((e,t)=>{var r=Ka(),n=Wa(),a=Object.prototype,u=a.propertyIsEnumerable,s=Object.getOwnPropertySymbols,l=s?function(p){return p==null?[]:(p=Object(p),r(s(p),function(f){return u.call(p,f)}))}:n;t.exports=l}),nm=c((e,t)=>{var r=si(),n=_s();function a(u,s){return r(u,n(u),s)}i(a,"copySymbols"),t.exports=a}),Ha=c((e,t)=>{function r(n,a){for(var u=-1,s=a.length,l=n.length;++u<s;)n[l+u]=a[u];return n}i(r,"arrayPush"),t.exports=r}),Xa=c((e,t)=>{var r=Ha(),n=xs(),a=_s(),u=Wa(),s=Object.getOwnPropertySymbols,l=s?function(p){for(var f=[];p;)r(f,a(p)),p=n(p);return f}:u;t.exports=l}),am=c((e,t)=>{var r=si(),n=Xa();function a(u,s){return r(u,n(u),s)}i(a,"copySymbolsIn"),t.exports=a}),$a=c((e,t)=>{var r=Ha(),n=nt();function a(u,s,l){var p=s(u);return n(u)?p:r(p,l(u))}i(a,"baseGetAllKeys"),t.exports=a}),Ja=c((e,t)=>{var r=$a(),n=_s(),a=an();function u(s){return r(s,a,n)}i(u,"getAllKeys"),t.exports=u}),pm=c((e,t)=>{var r=$a(),n=Xa(),a=Is();function u(s){return r(s,a,n)}i(u,"getAllKeysIn"),t.exports=u}),Em=c((e,t)=>{var r=ir(),n=tt(),a=r(n,"DataView");t.exports=a}),mm=c((e,t)=>{var r=ir(),n=tt(),a=r(n,"Promise");t.exports=a}),Qa=c((e,t)=>{var r=ir(),n=tt(),a=r(n,"Set");t.exports=a}),hm=c((e,t)=>{var r=ir(),n=tt(),a=r(n,"WeakMap");t.exports=a}),oi=c((e,t)=>{var r=Em(),n=Ss(),a=mm(),u=Qa(),s=hm(),l=nr(),p=ka(),f="[object Map]",m="[object Object]",h="[object Promise]",A="[object Set]",g="[object WeakMap]",y="[object DataView]",k=p(r),oe=p(n),J=p(a),F=p(u),G=p(s),w=l;(r&&w(new r(new ArrayBuffer(1)))!=y||n&&w(new n)!=f||a&&w(a.resolve())!=h||u&&w(new u)!=A||s&&w(new s)!=g)&&(w=i(function(q){var V=l(q),De=V==m?q.constructor:void 0,le=De?p(De):"";if(le)switch(le){case k:return y;case oe:return f;case J:return h;case F:return A;case G:return g}return V},"getTag")),t.exports=w}),Bm=c((e,t)=>{var r=Object.prototype,n=r.hasOwnProperty;function a(u){var s=u.length,l=new u.constructor(s);return s&&typeof u[0]=="string"&&n.call(u,"index")&&(l.index=u.index,l.input=u.input),l}i(a,"initCloneArray"),t.exports=a}),no=c((e,t)=>{var r=tt(),n=r.Uint8Array;t.exports=n}),Rs=c((e,t)=>{var r=no();function n(a){var u=new a.constructor(a.byteLength);return new r(u).set(new r(a)),u}i(n,"cloneArrayBuffer"),t.exports=n}),_m=c((e,t)=>{var r=Rs();function n(a,u){var s=u?r(a.buffer):a.buffer;return new a.constructor(s,a.byteOffset,a.byteLength)}i(n,"cloneDataView"),t.exports=n}),Pm=c((e,t)=>{var r=/\w*$/;function n(a){var u=new a.constructor(a.source,r.exec(a));return u.lastIndex=a.lastIndex,u}i(n,"cloneRegExp"),t.exports=n}),Mm=c((e,t)=>{var r=Zr(),n=r?r.prototype:void 0,a=n?n.valueOf:void 0;function u(s){return a?Object(a.call(s)):{}}i(u,"cloneSymbol"),t.exports=u}),Um=c((e,t)=>{var r=Rs();function n(a,u){var s=u?r(a.buffer):a.buffer;return new a.constructor(s,a.byteOffset,a.length)}i(n,"cloneTypedArray"),t.exports=n}),jm=c((e,t)=>{var r=Rs(),n=_m(),a=Pm(),u=Mm(),s=Um(),l="[object Boolean]",p="[object Date]",f="[object Map]",m="[object Number]",h="[object RegExp]",A="[object Set]",g="[object String]",y="[object Symbol]",k="[object ArrayBuffer]",oe="[object DataView]",J="[object Float32Array]",F="[object Float64Array]",G="[object Int8Array]",w="[object Int16Array]",q="[object Int32Array]",V="[object Uint8Array]",De="[object Uint8ClampedArray]",le="[object Uint16Array]",E="[object Uint32Array]";function T(U,ee,z){var Q=U.constructor;switch(ee){case k:return r(U);case l:case p:return new Q(+U);case oe:return n(U,z);case J:case F:case G:case w:case q:case V:case De:case le:case E:return s(U,z);case f:return new Q;case m:case g:return new Q(U);case h:return a(U);case A:return new Q;case y:return u(U)}}i(T,"initCloneByTag"),t.exports=T}),Wm=c((e,t)=>{var r=Br(),n=Object.create,a=function(){function u(){}return i(u,"object"),function(s){if(!r(s))return{};if(n)return n(s);u.prototype=s;var l=new u;return u.prototype=void 0,l}}();t.exports=a}),Xm=c((e,t)=>{var r=Wm(),n=xs(),a=bs();function u(s){return typeof s.constructor=="function"&&!a(s)?r(n(s)):{}}i(u,"initCloneObject"),t.exports=u}),Jm=c((e,t)=>{var r=oi(),n=Et(),a="[object Map]";function u(s){return n(s)&&r(s)==a}i(u,"baseIsMap"),t.exports=u}),eD=c((e,t)=>{var r=Jm(),n=$n(),a=zn(),u=a&&a.isMap,s=u?n(u):r;t.exports=s}),rD=c((e,t)=>{var r=oi(),n=Et(),a="[object Set]";function u(s){return n(s)&&r(s)==a}i(u,"baseIsSet"),t.exports=u}),uD=c((e,t)=>{var r=rD(),n=$n(),a=zn(),u=a&&a.isSet,s=u?n(u):r;t.exports=s}),pD=c((e,t)=>{var r=Cs(),n=td(),a=Ga(),u=qd(),s=Vd(),l=$d(),p=Qd(),f=nm(),m=am(),h=Ja(),A=pm(),g=oi(),y=Bm(),k=jm(),oe=Xm(),J=nt(),F=Bs(),G=eD(),w=Br(),q=uD(),V=an(),De=Is(),le=1,E=2,T=4,U="[object Arguments]",ee="[object Array]",z="[object Boolean]",Q="[object Date]",ce="[object Error]",me="[object Function]",ye="[object GeneratorFunction]",de="[object Map]",be="[object Number]",Te="[object Object]",Ne="[object RegExp]",we="[object Set]",ke="[object String]",xe="[object Symbol]",_e="[object WeakMap]",Se="[object ArrayBuffer]",M="[object DataView]",x="[object Float32Array]",K="[object Float64Array]",X="[object Int8Array]",te="[object Int16Array]",Ae="[object Int32Array]",Ue="[object Uint8Array]",Me="[object Uint8ClampedArray]",Ie="[object Uint16Array]",Ke="[object Uint32Array]",Be={};Be[U]=Be[ee]=Be[Se]=Be[M]=Be[z]=Be[Q]=Be[x]=Be[K]=Be[X]=Be[te]=Be[Ae]=Be[de]=Be[be]=Be[Te]=Be[Ne]=Be[we]=Be[ke]=Be[xe]=Be[Ue]=Be[Me]=Be[Ie]=Be[Ke]=!0,Be[ce]=Be[me]=Be[_e]=!1;function Qe(Fe,O,Z,pe,j,W){var ie,he=O&le,ge=O&E,Ge=O&T;if(Z&&(ie=j?Z(Fe,pe,j,W):Z(Fe)),ie!==void 0)return ie;if(!w(Fe))return Fe;var $e=J(Fe);if($e){if(ie=y(Fe),!he)return p(Fe,ie)}else{var Xe=g(Fe),Je=Xe==me||Xe==ye;if(F(Fe))return l(Fe,he);if(Xe==Te||Xe==U||Je&&!j){if(ie=ge||Je?{}:oe(Fe),!he)return ge?m(Fe,s(ie,Fe)):f(Fe,u(ie,Fe))}else{if(!Be[Xe])return j?Fe:{};ie=k(Fe,Xe,he)}}W||(W=new r);var He=W.get(Fe);if(He)return He;W.set(Fe,ie),q(Fe)?Fe.forEach(function(ct){ie.add(Qe(ct,O,Z,ct,Fe,W))}):G(Fe)&&Fe.forEach(function(ct,pt){ie.set(pt,Qe(ct,O,Z,pt,Fe,W))});var it=Ge?ge?A:h:ge?De:V,Dt=$e?void 0:it(Fe);return n(Dt||Fe,function(ct,pt){Dt&&(pt=ct,ct=Fe[pt]),a(ie,pt,Qe(ct,O,Z,pt,Fe,W))}),ie}i(Qe,"baseClone"),t.exports=Qe}),ED=c((e,t)=>{var r=pD(),n=4;function a(u){return r(u,n)}i(a,"clone"),t.exports=a}),mD=c((e,t)=>{var r="__lodash_hash_undefined__";function n(a){return this.__data__.set(a,r),this}i(n,"setCacheAdd"),t.exports=n}),AD=c((e,t)=>{function r(n){return this.__data__.has(n)}i(r,"setCacheHas"),t.exports=r}),io=c((e,t)=>{var r=Fs(),n=mD(),a=AD();function u(s){var l=-1,p=s==null?0:s.length;for(this.__data__=new r;++l<p;)this.add(s[l])}i(u,"SetCache"),u.prototype.add=u.prototype.push=n,u.prototype.has=a,t.exports=u}),TD=c((e,t)=>{function r(n,a,u,s){for(var l=n.length,p=u+(s?1:-1);s?p--:++p<l;)if(a(n[p],p,n))return p;return-1}i(r,"baseFindIndex"),t.exports=r}),gD=c((e,t)=>{function r(n){return n!==n}i(r,"baseIsNaN"),t.exports=r}),SD=c((e,t)=>{function r(n,a,u){for(var s=u-1,l=n.length;++s<l;)if(n[s]===a)return s;return-1}i(r,"strictIndexOf"),t.exports=r}),ws=c((e,t)=>{var r=TD(),n=gD(),a=SD();function u(s,l,p){return l===l?a(s,l,p):r(s,n,p)}i(u,"baseIndexOf"),t.exports=u}),BD=c((e,t)=>{var r=ws();function n(a,u){var s=a==null?0:a.length;return!!s&&r(a,u,0)>-1}i(n,"arrayIncludes"),t.exports=n}),bD=c((e,t)=>{function r(n,a,u){for(var s=-1,l=n==null?0:n.length;++s<l;)if(u(a,n[s]))return!0;return!1}i(r,"arrayIncludesWith"),t.exports=r}),so=c((e,t)=>{function r(n,a){return n.has(a)}i(r,"cacheHas"),t.exports=r}),_D=c((e,t)=>{function r(){}i(r,"noop"),t.exports=r}),qs=c((e,t)=>{function r(n){var a=-1,u=Array(n.size);return n.forEach(function(s){u[++a]=s}),u}i(r,"setToArray"),t.exports=r}),LD=c((e,t)=>{var r=Qa(),n=_D(),a=qs(),u=1/0,s=r&&1/a(new r([,-0]))[1]==u?function(l){return new r(l)}:n;t.exports=s}),qD=c((e,t)=>{var r=io(),n=BD(),a=bD(),u=so(),s=LD(),l=qs(),p=200;function f(m,h,A){var g=-1,y=n,k=m.length,oe=!0,J=[],F=J;if(A)oe=!1,y=a;else if(k>=p){var G=h?null:s(m);if(G)return l(G);oe=!1,y=u,F=new r}else F=h?[]:J;e:for(;++g<k;){var w=m[g],q=h?h(w):w;if(w=A||w!==0?w:0,oe&&q===q){for(var V=F.length;V--;)if(F[V]===q)continue e;h&&F.push(q),J.push(w)}else y(F,q,A)||(F!==J&&F.push(q),J.push(w))}return J}i(f,"baseUniq"),t.exports=f}),MD=c((e,t)=>{var r=qD();function n(a){return a&&a.length?r(a):[]}i(n,"uniq"),t.exports=n}),Rt=c(e=>{"use strict";e.__esModule=!0,e.DEPRECATED_KEYS=e.BUILDER_KEYS=e.NODE_FIELDS=e.ALIAS_KEYS=e.VISITOR_KEYS=void 0;var t=Hn(),r=m(t),n=ms(),a=m(n),u=Oa(),s=m(u);e.assertEach=J,e.assertOneOf=F,e.assertNodeType=G,e.assertNodeOrValueType=w,e.assertValueType=q,e.chain=V,e.default=De;var l=_t(),p=f(l);function f(E){if(E&&E.__esModule)return E;var T={};if(E!=null)for(var U in E)Object.prototype.hasOwnProperty.call(E,U)&&(T[U]=E[U]);return T.default=E,T}i(f,"_interopRequireWildcard");function m(E){return E&&E.__esModule?E:{default:E}}i(m,"_interopRequireDefault");var h=e.VISITOR_KEYS={},A=e.ALIAS_KEYS={},g=e.NODE_FIELDS={},y=e.BUILDER_KEYS={},k=e.DEPRECATED_KEYS={};function oe(E){return Array.isArray(E)?"array":E===null?"null":E===void 0||typeof E>"u"?"undefined":(0,s.default)(E)}i(oe,"getType");function J(E){function T(U,ee,z){if(Array.isArray(z))for(var Q=0;Q<z.length;Q++)E(U,ee+"["+Q+"]",z[Q])}return i(T,"validator"),T.each=E,T}i(J,"assertEach");function F(){for(var E=arguments.length,T=Array(E),U=0;U<E;U++)T[U]=arguments[U];function ee(z,Q,ce){if(T.indexOf(ce)<0)throw new TypeError("Property "+Q+" expected value to be one of "+(0,a.default)(T)+" but got "+(0,a.default)(ce))}return i(ee,"validate"),ee.oneOf=T,ee}i(F,"assertOneOf");function G(){for(var E=arguments.length,T=Array(E),U=0;U<E;U++)T[U]=arguments[U];function ee(z,Q,ce){for(var me=!1,be=T,ye=Array.isArray(be),de=0,be=ye?be:(0,r.default)(be);;){var Te;if(ye){if(de>=be.length)break;Te=be[de++]}else{if(de=be.next(),de.done)break;Te=de.value}var Ne=Te;if(p.is(Ne,ce)){me=!0;break}}if(!me)throw new TypeError("Property "+Q+" of "+z.type+" expected node to be of a type "+(0,a.default)(T)+" "+("but instead got "+(0,a.default)(ce&&ce.type)))}return i(ee,"validate"),ee.oneOfNodeTypes=T,ee}i(G,"assertNodeType");function w(){for(var E=arguments.length,T=Array(E),U=0;U<E;U++)T[U]=arguments[U];function ee(z,Q,ce){for(var me=!1,be=T,ye=Array.isArray(be),de=0,be=ye?be:(0,r.default)(be);;){var Te;if(ye){if(de>=be.length)break;Te=be[de++]}else{if(de=be.next(),de.done)break;Te=de.value}var Ne=Te;if(oe(ce)===Ne||p.is(Ne,ce)){me=!0;break}}if(!me)throw new TypeError("Property "+Q+" of "+z.type+" expected node to be of a type "+(0,a.default)(T)+" "+("but instead got "+(0,a.default)(ce&&ce.type)))}return i(ee,"validate"),ee.oneOfNodeOrValueTypes=T,ee}i(w,"assertNodeOrValueType");function q(E){function T(U,ee,z){var Q=oe(z)===E;if(!Q)throw new TypeError("Property "+ee+" expected type of "+E+" but got "+oe(z))}return i(T,"validate"),T.type=E,T}i(q,"assertValueType");function V(){for(var E=arguments.length,T=Array(E),U=0;U<E;U++)T[U]=arguments[U];function ee(){for(var ce=T,z=Array.isArray(ce),Q=0,ce=z?ce:(0,r.default)(ce);;){var me;if(z){if(Q>=ce.length)break;me=ce[Q++]}else{if(Q=ce.next(),Q.done)break;me=Q.value}var ye=me;ye.apply(void 0,arguments)}}return i(ee,"validate"),ee.chainOf=T,ee}i(V,"chain");function De(E){var T=arguments.length>1&&arguments[1]!==void 0?arguments[1]:{},U=T.inherits&&le[T.inherits]||{};T.fields=T.fields||U.fields||{},T.visitor=T.visitor||U.visitor||[],T.aliases=T.aliases||U.aliases||[],T.builder=T.builder||U.builder||T.visitor||[],T.deprecatedAlias&&(k[T.deprecatedAlias]=E);for(var Q=T.visitor.concat(T.builder),ee=Array.isArray(Q),z=0,Q=ee?Q:(0,r.default)(Q);;){var ce;if(ee){if(z>=Q.length)break;ce=Q[z++]}else{if(z=Q.next(),z.done)break;ce=z.value}var me=ce;T.fields[me]=T.fields[me]||{}}for(var ye in T.fields){var de=T.fields[ye];T.builder.indexOf(ye)===-1&&(de.optional=!0),de.default===void 0?de.default=null:de.validate||(de.validate=q(oe(de.default)))}h[E]=T.visitor,y[E]=T.builder,g[E]=T.fields,A[E]=T.aliases,le[E]=T}i(De,"defineType");var le={}}),jD=c(()=>{"use strict";var e=_t(),t=s(e),r=Ds(),n=Rt(),a=u(n);function u(l){return l&&l.__esModule?l:{default:l}}i(u,"_interopRequireDefault");function s(l){if(l&&l.__esModule)return l;var p={};if(l!=null)for(var f in l)Object.prototype.hasOwnProperty.call(l,f)&&(p[f]=l[f]);return p.default=l,p}i(s,"_interopRequireWildcard"),(0,a.default)("ArrayExpression",{fields:{elements:{validate:(0,n.chain)((0,n.assertValueType)("array"),(0,n.assertEach)((0,n.assertNodeOrValueType)("null","Expression","SpreadElement"))),default:[]}},visitor:["elements"],aliases:["Expression"]}),(0,a.default)("AssignmentExpression",{fields:{operator:{validate:(0,n.assertValueType)("string")},left:{validate:(0,n.assertNodeType)("LVal")},right:{validate:(0,n.assertNodeType)("Expression")}},builder:["operator","left","right"],visitor:["left","right"],aliases:["Expression"]}),(0,a.default)("BinaryExpression",{builder:["operator","left","right"],fields:{operator:{validate:n.assertOneOf.apply(void 0,r.BINARY_OPERATORS)},left:{validate:(0,n.assertNodeType)("Expression")},right:{validate:(0,n.assertNodeType)("Expression")}},visitor:["left","right"],aliases:["Binary","Expression"]}),(0,a.default)("Directive",{visitor:["value"],fields:{value:{validate:(0,n.assertNodeType)("DirectiveLiteral")}}}),(0,a.default)("DirectiveLiteral",{builder:["value"],fields:{value:{validate:(0,n.assertValueType)("string")}}}),(0,a.default)("BlockStatement",{builder:["body","directives"],visitor:["directives","body"],fields:{directives:{validate:(0,n.chain)((0,n.assertValueType)("array"),(0,n.assertEach)((0,n.assertNodeType)("Directive"))),default:[]},body:{validate:(0,n.chain)((0,n.assertValueType)("array"),(0,n.assertEach)((0,n.assertNodeType)("Statement")))}},aliases:["Scopable","BlockParent","Block","Statement"]}),(0,a.default)("BreakStatement",{visitor:["label"],fields:{label:{validate:(0,n.assertNodeType)("Identifier"),optional:!0}},aliases:["Statement","Terminatorless","CompletionStatement"]}),(0,a.default)("CallExpression",{visitor:["callee","arguments"],fields:{callee:{validate:(0,n.assertNodeType)("Expression")},arguments:{validate:(0,n.chain)((0,n.assertValueType)("array"),(0,n.assertEach)((0,n.assertNodeType)("Expression","SpreadElement")))}},aliases:["Expression"]}),(0,a.default)("CatchClause",{visitor:["param","body"],fields:{param:{validate:(0,n.assertNodeType)("Identifier")},body:{validate:(0,n.assertNodeType)("BlockStatement")}},aliases:["Scopable"]}),(0,a.default)("ConditionalExpression",{visitor:["test","consequent","alternate"],fields:{test:{validate:(0,n.assertNodeType)("Expression")},consequent:{validate:(0,n.assertNodeType)("Expression")},alternate:{validate:(0,n.assertNodeType)("Expression")}},aliases:["Expression","Conditional"]}),(0,a.default)("ContinueStatement",{visitor:["label"],fields:{label:{validate:(0,n.assertNodeType)("Identifier"),optional:!0}},aliases:["Statement","Terminatorless","CompletionStatement"]}),(0,a.default)("DebuggerStatement",{aliases:["Statement"]}),(0,a.default)("DoWhileStatement",{visitor:["test","body"],fields:{test:{validate:(0,n.assertNodeType)("Expression")},body:{validate:(0,n.assertNodeType)("Statement")}},aliases:["Statement","BlockParent","Loop","While","Scopable"]}),(0,a.default)("EmptyStatement",{aliases:["Statement"]}),(0,a.default)("ExpressionStatement",{visitor:["expression"],fields:{expression:{validate:(0,n.assertNodeType)("Expression")}},aliases:["Statement","ExpressionWrapper"]}),(0,a.default)("File",{builder:["program","comments","tokens"],visitor:["program"],fields:{program:{validate:(0,n.assertNodeType)("Program")}}}),(0,a.default)("ForInStatement",{visitor:["left","right","body"],aliases:["Scopable","Statement","For","BlockParent","Loop","ForXStatement"],fields:{left:{validate:(0,n.assertNodeType)("VariableDeclaration","LVal")},right:{validate:(0,n.assertNodeType)("Expression")},body:{validate:(0,n.assertNodeType)("Statement")}}}),(0,a.default)("ForStatement",{visitor:["init","test","update","body"],aliases:["Scopable","Statement","For","BlockParent","Loop"],fields:{init:{validate:(0,n.assertNodeType)("VariableDeclaration","Expression"),optional:!0},test:{validate:(0,n.assertNodeType)("Expression"),optional:!0},update:{validate:(0,n.assertNodeType)("Expression"),optional:!0},body:{validate:(0,n.assertNodeType)("Statement")}}}),(0,a.default)("FunctionDeclaration",{builder:["id","params","body","generator","async"],visitor:["id","params","body","returnType","typeParameters"],fields:{id:{validate:(0,n.assertNodeType)("Identifier")},params:{validate:(0,n.chain)((0,n.assertValueType)("array"),(0,n.assertEach)((0,n.assertNodeType)("LVal")))},body:{validate:(0,n.assertNodeType)("BlockStatement")},generator:{default:!1,validate:(0,n.assertValueType)("boolean")},async:{default:!1,validate:(0,n.assertValueType)("boolean")}},aliases:["Scopable","Function","BlockParent","FunctionParent","Statement","Pureish","Declaration"]}),(0,a.default)("FunctionExpression",{inherits:"FunctionDeclaration",aliases:["Scopable","Function","BlockParent","FunctionParent","Expression","Pureish"],fields:{id:{validate:(0,n.assertNodeType)("Identifier"),optional:!0},params:{validate:(0,n.chain)((0,n.assertValueType)("array"),(0,n.assertEach)((0,n.assertNodeType)("LVal")))},body:{validate:(0,n.assertNodeType)("BlockStatement")},generator:{default:!1,validate:(0,n.assertValueType)("boolean")},async:{default:!1,validate:(0,n.assertValueType)("boolean")}}}),(0,a.default)("Identifier",{builder:["name"],visitor:["typeAnnotation"],aliases:["Expression","LVal"],fields:{name:{validate:i(function(l,p,f){t.isValidIdentifier(f)},"validate")},decorators:{validate:(0,n.chain)((0,n.assertValueType)("array"),(0,n.assertEach)((0,n.assertNodeType)("Decorator")))}}}),(0,a.default)("IfStatement",{visitor:["test","consequent","alternate"],aliases:["Statement","Conditional"],fields:{test:{validate:(0,n.assertNodeType)("Expression")},consequent:{validate:(0,n.assertNodeType)("Statement")},alternate:{optional:!0,validate:(0,n.assertNodeType)("Statement")}}}),(0,a.default)("LabeledStatement",{visitor:["label","body"],aliases:["Statement"],fields:{label:{validate:(0,n.assertNodeType)("Identifier")},body:{validate:(0,n.assertNodeType)("Statement")}}}),(0,a.default)("StringLiteral",{builder:["value"],fields:{value:{validate:(0,n.assertValueType)("string")}},aliases:["Expression","Pureish","Literal","Immutable"]}),(0,a.default)("NumericLiteral",{builder:["value"],deprecatedAlias:"NumberLiteral",fields:{value:{validate:(0,n.assertValueType)("number")}},aliases:["Expression","Pureish","Literal","Immutable"]}),(0,a.default)("NullLiteral",{aliases:["Expression","Pureish","Literal","Immutable"]}),(0,a.default)("BooleanLiteral",{builder:["value"],fields:{value:{validate:(0,n.assertValueType)("boolean")}},aliases:["Expression","Pureish","Literal","Immutable"]}),(0,a.default)("RegExpLiteral",{builder:["pattern","flags"],deprecatedAlias:"RegexLiteral",aliases:["Expression","Literal"],fields:{pattern:{validate:(0,n.assertValueType)("string")},flags:{validate:(0,n.assertValueType)("string"),default:""}}}),(0,a.default)("LogicalExpression",{builder:["operator","left","right"],visitor:["left","right"],aliases:["Binary","Expression"],fields:{operator:{validate:n.assertOneOf.apply(void 0,r.LOGICAL_OPERATORS)},left:{validate:(0,n.assertNodeType)("Expression")},right:{validate:(0,n.assertNodeType)("Expression")}}}),(0,a.default)("MemberExpression",{builder:["object","property","computed"],visitor:["object","property"],aliases:["Expression","LVal"],fields:{object:{validate:(0,n.assertNodeType)("Expression")},property:{validate:i(function(l,p,f){var m=l.computed?"Expression":"Identifier";(0,n.assertNodeType)(m)(l,p,f)},"validate")},computed:{default:!1}}}),(0,a.default)("NewExpression",{visitor:["callee","arguments"],aliases:["Expression"],fields:{callee:{validate:(0,n.assertNodeType)("Expression")},arguments:{validate:(0,n.chain)((0,n.assertValueType)("array"),(0,n.assertEach)((0,n.assertNodeType)("Expression","SpreadElement")))}}}),(0,a.default)("Program",{visitor:["directives","body"],builder:["body","directives"],fields:{directives:{validate:(0,n.chain)((0,n.assertValueType)("array"),(0,n.assertEach)((0,n.assertNodeType)("Directive"))),default:[]},body:{validate:(0,n.chain)((0,n.assertValueType)("array"),(0,n.assertEach)((0,n.assertNodeType)("Statement")))}},aliases:["Scopable","BlockParent","Block","FunctionParent"]}),(0,a.default)("ObjectExpression",{visitor:["properties"],aliases:["Expression"],fields:{properties:{validate:(0,n.chain)((0,n.assertValueType)("array"),(0,n.assertEach)((0,n.assertNodeType)("ObjectMethod","ObjectProperty","SpreadProperty")))}}}),(0,a.default)("ObjectMethod",{builder:["kind","key","params","body","computed"],fields:{kind:{validate:(0,n.chain)((0,n.assertValueType)("string"),(0,n.assertOneOf)("method","get","set")),default:"method"},computed:{validate:(0,n.assertValueType)("boolean"),default:!1},key:{validate:i(function(l,p,f){var m=l.computed?["Expression"]:["Identifier","StringLiteral","NumericLiteral"];n.assertNodeType.apply(void 0,m)(l,p,f)},"validate")},decorators:{validate:(0,n.chain)((0,n.assertValueType)("array"),(0,n.assertEach)((0,n.assertNodeType)("Decorator")))},body:{validate:(0,n.assertNodeType)("BlockStatement")},generator:{default:!1,validate:(0,n.assertValueType)("boolean")},async:{default:!1,validate:(0,n.assertValueType)("boolean")}},visitor:["key","params","body","decorators","returnType","typeParameters"],aliases:["UserWhitespacable","Function","Scopable","BlockParent","FunctionParent","Method","ObjectMember"]}),(0,a.default)("ObjectProperty",{builder:["key","value","computed","shorthand","decorators"],fields:{computed:{validate:(0,n.assertValueType)("boolean"),default:!1},key:{validate:i(function(l,p,f){var m=l.computed?["Expression"]:["Identifier","StringLiteral","NumericLiteral"];n.assertNodeType.apply(void 0,m)(l,p,f)},"validate")},value:{validate:(0,n.assertNodeType)("Expression","Pattern","RestElement")},shorthand:{validate:(0,n.assertValueType)("boolean"),default:!1},decorators:{validate:(0,n.chain)((0,n.assertValueType)("array"),(0,n.assertEach)((0,n.assertNodeType)("Decorator"))),optional:!0}},visitor:["key","value","decorators"],aliases:["UserWhitespacable","Property","ObjectMember"]}),(0,a.default)("RestElement",{visitor:["argument","typeAnnotation"],aliases:["LVal"],fields:{argument:{validate:(0,n.assertNodeType)("LVal")},decorators:{validate:(0,n.chain)((0,n.assertValueType)("array"),(0,n.assertEach)((0,n.assertNodeType)("Decorator")))}}}),(0,a.default)("ReturnStatement",{visitor:["argument"],aliases:["Statement","Terminatorless","CompletionStatement"],fields:{argument:{validate:(0,n.assertNodeType)("Expression"),optional:!0}}}),(0,a.default)("SequenceExpression",{visitor:["expressions"],fields:{expressions:{validate:(0,n.chain)((0,n.assertValueType)("array"),(0,n.assertEach)((0,n.assertNodeType)("Expression")))}},aliases:["Expression"]}),(0,a.default)("SwitchCase",{visitor:["test","consequent"],fields:{test:{validate:(0,n.assertNodeType)("Expression"),optional:!0},consequent:{validate:(0,n.chain)((0,n.assertValueType)("array"),(0,n.assertEach)((0,n.assertNodeType)("Statement")))}}}),(0,a.default)("SwitchStatement",{visitor:["discriminant","cases"],aliases:["Statement","BlockParent","Scopable"],fields:{discriminant:{validate:(0,n.assertNodeType)("Expression")},cases:{validate:(0,n.chain)((0,n.assertValueType)("array"),(0,n.assertEach)((0,n.assertNodeType)("SwitchCase")))}}}),(0,a.default)("ThisExpression",{aliases:["Expression"]}),(0,a.default)("ThrowStatement",{visitor:["argument"],aliases:["Statement","Terminatorless","CompletionStatement"],fields:{argument:{validate:(0,n.assertNodeType)("Expression")}}}),(0,a.default)("TryStatement",{visitor:["block","handler","finalizer"],aliases:["Statement"],fields:{body:{validate:(0,n.assertNodeType)("BlockStatement")},handler:{optional:!0,handler:(0,n.assertNodeType)("BlockStatement")},finalizer:{optional:!0,validate:(0,n.assertNodeType)("BlockStatement")}}}),(0,a.default)("UnaryExpression",{builder:["operator","argument","prefix"],fields:{prefix:{default:!0},argument:{validate:(0,n.assertNodeType)("Expression")},operator:{validate:n.assertOneOf.apply(void 0,r.UNARY_OPERATORS)}},visitor:["argument"],aliases:["UnaryLike","Expression"]}),(0,a.default)("UpdateExpression",{builder:["operator","argument","prefix"],fields:{prefix:{default:!1},argument:{validate:(0,n.assertNodeType)("Expression")},operator:{validate:n.assertOneOf.apply(void 0,r.UPDATE_OPERATORS)}},visitor:["argument"],aliases:["Expression"]}),(0,a.default)("VariableDeclaration",{builder:["kind","declarations"],visitor:["declarations"],aliases:["Statement","Declaration"],fields:{kind:{validate:(0,n.chain)((0,n.assertValueType)("string"),(0,n.assertOneOf)("var","let","const"))},declarations:{validate:(0,n.chain)((0,n.assertValueType)("array"),(0,n.assertEach)((0,n.assertNodeType)("VariableDeclarator")))}}}),(0,a.default)("VariableDeclarator",{visitor:["id","init"],fields:{id:{validate:(0,n.assertNodeType)("LVal")},init:{optional:!0,validate:(0,n.assertNodeType)("Expression")}}}),(0,a.default)("WhileStatement",{visitor:["test","body"],aliases:["Statement","BlockParent","Loop","While","Scopable"],fields:{test:{validate:(0,n.assertNodeType)("Expression")},body:{validate:(0,n.assertNodeType)("BlockStatement","Statement")}}}),(0,a.default)("WithStatement",{visitor:["object","body"],aliases:["Statement"],fields:{object:{object:(0,n.assertNodeType)("Expression")},body:{validate:(0,n.assertNodeType)("BlockStatement","Statement")}}})}),VD=c(()=>{"use strict";var e=Rt(),t=r(e);function r(n){return n&&n.__esModule?n:{default:n}}i(r,"_interopRequireDefault"),(0,t.default)("AssignmentPattern",{visitor:["left","right"],aliases:["Pattern","LVal"],fields:{left:{validate:(0,e.assertNodeType)("Identifier")},right:{validate:(0,e.assertNodeType)("Expression")},decorators:{validate:(0,e.chain)((0,e.assertValueType)("array"),(0,e.assertEach)((0,e.assertNodeType)("Decorator")))}}}),(0,t.default)("ArrayPattern",{visitor:["elements","typeAnnotation"],aliases:["Pattern","LVal"],fields:{elements:{validate:(0,e.chain)((0,e.assertValueType)("array"),(0,e.assertEach)((0,e.assertNodeType)("Identifier","Pattern","RestElement")))},decorators:{validate:(0,e.chain)((0,e.assertValueType)("array"),(0,e.assertEach)((0,e.assertNodeType)("Decorator")))}}}),(0,t.default)("ArrowFunctionExpression",{builder:["params","body","async"],visitor:["params","body","returnType","typeParameters"],aliases:["Scopable","Function","BlockParent","FunctionParent","Expression","Pureish"],fields:{params:{validate:(0,e.chain)((0,e.assertValueType)("array"),(0,e.assertEach)((0,e.assertNodeType)("LVal")))},body:{validate:(0,e.assertNodeType)("BlockStatement","Expression")},async:{validate:(0,e.assertValueType)("boolean"),default:!1}}}),(0,t.default)("ClassBody",{visitor:["body"],fields:{body:{validate:(0,e.chain)((0,e.assertValueType)("array"),(0,e.assertEach)((0,e.assertNodeType)("ClassMethod","ClassProperty")))}}}),(0,t.default)("ClassDeclaration",{builder:["id","superClass","body","decorators"],visitor:["id","body","superClass","mixins","typeParameters","superTypeParameters","implements","decorators"],aliases:["Scopable","Class","Statement","Declaration","Pureish"],fields:{id:{validate:(0,e.assertNodeType)("Identifier")},body:{validate:(0,e.assertNodeType)("ClassBody")},superClass:{optional:!0,validate:(0,e.assertNodeType)("Expression")},decorators:{validate:(0,e.chain)((0,e.assertValueType)("array"),(0,e.assertEach)((0,e.assertNodeType)("Decorator")))}}}),(0,t.default)("ClassExpression",{inherits:"ClassDeclaration",aliases:["Scopable","Class","Expression","Pureish"],fields:{id:{optional:!0,validate:(0,e.assertNodeType)("Identifier")},body:{validate:(0,e.assertNodeType)("ClassBody")},superClass:{optional:!0,validate:(0,e.assertNodeType)("Expression")},decorators:{validate:(0,e.chain)((0,e.assertValueType)("array"),(0,e.assertEach)((0,e.assertNodeType)("Decorator")))}}}),(0,t.default)("ExportAllDeclaration",{visitor:["source"],aliases:["Statement","Declaration","ModuleDeclaration","ExportDeclaration"],fields:{source:{validate:(0,e.assertNodeType)("StringLiteral")}}}),(0,t.default)("ExportDefaultDeclaration",{visitor:["declaration"],aliases:["Statement","Declaration","ModuleDeclaration","ExportDeclaration"],fields:{declaration:{validate:(0,e.assertNodeType)("FunctionDeclaration","ClassDeclaration","Expression")}}}),(0,t.default)("ExportNamedDeclaration",{visitor:["declaration","specifiers","source"],aliases:["Statement","Declaration","ModuleDeclaration","ExportDeclaration"],fields:{declaration:{validate:(0,e.assertNodeType)("Declaration"),optional:!0},specifiers:{validate:(0,e.chain)((0,e.assertValueType)("array"),(0,e.assertEach)((0,e.assertNodeType)("ExportSpecifier")))},source:{validate:(0,e.assertNodeType)("StringLiteral"),optional:!0}}}),(0,t.default)("ExportSpecifier",{visitor:["local","exported"],aliases:["ModuleSpecifier"],fields:{local:{validate:(0,e.assertNodeType)("Identifier")},exported:{validate:(0,e.assertNodeType)("Identifier")}}}),(0,t.default)("ForOfStatement",{visitor:["left","right","body"],aliases:["Scopable","Statement","For","BlockParent","Loop","ForXStatement"],fields:{left:{validate:(0,e.assertNodeType)("VariableDeclaration","LVal")},right:{validate:(0,e.assertNodeType)("Expression")},body:{validate:(0,e.assertNodeType)("Statement")}}}),(0,t.default)("ImportDeclaration",{visitor:["specifiers","source"],aliases:["Statement","Declaration","ModuleDeclaration"],fields:{specifiers:{validate:(0,e.chain)((0,e.assertValueType)("array"),(0,e.assertEach)((0,e.assertNodeType)("ImportSpecifier","ImportDefaultSpecifier","ImportNamespaceSpecifier")))},source:{validate:(0,e.assertNodeType)("StringLiteral")}}}),(0,t.default)("ImportDefaultSpecifier",{visitor:["local"],aliases:["ModuleSpecifier"],fields:{local:{validate:(0,e.assertNodeType)("Identifier")}}}),(0,t.default)("ImportNamespaceSpecifier",{visitor:["local"],aliases:["ModuleSpecifier"],fields:{local:{validate:(0,e.assertNodeType)("Identifier")}}}),(0,t.default)("ImportSpecifier",{visitor:["local","imported"],aliases:["ModuleSpecifier"],fields:{local:{validate:(0,e.assertNodeType)("Identifier")},imported:{validate:(0,e.assertNodeType)("Identifier")},importKind:{validate:(0,e.assertOneOf)(null,"type","typeof")}}}),(0,t.default)("MetaProperty",{visitor:["meta","property"],aliases:["Expression"],fields:{meta:{validate:(0,e.assertValueType)("string")},property:{validate:(0,e.assertValueType)("string")}}}),(0,t.default)("ClassMethod",{aliases:["Function","Scopable","BlockParent","FunctionParent","Method"],builder:["kind","key","params","body","computed","static"],visitor:["key","params","body","decorators","returnType","typeParameters"],fields:{kind:{validate:(0,e.chain)((0,e.assertValueType)("string"),(0,e.assertOneOf)("get","set","method","constructor")),default:"method"},computed:{default:!1,validate:(0,e.assertValueType)("boolean")},static:{default:!1,validate:(0,e.assertValueType)("boolean")},key:{validate:i(function(n,a,u){var s=n.computed?["Expression"]:["Identifier","StringLiteral","NumericLiteral"];e.assertNodeType.apply(void 0,s)(n,a,u)},"validate")},params:{validate:(0,e.chain)((0,e.assertValueType)("array"),(0,e.assertEach)((0,e.assertNodeType)("LVal")))},body:{validate:(0,e.assertNodeType)("BlockStatement")},generator:{default:!1,validate:(0,e.assertValueType)("boolean")},async:{default:!1,validate:(0,e.assertValueType)("boolean")}}}),(0,t.default)("ObjectPattern",{visitor:["properties","typeAnnotation"],aliases:["Pattern","LVal"],fields:{properties:{validate:(0,e.chain)((0,e.assertValueType)("array"),(0,e.assertEach)((0,e.assertNodeType)("RestProperty","Property")))},decorators:{validate:(0,e.chain)((0,e.assertValueType)("array"),(0,e.assertEach)((0,e.assertNodeType)("Decorator")))}}}),(0,t.default)("SpreadElement",{visitor:["argument"],aliases:["UnaryLike"],fields:{argument:{validate:(0,e.assertNodeType)("Expression")}}}),(0,t.default)("Super",{aliases:["Expression"]}),(0,t.default)("TaggedTemplateExpression",{visitor:["tag","quasi"],aliases:["Expression"],fields:{tag:{validate:(0,e.assertNodeType)("Expression")},quasi:{validate:(0,e.assertNodeType)("TemplateLiteral")}}}),(0,t.default)("TemplateElement",{builder:["value","tail"],fields:{value:{},tail:{validate:(0,e.assertValueType)("boolean"),default:!1}}}),(0,t.default)("TemplateLiteral",{visitor:["quasis","expressions"],aliases:["Expression","Literal"],fields:{quasis:{validate:(0,e.chain)((0,e.assertValueType)("array"),(0,e.assertEach)((0,e.assertNodeType)("TemplateElement")))},expressions:{validate:(0,e.chain)((0,e.assertValueType)("array"),(0,e.assertEach)((0,e.assertNodeType)("Expression")))}}}),(0,t.default)("YieldExpression",{builder:["argument","delegate"],visitor:["argument"],aliases:["Expression","Terminatorless"],fields:{delegate:{validate:(0,e.assertValueType)("boolean"),default:!1},argument:{optional:!0,validate:(0,e.assertNodeType)("Expression")}}})}),WD=c(()=>{"use strict";var e=Rt(),t=r(e);function r(n){return n&&n.__esModule?n:{default:n}}i(r,"_interopRequireDefault"),(0,t.default)("AnyTypeAnnotation",{aliases:["Flow","FlowBaseAnnotation"],fields:{}}),(0,t.default)("ArrayTypeAnnotation",{visitor:["elementType"],aliases:["Flow"],fields:{}}),(0,t.default)("BooleanTypeAnnotation",{aliases:["Flow","FlowBaseAnnotation"],fields:{}}),(0,t.default)("BooleanLiteralTypeAnnotation",{aliases:["Flow"],fields:{}}),(0,t.default)("NullLiteralTypeAnnotation",{aliases:["Flow","FlowBaseAnnotation"],fields:{}}),(0,t.default)("ClassImplements",{visitor:["id","typeParameters"],aliases:["Flow"],fields:{}}),(0,t.default)("ClassProperty",{visitor:["key","value","typeAnnotation","decorators"],builder:["key","value","typeAnnotation","decorators","computed"],aliases:["Property"],fields:{computed:{validate:(0,e.assertValueType)("boolean"),default:!1}}}),(0,t.default)("DeclareClass",{visitor:["id","typeParameters","extends","body"],aliases:["Flow","FlowDeclaration","Statement","Declaration"],fields:{}}),(0,t.default)("DeclareFunction",{visitor:["id"],aliases:["Flow","FlowDeclaration","Statement","Declaration"],fields:{}}),(0,t.default)("DeclareInterface",{visitor:["id","typeParameters","extends","body"],aliases:["Flow","FlowDeclaration","Statement","Declaration"],fields:{}}),(0,t.default)("DeclareModule",{visitor:["id","body"],aliases:["Flow","FlowDeclaration","Statement","Declaration"],fields:{}}),(0,t.default)("DeclareModuleExports",{visitor:["typeAnnotation"],aliases:["Flow","FlowDeclaration","Statement","Declaration"],fields:{}}),(0,t.default)("DeclareTypeAlias",{visitor:["id","typeParameters","right"],aliases:["Flow","FlowDeclaration","Statement","Declaration"],fields:{}}),(0,t.default)("DeclareOpaqueType",{visitor:["id","typeParameters","supertype"],aliases:["Flow","FlowDeclaration","Statement","Declaration"],fields:{}}),(0,t.default)("DeclareVariable",{visitor:["id"],aliases:["Flow","FlowDeclaration","Statement","Declaration"],fields:{}}),(0,t.default)("DeclareExportDeclaration",{visitor:["declaration","specifiers","source"],aliases:["Flow","FlowDeclaration","Statement","Declaration"],fields:{}}),(0,t.default)("ExistentialTypeParam",{aliases:["Flow"]}),(0,t.default)("FunctionTypeAnnotation",{visitor:["typeParameters","params","rest","returnType"],aliases:["Flow"],fields:{}}),(0,t.default)("FunctionTypeParam",{visitor:["name","typeAnnotation"],aliases:["Flow"],fields:{}}),(0,t.default)("GenericTypeAnnotation",{visitor:["id","typeParameters"],aliases:["Flow"],fields:{}}),(0,t.default)("InterfaceExtends",{visitor:["id","typeParameters"],aliases:["Flow"],fields:{}}),(0,t.default)("InterfaceDeclaration",{visitor:["id","typeParameters","extends","body"],aliases:["Flow","FlowDeclaration","Statement","Declaration"],fields:{}}),(0,t.default)("IntersectionTypeAnnotation",{visitor:["types"],aliases:["Flow"],fields:{}}),(0,t.default)("MixedTypeAnnotation",{aliases:["Flow","FlowBaseAnnotation"]}),(0,t.default)("EmptyTypeAnnotation",{aliases:["Flow","FlowBaseAnnotation"]}),(0,t.default)("NullableTypeAnnotation",{visitor:["typeAnnotation"],aliases:["Flow"],fields:{}}),(0,t.default)("NumericLiteralTypeAnnotation",{aliases:["Flow"],fields:{}}),(0,t.default)("NumberTypeAnnotation",{aliases:["Flow","FlowBaseAnnotation"],fields:{}}),(0,t.default)("StringLiteralTypeAnnotation",{aliases:["Flow"],fields:{}}),(0,t.default)("StringTypeAnnotation",{aliases:["Flow","FlowBaseAnnotation"],fields:{}}),(0,t.default)("ThisTypeAnnotation",{aliases:["Flow","FlowBaseAnnotation"],fields:{}}),(0,t.default)("TupleTypeAnnotation",{visitor:["types"],aliases:["Flow"],fields:{}}),(0,t.default)("TypeofTypeAnnotation",{visitor:["argument"],aliases:["Flow"],fields:{}}),(0,t.default)("TypeAlias",{visitor:["id","typeParameters","right"],aliases:["Flow","FlowDeclaration","Statement","Declaration"],fields:{}}),(0,t.default)("OpaqueType",{visitor:["id","typeParameters","impltype","supertype"],aliases:["Flow","FlowDeclaration","Statement","Declaration"],fields:{}}),(0,t.default)("TypeAnnotation",{visitor:["typeAnnotation"],aliases:["Flow"],fields:{}}),(0,t.default)("TypeCastExpression",{visitor:["expression","typeAnnotation"],aliases:["Flow","ExpressionWrapper","Expression"],fields:{}}),(0,t.default)("TypeParameter",{visitor:["bound"],aliases:["Flow"],fields:{}}),(0,t.default)("TypeParameterDeclaration",{visitor:["params"],aliases:["Flow"],fields:{}}),(0,t.default)("TypeParameterInstantiation",{visitor:["params"],aliases:["Flow"],fields:{}}),(0,t.default)("ObjectTypeAnnotation",{visitor:["properties","indexers","callProperties"],aliases:["Flow"],fields:{}}),(0,t.default)("ObjectTypeCallProperty",{visitor:["value"],aliases:["Flow","UserWhitespacable"],fields:{}}),(0,t.default)("ObjectTypeIndexer",{visitor:["id","key","value"],aliases:["Flow","UserWhitespacable"],fields:{}}),(0,t.default)("ObjectTypeProperty",{visitor:["key","value"],aliases:["Flow","UserWhitespacable"],fields:{}}),(0,t.default)("ObjectTypeSpreadProperty",{visitor:["argument"],aliases:["Flow","UserWhitespacable"],fields:{}}),(0,t.default)("QualifiedTypeIdentifier",{visitor:["id","qualification"],aliases:["Flow"],fields:{}}),(0,t.default)("UnionTypeAnnotation",{visitor:["types"],aliases:["Flow"],fields:{}}),(0,t.default)("VoidTypeAnnotation",{aliases:["Flow","FlowBaseAnnotation"],fields:{}})}),HD=c(()=>{"use strict";var e=Rt(),t=r(e);function r(n){return n&&n.__esModule?n:{default:n}}i(r,"_interopRequireDefault"),(0,t.default)("JSXAttribute",{visitor:["name","value"],aliases:["JSX","Immutable"],fields:{name:{validate:(0,e.assertNodeType)("JSXIdentifier","JSXNamespacedName")},value:{optional:!0,validate:(0,e.assertNodeType)("JSXElement","StringLiteral","JSXExpressionContainer")}}}),(0,t.default)("JSXClosingElement",{visitor:["name"],aliases:["JSX","Immutable"],fields:{name:{validate:(0,e.assertNodeType)("JSXIdentifier","JSXMemberExpression")}}}),(0,t.default)("JSXElement",{builder:["openingElement","closingElement","children","selfClosing"],visitor:["openingElement","children","closingElement"],aliases:["JSX","Immutable","Expression"],fields:{openingElement:{validate:(0,e.assertNodeType)("JSXOpeningElement")},closingElement:{optional:!0,validate:(0,e.assertNodeType)("JSXClosingElement")},children:{validate:(0,e.chain)((0,e.assertValueType)("array"),(0,e.assertEach)((0,e.assertNodeType)("JSXText","JSXExpressionContainer","JSXSpreadChild","JSXElement")))}}}),(0,t.default)("JSXEmptyExpression",{aliases:["JSX","Expression"]}),(0,t.default)("JSXExpressionContainer",{visitor:["expression"],aliases:["JSX","Immutable"],fields:{expression:{validate:(0,e.assertNodeType)("Expression")}}}),(0,t.default)("JSXSpreadChild",{visitor:["expression"],aliases:["JSX","Immutable"],fields:{expression:{validate:(0,e.assertNodeType)("Expression")}}}),(0,t.default)("JSXIdentifier",{builder:["name"],aliases:["JSX","Expression"],fields:{name:{validate:(0,e.assertValueType)("string")}}}),(0,t.default)("JSXMemberExpression",{visitor:["object","property"],aliases:["JSX","Expression"],fields:{object:{validate:(0,e.assertNodeType)("JSXMemberExpression","JSXIdentifier")},property:{validate:(0,e.assertNodeType)("JSXIdentifier")}}}),(0,t.default)("JSXNamespacedName",{visitor:["namespace","name"],aliases:["JSX"],fields:{namespace:{validate:(0,e.assertNodeType)("JSXIdentifier")},name:{validate:(0,e.assertNodeType)("JSXIdentifier")}}}),(0,t.default)("JSXOpeningElement",{builder:["name","attributes","selfClosing"],visitor:["name","attributes"],aliases:["JSX","Immutable"],fields:{name:{validate:(0,e.assertNodeType)("JSXIdentifier","JSXMemberExpression")},selfClosing:{default:!1,validate:(0,e.assertValueType)("boolean")},attributes:{validate:(0,e.chain)((0,e.assertValueType)("array"),(0,e.assertEach)((0,e.assertNodeType)("JSXAttribute","JSXSpreadAttribute")))}}}),(0,t.default)("JSXSpreadAttribute",{visitor:["argument"],aliases:["JSX"],fields:{argument:{validate:(0,e.assertNodeType)("Expression")}}}),(0,t.default)("JSXText",{aliases:["JSX","Immutable"],builder:["value"],fields:{value:{validate:(0,e.assertValueType)("string")}}})}),JD=c(()=>{"use strict";var e=Rt(),t=r(e);function r(n){return n&&n.__esModule?n:{default:n}}i(r,"_interopRequireDefault"),(0,t.default)("Noop",{visitor:[]}),(0,t.default)("ParenthesizedExpression",{visitor:["expression"],aliases:["Expression","ExpressionWrapper"],fields:{expression:{validate:(0,e.assertNodeType)("Expression")}}})}),QD=c(()=>{"use strict";var e=Rt(),t=r(e);function r(n){return n&&n.__esModule?n:{default:n}}i(r,"_interopRequireDefault"),(0,t.default)("AwaitExpression",{builder:["argument"],visitor:["argument"],aliases:["Expression","Terminatorless"],fields:{argument:{validate:(0,e.assertNodeType)("Expression")}}}),(0,t.default)("ForAwaitStatement",{visitor:["left","right","body"],aliases:["Scopable","Statement","For","BlockParent","Loop","ForXStatement"],fields:{left:{validate:(0,e.assertNodeType)("VariableDeclaration","LVal")},right:{validate:(0,e.assertNodeType)("Expression")},body:{validate:(0,e.assertNodeType)("Statement")}}}),(0,t.default)("BindExpression",{visitor:["object","callee"],aliases:["Expression"],fields:{}}),(0,t.default)("Import",{aliases:["Expression"]}),(0,t.default)("Decorator",{visitor:["expression"],fields:{expression:{validate:(0,e.assertNodeType)("Expression")}}}),(0,t.default)("DoExpression",{visitor:["body"],aliases:["Expression"],fields:{body:{validate:(0,e.assertNodeType)("BlockStatement")}}}),(0,t.default)("ExportDefaultSpecifier",{visitor:["exported"],aliases:["ModuleSpecifier"],fields:{exported:{validate:(0,e.assertNodeType)("Identifier")}}}),(0,t.default)("ExportNamespaceSpecifier",{visitor:["exported"],aliases:["ModuleSpecifier"],fields:{exported:{validate:(0,e.assertNodeType)("Identifier")}}}),(0,t.default)("RestProperty",{visitor:["argument"],aliases:["UnaryLike"],fields:{argument:{validate:(0,e.assertNodeType)("LVal")}}}),(0,t.default)("SpreadProperty",{visitor:["argument"],aliases:["UnaryLike"],fields:{argument:{validate:(0,e.assertNodeType)("Expression")}}})}),zD=c(()=>{"use strict";Rt(),jD(),VD(),WD(),HD(),JD(),QD()}),ZD=c(e=>{"use strict";e.__esModule=!0,e.isReactComponent=void 0,e.isCompatTag=u,e.buildChildren=l;var t=_t(),r=n(t);function n(p){if(p&&p.__esModule)return p;var f={};if(p!=null)for(var m in p)Object.prototype.hasOwnProperty.call(p,m)&&(f[m]=p[m]);return f.default=p,f}i(n,"_interopRequireWildcard");var a=e.isReactComponent=r.buildMatchMemberExpression("React.Component");function u(p){return!!p&&/^[a-z]|\-/.test(p)}i(u,"isCompatTag");function s(p,f){for(var m=p.value.split(/\r\n|\n|\r/),h=0,A=0;A<m.length;A++)m[A].match(/[^ \t]/)&&(h=A);for(var g="",y=0;y<m.length;y++){var k=m[y],oe=y===0,J=y===m.length-1,F=y===h,G=k.replace(/\t/g," ");oe||(G=G.replace(/^[ ]+/,"")),J||(G=G.replace(/[ ]+$/,"")),G&&(F||(G+=" "),g+=G)}g&&f.push(r.stringLiteral(g))}i(s,"cleanJSXElementLiteralChild");function l(p){for(var f=[],m=0;m<p.children.length;m++){var h=p.children[m];if(r.isJSXText(h)){s(h,f);continue}r.isJSXExpressionContainer(h)&&(h=h.expression),!r.isJSXEmptyExpression(h)&&f.push(h)}return f}i(l,"buildChildren")}),_t=c(e=>{"use strict";e.__esModule=!0,e.createTypeAnnotationBasedOnTypeof=e.removeTypeDuplicates=e.createUnionTypeAnnotation=e.valueToNode=e.toBlock=e.toExpression=e.toStatement=e.toBindingIdentifierName=e.toIdentifier=e.toKeyAlias=e.toSequenceExpression=e.toComputedKey=e.isNodesEquivalent=e.isImmutable=e.isScope=e.isSpecifierDefault=e.isVar=e.isBlockScoped=e.isLet=e.isValidIdentifier=e.isReferenced=e.isBinding=e.getOuterBindingIdentifiers=e.getBindingIdentifiers=e.TYPES=e.react=e.DEPRECATED_KEYS=e.BUILDER_KEYS=e.NODE_FIELDS=e.ALIAS_KEYS=e.VISITOR_KEYS=e.NOT_LOCAL_BINDING=e.BLOCK_SCOPED_SYMBOL=e.INHERIT_KEYS=e.UNARY_OPERATORS=e.STRING_UNARY_OPERATORS=e.NUMBER_UNARY_OPERATORS=e.BOOLEAN_UNARY_OPERATORS=e.BINARY_OPERATORS=e.NUMBER_BINARY_OPERATORS=e.BOOLEAN_BINARY_OPERATORS=e.COMPARISON_BINARY_OPERATORS=e.EQUALITY_BINARY_OPERATORS=e.BOOLEAN_NUMBER_BINARY_OPERATORS=e.UPDATE_OPERATORS=e.LOGICAL_OPERATORS=e.COMMENT_KEYS=e.FOR_INIT_KEYS=e.FLATTENABLE_KEYS=e.STATEMENT_OR_BLOCK_KEYS=void 0;var t=Ip(),r=le(t),n=Hn(),a=le(n),u=va(),s=le(u),l=ms(),p=le(l),f=Ds();Object.defineProperty(e,"STATEMENT_OR_BLOCK_KEYS",{enumerable:!0,get:i(function(){return f.STATEMENT_OR_BLOCK_KEYS},"get")}),Object.defineProperty(e,"FLATTENABLE_KEYS",{enumerable:!0,get:i(function(){return f.FLATTENABLE_KEYS},"get")}),Object.defineProperty(e,"FOR_INIT_KEYS",{enumerable:!0,get:i(function(){return f.FOR_INIT_KEYS},"get")}),Object.defineProperty(e,"COMMENT_KEYS",{enumerable:!0,get:i(function(){return f.COMMENT_KEYS},"get")}),Object.defineProperty(e,"LOGICAL_OPERATORS",{enumerable:!0,get:i(function(){return f.LOGICAL_OPERATORS},"get")}),Object.defineProperty(e,"UPDATE_OPERATORS",{enumerable:!0,get:i(function(){return f.UPDATE_OPERATORS},"get")}),Object.defineProperty(e,"BOOLEAN_NUMBER_BINARY_OPERATORS",{enumerable:!0,get:i(function(){return f.BOOLEAN_NUMBER_BINARY_OPERATORS},"get")}),Object.defineProperty(e,"EQUALITY_BINARY_OPERATORS",{enumerable:!0,get:i(function(){return f.EQUALITY_BINARY_OPERATORS},"get")}),Object.defineProperty(e,"COMPARISON_BINARY_OPERATORS",{enumerable:!0,get:i(function(){return f.COMPARISON_BINARY_OPERATORS},"get")}),Object.defineProperty(e,"BOOLEAN_BINARY_OPERATORS",{enumerable:!0,get:i(function(){return f.BOOLEAN_BINARY_OPERATORS},"get")}),Object.defineProperty(e,"NUMBER_BINARY_OPERATORS",{enumerable:!0,get:i(function(){return f.NUMBER_BINARY_OPERATORS},"get")}),Object.defineProperty(e,"BINARY_OPERATORS",{enumerable:!0,get:i(function(){return f.BINARY_OPERATORS},"get")}),Object.defineProperty(e,"BOOLEAN_UNARY_OPERATORS",{enumerable:!0,get:i(function(){return f.BOOLEAN_UNARY_OPERATORS},"get")}),Object.defineProperty(e,"NUMBER_UNARY_OPERATORS",{enumerable:!0,get:i(function(){return f.NUMBER_UNARY_OPERATORS},"get")}),Object.defineProperty(e,"STRING_UNARY_OPERATORS",{enumerable:!0,get:i(function(){return f.STRING_UNARY_OPERATORS},"get")}),Object.defineProperty(e,"UNARY_OPERATORS",{enumerable:!0,get:i(function(){return f.UNARY_OPERATORS},"get")}),Object.defineProperty(e,"INHERIT_KEYS",{enumerable:!0,get:i(function(){return f.INHERIT_KEYS},"get")}),Object.defineProperty(e,"BLOCK_SCOPED_SYMBOL",{enumerable:!0,get:i(function(){return f.BLOCK_SCOPED_SYMBOL},"get")}),Object.defineProperty(e,"NOT_LOCAL_BINDING",{enumerable:!0,get:i(function(){return f.NOT_LOCAL_BINDING},"get")}),e.is=z,e.isType=Q,e.validate=ye,e.shallowEqual=de,e.appendToMemberExpression=be,e.prependToMemberExpression=Te,e.ensureBlock=Ne,e.clone=we,e.cloneWithoutLoc=ke,e.cloneDeep=xe,e.buildMatchMemberExpression=_e,e.removeComments=Se,e.inheritsComments=M,e.inheritTrailingComments=x,e.inheritLeadingComments=K,e.inheritInnerComments=X,e.inherits=Ae,e.assertNode=Ue,e.isNode=Me,e.traverseFast=Ie,e.removeProperties=Qe,e.removePropertiesDeep=Fe;var m=Fa();Object.defineProperty(e,"getBindingIdentifiers",{enumerable:!0,get:i(function(){return m.getBindingIdentifiers},"get")}),Object.defineProperty(e,"getOuterBindingIdentifiers",{enumerable:!0,get:i(function(){return m.getOuterBindingIdentifiers},"get")});var h=n0();Object.defineProperty(e,"isBinding",{enumerable:!0,get:i(function(){return h.isBinding},"get")}),Object.defineProperty(e,"isReferenced",{enumerable:!0,get:i(function(){return h.isReferenced},"get")}),Object.defineProperty(e,"isValidIdentifier",{enumerable:!0,get:i(function(){return h.isValidIdentifier},"get")}),Object.defineProperty(e,"isLet",{enumerable:!0,get:i(function(){return h.isLet},"get")}),Object.defineProperty(e,"isBlockScoped",{enumerable:!0,get:i(function(){return h.isBlockScoped},"get")}),Object.defineProperty(e,"isVar",{enumerable:!0,get:i(function(){return h.isVar},"get")}),Object.defineProperty(e,"isSpecifierDefault",{enumerable:!0,get:i(function(){return h.isSpecifierDefault},"get")}),Object.defineProperty(e,"isScope",{enumerable:!0,get:i(function(){return h.isScope},"get")}),Object.defineProperty(e,"isImmutable",{enumerable:!0,get:i(function(){return h.isImmutable},"get")}),Object.defineProperty(e,"isNodesEquivalent",{enumerable:!0,get:i(function(){return h.isNodesEquivalent},"get")});var A=k0();Object.defineProperty(e,"toComputedKey",{enumerable:!0,get:i(function(){return A.toComputedKey},"get")}),Object.defineProperty(e,"toSequenceExpression",{enumerable:!0,get:i(function(){return A.toSequenceExpression},"get")}),Object.defineProperty(e,"toKeyAlias",{enumerable:!0,get:i(function(){return A.toKeyAlias},"get")}),Object.defineProperty(e,"toIdentifier",{enumerable:!0,get:i(function(){return A.toIdentifier},"get")}),Object.defineProperty(e,"toBindingIdentifierName",{enumerable:!0,get:i(function(){return A.toBindingIdentifierName},"get")}),Object.defineProperty(e,"toStatement",{enumerable:!0,get:i(function(){return A.toStatement},"get")}),Object.defineProperty(e,"toExpression",{enumerable:!0,get:i(function(){return A.toExpression},"get")}),Object.defineProperty(e,"toBlock",{enumerable:!0,get:i(function(){return A.toBlock},"get")}),Object.defineProperty(e,"valueToNode",{enumerable:!0,get:i(function(){return A.valueToNode},"get")});var g=M0();Object.defineProperty(e,"createUnionTypeAnnotation",{enumerable:!0,get:i(function(){return g.createUnionTypeAnnotation},"get")}),Object.defineProperty(e,"removeTypeDuplicates",{enumerable:!0,get:i(function(){return g.removeTypeDuplicates},"get")}),Object.defineProperty(e,"createTypeAnnotationBasedOnTypeof",{enumerable:!0,get:i(function(){return g.createTypeAnnotationBasedOnTypeof},"get")});var y=G0(),k=le(y),oe=ED(),J=le(oe),F=MD(),G=le(F);zD();var w=Rt(),q=ZD(),V=De(q);function De(O){if(O&&O.__esModule)return O;var Z={};if(O!=null)for(var pe in O)Object.prototype.hasOwnProperty.call(O,pe)&&(Z[pe]=O[pe]);return Z.default=O,Z}i(De,"_interopRequireWildcard");function le(O){return O&&O.__esModule?O:{default:O}}i(le,"_interopRequireDefault");var E=e;function T(O){var Z=E["is"+O];Z||(Z=E["is"+O]=function(pe,j){return E.is(O,pe,j)}),E["assert"+O]=function(pe,j){if(j=j||{},!Z(pe,j))throw new Error("Expected type "+(0,p.default)(O)+" with option "+(0,p.default)(j))}}i(T,"registerType"),e.VISITOR_KEYS=w.VISITOR_KEYS,e.ALIAS_KEYS=w.ALIAS_KEYS,e.NODE_FIELDS=w.NODE_FIELDS,e.BUILDER_KEYS=w.BUILDER_KEYS,e.DEPRECATED_KEYS=w.DEPRECATED_KEYS,e.react=V;for(U in E.VISITOR_KEYS)T(U);var U;E.FLIPPED_ALIAS_KEYS={},(0,s.default)(E.ALIAS_KEYS).forEach(function(O){E.ALIAS_KEYS[O].forEach(function(Z){var pe=E.FLIPPED_ALIAS_KEYS[Z]=E.FLIPPED_ALIAS_KEYS[Z]||[];pe.push(O)})}),(0,s.default)(E.FLIPPED_ALIAS_KEYS).forEach(function(O){E[O.toUpperCase()+"_TYPES"]=E.FLIPPED_ALIAS_KEYS[O],T(O)});var ee=e.TYPES=(0,s.default)(E.VISITOR_KEYS).concat((0,s.default)(E.FLIPPED_ALIAS_KEYS)).concat((0,s.default)(E.DEPRECATED_KEYS));function z(O,Z,pe){if(!Z)return!1;var j=Q(Z.type,O);return j?typeof pe>"u"?!0:E.shallowEqual(Z,pe):!1}i(z,"is");function Q(O,Z){if(O===Z)return!0;if(E.ALIAS_KEYS[Z])return!1;var pe=E.FLIPPED_ALIAS_KEYS[Z];if(pe){if(pe[0]===O)return!0;for(var ie=pe,j=Array.isArray(ie),W=0,ie=j?ie:(0,a.default)(ie);;){var he;if(j){if(W>=ie.length)break;he=ie[W++]}else{if(W=ie.next(),W.done)break;he=W.value}var ge=he;if(O===ge)return!0}}return!1}i(Q,"isType"),(0,s.default)(E.BUILDER_KEYS).forEach(function(O){var Z=E.BUILDER_KEYS[O];function pe(){if(arguments.length>Z.length)throw new Error("t."+O+": Too many arguments passed. Received "+arguments.length+" but can receive "+("no more than "+Z.length));var j={};j.type=O;for(var W=0,ge=Z,ie=Array.isArray(ge),he=0,ge=ie?ge:(0,a.default)(ge);;){var Ge;if(ie){if(he>=ge.length)break;Ge=ge[he++]}else{if(he=ge.next(),he.done)break;Ge=he.value}var $e=Ge,Xe=E.NODE_FIELDS[O][$e],Je=arguments[W++];Je===void 0&&(Je=(0,J.default)(Xe.default)),j[$e]=Je}for(var He in j)ye(j,He,j[He]);return j}i(pe,"builder"),E[O]=pe,E[O[0].toLowerCase()+O.slice(1)]=pe});var ce=i(function(O){var Z=E.DEPRECATED_KEYS[O];function pe(j){return function(){return console.trace("The node type "+O+" has been renamed to "+Z),j.apply(this,arguments)}}i(pe,"proxy"),E[O]=E[O[0].toLowerCase()+O.slice(1)]=pe(E[Z]),E["is"+O]=pe(E["is"+Z]),E["assert"+O]=pe(E["assert"+Z])},"_loop");for(me in E.DEPRECATED_KEYS)ce(me);var me;function ye(O,Z,pe){if(O){var j=E.NODE_FIELDS[O.type];if(j){var W=j[Z];!W||!W.validate||W.optional&&pe==null||W.validate(O,Z,pe)}}}i(ye,"validate");function de(O,Z){for(var pe=(0,s.default)(Z),ie=pe,j=Array.isArray(ie),W=0,ie=j?ie:(0,a.default)(ie);;){var he;if(j){if(W>=ie.length)break;he=ie[W++]}else{if(W=ie.next(),W.done)break;he=W.value}var ge=he;if(O[ge]!==Z[ge])return!1}return!0}i(de,"shallowEqual");function be(O,Z,pe){return O.object=E.memberExpression(O.object,O.property,O.computed),O.property=Z,O.computed=!!pe,O}i(be,"appendToMemberExpression");function Te(O,Z){return O.object=E.memberExpression(Z,O.object),O}i(Te,"prependToMemberExpression");function Ne(O){var Z=arguments.length>1&&arguments[1]!==void 0?arguments[1]:"body";return O[Z]=E.toBlock(O[Z],O)}i(Ne,"ensureBlock");function we(O){if(!O)return O;var Z={};for(var pe in O)pe[0]!=="_"&&(Z[pe]=O[pe]);return Z}i(we,"clone");function ke(O){var Z=we(O);return delete Z.loc,Z}i(ke,"cloneWithoutLoc");function xe(O){if(!O)return O;var Z={};for(var pe in O)if(pe[0]!=="_"){var j=O[pe];j&&(j.type?j=E.cloneDeep(j):Array.isArray(j)&&(j=j.map(E.cloneDeep))),Z[pe]=j}return Z}i(xe,"cloneDeep");function _e(O,Z){var pe=O.split(".");return function(j){if(!E.isMemberExpression(j))return!1;for(var W=[j],ie=0;W.length;){var he=W.shift();if(Z&&ie===pe.length)return!0;if(E.isIdentifier(he)){if(pe[ie]!==he.name)return!1}else if(E.isStringLiteral(he)){if(pe[ie]!==he.value)return!1}else if(E.isMemberExpression(he)){if(he.computed&&!E.isStringLiteral(he.property))return!1;W.push(he.object),W.push(he.property);continue}else return!1;if(++ie>pe.length)return!1}return!0}}i(_e,"buildMatchMemberExpression");function Se(O){for(var j=E.COMMENT_KEYS,Z=Array.isArray(j),pe=0,j=Z?j:(0,a.default)(j);;){var W;if(Z){if(pe>=j.length)break;W=j[pe++]}else{if(pe=j.next(),pe.done)break;W=pe.value}var ie=W;delete O[ie]}return O}i(Se,"removeComments");function M(O,Z){return x(O,Z),K(O,Z),X(O,Z),O}i(M,"inheritsComments");function x(O,Z){te("trailingComments",O,Z)}i(x,"inheritTrailingComments");function K(O,Z){te("leadingComments",O,Z)}i(K,"inheritLeadingComments");function X(O,Z){te("innerComments",O,Z)}i(X,"inheritInnerComments");function te(O,Z,pe){Z&&pe&&(Z[O]=(0,G.default)([].concat(Z[O],pe[O]).filter(Boolean)))}i(te,"_inheritComments");function Ae(O,Z){if(!O||!Z)return O;for(var W=E.INHERIT_KEYS.optional,pe=Array.isArray(W),j=0,W=pe?W:(0,a.default)(W);;){var ie;if(pe){if(j>=W.length)break;ie=W[j++]}else{if(j=W.next(),j.done)break;ie=j.value}var he=ie;O[he]==null&&(O[he]=Z[he])}for(var ge in Z)ge[0]==="_"&&(O[ge]=Z[ge]);for(var Xe=E.INHERIT_KEYS.force,Ge=Array.isArray(Xe),$e=0,Xe=Ge?Xe:(0,a.default)(Xe);;){var Je;if(Ge){if($e>=Xe.length)break;Je=Xe[$e++]}else{if($e=Xe.next(),$e.done)break;Je=$e.value}var He=Je;O[He]=Z[He]}return E.inheritsComments(O,Z),O}i(Ae,"inherits");function Ue(O){if(!Me(O))throw new TypeError("Not a valid node "+(O&&O.type))}i(Ue,"assertNode");function Me(O){return!!(O&&w.VISITOR_KEYS[O.type])}i(Me,"isNode"),(0,k.default)(E),(0,k.default)(E.VISITOR_KEYS);function Ie(O,Z,pe){if(O){var j=E.VISITOR_KEYS[O.type];if(j){pe=pe||{},Z(O,pe);for(var he=j,W=Array.isArray(he),ie=0,he=W?he:(0,a.default)(he);;){var ge;if(W){if(ie>=he.length)break;ge=he[ie++]}else{if(ie=he.next(),ie.done)break;ge=ie.value}var Ge=ge,$e=O[Ge];if(Array.isArray($e))for(var He=$e,Xe=Array.isArray(He),Je=0,He=Xe?He:(0,a.default)(He);;){var it;if(Xe){if(Je>=He.length)break;it=He[Je++]}else{if(Je=He.next(),Je.done)break;it=Je.value}var Dt=it;Ie(Dt,Z,pe)}else Ie($e,Z,pe)}}}}i(Ie,"traverseFast");var Ke=["tokens","start","end","loc","raw","rawValue"],Be=E.COMMENT_KEYS.concat(["comments"]).concat(Ke);function Qe(O,Z){Z=Z||{};for(var pe=Z.preserveComments?Ke:Be,ie=pe,j=Array.isArray(ie),W=0,ie=j?ie:(0,a.default)(ie);;){var he;if(j){if(W>=ie.length)break;he=ie[W++]}else{if(W=ie.next(),W.done)break;he=W.value}var ge=he;O[ge]!=null&&(O[ge]=void 0)}for(var Ge in O)Ge[0]==="_"&&O[Ge]!=null&&(O[Ge]=void 0);for(var $e=(0,r.default)(O),He=$e,Xe=Array.isArray(He),Je=0,He=Xe?He:(0,a.default)(He);;){var it;if(Xe){if(Je>=He.length)break;it=He[Je++]}else{if(Je=He.next(),Je.done)break;it=Je.value}var Dt=it;O[Dt]=null}}i(Qe,"removeProperties");function Fe(O,Z){return Ie(O,Qe,Z),O}i(Fe,"removePropertiesDeep")}),re=c(e=>{"use strict";Object.defineProperty(e,"__esModule",{value:!0});var t=_t(),r=i(function(M,x){if(!(M instanceof x))throw new TypeError("Cannot call a class as a function")},"classCallCheck"),n=i(function(M,x){if(typeof x!="function"&&x!==null)throw new TypeError("Super expression must either be null or a function, not "+typeof x);M.prototype=Object.create(x&&x.prototype,{constructor:{value:M,enumerable:!1,writable:!0,configurable:!0}}),x&&(Object.setPrototypeOf?Object.setPrototypeOf(M,x):M.__proto__=x)},"inherits"),a=i(function(M,x){if(!M)throw new ReferenceError("this hasn't been initialised - super() hasn't been called");return x&&(typeof x=="object"||typeof x=="function")?x:M},"possibleConstructorReturn"),u=Object.create(null),s=Object.create(null),l=Symbol(),p=Object.create(null),f=function(){function M(){r(this,M),this.loc={source:null,start:{line:0,column:0},end:{line:0,column:0}},this[l]=[]}return i(M,"Node"),M.prototype.toJSON=i(function(){var x=this;return Object.getOwnPropertyNames(this).reduce(function(K,X){if(X==="loc"||X==="parent")return K;var te=x[X];return Array.isArray(te)?K[X]=te.map(function(Ae){return Ae.toJSON()}):K[X]=te&&te.toJSON?te.toJSON():te,K},{type:this.type})},"toJSON"),M.registerType=i(function(x){M["is"+x]||(M["is"+x]=function(K){return m(K,x)})},"registerType"),M}();f.registerType("Scope");function m(M,x){return M?M.type===x||p[x]&&p[x][M.type]||t.is(x,M):!1}i(m,"is");function h(M){for(var x=arguments.length,K=Array(x>1?x-1:0),X=1;X<x;X++)K[X-1]=arguments[X];M.prototype.visitorKeys=K}i(h,"visitor");function A(M){for(var x=arguments.length,K=Array(x>1?x-1:0),X=1;X<x;X++)K[X-1]=arguments[X];M.prototype.aliases=K;for(var te=0,Ae=K.length;te<Ae;te++){var Ue=K[te];s[Ue]||(s[Ue]=[]),s[Ue].push(M.prototype.type),p[Ue]||(p[Ue]={}),p[Ue][M.prototype.type]=!0,f.registerType(Ue)}}i(A,"alias");function g(M,x){M.prototype.type=x,u[x]=M,f.registerType(x)}i(g,"type");var y=function(M){n(x,M);function x(K){r(this,x);var X=a(this,M.call(this));return X.value=K,X}return i(x,"Fragment"),x}(f);g(y,"Fragment"),A(y,"Statement"),h(y,"value");var k=function(M){n(x,M);function x(K){r(this,x);var X=a(this,M.call(this));return X.value=K,X}return i(x,"PrintExpressionStatement"),x}(f);g(k,"PrintExpressionStatement"),A(k,"Statement","PrintStatement"),h(k,"value");var oe=function(M){n(x,M);function x(K){r(this,x);var X=a(this,M.call(this));return X.value=K,X}return i(x,"PrintTextStatement"),x}(f);g(oe,"PrintTextStatement"),A(oe,"Statement","PrintStatement"),h(oe,"value");var J=function(M){n(x,M);function x(K){r(this,x);var X=a(this,M.call(this));return X.value=K,X}return i(x,"ConstantValue"),x.prototype.toString=i(function(){return"Const("+this.value+")"},"toString"),x}(f);g(J,"ConstantValue"),A(J,"Expression","Literal","Immutable");var F=function(M){n(x,M);function x(){return r(this,x),a(this,M.apply(this,arguments))}return i(x,"StringLiteral"),x}(J);g(F,"StringLiteral"),A(F,"Expression","Literal","Immutable");var G=function(M){n(x,M);function x(){return r(this,x),a(this,M.apply(this,arguments))}return i(x,"NumericLiteral"),x}(J);g(G,"NumericLiteral"),A(G,"Expression","Literal","Immutable");var w=function(M){n(x,M);function x(K){return r(this,x),a(this,M.call(this,K))}return i(x,"BooleanLiteral"),x}(J);g(w,"BooleanLiteral"),A(w,"Expression","Literal","Immutable");var q=function(M){n(x,M);function x(){return r(this,x),a(this,M.call(this,null))}return i(x,"NullLiteral"),x}(J);g(q,"NullLiteral"),A(q,"Expression","Literal","Immutable");var V=function(M){n(x,M);function x(K){r(this,x);var X=a(this,M.call(this));return X.name=K,X}return i(x,"Identifier"),x}(f);g(V,"Identifier"),A(V,"Expression");var De=function(M){n(x,M);function x(K,X){r(this,x);var te=a(this,M.call(this));return te.operator=K,te.argument=X,te}return i(x,"UnaryExpression"),x}(f);g(De,"UnaryExpression"),A(De,"Expression","UnaryLike"),h(De,"argument");var le=function(M){n(x,M);function x(K,X,te){r(this,x);var Ae=a(this,M.call(this));return Ae.operator=K,Ae.left=X,Ae.right=te,Ae}return i(x,"BinaryExpression"),x}(f);g(le,"BinaryExpression"),A(le,"Binary","Expression"),h(le,"left","right");var E=function(M){n(x,M);function x(K,X){r(this,x);var te=a(this,M.call(this,"~",K,X));return te.wasImplicitConcatenation=!1,te}return i(x,"BinaryConcatExpression"),x}(le);g(E,"BinaryConcatExpression"),A(E,"BinaryExpression","Binary","Expression"),h(E,"left","right");var T=function(M){n(x,M);function x(K,X,te){r(this,x);var Ae=a(this,M.call(this));return Ae.test=K,Ae.consequent=X,Ae.alternate=te,Ae}return i(x,"ConditionalExpression"),x}(f);g(T,"ConditionalExpression"),A(T,"Expression","Conditional"),h(T,"test","consequent","alternate");var U=function(M){n(x,M);function x(){var K=arguments.length>0&&arguments[0]!==void 0?arguments[0]:[];r(this,x);var X=a(this,M.call(this));return X.elements=K,X}return i(x,"ArrayExpression"),x}(f);g(U,"ArrayExpression"),A(U,"Expression"),h(U,"elements");var ee=function(M){n(x,M);function x(K,X,te){r(this,x);var Ae=a(this,M.call(this));return Ae.object=K,Ae.property=X,Ae.computed=te,Ae}return i(x,"MemberExpression"),x}(f);g(ee,"MemberExpression"),A(ee,"Expression","LVal"),h(ee,"object","property");var z=function(M){n(x,M);function x(K,X){r(this,x);var te=a(this,M.call(this));return te.callee=K,te.arguments=X,te}return i(x,"CallExpression"),x}(f);g(z,"CallExpression"),A(z,"Expression","FunctionInvocation"),h(z,"callee","arguments");var Q=function(M){n(x,M);function x(K,X){r(this,x);var te=a(this,M.call(this));return te.name=K,te.value=X,te}return i(x,"NamedArgumentExpression"),x}(f);g(Q,"NamedArgumentExpression"),A(Q,"Expression"),h(Q,"name","value");var ce=function(M){n(x,M);function x(){var K=arguments.length>0&&arguments[0]!==void 0?arguments[0]:[];r(this,x);var X=a(this,M.call(this));return X.properties=K,X}return i(x,"ObjectExpression"),x}(f);g(ce,"ObjectExpression"),A(ce,"Expression"),h(ce,"properties");var me=function(M){n(x,M);function x(K,X,te){r(this,x);var Ae=a(this,M.call(this));return Ae.key=K,Ae.value=X,Ae.computed=te,Ae}return i(x,"ObjectProperty"),x}(f);g(me,"ObjectProperty"),A(me,"Property","ObjectMember"),h(me,"key","value");var ye=function(M){n(x,M);function x(){var K=arguments.length>0&&arguments[0]!==void 0?arguments[0]:[];r(this,x);var X=a(this,M.call(this));return X.expressions=K,X}return i(x,"SequenceExpression"),x.prototype.add=i(function(K){this.expressions.push(K),this.loc.end=K.loc.end},"add"),x}(f);g(ye,"SequenceExpression"),A(ye,"Expression","Scope"),h(ye,"expressions");var de=function(M){n(x,M);function x(K,X,te){r(this,x);var Ae=a(this,M.call(this));return Ae.target=K,Ae.start=X,Ae.end=te,Ae}return i(x,"SliceExpression"),x}(f);g(de,"SliceExpression"),A(de,"Expression"),h(de,"source","start","end");var be=function(M){n(x,M);function x(K,X,te){r(this,x);var Ae=a(this,M.call(this));return Ae.target=K,Ae.name=X,Ae.arguments=te,Ae}return i(x,"FilterExpression"),x}(f);g(be,"FilterExpression"),A(be,"Expression"),h(be,"target","arguments");var Te=function(M){n(x,M);function x(K){r(this,x);var X=a(this,M.call(this));return X.name=K,X.attributes=[],X.children=[],X.selfClosing=!1,X}return i(x,"Element"),x}(f);g(Te,"Element"),A(Te,"Expression"),h(Te,"attributes","children");var Ne=function(M){n(x,M);function x(K){var X=arguments.length>1&&arguments[1]!==void 0?arguments[1]:null;r(this,x);var te=a(this,M.call(this));return te.name=K,te.value=X,te}return i(x,"Attribute"),x.prototype.isImmutable=i(function(){return m(this.name,"Identifier")&&m(this.value,"Immutable")},"isImmutable"),x}(f);g(Ne,"Attribute"),h(Ne,"name","value");var we=function(M){n(x,M);function x(K){r(this,x);var X=a(this,M.call(this));return X.value=K,X}return i(x,"TwigComment"),x}(f);g(we,"TwigComment"),h(we,"value");var ke=function(M){n(x,M);function x(K){r(this,x);var X=a(this,M.call(this));return X.value=K,X}return i(x,"HtmlComment"),x}(f);g(ke,"HtmlComment"),h(ke,"value");var xe=function(M){n(x,M);function x(K){r(this,x);var X=a(this,M.call(this));return X.declarationType=K,X.parts=[],X}return i(x,"Declaration"),x}(f);g(xe,"Declaration"),h(xe,"parts");var _e=function(M){n(x,M);function x(K){r(this,x);var X=a(this,M.call(this));return X.tagName=K,X.parts=[],X.sections=[],X}return i(x,"GenericTwigTag"),x}(f);g(_e,"GenericTwigTag");var Se=function(M){n(x,M);function x(K,X){r(this,x);var te=a(this,M.call(this));return te.tokenType=K,te.tokenText=X,te}return i(x,"GenericToken"),x}(f);g(Se,"GenericToken"),e.TYPE_MAP=u,e.ALIAS_TO_TYPE=s,e.PATH_CACHE_KEY=l,e.Node=f,e.is=m,e.visitor=h,e.alias=A,e.type=g,e.Fragment=y,e.PrintExpressionStatement=k,e.PrintTextStatement=oe,e.ConstantValue=J,e.StringLiteral=F,e.NumericLiteral=G,e.BooleanLiteral=w,e.NullLiteral=q,e.Identifier=V,e.UnaryExpression=De,e.BinaryExpression=le,e.BinaryConcatExpression=E,e.ConditionalExpression=T,e.ArrayExpression=U,e.MemberExpression=ee,e.CallExpression=z,e.NamedArgumentExpression=Q,e.ObjectExpression=ce,e.ObjectProperty=me,e.SequenceExpression=ye,e.SliceExpression=de,e.FilterExpression=be,e.Element=Te,e.Attribute=Ne,e.TwigComment=we,e.HtmlComment=ke,e.Declaration=xe,e.GenericTwigTag=_e,e.GenericToken=Se}),_A=c((e,t)=>{function r(n,a){for(var u=-1,s=n==null?0:n.length,l=Array(s);++u<s;)l[u]=a(n[u],u,n);return l}i(r,"arrayMap"),t.exports=r}),yu=c((e,t)=>{var r=nr(),n=Et(),a="[object Symbol]";function u(s){return typeof s=="symbol"||n(s)&&r(s)==a}i(u,"isSymbol"),t.exports=u}),Tu=c((e,t)=>{var r=Zr(),n=_A(),a=nt(),u=yu(),s=1/0,l=r?r.prototype:void 0,p=l?l.toString:void 0;function f(m){if(typeof m=="string")return m;if(a(m))return n(m,f)+"";if(u(m))return p?p.call(m):"";var h=m+"";return h=="0"&&1/m==-s?"-0":h}i(f,"baseToString"),t.exports=f}),GA=c((e,t)=>{function r(n,a,u){var s=-1,l=n.length;a<0&&(a=-a>l?0:l+a),u=u>l?l:u,u<0&&(u+=l),l=a>u?0:u-a>>>0,a>>>=0;for(var p=Array(l);++s<l;)p[s]=n[s+a];return p}i(r,"baseSlice"),t.exports=r}),Oo=c((e,t)=>{var r=GA();function n(a,u,s){var l=a.length;return s=s===void 0?l:s,!u&&s>=l?a:r(a,u,s)}i(n,"castSlice"),t.exports=n}),jA=c((e,t)=>{var r=ws();function n(a,u){for(var s=a.length;s--&&r(u,a[s],0)>-1;);return s}i(n,"charsEndIndex"),t.exports=n}),KA=c((e,t)=>{function r(n){return n.split("")}i(r,"asciiToArray"),t.exports=r}),HA=c((e,t)=>{var r="\\ud800-\\udfff",n="\\u0300-\\u036f",a="\\ufe20-\\ufe2f",u="\\u20d0-\\u20ff",s=n+a+u,l="\\ufe0e\\ufe0f",p="\\u200d",f=RegExp("["+p+r+s+l+"]");function m(h){return f.test(h)}i(m,"hasUnicode"),t.exports=m}),th=c((e,t)=>{var r="\\ud800-\\udfff",n="\\u0300-\\u036f",a="\\ufe20-\\ufe2f",u="\\u20d0-\\u20ff",s=n+a+u,l="\\ufe0e\\ufe0f",p="["+r+"]",f="["+s+"]",m="\\ud83c[\\udffb-\\udfff]",h="(?:"+f+"|"+m+")",A="[^"+r+"]",g="(?:\\ud83c[\\udde6-\\uddff]){2}",y="[\\ud800-\\udbff][\\udc00-\\udfff]",k="\\u200d",oe=h+"?",J="["+l+"]?",F="(?:"+k+"(?:"+[A,g,y].join("|")+")"+J+oe+")*",G=J+oe+F,w="(?:"+[A+f+"?",f,g,y,p].join("|")+")",q=RegExp(m+"(?="+m+")|"+w+G,"g");function V(De){return De.match(q)||[]}i(V,"unicodeToArray"),t.exports=V}),Io=c((e,t)=>{var r=KA(),n=HA(),a=th();function u(s){return n(s)?a(s):r(s)}i(u,"stringToArray"),t.exports=u}),xu=c((e,t)=>{var r=Tu();function n(a){return a==null?"":r(a)}i(n,"toString"),t.exports=n}),sh=c((e,t)=>{var r=/\s/;function n(a){for(var u=a.length;u--&&r.test(a.charAt(u)););return u}i(n,"trimmedEndIndex"),t.exports=n}),oh=c((e,t)=>{var r=Tu(),n=Oo(),a=jA(),u=Io(),s=xu(),l=sh();function p(f,m,h){if(f=s(f),f&&(h||m===void 0))return f.slice(0,l(f)+1);if(!f||!(m=r(m)))return f;var A=u(f),g=a(A,u(m))+1;return n(A,0,g).join("")}i(p,"trimEnd"),t.exports=p}),ch=c((e,t)=>{var r=ws();function n(a,u){for(var s=-1,l=a.length;++s<l&&r(u,a[s],0)>-1;);return s}i(n,"charsStartIndex"),t.exports=n}),Eh=c((e,t)=>{var r=Tu(),n=Oo(),a=ch(),u=Io(),s=xu(),l=/^\s+/;function p(f,m,h){if(f=s(f),f&&(h||m===void 0))return f.replace(l,"");if(!f||!(m=r(m)))return f;var A=u(f),g=a(A,u(m));return n(A,g).join("")}i(p,"trimStart"),t.exports=p}),zh=c((e,t)=>{function r(n){return function(a,u,s){for(var l=-1,p=Object(a),f=s(a),m=f.length;m--;){var h=f[n?m:++l];if(u(p[h],h,p)===!1)break}return a}}i(r,"createBaseFor"),t.exports=r}),ey=c((e,t)=>{var r=zh(),n=r();t.exports=n}),ry=c((e,t)=>{var r=ey(),n=an();function a(u,s){return u&&r(u,s,n)}i(a,"baseForOwn"),t.exports=a}),iy=c((e,t)=>{var r=Ns();function n(a,u){return function(s,l){if(s==null)return s;if(!r(s))return a(s,l);for(var p=s.length,f=u?p:-1,m=Object(s);(u?f--:++f<p)&&l(m[f],f,m)!==!1;);return s}}i(n,"createBaseEach"),t.exports=n}),uy=c((e,t)=>{var r=ry(),n=iy(),a=n(r);t.exports=a}),oy=c((e,t)=>{var r=uy();function n(a,u){var s=[];return r(a,function(l,p,f){u(l,p,f)&&s.push(l)}),s}i(n,"baseFilter"),t.exports=n}),cy=c((e,t)=>{function r(n,a){for(var u=-1,s=n==null?0:n.length;++u<s;)if(a(n[u],u,n))return!0;return!1}i(r,"arraySome"),t.exports=r}),Uo=c((e,t)=>{var r=io(),n=cy(),a=so(),u=1,s=2;function l(p,f,m,h,A,g){var y=m&u,k=p.length,oe=f.length;if(k!=oe&&!(y&&oe>k))return!1;var J=g.get(p),F=g.get(f);if(J&&F)return J==f&&F==p;var G=-1,w=!0,q=m&s?new r:void 0;for(g.set(p,f),g.set(f,p);++G<k;){var V=p[G],De=f[G];if(h)var le=y?h(De,V,G,f,p,g):h(V,De,G,p,f,g);if(le!==void 0){if(le)continue;w=!1;break}if(q){if(!n(f,function(E,T){if(!a(q,T)&&(V===E||A(V,E,m,h,g)))return q.push(T)})){w=!1;break}}else if(!(V===De||A(V,De,m,h,g))){w=!1;break}}return g.delete(p),g.delete(f),w}i(l,"equalArrays"),t.exports=l}),Ey=c((e,t)=>{function r(n){var a=-1,u=Array(n.size);return n.forEach(function(s,l){u[++a]=[l,s]}),u}i(r,"mapToArray"),t.exports=r}),hy=c((e,t)=>{var r=Zr(),n=no(),a=vs(),u=Uo(),s=Ey(),l=qs(),p=1,f=2,m="[object Boolean]",h="[object Date]",A="[object Error]",g="[object Map]",y="[object Number]",k="[object RegExp]",oe="[object Set]",J="[object String]",F="[object Symbol]",G="[object ArrayBuffer]",w="[object DataView]",q=r?r.prototype:void 0,V=q?q.valueOf:void 0;function De(le,E,T,U,ee,z,Q){switch(T){case w:if(le.byteLength!=E.byteLength||le.byteOffset!=E.byteOffset)return!1;le=le.buffer,E=E.buffer;case G:return!(le.byteLength!=E.byteLength||!z(new n(le),new n(E)));case m:case h:case y:return a(+le,+E);case A:return le.name==E.name&&le.message==E.message;case k:case J:return le==E+"";case g:var ce=s;case oe:var me=U&p;if(ce||(ce=l),le.size!=E.size&&!me)return!1;var ye=Q.get(le);if(ye)return ye==E;U|=f,Q.set(le,E);var de=u(ce(le),ce(E),U,ee,z,Q);return Q.delete(le),de;case F:if(V)return V.call(le)==V.call(E)}return!1}i(De,"equalByTag"),t.exports=De}),xy=c((e,t)=>{var r=Ja(),n=1,a=Object.prototype,u=a.hasOwnProperty;function s(l,p,f,m,h,A){var g=f&n,y=r(l),k=y.length,oe=r(p),J=oe.length;if(k!=J&&!g)return!1;for(var F=k;F--;){var G=y[F];if(!(g?G in p:u.call(p,G)))return!1}var w=A.get(l),q=A.get(p);if(w&&q)return w==p&&q==l;var V=!0;A.set(l,p),A.set(p,l);for(var De=g;++F<k;){G=y[F];var le=l[G],E=p[G];if(m)var T=g?m(E,le,G,p,l,A):m(le,E,G,l,p,A);if(!(T===void 0?le===E||h(le,E,f,m,A):T)){V=!1;break}De||(De=G=="constructor")}if(V&&!De){var U=l.constructor,ee=p.constructor;U!=ee&&"constructor"in l&&"constructor"in p&&!(typeof U=="function"&&U instanceof U&&typeof ee=="function"&&ee instanceof ee)&&(V=!1)}return A.delete(l),A.delete(p),V}i(s,"equalObjects"),t.exports=s}),by=c((e,t)=>{var r=Cs(),n=Uo(),a=hy(),u=xy(),s=oi(),l=nt(),p=Bs(),f=ja(),m=1,h="[object Arguments]",A="[object Array]",g="[object Object]",y=Object.prototype,k=y.hasOwnProperty;function oe(J,F,G,w,q,V){var De=l(J),le=l(F),E=De?A:s(J),T=le?A:s(F);E=E==h?g:E,T=T==h?g:T;var U=E==g,ee=T==g,z=E==T;if(z&&p(J)){if(!p(F))return!1;De=!0,U=!1}if(z&&!U)return V||(V=new r),De||f(J)?n(J,F,G,w,q,V):a(J,F,E,G,w,q,V);if(!(G&m)){var Q=U&&k.call(J,"__wrapped__"),ce=ee&&k.call(F,"__wrapped__");if(Q||ce){var me=Q?J.value():J,ye=ce?F.value():F;return V||(V=new r),q(me,ye,G,w,V)}}return z?(V||(V=new r),u(J,F,G,w,q,V)):!1}i(oe,"baseIsEqualDeep"),t.exports=oe}),Vo=c((e,t)=>{var r=by(),n=Et();function a(u,s,l,p,f){return u===s?!0:u==null||s==null||!n(u)&&!n(s)?u!==u&&s!==s:r(u,s,l,p,a,f)}i(a,"baseIsEqual"),t.exports=a}),Py=c((e,t)=>{var r=Cs(),n=Vo(),a=1,u=2;function s(l,p,f,m){var h=f.length,A=h,g=!m;if(l==null)return!A;for(l=Object(l);h--;){var y=f[h];if(g&&y[2]?y[1]!==l[y[0]]:!(y[0]in l))return!1}for(;++h<A;){y=f[h];var k=y[0],oe=l[k],J=y[1];if(g&&y[2]){if(oe===void 0&&!(k in l))return!1}else{var F=new r;if(m)var G=m(oe,J,k,l,p,F);if(!(G===void 0?n(J,oe,a|u,m,F):G))return!1}}return!0}i(s,"baseIsMatch"),t.exports=s}),Ko=c((e,t)=>{var r=Br();function n(a){return a===a&&!r(a)}i(n,"isStrictComparable"),t.exports=n}),qy=c((e,t)=>{var r=Ko(),n=an();function a(u){for(var s=n(u),l=s.length;l--;){var p=s[l],f=u[p];s[l]=[p,f,r(f)]}return s}i(a,"getMatchData"),t.exports=a}),Wo=c((e,t)=>{function r(n,a){return function(u){return u==null?!1:u[n]===a&&(a!==void 0||n in Object(u))}}i(r,"matchesStrictComparable"),t.exports=r}),Gy=c((e,t)=>{var r=Py(),n=qy(),a=Wo();function u(s){var l=n(s);return l.length==1&&l[0][2]?a(l[0][0],l[0][1]):function(p){return p===s||r(p,s,l)}}i(u,"baseMatches"),t.exports=u}),Su=c((e,t)=>{var r=nt(),n=yu(),a=/\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/,u=/^\w*$/;function s(l,p){if(r(l))return!1;var f=typeof l;return f=="number"||f=="symbol"||f=="boolean"||l==null||n(l)?!0:u.test(l)||!a.test(l)||p!=null&&l in Object(p)}i(s,"isKey"),t.exports=s}),Vy=c((e,t)=>{var r=Fs(),n="Expected a function";function a(u,s){if(typeof u!="function"||s!=null&&typeof s!="function")throw new TypeError(n);var l=i(function(){var p=arguments,f=s?s.apply(this,p):p[0],m=l.cache;if(m.has(f))return m.get(f);var h=u.apply(this,p);return l.cache=m.set(f,h)||m,h},"memoized");return l.cache=new(a.Cache||r),l}i(a,"memoize"),a.Cache=r,t.exports=a}),Wy=c((e,t)=>{var r=Vy(),n=500;function a(u){var s=r(u,function(p){return l.size===n&&l.clear(),p}),l=s.cache;return s}i(a,"memoizeCapped"),t.exports=a}),Xy=c((e,t)=>{var r=Wy(),n=/[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g,a=/\\(\\)?/g,u=r(function(s){var l=[];return s.charCodeAt(0)===46&&l.push(""),s.replace(n,function(p,f,m,h){l.push(m?h.replace(a,"$1"):f||p)}),l});t.exports=u}),Xo=c((e,t)=>{var r=nt(),n=Su(),a=Xy(),u=xu();function s(l,p){return r(l)?l:n(l,p)?[l]:a(u(l))}i(s,"castPath"),t.exports=s}),Oi=c((e,t)=>{var r=yu(),n=1/0;function a(u){if(typeof u=="string"||r(u))return u;var s=u+"";return s=="0"&&1/u==-n?"-0":s}i(a,"toKey"),t.exports=a}),$o=c((e,t)=>{var r=Xo(),n=Oi();function a(u,s){s=r(s,u);for(var l=0,p=s.length;u!=null&&l<p;)u=u[n(s[l++])];return l&&l==p?u:void 0}i(a,"baseGet"),t.exports=a}),Zy=c((e,t)=>{var r=$o();function n(a,u,s){var l=a==null?void 0:r(a,u);return l===void 0?s:l}i(n,"get"),t.exports=n}),t1=c((e,t)=>{function r(n,a){return n!=null&&a in Object(n)}i(r,"baseHasIn"),t.exports=r}),n1=c((e,t)=>{var r=Xo(),n=Ua(),a=nt(),u=Ya(),s=Os(),l=Oi();function p(f,m,h){m=r(m,f);for(var A=-1,g=m.length,y=!1;++A<g;){var k=l(m[A]);if(!(y=f!=null&&h(f,k)))break;f=f[k]}return y||++A!=g?y:(g=f==null?0:f.length,!!g&&s(g)&&u(k,g)&&(a(f)||n(f)))}i(p,"hasPath"),t.exports=p}),s1=c((e,t)=>{var r=t1(),n=n1();function a(u,s){return u!=null&&n(u,s,r)}i(a,"hasIn"),t.exports=a}),a1=c((e,t)=>{var r=Vo(),n=Zy(),a=s1(),u=Su(),s=Ko(),l=Wo(),p=Oi(),f=1,m=2;function h(A,g){return u(A)&&s(g)?l(p(A),g):function(y){var k=n(y,A);return k===void 0&&k===g?a(y,A):r(g,k,f|m)}}i(h,"baseMatchesProperty"),t.exports=h}),l1=c((e,t)=>{function r(n){return n}i(r,"identity"),t.exports=r}),p1=c((e,t)=>{function r(n){return function(a){return a?.[n]}}i(r,"baseProperty"),t.exports=r}),E1=c((e,t)=>{var r=$o();function n(a){return function(u){return r(u,a)}}i(n,"basePropertyDeep"),t.exports=n}),m1=c((e,t)=>{var r=p1(),n=E1(),a=Su(),u=Oi();function s(l){return a(l)?r(u(l)):n(l)}i(s,"property"),t.exports=s}),A1=c((e,t)=>{var r=Gy(),n=a1(),a=l1(),u=nt(),s=m1();function l(p){return typeof p=="function"?p:p==null?a:typeof p=="object"?u(p)?n(p[0],p[1]):r(p):s(p)}i(l,"baseIteratee"),t.exports=l}),y1=c((e,t)=>{var r=Ka(),n=oy(),a=A1(),u=nt();function s(l,p){var f=u(l)?r:n;return f(l,a(p,3))}i(s,"filter"),t.exports=s}),Rw={};al(Rw,{EXPRESSION_NEEDED:()=>Y,FILTER_BLOCK:()=>Ln,GROUP_TOP_LEVEL_LOGICAL:()=>hr,INSIDE_OF_STRING:()=>ft,IS_ROOT_LOGICAL_EXPRESSION:()=>yr,NEWLINES_ONLY:()=>wn,OVERRIDE_QUOTE_CHAR:()=>Pn,PRESERVE_LEADING_WHITESPACE:()=>Dr,PRESERVE_TRAILING_WHITESPACE:()=>Ar,STRING_NEEDS_QUOTES:()=>L,countNewlines:()=>st,createTextGroups:()=>So,findParentNode:()=>sr,firstValueInAncestorChain:()=>At,getDeepProperty:()=>di,hasAtLeastTwoNewlines:()=>N2,hasNoNewlines:()=>lu,indentWithHardline:()=>An,isContractableNodeType:()=>fi,isEmptySequence:()=>Fo,isHtmlCommentEqualTo:()=>mi,isInlineElement:()=>Ai,isMelodyNode:()=>dn,isMultipartExpression:()=>Ei,isNotExpression:()=>xo,isRootNode:()=>vo,isTwigCommentEqualTo:()=>Di,isValidIdentifierName:()=>go,isWhitespaceNode:()=>mn,isWhitespaceOnly:()=>_r,languages:()=>vw,normalizeHtmlComment:()=>fu,normalizeTwigComment:()=>Eu,options:()=>_w,parsers:()=>Bw,printChildBlock:()=>Re,printChildGroups:()=>hn,printers:()=>Iw,quoteChar:()=>En,registerContractableNodeType:()=>O2,removeSurroundingWhitespace:()=>Dn,setDeepProperty:()=>FA,shouldExpressionsBeWrapped:()=>au,someParentNode:()=>uu,stripHtmlCommentChars:()=>cu,stripTwigCommentChars:()=>pu,testCurrentAndParentNodes:()=>b2,testCurrentNode:()=>xA,walkParents:()=>TA,wrapExpressionIfNeeded:()=>qe,wrapInEnvironment:()=>gA,wrapInStringInterpolation:()=>ou});module.exports=zT(Rw);function Nn(e){if(typeof e!="string"){if(Array.isArray(e)){for(let t of e)Nn(t);return}if(!(e&&typeof e.type=="string"))throw new Error("Value "+JSON.stringify(e)+" is not a valid document")}}i(Nn,"assertDoc");function d(e){if(process.env.NODE_ENV!=="production")for(let t of e)Nn(t);return{type:"concat",parts:e}}i(d,"concat");function _(e){return process.env.NODE_ENV!=="production"&&Nn(e),{type:"indent",contents:e}}i(_,"indent");function C(e,t={}){return process.env.NODE_ENV!=="production"&&Nn(e),{type:"group",id:t.id,contents:e,break:Boolean(t.shouldBreak),expandedStates:t.expandedStates}}i(C,"group");function Wr(e){if(process.env.NODE_ENV!=="production")for(let t of e)Nn(t);return{type:"fill",parts:e}}i(Wr,"fill");var ll={type:"break-parent"},ZT={type:"line",hard:!0},ex={type:"line",hard:!0,literal:!0},B={type:"line"},ne={type:"line",soft:!0},P=d([ZT,ll]),Lw=d([ex,ll]),ww={type:"cursor",placeholder:Symbol("cursor")};function Ee(e,t){let r=[];for(let n=0;n<t.length;n++)n!==0&&r.push(e),r.push(t[n]);return d(r)}i(Ee,"join");var qi=H(require("path")),jl=H(Yl()),ki=i(e=>e.twigMelodyPlugins&&Array.isArray(e.twigMelodyPlugins)?e.twigMelodyPlugins.map(t=>t.trim()):[],"getPluginPathsFromOptions"),Kx=i(()=>{let e=__dirname.split(qi.default.sep),t=e.length-1,r=e[t];for(;r!=="node_modules"&&t>0;)t--,r=e[t];t===0&&(t=e.length-2);let n=e.slice(0,t),a=qi.default.join(...n),u=__dirname.indexOf(a);return __dirname.slice(0,u)+a},"getProjectRoot"),Wx=i(pluginPath=>{try{let projectRoot=Kx(),requirePath=jl.default.sync(qi.default.resolve(projectRoot,pluginPath));return eval("require")(requirePath)}catch(e){console.error("Could not load plugin path "+pluginPath);return}},"tryLoadPlugin"),ku=i(e=>{let t=[];return e&&Array.isArray(e)&&e.forEach(r=>{let n=Wx(r);n&&t.push(n)}),t},"loadPlugins"),Vl=i(e=>{let t=[];return ku(e).forEach(r=>{t=t.concat(r.melodyExtensions)}),t.filter(r=>!!r)},"getAdditionalMelodyExtensions"),L=Symbol("STRING_NEEDS_QUOTES"),Pn=Symbol("OVERRIDE_QUOTE_CHAR"),Y=Symbol("EXPRESSION_NEEDED"),ft=Symbol("INSIDE_OF_STRING"),Ln=Symbol("FILTER_BLOCK"),Dr=Symbol("PRESERVE_LEADING_WHITESPACE"),Ar=Symbol("PRESERVE_TRAILING_WHITESPACE"),wn=Symbol("NEWLINES_ONLY"),hr=Symbol("GROUP_TOP_LEVEL_LOGICAL"),yr=Symbol("IS_ROOT_LOGICAL_EXPRESSION"),Ce=H(re()),B2=["title","h1","h2","h3","h4","h5","h6","a","abbr","acronym","b","bdo","big","br","button","cite","code","dd","dfn","em","i","img","kbd","label","mark","q","s","u","samp","strike","strong","sup","sub","small","span","time","tt","var"],To=["ObjectExpression","BinaryExpression","ConditionalExpression","ArrayExpression"],O2=i(e=>{To.push(e)},"registerContractableNodeType"),fi=i(e=>{for(let t=0;t<To.length;t++){let r=To[t],n="is"+r;if(Ce.Node[n]&&Ce.Node[n].call(null,e))return!0}return!!Ce.Node.isUnaryLike(e)},"isContractableNodeType"),xo=i(e=>Ce.Node.isUnaryLike(e)&&e.operator==="not","isNotExpression"),Ei=i(e=>Ce.Node.isBinaryExpression(e)||Ce.Node.isConditionalExpression(e)||Ce.Node.isUnaryLike(e),"isMultipartExpression"),TA=i((e,t,r=!1)=>{let n=e.stack.length-1;for(r||(n-=1);n>=0;){let a=e.stack[n];if(dn(a)&&t(a)===!1)return;n--}},"walkParents"),At=i((e,t,r)=>{let n=e.stack.length-2;for(;n>=0;){let a=e.stack[n];if(dn(a)&&a[t]!==void 0)return a[t];n--}return r},"firstValueInAncestorChain"),En=i(e=>e&&e.twigSingleQuote?"'":'"',"quoteChar"),go=i(e=>typeof e=="string"&&/^[A-Z][0-9A-Z_$]*$/i.test(e),"isValidIdentifierName"),dn=i(e=>{let t=e.__proto__;return typeof e=="object"&&t.type&&typeof Ce.Node["is"+t.type]=="function"},"isMelodyNode"),sr=i(e=>{let t=e.stack.length-2;for(;t>=0;){let r=e.stack[t];if(dn(r))return r;t--}return null},"findParentNode"),vo=i(e=>sr(e)===null,"isRootNode"),b2=i((e,t)=>xA(e,t)||uu(e,t),"testCurrentAndParentNodes"),xA=i((e,t)=>{let r=e.stack.length-1;if(r>=0){let n=e.stack[r];return dn(n)&&t(n)}return!1},"testCurrentNode"),uu=i((e,t)=>{let r=e.stack.length-2;for(;r>=0;){let n=e.stack[r];if(dn(n)&&t(n))return!0;r--}return!1},"someParentNode"),au=i(e=>{let t=!1;return TA(e,r=>{if(r[ft]===!0)return t=ft,!1;if(r[Y]===!0)return t=Y,!1;if(r[Y]===!1||r[ft]===!1)return!1}),t},"shouldExpressionsBeWrapped"),qe=i((e,t,r={})=>{let n=au(e);return n===Y?gA(t,r.trimLeft,r.trimRight):n===ft&&ou(t),t},"wrapExpressionIfNeeded"),gA=i((e,t=!1,r=!1)=>{let n=t?"{{-":"{{",a=r?"-}}":"}}";e.unshift(n,B),e.push(B,a)},"wrapInEnvironment"),ou=i(e=>{e.unshift("#{"),e.push("}")},"wrapInStringInterpolation"),_r=i(e=>typeof e=="string"&&e.trim()==="","isWhitespaceOnly"),st=i(e=>(e.match(/\n/g)||"").length,"countNewlines"),lu=i(e=>st(e)===0,"hasNoNewlines"),N2=i(e=>st(e)>=2,"hasAtLeastTwoNewlines"),vA=i(e=>e.split(/([\s\n]+)/gm),"splitByWhitespace"),SA=i((e,t=" ")=>vA(e).filter(r=>!_r(r)).join(t),"unifyWhitespace"),I2=i(e=>{let t=st(e);return t>0?t>1?[P,P]:[P]:[B]},"normalizeWhitespace"),So=i((e,t,r)=>{let n=vA(e),a=[],u=[],s=n.length;return n.forEach((l,p)=>{if(l!=="")if(_r(l)){let f=a.length===0&&u.length===0,m=p===s-1||p===s-2&&n[s-1]==="";f&&t||m&&r?u.push(...I2(l)):!f&&!m&&(st(l)<=1?u.push(B):(a.push(u),u=[]))}else u.push(l)}),u.length>0&&a.push(u),a.map(l=>Wr(l))},"createTextGroups"),mn=i(e=>Ce.Node.isPrintTextStatement(e)&&_r(e.value.value)||Ce.Node.isStringLiteral(e)&&_r(e.value),"isWhitespaceNode"),Fo=i(e=>Ce.Node.isSequenceExpression(e)&&e.expressions.length===0,"isEmptySequence"),Dn=i(e=>{if(!Array.isArray(e))return e;let t=[];return e.forEach((r,n)=>{(n===0||n===e.length-1)&&mn(r)||t.push(r)}),t},"removeSurroundingWhitespace"),di=i((e,...t)=>{let r=e;return t.forEach(n=>{r=r[n]}),r},"getDeepProperty"),FA=i((e,t,...r)=>{let n=e,a=r.length;for(let u=0;u<a-1;u++)n=n[r[u]];n[r[a-1]]=t},"setDeepProperty"),Re=i((e,t,r,...n)=>{let a=di(e,...n);FA(e,Dn(a),...n);let u=hn(e,t,r,...n);return _(C(d([P,...u])))},"printChildBlock"),_2=i(e=>{e.length>0&&e.push(P)},"addNewlineIfNotEmpty"),R2=i(e=>e.endsWith("-->"),"endsWithHtmlComment"),P2=i((e,t)=>r=>{let n=r;return n.startsWith(e)&&(n=n.slice(e.length)),n.endsWith(t)&&(n=n.slice(0,0-t.length)),n},"stripCommentChars"),cu=P2("<!--","-->"),pu=i(e=>{let t=e;return t.startsWith("{#")&&(t=t.slice(2)),t.startsWith("-")&&(t=t.slice(1)),t.endsWith("#}")&&(t=t.slice(0,-2)),t.endsWith("-")&&(t=t.slice(0,-1)),t},"stripTwigCommentChars"),fu=i(e=>{let t=cu(e);return"<!-- "+SA(t)+" -->"},"normalizeHtmlComment"),Eu=i((e,t,r)=>{let n=pu(e),a=t?"{#-":"{#",u=r?"-#}":"#}";return a+" "+SA(n)+" "+u},"normalizeTwigComment"),mi=i(e=>t=>t.constructor.name==="HtmlComment"&&t.value.value&&fu(t.value.value)==="<!-- "+e+" -->","isHtmlCommentEqualTo"),Di=i(e=>t=>t.constructor.name==="TwigComment"&&t.value.value&&Eu(t.value.value)==="{# "+e+" #}","isTwigCommentEqualTo"),L2=i(e=>{if(!Ce.Node.isPrintTextStatement(e))return!1;let t=typeof e.value.value=="string"&&e.value.value.trim();return!R2(t)},"isInlineTextStatement"),Ai=i(e=>Ce.Node.isElement(e)&&B2.indexOf(e.name)>=0||Ce.Node.isPrintExpressionStatement(e)||L2(e),"isInlineElement"),yA=i(e=>Ce.Node.isTwigComment(e)||Ce.Node.isHtmlComment(e),"isCommentNode"),w2=i(e=>e.map(t=>Ai(t)),"createInlineMap"),q2=i(e=>{e.forEach(t=>{Ce.Node.isPrintTextStatement(t)&&(t[wn]=!0)})},"textStatementsOnlyNewlines"),k2=i((e,t)=>{t.forEach((r,n)=>{let a=n>0&&yA(t[n-1]),u=n<t.length-1&&yA(t[n+1]);Ce.Node.isPrintTextStatement(r)&&((n>0&&e[n-1]||a)&&(r[Dr]=!0),(n<e.length-1&&e[n+1]||u)&&(r[Ar]=!0))})},"addPreserveWhitespaceInfo"),An=i(e=>_(d([P,e])),"indentWithHardline"),hn=i((e,t,r,...n)=>{let a=di(e,...n),u=w2(a);k2(u,a),q2(a);let s=t.map(r,...n),l=[],p=[];return s.forEach((f,m)=>{u[m]?l.push(f):(l.length>0&&(p.push(Wr(l)),l=[]),p.length>0&&!u[m-1]&&_2(p),p.push(f))}),l.length>0&&p.push(Wr(l)),p},"printChildGroups"),CA=H(re()),M2={",":!0},BA=i((e,t,r)=>{let n=[e.trimLeft?"{%-":"{%"," ",e.tagName],a=t.map(r,"parts");a.length>0&&n.push(" ",a[0]);let u=[];for(let l=1;l<e.parts.length;l++){let p=e.parts[l],f=CA.Node.isGenericToken(p)&&M2[p.tokenText]?"":B;u.push(f,a[l])}e.parts.length>1&&n.push(_(d(u)));let s=e.trimRight?"-%}":"%}";return n.push(B,s),C(d(n))},"printSingleTwigTag"),OA=i((e,t,r)=>{e[L]=!1,e.expressions=Dn(e.expressions);let n=hn(e,t,r,"expressions");return vo(t)?d([...n,P]):d(n)},"printSequenceExpression"),fr=H(re()),ve=H(re()),S=H(re()),D={};al(D,{ASSIGNMENT:()=>wr,COLON:()=>at,COMMA:()=>lr,COMMENT:()=>Lt,DECLARATION_START:()=>hi,DOT:()=>gn,ELEMENT_END:()=>ot,ELEMENT_START:()=>qr,ENTITY:()=>Ti,EOF:()=>We,EOF_TOKEN:()=>Mr,ERROR:()=>vn,ERROR_TABLE:()=>du,EXPRESSION_END:()=>Ye,EXPRESSION_START:()=>ze,FALSE:()=>gi,HTML_COMMENT:()=>Rr,INTERPOLATION_END:()=>Tn,INTERPOLATION_START:()=>yn,LBRACE:()=>Lr,LBRACKET:()=>xn,LPAREN:()=>xt,NULL:()=>vi,NUMBER:()=>kr,OPERATOR:()=>Pr,PIPE:()=>cr,QUESTION_MARK:()=>Si,RBRACE:()=>ut,RBRACKET:()=>or,RPAREN:()=>ar,SLASH:()=>gt,STRING:()=>Tt,STRING_END:()=>yt,STRING_START:()=>et,SYMBOL:()=>Oe,TAG_END:()=>Ze,TAG_START:()=>ht,TEXT:()=>ur,TRUE:()=>xi,WHITESPACE:()=>yi});var ze="expressionStart",Ye="expressionEnd",ht="tagStart",Ze="tagEnd",yn="interpolationStart",Tn="interpolationEnd",et="stringStart",yt="stringEnd",hi="declarationStart",Lt="comment",yi="whitespace",Rr="htmlComment",ur="text",Ti="entity",Oe="symbol",Tt="string",Pr="operator",xi="true",gi="false",vi="null",Lr="[",ut="]",xt="(",ar=")",xn="{",or="}",at=":",lr=",",gn=".",cr="|",Si="?",wr="=",qr="<",gt="/",ot=">",kr="number",We="EOF",vn="ERROR",Mr={type:We,pos:{index:-1,line:-1,pos:-1},end:-1,length:0,source:null,text:""},du={[Ye]:'expression end "}}"',[ze]:'expression start "{{"',[ht]:'tag start "{%"',[Ze]:'tag end "%}"',[yn]:'interpolation start "#{"',[Tn]:'interpolation end "}"'},$=Symbol(),G2=Symbol();function R(e,{pos:{index:t,line:r,column:n}}){return e.loc.start={line:r,column:n,index:t},e}i(R,"setStartFromToken");function b(e,{pos:{line:t,column:r},end:n}){return e.loc.end={line:t,column:r,index:n},e}i(b,"setEndFromToken");function Co(e,t,{pos:{index:r,line:n,column:a}}){return e[t]={line:n,column:a,index:r},e}i(Co,"setMarkFromToken");function je(e,{loc:{start:{line:t,column:r,index:n}}}){return e.loc.start.line=t,e.loc.start.column=r,e.loc.start.index=n,e}i(je,"copyStart");function Pe(e,t){return e.loc.end.line=t.loc.end.line,e.loc.end.column=t.loc.end.column,e.loc.end.index=t.loc.end.index,e}i(Pe,"copyEnd");function Sn(e,{loc:{start:t,end:r}}){return e.loc.start.line=t.line,e.loc.start.column=t.column,e.loc.start.index=t.index,e.loc.end.line=r.line,e.loc.end.column=r.column,e.loc.end.index=r.index,e}i(Sn,"copyLoc");function I(e,t,...r){return b(R(new e(...r),t),t)}i(I,"createNode");function se(e){return e.text.endsWith("-")}i(se,"hasTagStartTokenTrimLeft");function ue(e){return e.text.startsWith("-")}i(ue,"hasTagEndTokenTrimRight");var mu=H(re()),Fi={name:"genericTwigTag",parse(e){let t=e.tokens,r=t.la(-2),n,a=new mu.GenericTwigTag(t.la(-1).text);for(;(n=t.la(0))&&n.type!==Ze;)try{a.parts.push(e.matchExpression())}catch(u){if(u.errorType==="UNEXPECTED_TOKEN")a.parts.push(new mu.GenericToken(u.tokenType,u.tokenText)),t.next();else throw u}return t.expect(Ze),a.trimLeft=se(r),a.trimRight=ue(n),a}},U2=i((e,t)=>{for(let r=0;r<t.length;r++)if(e.test(Oe,t[r]))return!0;return!1},"tagMatchesOneOf"),bA=i((e,t=[])=>({name:"genericTwigMultiTag",parse(r,n){let a=r.tokens,u=a.la(-1);t.length===0&&t.push("end"+e);let s=Fi.parse(r,n),l=e,p=t[t.length-1];for(;l!==p;){s.sections.push(r.parse((m,h,A)=>h.type===ht&&U2(A,t))),a.next();let f=Fi.parse(r);s.sections.push(f),l=f.tagName}return R(s,u),b(s,a.la(0)),s}}),"createMultiTagParser"),NA={area:!0,base:!0,br:!0,col:!0,embed:!0,hr:!0,img:!0,input:!0,keygen:!0,link:!0,meta:!0,param:!0,source:!0,track:!0,wbr:!0},Du=Symbol(),Bo=Symbol(),Au=Symbol(),hu=Symbol(),Gr=class{constructor(e,t){this.tokens=e,this[Du]={},this[Bo]={},this[Au]={},this[hu]={},this.options=Object.assign({},{ignoreComments:!0,ignoreHtmlComments:!0,ignoreDeclarations:!0,decodeEntities:!0,preserveSourceLiterally:!1,allowUnknownTags:!1,multiTags:{}},t),Object.keys(this.options.multiTags).length>0&&(this.options.allowUnknownTags=!0)}applyExtension(e){if(e.tags)for(let t of e.tags)this.addTag(t);if(e.unaryOperators)for(let t of e.unaryOperators)this.addUnaryOperator(t);if(e.binaryOperators)for(let t of e.binaryOperators)this.addBinaryOperator(t);if(e.tests)for(let t of e.tests)this.addTest(t)}addUnaryOperator(e){return this[Du][e.text]=e,this}addBinaryOperator(e){return this[Bo][e.text]=e,this}addTag(e){return this[Au][e.name]=e,this}addTest(e){this[hu][e.text]=e}hasTest(e){return!!this[hu][e]}getTest(e){return this[hu][e]}isUnary(e){return e.type===Pr&&!!this[Du][e.text]}getBinaryOperator(e){return e.type===Pr&&this[Bo][e.text]}parse(e=null){let t=this.tokens,r=R(new S.SequenceExpression,t.la(0));for(;!t.test(We);){let n=t.next();if(r||(r=R(new S.SequenceExpression,n)),e&&e(t.la(0).text,n,t))return b(r,n),r;switch(n.type){case ze:{let a=this.matchExpression(),u=new S.PrintExpressionStatement(a),s=t.expect(Ye);R(u,n),b(u,s),b(r,s),u.trimLeft=!!a.trimLeft,u.trimRight=!!a.trimRight,r.add(u);break}case ht:r.add(this.matchTag());break;case ur:{let a=I(S.StringLiteral,n,n.text),u=I(S.PrintTextStatement,n,a);r.add(u);break}case Ti:{let a=I(S.StringLiteral,n,n.text),u=I(S.PrintTextStatement,n,a);r.add(u);break}case qr:r.add(this.matchElement());break;case hi:{let a=this.matchDeclaration();this.options.ignoreDeclarations||r.add(a);break}case Lt:if(!this.options.ignoreComments){let a=I(S.StringLiteral,n,n.text),u=I(S.TwigComment,n,a);r.add(u)}break;case Rr:if(!this.options.ignoreHtmlComments){let a=I(S.StringLiteral,n,n.text),u=I(S.HtmlComment,n,a);r.add(u)}break}}return r}matchDeclaration(){let e=this.tokens,t=e.la(-1),r=null,n=null;(r=e.nextIf(Oe))||this.error({title:"Expected declaration start",pos:t.pos,advice:"After '<!', an unquoted symbol like DOCTYPE is expected"});let a=new S.Declaration(r.text);for(;n=e.next();)if(n.type===Oe){let u=I(S.Identifier,n,n.text);a.parts.push(u)}else if(n.type===et){let u=e.expect(Tt);a.parts.push(I(S.StringLiteral,u,u.text)),e.expect(yt)}else if(n.type===ze){let u=this.matchExpression();a.parts.push(Sn(new S.PrintExpressionStatement(u),u)),e.expect(Ye)}else{if(n.type===ot)break;this.error({title:"Expected string, symbol, or expression",pos:n.pos,advice:"Only strings or symbols can be part of a declaration"})}return R(a,t),b(a,n),a}matchElement(){let e=this.tokens,t=e.la(0),r=e.la(-1),n;(n=e.nextIf(Oe))||this.error({title:"Expected element start",pos:t.pos,advice:e.lat(0)===gt?`Unexpected closing "${e.la(1).text}" tag. Seems like your DOM is out of control.`:"Expected an element to start"});let a=new S.Element(n.text);if(this.matchAttributes(a,e),e.nextIf(gt))e.expect(ot),a.selfClosing=!0;else if(e.expect(ot),NA[n.text])a.selfClosing=!0;else if(n.text.toLowerCase()=="script"){let u=e.next(),s=u;for(;!e.test(We);){if(u.type===qr&&e.lat(0)===gt){let y=e.la(1);if(y.type===Oe&&y.text===n.text){e.next(),e.next(),e.expect(ot);break}}u=e.next()}e.test(We)&&this.error({title:"Expected <\/script>, but not found",pos:t.pos,advice:"Script tag must have an end tag"});let{pos:{index:l,line:p,column:f}}=s,m=u.end-1,h={pos:{index:l,line:p,column:f},end:m},A=I(S.StringLiteral,h,e.input.input.input.slice(l,m)),g=I(S.PrintTextStatement,h,A);a.children.push(g)}else a.children=this.parse(function(u,s,l){if(s.type===qr&&l.lat(0)===gt){let p=l.la(1);if(p.type===Oe&&p.text===n.text)return l.next(),l.next(),l.expect(ot),!0}return!1}).expressions;return R(a,r),b(a,e.la(-1)),Co(a,"elementNameLoc",t),a}matchAttributes(e,t){for(;t.lat(0)!==gt&&t.lat(0)!==ot;){let r=t.nextIf(Oe);if(r){let n=new S.Identifier(r.text);if(R(n,r),b(n,r),t.nextIf(wr)){let a=t.expect(et),u=!0,s=[],l;for(;!t.test(yt);)if(u&&(l=t.nextIf(Tt)))s[s.length]=I(S.StringLiteral,l,l.text),u=!1;else if(l=t.nextIf(ze))s[s.length]=this.matchExpression(),t.expect(Ye),u=!0;else break;if(t.expect(yt),!s.length){let m=I(S.StringLiteral,a,"");s.push(m)}let p=s[0];for(let m=1,h=s.length;m<h;m++){let{line:A,column:g}=p.loc.start;p=new S.BinaryConcatExpression(p,s[m]),p.loc.start.line=A,p.loc.start.column=g,Pe(p,p.right)}s.length>1&&(p.wasImplicitConcatenation=!0);let f=new S.Attribute(n,p);je(f,n),Pe(f,p),e.attributes.push(f)}else e.attributes.push(Sn(new S.Attribute(n),n))}else t.nextIf(ze)?(e.attributes.push(this.matchExpression()),t.expect(Ye)):this.error({title:"Invalid token",pos:t.la(0).pos,advice:"A tag must consist of attributes or expressions. Twig Tags are not allowed."})}}error(e,t={}){this.tokens.error(e.title,e.pos,e.advice,1,t)}getGenericParserFor(e){return this.options.multiTags[e]?bA(e,this.options.multiTags[e]):Fi}matchTag(){let e=this.tokens,t=e.la(-1),r=e.expect(Oe),n=this[Au][r.text],a=!1;n||(this.options.allowUnknownTags?(n=this.getGenericParserFor(r.text),a=!0):e.error(`Unknown tag "${r.text}"`,r.pos,`Expected a known tag such as
+var __create = Object.create;
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __getProtoOf = Object.getPrototypeOf;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __commonJS = (cb, mod) => function __require() {
+  return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
+};
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+  isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
+  mod
+));
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+
+// ../node_modules/.pnpm/prettier-plugin-django@0.5.7/node_modules/prettier-plugin-django/out/index.js
+var require_out = __commonJS({
+  "../node_modules/.pnpm/prettier-plugin-django@0.5.7/node_modules/prettier-plugin-django/out/index.js"(exports, module) {
+    "use strict";
+    var HT = Object.create;
+    var bn = Object.defineProperty;
+    var XT = Object.getOwnPropertyDescriptor;
+    var $T = Object.getOwnPropertyNames;
+    var JT = Object.getPrototypeOf;
+    var QT = Object.prototype.hasOwnProperty;
+    var i = (e, t) => bn(e, "name", { value: t, configurable: true });
+    var c = (e, t) => () => (t || e((t = { exports: {} }).exports, t), t.exports);
+    var al = (e, t) => {
+      for (var r in t)
+        bn(e, r, { get: t[r], enumerable: true });
+    };
+    var ol = (e, t, r, n) => {
+      if (t && typeof t == "object" || typeof t == "function")
+        for (let s of $T(t))
+          !QT.call(e, s) && s !== r && bn(e, s, { get: () => t[s], enumerable: !(n = XT(t, s)) || n.enumerable });
+      return e;
+    };
+    var H = (e, t, r) => (r = e != null ? HT(JT(e)) : {}, ol(t || !e || !e.__esModule ? bn(r, "default", { value: e, enumerable: true }) : r, e));
+    var zT = (e) => ol(bn({}, "__esModule", { value: true }), e);
+    var Nu = c((kw, cl) => {
+      "use strict";
+      var tx = require("os");
+      cl.exports = tx.homedir || i(function() {
+        var t = process.env.HOME, r = process.env.LOGNAME || process.env.USER || process.env.LNAME || process.env.USERNAME;
+        return process.platform === "win32" ? process.env.USERPROFILE || process.env.HOMEDRIVE + process.env.HOMEPATH || t || null : process.platform === "darwin" ? t || (r ? "/Users/" + r : null) : process.platform === "linux" ? t || (process.getuid() === 0 ? "/root" : r ? "/home/" + r : null) : t || null;
+      }, "homedir");
+    });
+    var Iu = c((Mw, pl) => {
+      pl.exports = function() {
+        var e = Error.prepareStackTrace;
+        Error.prepareStackTrace = function(r, n) {
+          return n;
+        };
+        var t = new Error().stack;
+        return Error.prepareStackTrace = e, t[2].getFileName();
+      };
+    });
+    var fl = c((Gw, In) => {
+      "use strict";
+      var rx = process.platform === "win32", nx = /^(((?:[a-zA-Z]:|[\\\/]{2}[^\\\/]+[\\\/]+[^\\\/]+)?[\\\/]?)(?:[^\\\/]*[\\\/])*)((\.{1,2}|[^\\\/]+?|)(\.[^.\/\\]*|))[\\\/]*$/, _u = {};
+      function ix(e) {
+        return nx.exec(e).slice(1);
+      }
+      i(ix, "win32SplitPath");
+      _u.parse = function(e) {
+        if (typeof e != "string")
+          throw new TypeError("Parameter 'pathString' must be a string, not " + typeof e);
+        var t = ix(e);
+        if (!t || t.length !== 5)
+          throw new TypeError("Invalid path '" + e + "'");
+        return { root: t[1], dir: t[0] === t[1] ? t[0] : t[0].slice(0, -1), base: t[2], ext: t[4], name: t[3] };
+      };
+      var sx = /^((\/?)(?:[^\/]*\/)*)((\.{1,2}|[^\/]+?|)(\.[^.\/]*|))[\/]*$/, Ru = {};
+      function ux(e) {
+        return sx.exec(e).slice(1);
+      }
+      i(ux, "posixSplitPath");
+      Ru.parse = function(e) {
+        if (typeof e != "string")
+          throw new TypeError("Parameter 'pathString' must be a string, not " + typeof e);
+        var t = ux(e);
+        if (!t || t.length !== 5)
+          throw new TypeError("Invalid path '" + e + "'");
+        return { root: t[1], dir: t[0].slice(0, -1), base: t[2], ext: t[4], name: t[3] };
+      };
+      rx ? In.exports = _u.parse : In.exports = Ru.parse;
+      In.exports.posix = Ru.parse;
+      In.exports.win32 = _u.parse;
+    });
+    var Pu = c((Uw, Dl) => {
+      var ml = require("path"), El = ml.parse || fl(), dl = i(function(t, r) {
+        var n = "/";
+        /^([A-Za-z]:)/.test(t) ? n = "" : /^\\\\/.test(t) && (n = "\\\\");
+        for (var s = [t], u = El(t); u.dir !== s[s.length - 1]; )
+          s.push(u.dir), u = El(u.dir);
+        return s.reduce(function(a, l) {
+          return a.concat(r.map(function(p) {
+            return ml.resolve(n, l, p);
+          }));
+        }, []);
+      }, "getNodeModulesDirs");
+      Dl.exports = i(function(t, r, n) {
+        var s = r && r.moduleDirectory ? [].concat(r.moduleDirectory) : ["node_modules"];
+        if (r && typeof r.paths == "function")
+          return r.paths(n, t, function() {
+            return dl(t, s);
+          }, r);
+        var u = dl(t, s);
+        return r && r.paths ? u.concat(r.paths) : u;
+      }, "nodeModulesPaths");
+    });
+    var Lu = c((Yw, Al) => {
+      Al.exports = function(e, t) {
+        return t || {};
+      };
+    });
+    var yl = c((jw, hl) => {
+      "use strict";
+      var ax = "Function.prototype.bind called on incompatible ", wu = Array.prototype.slice, ox = Object.prototype.toString, lx = "[object Function]";
+      hl.exports = i(function(t) {
+        var r = this;
+        if (typeof r != "function" || ox.call(r) !== lx)
+          throw new TypeError(ax + r);
+        for (var n = wu.call(arguments, 1), s, u = i(function() {
+          if (this instanceof s) {
+            var m = r.apply(this, n.concat(wu.call(arguments)));
+            return Object(m) === m ? m : this;
+          } else
+            return r.apply(t, n.concat(wu.call(arguments)));
+        }, "binder"), a = Math.max(0, r.length - n.length), l = [], p = 0; p < a; p++)
+          l.push("$" + p);
+        if (s = Function("binder", "return function (" + l.join(",") + "){ return binder.apply(this,arguments); }")(u), r.prototype) {
+          var f = i(function() {
+          }, "Empty");
+          f.prototype = r.prototype, s.prototype = new f(), f.prototype = null;
+        }
+        return s;
+      }, "bind");
+    });
+    var xl = c((Vw, Tl) => {
+      "use strict";
+      var cx = yl();
+      Tl.exports = Function.prototype.bind || cx;
+    });
+    var vl = c((Kw, gl) => {
+      "use strict";
+      var px = xl();
+      gl.exports = px.call(Function.call, Object.prototype.hasOwnProperty);
+    });
+    var Sl = c((Ww, fx) => {
+      fx.exports = { assert: true, "node:assert": [">= 14.18 && < 15", ">= 16"], "assert/strict": ">= 15", "node:assert/strict": ">= 16", async_hooks: ">= 8", "node:async_hooks": [">= 14.18 && < 15", ">= 16"], buffer_ieee754: ">= 0.5 && < 0.9.7", buffer: true, "node:buffer": [">= 14.18 && < 15", ">= 16"], child_process: true, "node:child_process": [">= 14.18 && < 15", ">= 16"], cluster: ">= 0.5", "node:cluster": [">= 14.18 && < 15", ">= 16"], console: true, "node:console": [">= 14.18 && < 15", ">= 16"], constants: true, "node:constants": [">= 14.18 && < 15", ">= 16"], crypto: true, "node:crypto": [">= 14.18 && < 15", ">= 16"], _debug_agent: ">= 1 && < 8", _debugger: "< 8", dgram: true, "node:dgram": [">= 14.18 && < 15", ">= 16"], diagnostics_channel: [">= 14.17 && < 15", ">= 15.1"], "node:diagnostics_channel": [">= 14.18 && < 15", ">= 16"], dns: true, "node:dns": [">= 14.18 && < 15", ">= 16"], "dns/promises": ">= 15", "node:dns/promises": ">= 16", domain: ">= 0.7.12", "node:domain": [">= 14.18 && < 15", ">= 16"], events: true, "node:events": [">= 14.18 && < 15", ">= 16"], freelist: "< 6", fs: true, "node:fs": [">= 14.18 && < 15", ">= 16"], "fs/promises": [">= 10 && < 10.1", ">= 14"], "node:fs/promises": [">= 14.18 && < 15", ">= 16"], _http_agent: ">= 0.11.1", "node:_http_agent": [">= 14.18 && < 15", ">= 16"], _http_client: ">= 0.11.1", "node:_http_client": [">= 14.18 && < 15", ">= 16"], _http_common: ">= 0.11.1", "node:_http_common": [">= 14.18 && < 15", ">= 16"], _http_incoming: ">= 0.11.1", "node:_http_incoming": [">= 14.18 && < 15", ">= 16"], _http_outgoing: ">= 0.11.1", "node:_http_outgoing": [">= 14.18 && < 15", ">= 16"], _http_server: ">= 0.11.1", "node:_http_server": [">= 14.18 && < 15", ">= 16"], http: true, "node:http": [">= 14.18 && < 15", ">= 16"], http2: ">= 8.8", "node:http2": [">= 14.18 && < 15", ">= 16"], https: true, "node:https": [">= 14.18 && < 15", ">= 16"], inspector: ">= 8", "node:inspector": [">= 14.18 && < 15", ">= 16"], _linklist: "< 8", module: true, "node:module": [">= 14.18 && < 15", ">= 16"], net: true, "node:net": [">= 14.18 && < 15", ">= 16"], "node-inspect/lib/_inspect": ">= 7.6 && < 12", "node-inspect/lib/internal/inspect_client": ">= 7.6 && < 12", "node-inspect/lib/internal/inspect_repl": ">= 7.6 && < 12", os: true, "node:os": [">= 14.18 && < 15", ">= 16"], path: true, "node:path": [">= 14.18 && < 15", ">= 16"], "path/posix": ">= 15.3", "node:path/posix": ">= 16", "path/win32": ">= 15.3", "node:path/win32": ">= 16", perf_hooks: ">= 8.5", "node:perf_hooks": [">= 14.18 && < 15", ">= 16"], process: ">= 1", "node:process": [">= 14.18 && < 15", ">= 16"], punycode: ">= 0.5", "node:punycode": [">= 14.18 && < 15", ">= 16"], querystring: true, "node:querystring": [">= 14.18 && < 15", ">= 16"], readline: true, "node:readline": [">= 14.18 && < 15", ">= 16"], "readline/promises": ">= 17", "node:readline/promises": ">= 17", repl: true, "node:repl": [">= 14.18 && < 15", ">= 16"], smalloc: ">= 0.11.5 && < 3", _stream_duplex: ">= 0.9.4", "node:_stream_duplex": [">= 14.18 && < 15", ">= 16"], _stream_transform: ">= 0.9.4", "node:_stream_transform": [">= 14.18 && < 15", ">= 16"], _stream_wrap: ">= 1.4.1", "node:_stream_wrap": [">= 14.18 && < 15", ">= 16"], _stream_passthrough: ">= 0.9.4", "node:_stream_passthrough": [">= 14.18 && < 15", ">= 16"], _stream_readable: ">= 0.9.4", "node:_stream_readable": [">= 14.18 && < 15", ">= 16"], _stream_writable: ">= 0.9.4", "node:_stream_writable": [">= 14.18 && < 15", ">= 16"], stream: true, "node:stream": [">= 14.18 && < 15", ">= 16"], "stream/consumers": ">= 16.7", "node:stream/consumers": ">= 16.7", "stream/promises": ">= 15", "node:stream/promises": ">= 16", "stream/web": ">= 16.5", "node:stream/web": ">= 16.5", string_decoder: true, "node:string_decoder": [">= 14.18 && < 15", ">= 16"], sys: [">= 0.4 && < 0.7", ">= 0.8"], "node:sys": [">= 14.18 && < 15", ">= 16"], "node:test": ">= 18", timers: true, "node:timers": [">= 14.18 && < 15", ">= 16"], "timers/promises": ">= 15", "node:timers/promises": ">= 16", _tls_common: ">= 0.11.13", "node:_tls_common": [">= 14.18 && < 15", ">= 16"], _tls_legacy: ">= 0.11.3 && < 10", _tls_wrap: ">= 0.11.3", "node:_tls_wrap": [">= 14.18 && < 15", ">= 16"], tls: true, "node:tls": [">= 14.18 && < 15", ">= 16"], trace_events: ">= 10", "node:trace_events": [">= 14.18 && < 15", ">= 16"], tty: true, "node:tty": [">= 14.18 && < 15", ">= 16"], url: true, "node:url": [">= 14.18 && < 15", ">= 16"], util: true, "node:util": [">= 14.18 && < 15", ">= 16"], "util/types": ">= 15.3", "node:util/types": ">= 16", "v8/tools/arguments": ">= 10 && < 12", "v8/tools/codemap": [">= 4.4 && < 5", ">= 5.2 && < 12"], "v8/tools/consarray": [">= 4.4 && < 5", ">= 5.2 && < 12"], "v8/tools/csvparser": [">= 4.4 && < 5", ">= 5.2 && < 12"], "v8/tools/logreader": [">= 4.4 && < 5", ">= 5.2 && < 12"], "v8/tools/profile_view": [">= 4.4 && < 5", ">= 5.2 && < 12"], "v8/tools/splaytree": [">= 4.4 && < 5", ">= 5.2 && < 12"], v8: ">= 1", "node:v8": [">= 14.18 && < 15", ">= 16"], vm: true, "node:vm": [">= 14.18 && < 15", ">= 16"], wasi: ">= 13.4 && < 13.5", worker_threads: ">= 11.7", "node:worker_threads": [">= 14.18 && < 15", ">= 16"], zlib: ">= 0.5", "node:zlib": [">= 14.18 && < 15", ">= 16"] };
+    });
+    var Pi = c((Hw, Bl) => {
+      "use strict";
+      var Ex = vl();
+      function dx(e, t) {
+        for (var r = e.split("."), n = t.split(" "), s = n.length > 1 ? n[0] : "=", u = (n.length > 1 ? n[1] : n[0]).split("."), a = 0; a < 3; ++a) {
+          var l = parseInt(r[a] || 0, 10), p = parseInt(u[a] || 0, 10);
+          if (l !== p)
+            return s === "<" ? l < p : s === ">=" ? l >= p : false;
+        }
+        return s === ">=";
+      }
+      i(dx, "specifierIncluded");
+      function Fl(e, t) {
+        var r = t.split(/ ?&& ?/);
+        if (r.length === 0)
+          return false;
+        for (var n = 0; n < r.length; ++n)
+          if (!dx(e, r[n]))
+            return false;
+        return true;
+      }
+      i(Fl, "matchesRange");
+      function mx(e, t) {
+        if (typeof t == "boolean")
+          return t;
+        var r = typeof e > "u" ? process.versions && process.versions.node : e;
+        if (typeof r != "string")
+          throw new TypeError(typeof e > "u" ? "Unable to determine current node version" : "If provided, a valid node version is required");
+        if (t && typeof t == "object") {
+          for (var n = 0; n < t.length; ++n)
+            if (Fl(r, t[n]))
+              return true;
+          return false;
+        }
+        return Fl(r, t);
+      }
+      i(mx, "versionIncluded");
+      var Cl = Sl();
+      Bl.exports = i(function(t, r) {
+        return Ex(Cl, t) && mx(r, Cl[t]);
+      }, "isCore");
+    });
+    var Nl = c((Xw, bl) => {
+      var dr = require("fs"), Dx = Nu(), ge = require("path"), Ax = Iu(), hx = Pu(), yx = Lu(), Tx = Pi(), xx = process.platform !== "win32" && dr.realpath && typeof dr.realpath.native == "function" ? dr.realpath.native : dr.realpath, Ol = Dx(), gx = i(function() {
+        return [ge.join(Ol, ".node_modules"), ge.join(Ol, ".node_libraries")];
+      }, "defaultPaths"), vx = i(function(t, r) {
+        dr.stat(t, function(n, s) {
+          return n ? n.code === "ENOENT" || n.code === "ENOTDIR" ? r(null, false) : r(n) : r(null, s.isFile() || s.isFIFO());
+        });
+      }, "isFile"), Sx = i(function(t, r) {
+        dr.stat(t, function(n, s) {
+          return n ? n.code === "ENOENT" || n.code === "ENOTDIR" ? r(null, false) : r(n) : r(null, s.isDirectory());
+        });
+      }, "isDirectory"), Fx = i(function(t, r) {
+        xx(t, function(n, s) {
+          n && n.code !== "ENOENT" ? r(n) : r(null, n ? t : s);
+        });
+      }, "realpath"), _n = i(function(t, r, n, s) {
+        n && n.preserveSymlinks === false ? t(r, s) : s(null, r);
+      }, "maybeRealpath"), Cx = i(function(t, r, n) {
+        t(r, function(s, u) {
+          if (s)
+            n(s);
+          else
+            try {
+              var a = JSON.parse(u);
+              n(null, a);
+            } catch {
+              n(null);
+            }
+        });
+      }, "defaultReadPackage"), Bx = i(function(t, r, n) {
+        for (var s = hx(r, n, t), u = 0; u < s.length; u++)
+          s[u] = ge.join(s[u], t);
+        return s;
+      }, "getPackageCandidates");
+      bl.exports = i(function(t, r, n) {
+        var s = n, u = r;
+        if (typeof r == "function" && (s = u, u = {}), typeof t != "string") {
+          var a = new TypeError("Path must be a string.");
+          return process.nextTick(function() {
+            s(a);
+          });
+        }
+        u = yx(t, u);
+        var l = u.isFile || vx, p = u.isDirectory || Sx, f = u.readFile || dr.readFile, m = u.realpath || Fx, A = u.readPackage || Cx;
+        if (u.readFile && u.readPackage) {
+          var E = new TypeError("`readFile` and `readPackage` are mutually exclusive.");
+          return process.nextTick(function() {
+            s(E);
+          });
+        }
+        var x = u.packageIterator, F = u.extensions || [".js"], O = u.includeCoreModules !== false, g = u.basedir || ge.dirname(Ax()), U = u.filename || g;
+        u.paths = u.paths || gx();
+        var X = ge.resolve(g);
+        _n(m, X, u, function(q, K) {
+          q ? s(q) : ke(K);
+        });
+        var z;
+        function ke(q) {
+          if (/^(?:\.\.?(?:\/|$)|\/|([A-Za-z]:)?[/\\])/.test(t))
+            z = ge.resolve(q, t), (t === "." || t === ".." || t.slice(-1) === "/") && (z += "/"), /\/$/.test(t) && z === q ? xe(z, u.package, He) : Ct(z, u.package, He);
+          else {
+            if (O && Tx(t))
+              return s(null, t);
+            ct(t, q, function(K, ye, W) {
+              if (K)
+                s(K);
+              else {
+                if (ye)
+                  return _n(m, ye, u, function(Xe, Te) {
+                    Xe ? s(Xe) : s(null, Te, W);
+                  });
+                var De = new Error("Cannot find module '" + t + "' from '" + U + "'");
+                De.code = "MODULE_NOT_FOUND", s(De);
+              }
+            });
+          }
+        }
+        i(ke, "init");
+        function He(q, K, ye) {
+          q ? s(q) : K ? s(null, K, ye) : xe(z, function(W, De, Xe) {
+            if (W)
+              s(W);
+            else if (De)
+              _n(m, De, u, function(Ae, Me) {
+                Ae ? s(Ae) : s(null, Me, Xe);
+              });
+            else {
+              var Te = new Error("Cannot find module '" + t + "' from '" + U + "'");
+              Te.code = "MODULE_NOT_FOUND", s(Te);
+            }
+          });
+        }
+        i(He, "onfile");
+        function Ct(q, K, ye) {
+          var W = K, De = ye;
+          typeof W == "function" && (De = W, W = void 0);
+          var Xe = [""].concat(F);
+          Te(Xe, q, W);
+          function Te(Ae, Me, Bt) {
+            if (Ae.length === 0)
+              return De(null, void 0, Bt);
+            var Er = Me + Ae[0], pt = Bt;
+            pt ? be(null, pt) : Z(ge.dirname(Er), be);
+            function be(Zt, Kr, Ot) {
+              if (pt = Kr, Zt)
+                return De(Zt);
+              if (Ot && pt && u.pathFilter) {
+                var _i = ge.relative(Ot, Er), Ri = _i.slice(0, _i.length - Ae[0].length), On = u.pathFilter(pt, Me, Ri);
+                if (On)
+                  return Te([""].concat(F.slice()), ge.resolve(Ot, On), pt);
+              }
+              l(Er, Ii);
+            }
+            i(be, "onpkg");
+            function Ii(Zt, Kr) {
+              if (Zt)
+                return De(Zt);
+              if (Kr)
+                return De(null, Er, pt);
+              Te(Ae.slice(1), Me, pt);
+            }
+            i(Ii, "onex");
+          }
+          i(Te, "load");
+        }
+        i(Ct, "loadAsFile");
+        function Z(q, K) {
+          if (q === "" || q === "/" || process.platform === "win32" && /^\w:[/\\]*$/.test(q) || /[/\\]node_modules[/\\]*$/.test(q))
+            return K(null);
+          _n(m, q, u, function(ye, W) {
+            if (ye)
+              return Z(ge.dirname(q), K);
+            var De = ge.join(W, "package.json");
+            l(De, function(Xe, Te) {
+              if (!Te)
+                return Z(ge.dirname(q), K);
+              A(f, De, function(Ae, Me) {
+                Ae && K(Ae);
+                var Bt = Me;
+                Bt && u.packageFilter && (Bt = u.packageFilter(Bt, De)), K(null, Bt, q);
+              });
+            });
+          });
+        }
+        i(Z, "loadpkg");
+        function xe(q, K, ye) {
+          var W = ye, De = K;
+          typeof De == "function" && (W = De, De = u.package), _n(m, q, u, function(Xe, Te) {
+            if (Xe)
+              return W(Xe);
+            var Ae = ge.join(Te, "package.json");
+            l(Ae, function(Me, Bt) {
+              if (Me)
+                return W(Me);
+              if (!Bt)
+                return Ct(ge.join(q, "index"), De, W);
+              A(f, Ae, function(Er, pt) {
+                if (Er)
+                  return W(Er);
+                var be = pt;
+                if (be && u.packageFilter && (be = u.packageFilter(be, Ae)), be && be.main) {
+                  if (typeof be.main != "string") {
+                    var Ii = new TypeError("package \u201C" + be.name + "\u201D `main` must be a string");
+                    return Ii.code = "INVALID_PACKAGE_MAIN", W(Ii);
+                  }
+                  (be.main === "." || be.main === "./") && (be.main = "index"), Ct(ge.resolve(q, be.main), be, function(Zt, Kr, Ot) {
+                    if (Zt)
+                      return W(Zt);
+                    if (Kr)
+                      return W(null, Kr, Ot);
+                    if (!Ot)
+                      return Ct(ge.join(q, "index"), Ot, W);
+                    var _i = ge.resolve(q, Ot.main);
+                    xe(_i, Ot, function(Ri, On, ul) {
+                      if (Ri)
+                        return W(Ri);
+                      if (On)
+                        return W(null, On, ul);
+                      Ct(ge.join(q, "index"), ul, W);
+                    });
+                  });
+                  return;
+                }
+                Ct(ge.join(q, "/index"), be, W);
+              });
+            });
+          });
+        }
+        i(xe, "loadAsDirectory");
+        function oe(q, K) {
+          if (K.length === 0)
+            return q(null, void 0);
+          var ye = K[0];
+          p(ge.dirname(ye), W);
+          function W(Te, Ae) {
+            if (Te)
+              return q(Te);
+            if (!Ae)
+              return oe(q, K.slice(1));
+            Ct(ye, u.package, De);
+          }
+          i(W, "isdir");
+          function De(Te, Ae, Me) {
+            if (Te)
+              return q(Te);
+            if (Ae)
+              return q(null, Ae, Me);
+            xe(ye, u.package, Xe);
+          }
+          i(De, "onfile");
+          function Xe(Te, Ae, Me) {
+            if (Te)
+              return q(Te);
+            if (Ae)
+              return q(null, Ae, Me);
+            oe(q, K.slice(1));
+          }
+          i(Xe, "ondir");
+        }
+        i(oe, "processDirs");
+        function ct(q, K, ye) {
+          var W = i(function() {
+            return Bx(q, K, u);
+          }, "thunk");
+          oe(ye, x ? x(q, K, W, u) : W());
+        }
+        i(ct, "loadNodeModules");
+      }, "resolve");
+    });
+    var Il = c(($w, Ox) => {
+      Ox.exports = { assert: true, "node:assert": [">= 14.18 && < 15", ">= 16"], "assert/strict": ">= 15", "node:assert/strict": ">= 16", async_hooks: ">= 8", "node:async_hooks": [">= 14.18 && < 15", ">= 16"], buffer_ieee754: ">= 0.5 && < 0.9.7", buffer: true, "node:buffer": [">= 14.18 && < 15", ">= 16"], child_process: true, "node:child_process": [">= 14.18 && < 15", ">= 16"], cluster: ">= 0.5", "node:cluster": [">= 14.18 && < 15", ">= 16"], console: true, "node:console": [">= 14.18 && < 15", ">= 16"], constants: true, "node:constants": [">= 14.18 && < 15", ">= 16"], crypto: true, "node:crypto": [">= 14.18 && < 15", ">= 16"], _debug_agent: ">= 1 && < 8", _debugger: "< 8", dgram: true, "node:dgram": [">= 14.18 && < 15", ">= 16"], diagnostics_channel: [">= 14.17 && < 15", ">= 15.1"], "node:diagnostics_channel": [">= 14.18 && < 15", ">= 16"], dns: true, "node:dns": [">= 14.18 && < 15", ">= 16"], "dns/promises": ">= 15", "node:dns/promises": ">= 16", domain: ">= 0.7.12", "node:domain": [">= 14.18 && < 15", ">= 16"], events: true, "node:events": [">= 14.18 && < 15", ">= 16"], freelist: "< 6", fs: true, "node:fs": [">= 14.18 && < 15", ">= 16"], "fs/promises": [">= 10 && < 10.1", ">= 14"], "node:fs/promises": [">= 14.18 && < 15", ">= 16"], _http_agent: ">= 0.11.1", "node:_http_agent": [">= 14.18 && < 15", ">= 16"], _http_client: ">= 0.11.1", "node:_http_client": [">= 14.18 && < 15", ">= 16"], _http_common: ">= 0.11.1", "node:_http_common": [">= 14.18 && < 15", ">= 16"], _http_incoming: ">= 0.11.1", "node:_http_incoming": [">= 14.18 && < 15", ">= 16"], _http_outgoing: ">= 0.11.1", "node:_http_outgoing": [">= 14.18 && < 15", ">= 16"], _http_server: ">= 0.11.1", "node:_http_server": [">= 14.18 && < 15", ">= 16"], http: true, "node:http": [">= 14.18 && < 15", ">= 16"], http2: ">= 8.8", "node:http2": [">= 14.18 && < 15", ">= 16"], https: true, "node:https": [">= 14.18 && < 15", ">= 16"], inspector: ">= 8", "node:inspector": [">= 14.18 && < 15", ">= 16"], _linklist: "< 8", module: true, "node:module": [">= 14.18 && < 15", ">= 16"], net: true, "node:net": [">= 14.18 && < 15", ">= 16"], "node-inspect/lib/_inspect": ">= 7.6 && < 12", "node-inspect/lib/internal/inspect_client": ">= 7.6 && < 12", "node-inspect/lib/internal/inspect_repl": ">= 7.6 && < 12", os: true, "node:os": [">= 14.18 && < 15", ">= 16"], path: true, "node:path": [">= 14.18 && < 15", ">= 16"], "path/posix": ">= 15.3", "node:path/posix": ">= 16", "path/win32": ">= 15.3", "node:path/win32": ">= 16", perf_hooks: ">= 8.5", "node:perf_hooks": [">= 14.18 && < 15", ">= 16"], process: ">= 1", "node:process": [">= 14.18 && < 15", ">= 16"], punycode: ">= 0.5", "node:punycode": [">= 14.18 && < 15", ">= 16"], querystring: true, "node:querystring": [">= 14.18 && < 15", ">= 16"], readline: true, "node:readline": [">= 14.18 && < 15", ">= 16"], "readline/promises": ">= 17", "node:readline/promises": ">= 17", repl: true, "node:repl": [">= 14.18 && < 15", ">= 16"], smalloc: ">= 0.11.5 && < 3", _stream_duplex: ">= 0.9.4", "node:_stream_duplex": [">= 14.18 && < 15", ">= 16"], _stream_transform: ">= 0.9.4", "node:_stream_transform": [">= 14.18 && < 15", ">= 16"], _stream_wrap: ">= 1.4.1", "node:_stream_wrap": [">= 14.18 && < 15", ">= 16"], _stream_passthrough: ">= 0.9.4", "node:_stream_passthrough": [">= 14.18 && < 15", ">= 16"], _stream_readable: ">= 0.9.4", "node:_stream_readable": [">= 14.18 && < 15", ">= 16"], _stream_writable: ">= 0.9.4", "node:_stream_writable": [">= 14.18 && < 15", ">= 16"], stream: true, "node:stream": [">= 14.18 && < 15", ">= 16"], "stream/consumers": ">= 16.7", "node:stream/consumers": ">= 16.7", "stream/promises": ">= 15", "node:stream/promises": ">= 16", "stream/web": ">= 16.5", "node:stream/web": ">= 16.5", string_decoder: true, "node:string_decoder": [">= 14.18 && < 15", ">= 16"], sys: [">= 0.4 && < 0.7", ">= 0.8"], "node:sys": [">= 14.18 && < 15", ">= 16"], "node:test": ">= 18", timers: true, "node:timers": [">= 14.18 && < 15", ">= 16"], "timers/promises": ">= 15", "node:timers/promises": ">= 16", _tls_common: ">= 0.11.13", "node:_tls_common": [">= 14.18 && < 15", ">= 16"], _tls_legacy: ">= 0.11.3 && < 10", _tls_wrap: ">= 0.11.3", "node:_tls_wrap": [">= 14.18 && < 15", ">= 16"], tls: true, "node:tls": [">= 14.18 && < 15", ">= 16"], trace_events: ">= 10", "node:trace_events": [">= 14.18 && < 15", ">= 16"], tty: true, "node:tty": [">= 14.18 && < 15", ">= 16"], url: true, "node:url": [">= 14.18 && < 15", ">= 16"], util: true, "node:util": [">= 14.18 && < 15", ">= 16"], "util/types": ">= 15.3", "node:util/types": ">= 16", "v8/tools/arguments": ">= 10 && < 12", "v8/tools/codemap": [">= 4.4 && < 5", ">= 5.2 && < 12"], "v8/tools/consarray": [">= 4.4 && < 5", ">= 5.2 && < 12"], "v8/tools/csvparser": [">= 4.4 && < 5", ">= 5.2 && < 12"], "v8/tools/logreader": [">= 4.4 && < 5", ">= 5.2 && < 12"], "v8/tools/profile_view": [">= 4.4 && < 5", ">= 5.2 && < 12"], "v8/tools/splaytree": [">= 4.4 && < 5", ">= 5.2 && < 12"], v8: ">= 1", "node:v8": [">= 14.18 && < 15", ">= 16"], vm: true, "node:vm": [">= 14.18 && < 15", ">= 16"], wasi: ">= 13.4 && < 13.5", worker_threads: ">= 11.7", "node:worker_threads": [">= 14.18 && < 15", ">= 16"], zlib: ">= 0.5", "node:zlib": [">= 14.18 && < 15", ">= 16"] };
+    });
+    var Ll = c((Jw, Pl) => {
+      var bx = process.versions && process.versions.node && process.versions.node.split(".") || [];
+      function Nx(e) {
+        for (var t = e.split(" "), r = t.length > 1 ? t[0] : "=", n = (t.length > 1 ? t[1] : t[0]).split("."), s = 0; s < 3; ++s) {
+          var u = parseInt(bx[s] || 0, 10), a = parseInt(n[s] || 0, 10);
+          if (u !== a)
+            return r === "<" ? u < a : r === ">=" ? u >= a : false;
+        }
+        return r === ">=";
+      }
+      i(Nx, "specifierIncluded");
+      function _l(e) {
+        var t = e.split(/ ?&& ?/);
+        if (t.length === 0)
+          return false;
+        for (var r = 0; r < t.length; ++r)
+          if (!Nx(t[r]))
+            return false;
+        return true;
+      }
+      i(_l, "matchesRange");
+      function Ix(e) {
+        if (typeof e == "boolean")
+          return e;
+        if (e && typeof e == "object") {
+          for (var t = 0; t < e.length; ++t)
+            if (_l(e[t]))
+              return true;
+          return false;
+        }
+        return _l(e);
+      }
+      i(Ix, "versionIncluded");
+      var qu = Il(), Rl = {};
+      for (Li in qu)
+        Object.prototype.hasOwnProperty.call(qu, Li) && (Rl[Li] = Ix(qu[Li]));
+      var Li;
+      Pl.exports = Rl;
+    });
+    var ql = c((Qw, wl) => {
+      var _x = Pi();
+      wl.exports = i(function(t) {
+        return _x(t);
+      }, "isCore");
+    });
+    var Gl = c((zw, Ml) => {
+      var Rx = Pi(), mr = require("fs"), Ne = require("path"), Px = Nu(), Lx = Iu(), wx = Pu(), qx = Lu(), kx = process.platform !== "win32" && mr.realpathSync && typeof mr.realpathSync.native == "function" ? mr.realpathSync.native : mr.realpathSync, kl = Px(), Mx = i(function() {
+        return [Ne.join(kl, ".node_modules"), Ne.join(kl, ".node_libraries")];
+      }, "defaultPaths"), Gx = i(function(t) {
+        try {
+          var r = mr.statSync(t, { throwIfNoEntry: false });
+        } catch (n) {
+          if (n && (n.code === "ENOENT" || n.code === "ENOTDIR"))
+            return false;
+          throw n;
+        }
+        return !!r && (r.isFile() || r.isFIFO());
+      }, "isFile"), Ux = i(function(t) {
+        try {
+          var r = mr.statSync(t, { throwIfNoEntry: false });
+        } catch (n) {
+          if (n && (n.code === "ENOENT" || n.code === "ENOTDIR"))
+            return false;
+          throw n;
+        }
+        return !!r && r.isDirectory();
+      }, "isDirectory"), Yx = i(function(t) {
+        try {
+          return kx(t);
+        } catch (r) {
+          if (r.code !== "ENOENT")
+            throw r;
+        }
+        return t;
+      }, "realpathSync"), Rn = i(function(t, r, n) {
+        return n && n.preserveSymlinks === false ? t(r) : r;
+      }, "maybeRealpathSync"), jx = i(function(t, r) {
+        var n = t(r);
+        try {
+          var s = JSON.parse(n);
+          return s;
+        } catch {
+        }
+      }, "defaultReadPackageSync"), Vx = i(function(t, r, n) {
+        for (var s = wx(r, n, t), u = 0; u < s.length; u++)
+          s[u] = Ne.join(s[u], t);
+        return s;
+      }, "getPackageCandidates");
+      Ml.exports = i(function(t, r) {
+        if (typeof t != "string")
+          throw new TypeError("Path must be a string.");
+        var n = qx(t, r), s = n.isFile || Gx, u = n.readFileSync || mr.readFileSync, a = n.isDirectory || Ux, l = n.realpathSync || Yx, p = n.readPackageSync || jx;
+        if (n.readFileSync && n.readPackageSync)
+          throw new TypeError("`readFileSync` and `readPackageSync` are mutually exclusive.");
+        var f = n.packageIterator, m = n.extensions || [".js"], A = n.includeCoreModules !== false, E = n.basedir || Ne.dirname(Lx()), x = n.filename || E;
+        n.paths = n.paths || Mx();
+        var F = Rn(l, Ne.resolve(E), n);
+        if (/^(?:\.\.?(?:\/|$)|\/|([A-Za-z]:)?[/\\])/.test(t)) {
+          var O = Ne.resolve(F, t);
+          (t === "." || t === ".." || t.slice(-1) === "/") && (O += "/");
+          var g = z(O) || He(O);
+          if (g)
+            return Rn(l, g, n);
+        } else {
+          if (A && Rx(t))
+            return t;
+          var U = Ct(t, F);
+          if (U)
+            return Rn(l, U, n);
+        }
+        var X = new Error("Cannot find module '" + t + "' from '" + x + "'");
+        throw X.code = "MODULE_NOT_FOUND", X;
+        function z(Z) {
+          var xe = ke(Ne.dirname(Z));
+          if (xe && xe.dir && xe.pkg && n.pathFilter) {
+            var oe = Ne.relative(xe.dir, Z), ct = n.pathFilter(xe.pkg, Z, oe);
+            ct && (Z = Ne.resolve(xe.dir, ct));
+          }
+          if (s(Z))
+            return Z;
+          for (var q = 0; q < m.length; q++) {
+            var K = Z + m[q];
+            if (s(K))
+              return K;
+          }
+        }
+        i(z, "loadAsFileSync");
+        function ke(Z) {
+          if (!(Z === "" || Z === "/") && !(process.platform === "win32" && /^\w:[/\\]*$/.test(Z)) && !/[/\\]node_modules[/\\]*$/.test(Z)) {
+            var xe = Ne.join(Rn(l, Z, n), "package.json");
+            if (!s(xe))
+              return ke(Ne.dirname(Z));
+            var oe = p(u, xe);
+            return oe && n.packageFilter && (oe = n.packageFilter(oe, Z)), { pkg: oe, dir: Z };
+          }
+        }
+        i(ke, "loadpkg");
+        function He(Z) {
+          var xe = Ne.join(Rn(l, Z, n), "/package.json");
+          if (s(xe)) {
+            try {
+              var oe = p(u, xe);
+            } catch {
+            }
+            if (oe && n.packageFilter && (oe = n.packageFilter(oe, Z)), oe && oe.main) {
+              if (typeof oe.main != "string") {
+                var ct = new TypeError("package \u201C" + oe.name + "\u201D `main` must be a string");
+                throw ct.code = "INVALID_PACKAGE_MAIN", ct;
+              }
+              (oe.main === "." || oe.main === "./") && (oe.main = "index");
+              try {
+                var q = z(Ne.resolve(Z, oe.main));
+                if (q)
+                  return q;
+                var K = He(Ne.resolve(Z, oe.main));
+                if (K)
+                  return K;
+              } catch {
+              }
+            }
+          }
+          return z(Ne.join(Z, "/index"));
+        }
+        i(He, "loadAsDirectorySync");
+        function Ct(Z, xe) {
+          for (var oe = i(function() {
+            return Vx(Z, xe, n);
+          }, "thunk"), ct = f ? f(Z, xe, oe, n) : oe(), q = 0; q < ct.length; q++) {
+            var K = ct[q];
+            if (a(Ne.dirname(K))) {
+              var ye = z(K);
+              if (ye)
+                return ye;
+              var W = He(K);
+              if (W)
+                return W;
+            }
+          }
+        }
+        i(Ct, "loadNodeModulesSync");
+      }, "resolveSync");
+    });
+    var Yl = c((Zw, Ul) => {
+      var wi = Nl();
+      wi.core = Ll();
+      wi.isCore = ql();
+      wi.sync = Gl();
+      Ul.exports = wi;
+    });
+    var bt = c((r3, Kl) => {
+      var Hx = Kl.exports = typeof window < "u" && window.Math == Math ? window : typeof self < "u" && self.Math == Math ? self : Function("return this")();
+      typeof __g == "number" && (__g = Hx);
+    });
+    var er = c((n3, Wl) => {
+      var Xx = {}.hasOwnProperty;
+      Wl.exports = function(e, t) {
+        return Xx.call(e, t);
+      };
+    });
+    var Hr = c((i3, Hl) => {
+      Hl.exports = function(e) {
+        try {
+          return !!e();
+        } catch {
+          return true;
+        }
+      };
+    });
+    var Tr = c((s3, Xl) => {
+      Xl.exports = !Hr()(function() {
+        return Object.defineProperty({}, "a", { get: function() {
+          return 7;
+        } }).a != 7;
+      });
+    });
+    var Ve = c((u3, $l) => {
+      var $x = $l.exports = { version: "2.6.12" };
+      typeof __e == "number" && (__e = $x);
+    });
+    var Ql = c((a3, Jl) => {
+      Jl.exports = function(e) {
+        if (typeof e != "function")
+          throw TypeError(e + " is not a function!");
+        return e;
+      };
+    });
+    var Zl = c((o3, zl) => {
+      var Jx = Ql();
+      zl.exports = function(e, t, r) {
+        if (Jx(e), t === void 0)
+          return e;
+        switch (r) {
+          case 1:
+            return function(n) {
+              return e.call(t, n);
+            };
+          case 2:
+            return function(n, s) {
+              return e.call(t, n, s);
+            };
+          case 3:
+            return function(n, s, u) {
+              return e.call(t, n, s, u);
+            };
+        }
+        return function() {
+          return e.apply(t, arguments);
+        };
+      };
+    });
+    var Xr = c((l3, ec) => {
+      ec.exports = function(e) {
+        return typeof e == "object" ? e !== null : typeof e == "function";
+      };
+    });
+    var $r = c((c3, tc) => {
+      var Qx = Xr();
+      tc.exports = function(e) {
+        if (!Qx(e))
+          throw TypeError(e + " is not an object!");
+        return e;
+      };
+    });
+    var Gu = c((p3, nc) => {
+      var rc = Xr(), Mu = bt().document, zx = rc(Mu) && rc(Mu.createElement);
+      nc.exports = function(e) {
+        return zx ? Mu.createElement(e) : {};
+      };
+    });
+    var Uu = c((f3, sc) => {
+      sc.exports = !Tr() && !Hr()(function() {
+        return Object.defineProperty(Gu()("div"), "a", { get: function() {
+          return 7;
+        } }).a != 7;
+      });
+    });
+    var Gi = c((E3, uc) => {
+      var Mi = Xr();
+      uc.exports = function(e, t) {
+        if (!Mi(e))
+          return e;
+        var r, n;
+        if (t && typeof (r = e.toString) == "function" && !Mi(n = r.call(e)) || typeof (r = e.valueOf) == "function" && !Mi(n = r.call(e)) || !t && typeof (r = e.toString) == "function" && !Mi(n = r.call(e)))
+          return n;
+        throw TypeError("Can't convert object to primitive value");
+      };
+    });
+    var xr = c((oc) => {
+      var ac = $r(), Zx = Uu(), eg = Gi(), tg = Object.defineProperty;
+      oc.f = Tr() ? Object.defineProperty : i(function(t, r, n) {
+        if (ac(t), r = eg(r, true), ac(n), Zx)
+          try {
+            return tg(t, r, n);
+          } catch {
+          }
+        if ("get" in n || "set" in n)
+          throw TypeError("Accessors not supported!");
+        return "value" in n && (t[r] = n.value), t;
+      }, "defineProperty");
+    });
+    var qn = c((m3, lc) => {
+      lc.exports = function(e, t) {
+        return { enumerable: !(e & 1), configurable: !(e & 2), writable: !(e & 4), value: t };
+      };
+    });
+    var gr = c((D3, cc) => {
+      var rg = xr(), ng = qn();
+      cc.exports = Tr() ? function(e, t, r) {
+        return rg.f(e, t, ng(1, r));
+      } : function(e, t, r) {
+        return e[t] = r, e;
+      };
+    });
+    var Jr = c((A3, fc) => {
+      var Ui = bt(), Yu = Ve(), pc = Zl(), ig = gr(), sg = er(), Yi = "prototype", Ie = i(function(e, t, r) {
+        var n = e & Ie.F, s = e & Ie.G, u = e & Ie.S, a = e & Ie.P, l = e & Ie.B, p = e & Ie.W, f = s ? Yu : Yu[t] || (Yu[t] = {}), m = f[Yi], A = s ? Ui : u ? Ui[t] : (Ui[t] || {})[Yi], E, x, F;
+        s && (r = t);
+        for (E in r)
+          x = !n && A && A[E] !== void 0, !(x && sg(f, E)) && (F = x ? A[E] : r[E], f[E] = s && typeof A[E] != "function" ? r[E] : l && x ? pc(F, Ui) : p && A[E] == F ? function(O) {
+            var g = i(function(U, X, z) {
+              if (this instanceof O) {
+                switch (arguments.length) {
+                  case 0:
+                    return new O();
+                  case 1:
+                    return new O(U);
+                  case 2:
+                    return new O(U, X);
+                }
+                return new O(U, X, z);
+              }
+              return O.apply(this, arguments);
+            }, "F");
+            return g[Yi] = O[Yi], g;
+          }(F) : a && typeof F == "function" ? pc(Function.call, F) : F, a && ((f.virtual || (f.virtual = {}))[E] = F, e & Ie.R && m && !m[E] && ig(m, E, F)));
+      }, "$export");
+      Ie.F = 1;
+      Ie.G = 2;
+      Ie.S = 4;
+      Ie.P = 8;
+      Ie.B = 16;
+      Ie.W = 32;
+      Ie.U = 64;
+      Ie.R = 128;
+      fc.exports = Ie;
+    });
+    var ju = c((h3, Ec) => {
+      Ec.exports = gr();
+    });
+    var kn = c((y3, dc) => {
+      var ug = 0, ag = Math.random();
+      dc.exports = function(e) {
+        return "Symbol(".concat(e === void 0 ? "" : e, ")_", (++ug + ag).toString(36));
+      };
+    });
+    var Dc = c((T3, mc) => {
+      var vr = kn()("meta"), og = Xr(), Vu = er(), lg = xr().f, cg = 0, ji = Object.isExtensible || function() {
+        return true;
+      }, pg = !Hr()(function() {
+        return ji(Object.preventExtensions({}));
+      }), Ku = i(function(e) {
+        lg(e, vr, { value: { i: "O" + ++cg, w: {} } });
+      }, "setMeta"), fg = i(function(e, t) {
+        if (!og(e))
+          return typeof e == "symbol" ? e : (typeof e == "string" ? "S" : "P") + e;
+        if (!Vu(e, vr)) {
+          if (!ji(e))
+            return "F";
+          if (!t)
+            return "E";
+          Ku(e);
+        }
+        return e[vr].i;
+      }, "fastKey"), Eg = i(function(e, t) {
+        if (!Vu(e, vr)) {
+          if (!ji(e))
+            return true;
+          if (!t)
+            return false;
+          Ku(e);
+        }
+        return e[vr].w;
+      }, "getWeak"), dg = i(function(e) {
+        return pg && mg.NEED && ji(e) && !Vu(e, vr) && Ku(e), e;
+      }, "onFreeze"), mg = mc.exports = { KEY: vr, NEED: false, fastKey: fg, getWeak: Eg, onFreeze: dg };
+    });
+    var Mn = c((x3, Ac) => {
+      Ac.exports = true;
+    });
+    var Vi = c((g3, xc) => {
+      var Dg = Ve(), hc = bt(), yc = "__core-js_shared__", Tc = hc[yc] || (hc[yc] = {});
+      (xc.exports = function(e, t) {
+        return Tc[e] || (Tc[e] = t !== void 0 ? t : {});
+      })("versions", []).push({ version: Dg.version, mode: Mn() ? "pure" : "global", copyright: "\xA9 2020 Denis Pushkarev (zloirock.ru)" });
+    });
+    var Nt = c((v3, vc) => {
+      var Wu = Vi()("wks"), Ag = kn(), Hu = bt().Symbol, gc = typeof Hu == "function", hg = vc.exports = function(e) {
+        return Wu[e] || (Wu[e] = gc && Hu[e] || (gc ? Hu : Ag)("Symbol." + e));
+      };
+      hg.store = Wu;
+    });
+    var Ki = c((S3, Fc) => {
+      var yg = xr().f, Tg = er(), Sc = Nt()("toStringTag");
+      Fc.exports = function(e, t, r) {
+        e && !Tg(e = r ? e : e.prototype, Sc) && yg(e, Sc, { configurable: true, value: t });
+      };
+    });
+    var Wi = c((Cc) => {
+      Cc.f = Nt();
+    });
+    var Hi = c((C3, Oc) => {
+      var xg = bt(), Bc = Ve(), gg = Mn(), vg = Wi(), Sg = xr().f;
+      Oc.exports = function(e) {
+        var t = Bc.Symbol || (Bc.Symbol = gg ? {} : xg.Symbol || {});
+        e.charAt(0) != "_" && !(e in t) && Sg(t, e, { value: vg.f(e) });
+      };
+    });
+    var Xi = c((B3, bc) => {
+      var Fg = {}.toString;
+      bc.exports = function(e) {
+        return Fg.call(e).slice(8, -1);
+      };
+    });
+    var Ic = c((O3, Nc) => {
+      var Cg = Xi();
+      Nc.exports = Object("z").propertyIsEnumerable(0) ? Object : function(e) {
+        return Cg(e) == "String" ? e.split("") : Object(e);
+      };
+    });
+    var $i = c((b3, _c) => {
+      _c.exports = function(e) {
+        if (e == null)
+          throw TypeError("Can't call method on  " + e);
+        return e;
+      };
+    });
+    var Sr = c((N3, Rc) => {
+      var Bg = Ic(), Og = $i();
+      Rc.exports = function(e) {
+        return Bg(Og(e));
+      };
+    });
+    var Ji = c((I3, Pc) => {
+      var bg = Math.ceil, Ng = Math.floor;
+      Pc.exports = function(e) {
+        return isNaN(e = +e) ? 0 : (e > 0 ? Ng : bg)(e);
+      };
+    });
+    var wc = c((_3, Lc) => {
+      var Ig = Ji(), _g = Math.min;
+      Lc.exports = function(e) {
+        return e > 0 ? _g(Ig(e), 9007199254740991) : 0;
+      };
+    });
+    var kc = c((R3, qc) => {
+      var Rg = Ji(), Pg = Math.max, Lg = Math.min;
+      qc.exports = function(e, t) {
+        return e = Rg(e), e < 0 ? Pg(e + t, 0) : Lg(e, t);
+      };
+    });
+    var Gc = c((P3, Mc) => {
+      var wg = Sr(), qg = wc(), kg = kc();
+      Mc.exports = function(e) {
+        return function(t, r, n) {
+          var s = wg(t), u = qg(s.length), a = kg(n, u), l;
+          if (e && r != r) {
+            for (; u > a; )
+              if (l = s[a++], l != l)
+                return true;
+          } else
+            for (; u > a; a++)
+              if ((e || a in s) && s[a] === r)
+                return e || a || 0;
+          return !e && -1;
+        };
+      };
+    });
+    var Qi = c((L3, Yc) => {
+      var Uc = Vi()("keys"), Mg = kn();
+      Yc.exports = function(e) {
+        return Uc[e] || (Uc[e] = Mg(e));
+      };
+    });
+    var Xu = c((w3, Vc) => {
+      var jc = er(), Gg = Sr(), Ug = Gc()(false), Yg = Qi()("IE_PROTO");
+      Vc.exports = function(e, t) {
+        var r = Gg(e), n = 0, s = [], u;
+        for (u in r)
+          u != Yg && jc(r, u) && s.push(u);
+        for (; t.length > n; )
+          jc(r, u = t[n++]) && (~Ug(s, u) || s.push(u));
+        return s;
+      };
+    });
+    var zi = c((q3, Kc) => {
+      Kc.exports = "constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf".split(",");
+    });
+    var Gn = c((k3, Wc) => {
+      var jg = Xu(), Vg = zi();
+      Wc.exports = Object.keys || i(function(t) {
+        return jg(t, Vg);
+      }, "keys");
+    });
+    var $u = c((Hc) => {
+      Hc.f = Object.getOwnPropertySymbols;
+    });
+    var Zi = c((Xc) => {
+      Xc.f = {}.propertyIsEnumerable;
+    });
+    var Jc = c((U3, $c) => {
+      var Kg = Gn(), Wg = $u(), Hg = Zi();
+      $c.exports = function(e) {
+        var t = Kg(e), r = Wg.f;
+        if (r)
+          for (var n = r(e), s = Hg.f, u = 0, a; n.length > u; )
+            s.call(e, a = n[u++]) && t.push(a);
+        return t;
+      };
+    });
+    var zc = c((Y3, Qc) => {
+      var Xg = Xi();
+      Qc.exports = Array.isArray || i(function(t) {
+        return Xg(t) == "Array";
+      }, "isArray");
+    });
+    var es = c((j3, Zc) => {
+      var $g = $i();
+      Zc.exports = function(e) {
+        return Object($g(e));
+      };
+    });
+    var tp = c((V3, ep) => {
+      var Jg = xr(), Qg = $r(), zg = Gn();
+      ep.exports = Tr() ? Object.defineProperties : i(function(t, r) {
+        Qg(t);
+        for (var n = zg(r), s = n.length, u = 0, a; s > u; )
+          Jg.f(t, a = n[u++], r[a]);
+        return t;
+      }, "defineProperties");
+    });
+    var ip = c((K3, np) => {
+      var rp = bt().document;
+      np.exports = rp && rp.documentElement;
+    });
+    var rs = c((W3, up) => {
+      var Zg = $r(), ev = tp(), sp = zi(), tv = Qi()("IE_PROTO"), Ju = i(function() {
+      }, "Empty"), Qu = "prototype", ts = i(function() {
+        var e = Gu()("iframe"), t = sp.length, r = "<", n = ">", s;
+        for (e.style.display = "none", ip().appendChild(e), e.src = "javascript:", s = e.contentWindow.document, s.open(), s.write(r + "script" + n + "document.F=Object" + r + "/script" + n), s.close(), ts = s.F; t--; )
+          delete ts[Qu][sp[t]];
+        return ts();
+      }, "createDict");
+      up.exports = Object.create || i(function(t, r) {
+        var n;
+        return t !== null ? (Ju[Qu] = Zg(t), n = new Ju(), Ju[Qu] = null, n[tv] = t) : n = ts(), r === void 0 ? n : ev(n, r);
+      }, "create");
+    });
+    var zu = c((ap) => {
+      var rv = Xu(), nv = zi().concat("length", "prototype");
+      ap.f = Object.getOwnPropertyNames || i(function(t) {
+        return rv(t, nv);
+      }, "getOwnPropertyNames");
+    });
+    var pp = c((X3, cp) => {
+      var iv = Sr(), op = zu().f, sv = {}.toString, lp = typeof window == "object" && window && Object.getOwnPropertyNames ? Object.getOwnPropertyNames(window) : [], uv = i(function(e) {
+        try {
+          return op(e);
+        } catch {
+          return lp.slice();
+        }
+      }, "getWindowNames");
+      cp.exports.f = i(function(t) {
+        return lp && sv.call(t) == "[object Window]" ? uv(t) : op(iv(t));
+      }, "getOwnPropertyNames");
+    });
+    var dp = c((Ep) => {
+      var av = Zi(), ov = qn(), lv = Sr(), cv = Gi(), pv = er(), fv = Uu(), fp = Object.getOwnPropertyDescriptor;
+      Ep.f = Tr() ? fp : i(function(t, r) {
+        if (t = lv(t), r = cv(r, true), fv)
+          try {
+            return fp(t, r);
+          } catch {
+          }
+        if (pv(t, r))
+          return ov(!av.f.call(t, r), t[r]);
+      }, "getOwnPropertyDescriptor");
+    });
+    var ls = c(() => {
+      "use strict";
+      var ss = bt(), Be = er(), ia = Tr(), _e = Jr(), mp = ju(), Ev = Dc().KEY, ca = Hr(), pa = Vi(), fa = Ki(), dv = kn(), jn = Nt(), mv = Wi(), Dv = Hi(), Av = Jc(), hv = zc(), sa = $r(), yv = Xr(), Tv = es(), us = Sr(), Ea = Gi(), ua = qn(), Yn = rs(), yp = pp(), Tp = dp(), as = $u(), xp = xr(), xv = Gn(), gp = Tp.f, Fr = xp.f, vp = yp.f, Ue = ss.Symbol, is = ss.JSON, ns = is && is.stringify, tr = "prototype", Ge = jn("_hidden"), Dp = jn("toPrimitive"), gv = {}.propertyIsEnumerable, Un = pa("symbol-registry"), It = pa("symbols"), Vn = pa("op-symbols"), $e = Object[tr], Qr = typeof Ue == "function" && !!as.f, Zu = ss.QObject, aa = !Zu || !Zu[tr] || !Zu[tr].findChild, oa = ia && ca(function() {
+        return Yn(Fr({}, "a", { get: function() {
+          return Fr(this, "a", { value: 7 }).a;
+        } })).a != 7;
+      }) ? function(e, t, r) {
+        var n = gp($e, t);
+        n && delete $e[t], Fr(e, t, r), n && e !== $e && Fr($e, t, n);
+      } : Fr, Ap = i(function(e) {
+        var t = It[e] = Yn(Ue[tr]);
+        return t._k = e, t;
+      }, "wrap"), la = Qr && typeof Ue.iterator == "symbol" ? function(e) {
+        return typeof e == "symbol";
+      } : function(e) {
+        return e instanceof Ue;
+      }, os = i(function(t, r, n) {
+        return t === $e && os(Vn, r, n), sa(t), r = Ea(r, true), sa(n), Be(It, r) ? (n.enumerable ? (Be(t, Ge) && t[Ge][r] && (t[Ge][r] = false), n = Yn(n, { enumerable: ua(0, false) })) : (Be(t, Ge) || Fr(t, Ge, ua(1, {})), t[Ge][r] = true), oa(t, r, n)) : Fr(t, r, n);
+      }, "defineProperty"), Sp = i(function(t, r) {
+        sa(t);
+        for (var n = Av(r = us(r)), s = 0, u = n.length, a; u > s; )
+          os(t, a = n[s++], r[a]);
+        return t;
+      }, "defineProperties"), vv = i(function(t, r) {
+        return r === void 0 ? Yn(t) : Sp(Yn(t), r);
+      }, "create"), hp = i(function(t) {
+        var r = gv.call(this, t = Ea(t, true));
+        return this === $e && Be(It, t) && !Be(Vn, t) ? false : r || !Be(this, t) || !Be(It, t) || Be(this, Ge) && this[Ge][t] ? r : true;
+      }, "propertyIsEnumerable"), Fp = i(function(t, r) {
+        if (t = us(t), r = Ea(r, true), !(t === $e && Be(It, r) && !Be(Vn, r))) {
+          var n = gp(t, r);
+          return n && Be(It, r) && !(Be(t, Ge) && t[Ge][r]) && (n.enumerable = true), n;
+        }
+      }, "getOwnPropertyDescriptor"), Cp = i(function(t) {
+        for (var r = vp(us(t)), n = [], s = 0, u; r.length > s; )
+          !Be(It, u = r[s++]) && u != Ge && u != Ev && n.push(u);
+        return n;
+      }, "getOwnPropertyNames"), Bp = i(function(t) {
+        for (var r = t === $e, n = vp(r ? Vn : us(t)), s = [], u = 0, a; n.length > u; )
+          Be(It, a = n[u++]) && (r ? Be($e, a) : true) && s.push(It[a]);
+        return s;
+      }, "getOwnPropertySymbols");
+      Qr || (Ue = i(function() {
+        if (this instanceof Ue)
+          throw TypeError("Symbol is not a constructor!");
+        var t = dv(arguments.length > 0 ? arguments[0] : void 0), r = i(function(n) {
+          this === $e && r.call(Vn, n), Be(this, Ge) && Be(this[Ge], t) && (this[Ge][t] = false), oa(this, t, ua(1, n));
+        }, "$set");
+        return ia && aa && oa($e, t, { configurable: true, set: r }), Ap(t);
+      }, "Symbol"), mp(Ue[tr], "toString", i(function() {
+        return this._k;
+      }, "toString")), Tp.f = Fp, xp.f = os, zu().f = yp.f = Cp, Zi().f = hp, as.f = Bp, ia && !Mn() && mp($e, "propertyIsEnumerable", hp, true), mv.f = function(e) {
+        return Ap(jn(e));
+      });
+      _e(_e.G + _e.W + _e.F * !Qr, { Symbol: Ue });
+      for (ea = "hasInstance,isConcatSpreadable,iterator,match,replace,search,species,split,toPrimitive,toStringTag,unscopables".split(","), ta = 0; ea.length > ta; )
+        jn(ea[ta++]);
+      var ea, ta;
+      for (ra = xv(jn.store), na = 0; ra.length > na; )
+        Dv(ra[na++]);
+      var ra, na;
+      _e(_e.S + _e.F * !Qr, "Symbol", { for: function(e) {
+        return Be(Un, e += "") ? Un[e] : Un[e] = Ue(e);
+      }, keyFor: i(function(t) {
+        if (!la(t))
+          throw TypeError(t + " is not a symbol!");
+        for (var r in Un)
+          if (Un[r] === t)
+            return r;
+      }, "keyFor"), useSetter: function() {
+        aa = true;
+      }, useSimple: function() {
+        aa = false;
+      } });
+      _e(_e.S + _e.F * !Qr, "Object", { create: vv, defineProperty: os, defineProperties: Sp, getOwnPropertyDescriptor: Fp, getOwnPropertyNames: Cp, getOwnPropertySymbols: Bp });
+      var Sv = ca(function() {
+        as.f(1);
+      });
+      _e(_e.S + _e.F * Sv, "Object", { getOwnPropertySymbols: i(function(t) {
+        return as.f(Tv(t));
+      }, "getOwnPropertySymbols") });
+      is && _e(_e.S + _e.F * (!Qr || ca(function() {
+        var e = Ue();
+        return ns([e]) != "[null]" || ns({ a: e }) != "{}" || ns(Object(e)) != "{}";
+      })), "JSON", { stringify: i(function(t) {
+        for (var r = [t], n = 1, s, u; arguments.length > n; )
+          r.push(arguments[n++]);
+        if (u = s = r[1], !(!yv(s) && t === void 0 || la(t)))
+          return hv(s) || (s = i(function(a, l) {
+            if (typeof u == "function" && (l = u.call(this, a, l)), !la(l))
+              return l;
+          }, "replacer")), r[1] = s, ns.apply(is, r);
+      }, "stringify") });
+      Ue[tr][Dp] || gr()(Ue[tr], Dp, Ue[tr].valueOf);
+      fa(Ue, "Symbol");
+      fa(Math, "Math", true);
+      fa(ss.JSON, "JSON", true);
+    });
+    var bp = c((z3, Op) => {
+      ls();
+      Op.exports = Ve().Object.getOwnPropertySymbols;
+    });
+    var Ip = c((Z3, Np) => {
+      Np.exports = { default: bp(), __esModule: true };
+    });
+    var Rp = c((eq, _p) => {
+      _p.exports = function() {
+      };
+    });
+    var Lp = c((tq, Pp) => {
+      Pp.exports = function(e, t) {
+        return { value: t, done: !!e };
+      };
+    });
+    var Kn = c((rq, wp) => {
+      wp.exports = {};
+    });
+    var Mp = c((nq, kp) => {
+      "use strict";
+      var Fv = rs(), Cv = qn(), Bv = Ki(), qp = {};
+      gr()(qp, Nt()("iterator"), function() {
+        return this;
+      });
+      kp.exports = function(e, t, r) {
+        e.prototype = Fv(qp, { next: Cv(1, r) }), Bv(e, t + " Iterator");
+      };
+    });
+    var Yp = c((iq, Up) => {
+      var Ov = er(), bv = es(), Gp = Qi()("IE_PROTO"), Nv = Object.prototype;
+      Up.exports = Object.getPrototypeOf || function(e) {
+        return e = bv(e), Ov(e, Gp) ? e[Gp] : typeof e.constructor == "function" && e instanceof e.constructor ? e.constructor.prototype : e instanceof Object ? Nv : null;
+      };
+    });
+    var Da = c((sq, Xp) => {
+      "use strict";
+      var jp = Mn(), da = Jr(), Iv = ju(), Vp = gr(), Kp = Kn(), _v = Mp(), Rv = Ki(), Pv = Yp(), Wn = Nt()("iterator"), ma = !([].keys && "next" in [].keys()), Lv = "@@iterator", Wp = "keys", cs = "values", Hp = i(function() {
+        return this;
+      }, "returnThis");
+      Xp.exports = function(e, t, r, n, s, u, a) {
+        _v(r, t, n);
+        var l = i(function(z) {
+          if (!ma && z in A)
+            return A[z];
+          switch (z) {
+            case Wp:
+              return i(function() {
+                return new r(this, z);
+              }, "keys");
+            case cs:
+              return i(function() {
+                return new r(this, z);
+              }, "values");
+          }
+          return i(function() {
+            return new r(this, z);
+          }, "entries");
+        }, "getMethod"), p = t + " Iterator", f = s == cs, m = false, A = e.prototype, E = A[Wn] || A[Lv] || s && A[s], x = E || l(s), F = s ? f ? l("entries") : x : void 0, O = t == "Array" && A.entries || E, g, U, X;
+        if (O && (X = Pv(O.call(new e())), X !== Object.prototype && X.next && (Rv(X, p, true), !jp && typeof X[Wn] != "function" && Vp(X, Wn, Hp))), f && E && E.name !== cs && (m = true, x = i(function() {
+          return E.call(this);
+        }, "values")), (!jp || a) && (ma || m || !A[Wn]) && Vp(A, Wn, x), Kp[t] = x, Kp[p] = Hp, s)
+          if (g = { values: f ? x : l(cs), keys: u ? x : l(Wp), entries: F }, a)
+            for (U in g)
+              U in A || Iv(A, U, g[U]);
+          else
+            da(da.P + da.F * (ma || m), t, g);
+        return g;
+      };
+    });
+    var Qp = c((uq, Jp) => {
+      "use strict";
+      var Aa = Rp(), ps = Lp(), $p = Kn(), wv = Sr();
+      Jp.exports = Da()(Array, "Array", function(e, t) {
+        this._t = wv(e), this._i = 0, this._k = t;
+      }, function() {
+        var e = this._t, t = this._k, r = this._i++;
+        return !e || r >= e.length ? (this._t = void 0, ps(1)) : t == "keys" ? ps(0, r) : t == "values" ? ps(0, e[r]) : ps(0, [r, e[r]]);
+      }, "values");
+      $p.Arguments = $p.Array;
+      Aa("keys");
+      Aa("values");
+      Aa("entries");
+    });
+    var ya = c(() => {
+      Qp();
+      var qv = bt(), kv = gr(), zp = Kn(), Zp = Nt()("toStringTag"), ef = "CSSRuleList,CSSStyleDeclaration,CSSValueList,ClientRectList,DOMRectList,DOMStringList,DOMTokenList,DataTransferItemList,FileList,HTMLAllCollection,HTMLCollection,HTMLFormElement,HTMLSelectElement,MediaList,MimeTypeArray,NamedNodeMap,NodeList,PaintRequestList,Plugin,PluginArray,SVGLengthList,SVGNumberList,SVGPathSegList,SVGPointList,SVGStringList,SVGTransformList,SourceBufferList,StyleSheetList,TextTrackCueList,TextTrackList,TouchList".split(",");
+      for (fs = 0; fs < ef.length; fs++)
+        Es = ef[fs], ha = qv[Es], ds = ha && ha.prototype, ds && !ds[Zp] && kv(ds, Zp, Es), zp[Es] = zp.Array;
+      var Es, ha, ds, fs;
+    });
+    var rf = c((lq, tf) => {
+      var Mv = Ji(), Gv = $i();
+      tf.exports = function(e) {
+        return function(t, r) {
+          var n = String(Gv(t)), s = Mv(r), u = n.length, a, l;
+          return s < 0 || s >= u ? e ? "" : void 0 : (a = n.charCodeAt(s), a < 55296 || a > 56319 || s + 1 === u || (l = n.charCodeAt(s + 1)) < 56320 || l > 57343 ? e ? n.charAt(s) : a : e ? n.slice(s, s + 2) : (a - 55296 << 10) + (l - 56320) + 65536);
+        };
+      };
+    });
+    var Ta = c(() => {
+      "use strict";
+      var Uv = rf()(true);
+      Da()(String, "String", function(e) {
+        this._t = String(e), this._i = 0;
+      }, function() {
+        var e = this._t, t = this._i, r;
+        return t >= e.length ? { value: void 0, done: true } : (r = Uv(e, t), this._i += r.length, { value: r, done: false });
+      });
+    });
+    var sf = c((fq, nf) => {
+      var xa = Xi(), Yv = Nt()("toStringTag"), jv = xa(function() {
+        return arguments;
+      }()) == "Arguments", Vv = i(function(e, t) {
+        try {
+          return e[t];
+        } catch {
+        }
+      }, "tryGet");
+      nf.exports = function(e) {
+        var t, r, n;
+        return e === void 0 ? "Undefined" : e === null ? "Null" : typeof (r = Vv(t = Object(e), Yv)) == "string" ? r : jv ? xa(t) : (n = xa(t)) == "Object" && typeof t.callee == "function" ? "Arguments" : n;
+      };
+    });
+    var af = c((Eq, uf) => {
+      var Kv = sf(), Wv = Nt()("iterator"), Hv = Kn();
+      uf.exports = Ve().getIteratorMethod = function(e) {
+        if (e != null)
+          return e[Wv] || e["@@iterator"] || Hv[Kv(e)];
+      };
+    });
+    var lf = c((dq, of) => {
+      var Xv = $r(), $v = af();
+      of.exports = Ve().getIterator = function(e) {
+        var t = $v(e);
+        if (typeof t != "function")
+          throw TypeError(e + " is not iterable!");
+        return Xv(t.call(e));
+      };
+    });
+    var pf = c((mq, cf) => {
+      ya();
+      Ta();
+      cf.exports = lf();
+    });
+    var Hn = c((Dq, ff) => {
+      ff.exports = { default: pf(), __esModule: true };
+    });
+    var df = c((Aq, Ef) => {
+      var ga = Jr(), Jv = Ve(), Qv = Hr();
+      Ef.exports = function(e, t) {
+        var r = (Jv.Object || {})[e] || Object[e], n = {};
+        n[e] = t(r), ga(ga.S + ga.F * Qv(function() {
+          r(1);
+        }), "Object", n);
+      };
+    });
+    var mf = c(() => {
+      var zv = es(), Zv = Gn();
+      df()("keys", function() {
+        return i(function(t) {
+          return Zv(zv(t));
+        }, "keys");
+      });
+    });
+    var Af = c((Tq, Df) => {
+      mf();
+      Df.exports = Ve().Object.keys;
+    });
+    var va = c((xq, hf) => {
+      hf.exports = { default: Af(), __esModule: true };
+    });
+    var gf = c((gq, xf) => {
+      var yf = Ve(), Tf = yf.JSON || (yf.JSON = { stringify: JSON.stringify });
+      xf.exports = i(function(t) {
+        return Tf.stringify.apply(Tf, arguments);
+      }, "stringify");
+    });
+    var ms = c((vq, vf) => {
+      vf.exports = { default: gf(), __esModule: true };
+    });
+    var Ff = c((Sq, Sf) => {
+      ls();
+      Sf.exports = Ve().Symbol.for;
+    });
+    var Bf = c((Fq, Cf) => {
+      Cf.exports = { default: Ff(), __esModule: true };
+    });
+    var Ds = c((j) => {
+      "use strict";
+      j.__esModule = true;
+      j.NOT_LOCAL_BINDING = j.BLOCK_SCOPED_SYMBOL = j.INHERIT_KEYS = j.UNARY_OPERATORS = j.STRING_UNARY_OPERATORS = j.NUMBER_UNARY_OPERATORS = j.BOOLEAN_UNARY_OPERATORS = j.BINARY_OPERATORS = j.NUMBER_BINARY_OPERATORS = j.BOOLEAN_BINARY_OPERATORS = j.COMPARISON_BINARY_OPERATORS = j.EQUALITY_BINARY_OPERATORS = j.BOOLEAN_NUMBER_BINARY_OPERATORS = j.UPDATE_OPERATORS = j.LOGICAL_OPERATORS = j.COMMENT_KEYS = j.FOR_INIT_KEYS = j.FLATTENABLE_KEYS = j.STATEMENT_OR_BLOCK_KEYS = void 0;
+      var eS = Bf(), Of = tS(eS);
+      function tS(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      i(tS, "_interopRequireDefault");
+      var Cq = j.STATEMENT_OR_BLOCK_KEYS = ["consequent", "body", "alternate"], Bq = j.FLATTENABLE_KEYS = ["body", "expressions"], Oq = j.FOR_INIT_KEYS = ["left", "init"], bq = j.COMMENT_KEYS = ["leadingComments", "trailingComments", "innerComments"], Nq = j.LOGICAL_OPERATORS = ["||", "&&"], Iq = j.UPDATE_OPERATORS = ["++", "--"], rS = j.BOOLEAN_NUMBER_BINARY_OPERATORS = [">", "<", ">=", "<="], nS = j.EQUALITY_BINARY_OPERATORS = ["==", "===", "!=", "!=="], iS = j.COMPARISON_BINARY_OPERATORS = [].concat(nS, ["in", "instanceof"]), sS = j.BOOLEAN_BINARY_OPERATORS = [].concat(iS, rS), uS = j.NUMBER_BINARY_OPERATORS = ["-", "/", "%", "*", "**", "&", "|", ">>", ">>>", "<<", "^"], _q = j.BINARY_OPERATORS = ["+"].concat(uS, sS), aS = j.BOOLEAN_UNARY_OPERATORS = ["delete", "!"], oS = j.NUMBER_UNARY_OPERATORS = ["+", "-", "++", "--", "~"], lS = j.STRING_UNARY_OPERATORS = ["typeof"], Rq = j.UNARY_OPERATORS = ["void"].concat(aS, oS, lS), Pq = j.INHERIT_KEYS = { optional: ["typeAnnotation", "typeParameters", "returnType"], force: ["start", "loc", "end"] }, Lq = j.BLOCK_SCOPED_SYMBOL = (0, Of.default)("var used to be block scoped"), wq = j.NOT_LOCAL_BINDING = (0, Of.default)("should not be considered a local binding");
+    });
+    var Nf = c(() => {
+      var bf = Jr();
+      bf(bf.S, "Object", { create: rs() });
+    });
+    var _f = c((Gq, If) => {
+      Nf();
+      var cS = Ve().Object;
+      If.exports = i(function(t, r) {
+        return cS.create(t, r);
+      }, "create");
+    });
+    var Pf = c((Uq, Rf) => {
+      Rf.exports = { default: _f(), __esModule: true };
+    });
+    var Fa = c((As) => {
+      "use strict";
+      As.__esModule = true;
+      var pS = Pf(), fS = mS(pS);
+      As.getBindingIdentifiers = Sa;
+      As.getOuterBindingIdentifiers = DS;
+      var ES = _t(), zr = dS(ES);
+      function dS(e) {
+        if (e && e.__esModule)
+          return e;
+        var t = {};
+        if (e != null)
+          for (var r in e)
+            Object.prototype.hasOwnProperty.call(e, r) && (t[r] = e[r]);
+        return t.default = e, t;
+      }
+      i(dS, "_interopRequireWildcard");
+      function mS(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      i(mS, "_interopRequireDefault");
+      function Sa(e, t, r) {
+        for (var n = [].concat(e), s = (0, fS.default)(null); n.length; ) {
+          var u = n.shift();
+          if (!!u) {
+            var a = zr.getBindingIdentifiers.keys[u.type];
+            if (zr.isIdentifier(u)) {
+              if (t) {
+                var l = s[u.name] = s[u.name] || [];
+                l.push(u);
+              } else
+                s[u.name] = u;
+              continue;
+            }
+            if (zr.isExportDeclaration(u)) {
+              zr.isDeclaration(u.declaration) && n.push(u.declaration);
+              continue;
+            }
+            if (r) {
+              if (zr.isFunctionDeclaration(u)) {
+                n.push(u.id);
+                continue;
+              }
+              if (zr.isFunctionExpression(u))
+                continue;
+            }
+            if (a)
+              for (var p = 0; p < a.length; p++) {
+                var f = a[p];
+                u[f] && (n = n.concat(u[f]));
+              }
+          }
+        }
+        return s;
+      }
+      i(Sa, "getBindingIdentifiers");
+      Sa.keys = { DeclareClass: ["id"], DeclareFunction: ["id"], DeclareModule: ["id"], DeclareVariable: ["id"], InterfaceDeclaration: ["id"], TypeAlias: ["id"], OpaqueType: ["id"], CatchClause: ["param"], LabeledStatement: ["label"], UnaryExpression: ["argument"], AssignmentExpression: ["left"], ImportSpecifier: ["local"], ImportNamespaceSpecifier: ["local"], ImportDefaultSpecifier: ["local"], ImportDeclaration: ["specifiers"], ExportSpecifier: ["exported"], ExportNamespaceSpecifier: ["exported"], ExportDefaultSpecifier: ["exported"], FunctionDeclaration: ["id", "params"], FunctionExpression: ["id", "params"], ClassDeclaration: ["id"], ClassExpression: ["id"], RestElement: ["argument"], UpdateExpression: ["argument"], RestProperty: ["argument"], ObjectProperty: ["value"], AssignmentPattern: ["left"], ArrayPattern: ["elements"], ObjectPattern: ["properties"], VariableDeclaration: ["declarations"], VariableDeclarator: ["id"] };
+      function DS(e, t) {
+        return Sa(e, t, true);
+      }
+      i(DS, "getOuterBindingIdentifiers");
+    });
+    var wf = c((jq, Lf) => {
+      Ta();
+      ya();
+      Lf.exports = Wi().f("iterator");
+    });
+    var kf = c((Vq, qf) => {
+      qf.exports = { default: wf(), __esModule: true };
+    });
+    var Mf = c(() => {
+    });
+    var Gf = c(() => {
+      Hi()("asyncIterator");
+    });
+    var Uf = c(() => {
+      Hi()("observable");
+    });
+    var jf = c((Qq, Yf) => {
+      ls();
+      Mf();
+      Gf();
+      Uf();
+      Yf.exports = Ve().Symbol;
+    });
+    var Kf = c((zq, Vf) => {
+      Vf.exports = { default: jf(), __esModule: true };
+    });
+    var Oa = c((Ba) => {
+      "use strict";
+      Ba.__esModule = true;
+      var AS = kf(), Wf = Hf(AS), hS = Kf(), rr = Hf(hS), Ca = typeof rr.default == "function" && typeof Wf.default == "symbol" ? function(e) {
+        return typeof e;
+      } : function(e) {
+        return e && typeof rr.default == "function" && e.constructor === rr.default && e !== rr.default.prototype ? "symbol" : typeof e;
+      };
+      function Hf(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      i(Hf, "_interopRequireDefault");
+      Ba.default = typeof rr.default == "function" && Ca(Wf.default) === "symbol" ? function(e) {
+        return typeof e > "u" ? "undefined" : Ca(e);
+      } : function(e) {
+        return e && typeof rr.default == "function" && e.constructor === rr.default && e !== rr.default.prototype ? "symbol" : typeof e > "u" ? "undefined" : Ca(e);
+      };
+    });
+    var $f = c((e5, Xf) => {
+      (function() {
+        "use strict";
+        function e(a) {
+          if (a == null)
+            return false;
+          switch (a.type) {
+            case "ArrayExpression":
+            case "AssignmentExpression":
+            case "BinaryExpression":
+            case "CallExpression":
+            case "ConditionalExpression":
+            case "FunctionExpression":
+            case "Identifier":
+            case "Literal":
+            case "LogicalExpression":
+            case "MemberExpression":
+            case "NewExpression":
+            case "ObjectExpression":
+            case "SequenceExpression":
+            case "ThisExpression":
+            case "UnaryExpression":
+            case "UpdateExpression":
+              return true;
+          }
+          return false;
+        }
+        i(e, "isExpression");
+        function t(a) {
+          if (a == null)
+            return false;
+          switch (a.type) {
+            case "DoWhileStatement":
+            case "ForInStatement":
+            case "ForStatement":
+            case "WhileStatement":
+              return true;
+          }
+          return false;
+        }
+        i(t, "isIterationStatement");
+        function r(a) {
+          if (a == null)
+            return false;
+          switch (a.type) {
+            case "BlockStatement":
+            case "BreakStatement":
+            case "ContinueStatement":
+            case "DebuggerStatement":
+            case "DoWhileStatement":
+            case "EmptyStatement":
+            case "ExpressionStatement":
+            case "ForInStatement":
+            case "ForStatement":
+            case "IfStatement":
+            case "LabeledStatement":
+            case "ReturnStatement":
+            case "SwitchStatement":
+            case "ThrowStatement":
+            case "TryStatement":
+            case "VariableDeclaration":
+            case "WhileStatement":
+            case "WithStatement":
+              return true;
+          }
+          return false;
+        }
+        i(r, "isStatement");
+        function n(a) {
+          return r(a) || a != null && a.type === "FunctionDeclaration";
+        }
+        i(n, "isSourceElement");
+        function s(a) {
+          switch (a.type) {
+            case "IfStatement":
+              return a.alternate != null ? a.alternate : a.consequent;
+            case "LabeledStatement":
+            case "ForStatement":
+            case "ForInStatement":
+            case "WhileStatement":
+            case "WithStatement":
+              return a.body;
+          }
+          return null;
+        }
+        i(s, "trailingStatement");
+        function u(a) {
+          var l;
+          if (a.type !== "IfStatement" || a.alternate == null)
+            return false;
+          l = a.consequent;
+          do {
+            if (l.type === "IfStatement" && l.alternate == null)
+              return true;
+            l = s(l);
+          } while (l);
+          return false;
+        }
+        i(u, "isProblematicIfStatement"), Xf.exports = { isExpression: e, isStatement: r, isIterationStatement: t, isSourceElement: n, isProblematicIfStatement: u, trailingStatement: s };
+      })();
+    });
+    var ba = c((t5, Jf) => {
+      (function() {
+        "use strict";
+        var e, t, r, n, s, u;
+        t = { NonAsciiIdentifierStart: /[\xAA\xB5\xBA\xC0-\xD6\xD8-\xF6\xF8-\u02C1\u02C6-\u02D1\u02E0-\u02E4\u02EC\u02EE\u0370-\u0374\u0376\u0377\u037A-\u037D\u037F\u0386\u0388-\u038A\u038C\u038E-\u03A1\u03A3-\u03F5\u03F7-\u0481\u048A-\u052F\u0531-\u0556\u0559\u0561-\u0587\u05D0-\u05EA\u05F0-\u05F2\u0620-\u064A\u066E\u066F\u0671-\u06D3\u06D5\u06E5\u06E6\u06EE\u06EF\u06FA-\u06FC\u06FF\u0710\u0712-\u072F\u074D-\u07A5\u07B1\u07CA-\u07EA\u07F4\u07F5\u07FA\u0800-\u0815\u081A\u0824\u0828\u0840-\u0858\u08A0-\u08B4\u08B6-\u08BD\u0904-\u0939\u093D\u0950\u0958-\u0961\u0971-\u0980\u0985-\u098C\u098F\u0990\u0993-\u09A8\u09AA-\u09B0\u09B2\u09B6-\u09B9\u09BD\u09CE\u09DC\u09DD\u09DF-\u09E1\u09F0\u09F1\u0A05-\u0A0A\u0A0F\u0A10\u0A13-\u0A28\u0A2A-\u0A30\u0A32\u0A33\u0A35\u0A36\u0A38\u0A39\u0A59-\u0A5C\u0A5E\u0A72-\u0A74\u0A85-\u0A8D\u0A8F-\u0A91\u0A93-\u0AA8\u0AAA-\u0AB0\u0AB2\u0AB3\u0AB5-\u0AB9\u0ABD\u0AD0\u0AE0\u0AE1\u0AF9\u0B05-\u0B0C\u0B0F\u0B10\u0B13-\u0B28\u0B2A-\u0B30\u0B32\u0B33\u0B35-\u0B39\u0B3D\u0B5C\u0B5D\u0B5F-\u0B61\u0B71\u0B83\u0B85-\u0B8A\u0B8E-\u0B90\u0B92-\u0B95\u0B99\u0B9A\u0B9C\u0B9E\u0B9F\u0BA3\u0BA4\u0BA8-\u0BAA\u0BAE-\u0BB9\u0BD0\u0C05-\u0C0C\u0C0E-\u0C10\u0C12-\u0C28\u0C2A-\u0C39\u0C3D\u0C58-\u0C5A\u0C60\u0C61\u0C80\u0C85-\u0C8C\u0C8E-\u0C90\u0C92-\u0CA8\u0CAA-\u0CB3\u0CB5-\u0CB9\u0CBD\u0CDE\u0CE0\u0CE1\u0CF1\u0CF2\u0D05-\u0D0C\u0D0E-\u0D10\u0D12-\u0D3A\u0D3D\u0D4E\u0D54-\u0D56\u0D5F-\u0D61\u0D7A-\u0D7F\u0D85-\u0D96\u0D9A-\u0DB1\u0DB3-\u0DBB\u0DBD\u0DC0-\u0DC6\u0E01-\u0E30\u0E32\u0E33\u0E40-\u0E46\u0E81\u0E82\u0E84\u0E87\u0E88\u0E8A\u0E8D\u0E94-\u0E97\u0E99-\u0E9F\u0EA1-\u0EA3\u0EA5\u0EA7\u0EAA\u0EAB\u0EAD-\u0EB0\u0EB2\u0EB3\u0EBD\u0EC0-\u0EC4\u0EC6\u0EDC-\u0EDF\u0F00\u0F40-\u0F47\u0F49-\u0F6C\u0F88-\u0F8C\u1000-\u102A\u103F\u1050-\u1055\u105A-\u105D\u1061\u1065\u1066\u106E-\u1070\u1075-\u1081\u108E\u10A0-\u10C5\u10C7\u10CD\u10D0-\u10FA\u10FC-\u1248\u124A-\u124D\u1250-\u1256\u1258\u125A-\u125D\u1260-\u1288\u128A-\u128D\u1290-\u12B0\u12B2-\u12B5\u12B8-\u12BE\u12C0\u12C2-\u12C5\u12C8-\u12D6\u12D8-\u1310\u1312-\u1315\u1318-\u135A\u1380-\u138F\u13A0-\u13F5\u13F8-\u13FD\u1401-\u166C\u166F-\u167F\u1681-\u169A\u16A0-\u16EA\u16EE-\u16F8\u1700-\u170C\u170E-\u1711\u1720-\u1731\u1740-\u1751\u1760-\u176C\u176E-\u1770\u1780-\u17B3\u17D7\u17DC\u1820-\u1877\u1880-\u1884\u1887-\u18A8\u18AA\u18B0-\u18F5\u1900-\u191E\u1950-\u196D\u1970-\u1974\u1980-\u19AB\u19B0-\u19C9\u1A00-\u1A16\u1A20-\u1A54\u1AA7\u1B05-\u1B33\u1B45-\u1B4B\u1B83-\u1BA0\u1BAE\u1BAF\u1BBA-\u1BE5\u1C00-\u1C23\u1C4D-\u1C4F\u1C5A-\u1C7D\u1C80-\u1C88\u1CE9-\u1CEC\u1CEE-\u1CF1\u1CF5\u1CF6\u1D00-\u1DBF\u1E00-\u1F15\u1F18-\u1F1D\u1F20-\u1F45\u1F48-\u1F4D\u1F50-\u1F57\u1F59\u1F5B\u1F5D\u1F5F-\u1F7D\u1F80-\u1FB4\u1FB6-\u1FBC\u1FBE\u1FC2-\u1FC4\u1FC6-\u1FCC\u1FD0-\u1FD3\u1FD6-\u1FDB\u1FE0-\u1FEC\u1FF2-\u1FF4\u1FF6-\u1FFC\u2071\u207F\u2090-\u209C\u2102\u2107\u210A-\u2113\u2115\u2119-\u211D\u2124\u2126\u2128\u212A-\u212D\u212F-\u2139\u213C-\u213F\u2145-\u2149\u214E\u2160-\u2188\u2C00-\u2C2E\u2C30-\u2C5E\u2C60-\u2CE4\u2CEB-\u2CEE\u2CF2\u2CF3\u2D00-\u2D25\u2D27\u2D2D\u2D30-\u2D67\u2D6F\u2D80-\u2D96\u2DA0-\u2DA6\u2DA8-\u2DAE\u2DB0-\u2DB6\u2DB8-\u2DBE\u2DC0-\u2DC6\u2DC8-\u2DCE\u2DD0-\u2DD6\u2DD8-\u2DDE\u2E2F\u3005-\u3007\u3021-\u3029\u3031-\u3035\u3038-\u303C\u3041-\u3096\u309D-\u309F\u30A1-\u30FA\u30FC-\u30FF\u3105-\u312D\u3131-\u318E\u31A0-\u31BA\u31F0-\u31FF\u3400-\u4DB5\u4E00-\u9FD5\uA000-\uA48C\uA4D0-\uA4FD\uA500-\uA60C\uA610-\uA61F\uA62A\uA62B\uA640-\uA66E\uA67F-\uA69D\uA6A0-\uA6EF\uA717-\uA71F\uA722-\uA788\uA78B-\uA7AE\uA7B0-\uA7B7\uA7F7-\uA801\uA803-\uA805\uA807-\uA80A\uA80C-\uA822\uA840-\uA873\uA882-\uA8B3\uA8F2-\uA8F7\uA8FB\uA8FD\uA90A-\uA925\uA930-\uA946\uA960-\uA97C\uA984-\uA9B2\uA9CF\uA9E0-\uA9E4\uA9E6-\uA9EF\uA9FA-\uA9FE\uAA00-\uAA28\uAA40-\uAA42\uAA44-\uAA4B\uAA60-\uAA76\uAA7A\uAA7E-\uAAAF\uAAB1\uAAB5\uAAB6\uAAB9-\uAABD\uAAC0\uAAC2\uAADB-\uAADD\uAAE0-\uAAEA\uAAF2-\uAAF4\uAB01-\uAB06\uAB09-\uAB0E\uAB11-\uAB16\uAB20-\uAB26\uAB28-\uAB2E\uAB30-\uAB5A\uAB5C-\uAB65\uAB70-\uABE2\uAC00-\uD7A3\uD7B0-\uD7C6\uD7CB-\uD7FB\uF900-\uFA6D\uFA70-\uFAD9\uFB00-\uFB06\uFB13-\uFB17\uFB1D\uFB1F-\uFB28\uFB2A-\uFB36\uFB38-\uFB3C\uFB3E\uFB40\uFB41\uFB43\uFB44\uFB46-\uFBB1\uFBD3-\uFD3D\uFD50-\uFD8F\uFD92-\uFDC7\uFDF0-\uFDFB\uFE70-\uFE74\uFE76-\uFEFC\uFF21-\uFF3A\uFF41-\uFF5A\uFF66-\uFFBE\uFFC2-\uFFC7\uFFCA-\uFFCF\uFFD2-\uFFD7\uFFDA-\uFFDC]/, NonAsciiIdentifierPart: /[\xAA\xB5\xBA\xC0-\xD6\xD8-\xF6\xF8-\u02C1\u02C6-\u02D1\u02E0-\u02E4\u02EC\u02EE\u0300-\u0374\u0376\u0377\u037A-\u037D\u037F\u0386\u0388-\u038A\u038C\u038E-\u03A1\u03A3-\u03F5\u03F7-\u0481\u0483-\u0487\u048A-\u052F\u0531-\u0556\u0559\u0561-\u0587\u0591-\u05BD\u05BF\u05C1\u05C2\u05C4\u05C5\u05C7\u05D0-\u05EA\u05F0-\u05F2\u0610-\u061A\u0620-\u0669\u066E-\u06D3\u06D5-\u06DC\u06DF-\u06E8\u06EA-\u06FC\u06FF\u0710-\u074A\u074D-\u07B1\u07C0-\u07F5\u07FA\u0800-\u082D\u0840-\u085B\u08A0-\u08B4\u08B6-\u08BD\u08D4-\u08E1\u08E3-\u0963\u0966-\u096F\u0971-\u0983\u0985-\u098C\u098F\u0990\u0993-\u09A8\u09AA-\u09B0\u09B2\u09B6-\u09B9\u09BC-\u09C4\u09C7\u09C8\u09CB-\u09CE\u09D7\u09DC\u09DD\u09DF-\u09E3\u09E6-\u09F1\u0A01-\u0A03\u0A05-\u0A0A\u0A0F\u0A10\u0A13-\u0A28\u0A2A-\u0A30\u0A32\u0A33\u0A35\u0A36\u0A38\u0A39\u0A3C\u0A3E-\u0A42\u0A47\u0A48\u0A4B-\u0A4D\u0A51\u0A59-\u0A5C\u0A5E\u0A66-\u0A75\u0A81-\u0A83\u0A85-\u0A8D\u0A8F-\u0A91\u0A93-\u0AA8\u0AAA-\u0AB0\u0AB2\u0AB3\u0AB5-\u0AB9\u0ABC-\u0AC5\u0AC7-\u0AC9\u0ACB-\u0ACD\u0AD0\u0AE0-\u0AE3\u0AE6-\u0AEF\u0AF9\u0B01-\u0B03\u0B05-\u0B0C\u0B0F\u0B10\u0B13-\u0B28\u0B2A-\u0B30\u0B32\u0B33\u0B35-\u0B39\u0B3C-\u0B44\u0B47\u0B48\u0B4B-\u0B4D\u0B56\u0B57\u0B5C\u0B5D\u0B5F-\u0B63\u0B66-\u0B6F\u0B71\u0B82\u0B83\u0B85-\u0B8A\u0B8E-\u0B90\u0B92-\u0B95\u0B99\u0B9A\u0B9C\u0B9E\u0B9F\u0BA3\u0BA4\u0BA8-\u0BAA\u0BAE-\u0BB9\u0BBE-\u0BC2\u0BC6-\u0BC8\u0BCA-\u0BCD\u0BD0\u0BD7\u0BE6-\u0BEF\u0C00-\u0C03\u0C05-\u0C0C\u0C0E-\u0C10\u0C12-\u0C28\u0C2A-\u0C39\u0C3D-\u0C44\u0C46-\u0C48\u0C4A-\u0C4D\u0C55\u0C56\u0C58-\u0C5A\u0C60-\u0C63\u0C66-\u0C6F\u0C80-\u0C83\u0C85-\u0C8C\u0C8E-\u0C90\u0C92-\u0CA8\u0CAA-\u0CB3\u0CB5-\u0CB9\u0CBC-\u0CC4\u0CC6-\u0CC8\u0CCA-\u0CCD\u0CD5\u0CD6\u0CDE\u0CE0-\u0CE3\u0CE6-\u0CEF\u0CF1\u0CF2\u0D01-\u0D03\u0D05-\u0D0C\u0D0E-\u0D10\u0D12-\u0D3A\u0D3D-\u0D44\u0D46-\u0D48\u0D4A-\u0D4E\u0D54-\u0D57\u0D5F-\u0D63\u0D66-\u0D6F\u0D7A-\u0D7F\u0D82\u0D83\u0D85-\u0D96\u0D9A-\u0DB1\u0DB3-\u0DBB\u0DBD\u0DC0-\u0DC6\u0DCA\u0DCF-\u0DD4\u0DD6\u0DD8-\u0DDF\u0DE6-\u0DEF\u0DF2\u0DF3\u0E01-\u0E3A\u0E40-\u0E4E\u0E50-\u0E59\u0E81\u0E82\u0E84\u0E87\u0E88\u0E8A\u0E8D\u0E94-\u0E97\u0E99-\u0E9F\u0EA1-\u0EA3\u0EA5\u0EA7\u0EAA\u0EAB\u0EAD-\u0EB9\u0EBB-\u0EBD\u0EC0-\u0EC4\u0EC6\u0EC8-\u0ECD\u0ED0-\u0ED9\u0EDC-\u0EDF\u0F00\u0F18\u0F19\u0F20-\u0F29\u0F35\u0F37\u0F39\u0F3E-\u0F47\u0F49-\u0F6C\u0F71-\u0F84\u0F86-\u0F97\u0F99-\u0FBC\u0FC6\u1000-\u1049\u1050-\u109D\u10A0-\u10C5\u10C7\u10CD\u10D0-\u10FA\u10FC-\u1248\u124A-\u124D\u1250-\u1256\u1258\u125A-\u125D\u1260-\u1288\u128A-\u128D\u1290-\u12B0\u12B2-\u12B5\u12B8-\u12BE\u12C0\u12C2-\u12C5\u12C8-\u12D6\u12D8-\u1310\u1312-\u1315\u1318-\u135A\u135D-\u135F\u1380-\u138F\u13A0-\u13F5\u13F8-\u13FD\u1401-\u166C\u166F-\u167F\u1681-\u169A\u16A0-\u16EA\u16EE-\u16F8\u1700-\u170C\u170E-\u1714\u1720-\u1734\u1740-\u1753\u1760-\u176C\u176E-\u1770\u1772\u1773\u1780-\u17D3\u17D7\u17DC\u17DD\u17E0-\u17E9\u180B-\u180D\u1810-\u1819\u1820-\u1877\u1880-\u18AA\u18B0-\u18F5\u1900-\u191E\u1920-\u192B\u1930-\u193B\u1946-\u196D\u1970-\u1974\u1980-\u19AB\u19B0-\u19C9\u19D0-\u19D9\u1A00-\u1A1B\u1A20-\u1A5E\u1A60-\u1A7C\u1A7F-\u1A89\u1A90-\u1A99\u1AA7\u1AB0-\u1ABD\u1B00-\u1B4B\u1B50-\u1B59\u1B6B-\u1B73\u1B80-\u1BF3\u1C00-\u1C37\u1C40-\u1C49\u1C4D-\u1C7D\u1C80-\u1C88\u1CD0-\u1CD2\u1CD4-\u1CF6\u1CF8\u1CF9\u1D00-\u1DF5\u1DFB-\u1F15\u1F18-\u1F1D\u1F20-\u1F45\u1F48-\u1F4D\u1F50-\u1F57\u1F59\u1F5B\u1F5D\u1F5F-\u1F7D\u1F80-\u1FB4\u1FB6-\u1FBC\u1FBE\u1FC2-\u1FC4\u1FC6-\u1FCC\u1FD0-\u1FD3\u1FD6-\u1FDB\u1FE0-\u1FEC\u1FF2-\u1FF4\u1FF6-\u1FFC\u200C\u200D\u203F\u2040\u2054\u2071\u207F\u2090-\u209C\u20D0-\u20DC\u20E1\u20E5-\u20F0\u2102\u2107\u210A-\u2113\u2115\u2119-\u211D\u2124\u2126\u2128\u212A-\u212D\u212F-\u2139\u213C-\u213F\u2145-\u2149\u214E\u2160-\u2188\u2C00-\u2C2E\u2C30-\u2C5E\u2C60-\u2CE4\u2CEB-\u2CF3\u2D00-\u2D25\u2D27\u2D2D\u2D30-\u2D67\u2D6F\u2D7F-\u2D96\u2DA0-\u2DA6\u2DA8-\u2DAE\u2DB0-\u2DB6\u2DB8-\u2DBE\u2DC0-\u2DC6\u2DC8-\u2DCE\u2DD0-\u2DD6\u2DD8-\u2DDE\u2DE0-\u2DFF\u2E2F\u3005-\u3007\u3021-\u302F\u3031-\u3035\u3038-\u303C\u3041-\u3096\u3099\u309A\u309D-\u309F\u30A1-\u30FA\u30FC-\u30FF\u3105-\u312D\u3131-\u318E\u31A0-\u31BA\u31F0-\u31FF\u3400-\u4DB5\u4E00-\u9FD5\uA000-\uA48C\uA4D0-\uA4FD\uA500-\uA60C\uA610-\uA62B\uA640-\uA66F\uA674-\uA67D\uA67F-\uA6F1\uA717-\uA71F\uA722-\uA788\uA78B-\uA7AE\uA7B0-\uA7B7\uA7F7-\uA827\uA840-\uA873\uA880-\uA8C5\uA8D0-\uA8D9\uA8E0-\uA8F7\uA8FB\uA8FD\uA900-\uA92D\uA930-\uA953\uA960-\uA97C\uA980-\uA9C0\uA9CF-\uA9D9\uA9E0-\uA9FE\uAA00-\uAA36\uAA40-\uAA4D\uAA50-\uAA59\uAA60-\uAA76\uAA7A-\uAAC2\uAADB-\uAADD\uAAE0-\uAAEF\uAAF2-\uAAF6\uAB01-\uAB06\uAB09-\uAB0E\uAB11-\uAB16\uAB20-\uAB26\uAB28-\uAB2E\uAB30-\uAB5A\uAB5C-\uAB65\uAB70-\uABEA\uABEC\uABED\uABF0-\uABF9\uAC00-\uD7A3\uD7B0-\uD7C6\uD7CB-\uD7FB\uF900-\uFA6D\uFA70-\uFAD9\uFB00-\uFB06\uFB13-\uFB17\uFB1D-\uFB28\uFB2A-\uFB36\uFB38-\uFB3C\uFB3E\uFB40\uFB41\uFB43\uFB44\uFB46-\uFBB1\uFBD3-\uFD3D\uFD50-\uFD8F\uFD92-\uFDC7\uFDF0-\uFDFB\uFE00-\uFE0F\uFE20-\uFE2F\uFE33\uFE34\uFE4D-\uFE4F\uFE70-\uFE74\uFE76-\uFEFC\uFF10-\uFF19\uFF21-\uFF3A\uFF3F\uFF41-\uFF5A\uFF66-\uFFBE\uFFC2-\uFFC7\uFFCA-\uFFCF\uFFD2-\uFFD7\uFFDA-\uFFDC]/ }, e = { NonAsciiIdentifierStart: /[\xAA\xB5\xBA\xC0-\xD6\xD8-\xF6\xF8-\u02C1\u02C6-\u02D1\u02E0-\u02E4\u02EC\u02EE\u0370-\u0374\u0376\u0377\u037A-\u037D\u037F\u0386\u0388-\u038A\u038C\u038E-\u03A1\u03A3-\u03F5\u03F7-\u0481\u048A-\u052F\u0531-\u0556\u0559\u0561-\u0587\u05D0-\u05EA\u05F0-\u05F2\u0620-\u064A\u066E\u066F\u0671-\u06D3\u06D5\u06E5\u06E6\u06EE\u06EF\u06FA-\u06FC\u06FF\u0710\u0712-\u072F\u074D-\u07A5\u07B1\u07CA-\u07EA\u07F4\u07F5\u07FA\u0800-\u0815\u081A\u0824\u0828\u0840-\u0858\u08A0-\u08B4\u08B6-\u08BD\u0904-\u0939\u093D\u0950\u0958-\u0961\u0971-\u0980\u0985-\u098C\u098F\u0990\u0993-\u09A8\u09AA-\u09B0\u09B2\u09B6-\u09B9\u09BD\u09CE\u09DC\u09DD\u09DF-\u09E1\u09F0\u09F1\u0A05-\u0A0A\u0A0F\u0A10\u0A13-\u0A28\u0A2A-\u0A30\u0A32\u0A33\u0A35\u0A36\u0A38\u0A39\u0A59-\u0A5C\u0A5E\u0A72-\u0A74\u0A85-\u0A8D\u0A8F-\u0A91\u0A93-\u0AA8\u0AAA-\u0AB0\u0AB2\u0AB3\u0AB5-\u0AB9\u0ABD\u0AD0\u0AE0\u0AE1\u0AF9\u0B05-\u0B0C\u0B0F\u0B10\u0B13-\u0B28\u0B2A-\u0B30\u0B32\u0B33\u0B35-\u0B39\u0B3D\u0B5C\u0B5D\u0B5F-\u0B61\u0B71\u0B83\u0B85-\u0B8A\u0B8E-\u0B90\u0B92-\u0B95\u0B99\u0B9A\u0B9C\u0B9E\u0B9F\u0BA3\u0BA4\u0BA8-\u0BAA\u0BAE-\u0BB9\u0BD0\u0C05-\u0C0C\u0C0E-\u0C10\u0C12-\u0C28\u0C2A-\u0C39\u0C3D\u0C58-\u0C5A\u0C60\u0C61\u0C80\u0C85-\u0C8C\u0C8E-\u0C90\u0C92-\u0CA8\u0CAA-\u0CB3\u0CB5-\u0CB9\u0CBD\u0CDE\u0CE0\u0CE1\u0CF1\u0CF2\u0D05-\u0D0C\u0D0E-\u0D10\u0D12-\u0D3A\u0D3D\u0D4E\u0D54-\u0D56\u0D5F-\u0D61\u0D7A-\u0D7F\u0D85-\u0D96\u0D9A-\u0DB1\u0DB3-\u0DBB\u0DBD\u0DC0-\u0DC6\u0E01-\u0E30\u0E32\u0E33\u0E40-\u0E46\u0E81\u0E82\u0E84\u0E87\u0E88\u0E8A\u0E8D\u0E94-\u0E97\u0E99-\u0E9F\u0EA1-\u0EA3\u0EA5\u0EA7\u0EAA\u0EAB\u0EAD-\u0EB0\u0EB2\u0EB3\u0EBD\u0EC0-\u0EC4\u0EC6\u0EDC-\u0EDF\u0F00\u0F40-\u0F47\u0F49-\u0F6C\u0F88-\u0F8C\u1000-\u102A\u103F\u1050-\u1055\u105A-\u105D\u1061\u1065\u1066\u106E-\u1070\u1075-\u1081\u108E\u10A0-\u10C5\u10C7\u10CD\u10D0-\u10FA\u10FC-\u1248\u124A-\u124D\u1250-\u1256\u1258\u125A-\u125D\u1260-\u1288\u128A-\u128D\u1290-\u12B0\u12B2-\u12B5\u12B8-\u12BE\u12C0\u12C2-\u12C5\u12C8-\u12D6\u12D8-\u1310\u1312-\u1315\u1318-\u135A\u1380-\u138F\u13A0-\u13F5\u13F8-\u13FD\u1401-\u166C\u166F-\u167F\u1681-\u169A\u16A0-\u16EA\u16EE-\u16F8\u1700-\u170C\u170E-\u1711\u1720-\u1731\u1740-\u1751\u1760-\u176C\u176E-\u1770\u1780-\u17B3\u17D7\u17DC\u1820-\u1877\u1880-\u18A8\u18AA\u18B0-\u18F5\u1900-\u191E\u1950-\u196D\u1970-\u1974\u1980-\u19AB\u19B0-\u19C9\u1A00-\u1A16\u1A20-\u1A54\u1AA7\u1B05-\u1B33\u1B45-\u1B4B\u1B83-\u1BA0\u1BAE\u1BAF\u1BBA-\u1BE5\u1C00-\u1C23\u1C4D-\u1C4F\u1C5A-\u1C7D\u1C80-\u1C88\u1CE9-\u1CEC\u1CEE-\u1CF1\u1CF5\u1CF6\u1D00-\u1DBF\u1E00-\u1F15\u1F18-\u1F1D\u1F20-\u1F45\u1F48-\u1F4D\u1F50-\u1F57\u1F59\u1F5B\u1F5D\u1F5F-\u1F7D\u1F80-\u1FB4\u1FB6-\u1FBC\u1FBE\u1FC2-\u1FC4\u1FC6-\u1FCC\u1FD0-\u1FD3\u1FD6-\u1FDB\u1FE0-\u1FEC\u1FF2-\u1FF4\u1FF6-\u1FFC\u2071\u207F\u2090-\u209C\u2102\u2107\u210A-\u2113\u2115\u2118-\u211D\u2124\u2126\u2128\u212A-\u2139\u213C-\u213F\u2145-\u2149\u214E\u2160-\u2188\u2C00-\u2C2E\u2C30-\u2C5E\u2C60-\u2CE4\u2CEB-\u2CEE\u2CF2\u2CF3\u2D00-\u2D25\u2D27\u2D2D\u2D30-\u2D67\u2D6F\u2D80-\u2D96\u2DA0-\u2DA6\u2DA8-\u2DAE\u2DB0-\u2DB6\u2DB8-\u2DBE\u2DC0-\u2DC6\u2DC8-\u2DCE\u2DD0-\u2DD6\u2DD8-\u2DDE\u3005-\u3007\u3021-\u3029\u3031-\u3035\u3038-\u303C\u3041-\u3096\u309B-\u309F\u30A1-\u30FA\u30FC-\u30FF\u3105-\u312D\u3131-\u318E\u31A0-\u31BA\u31F0-\u31FF\u3400-\u4DB5\u4E00-\u9FD5\uA000-\uA48C\uA4D0-\uA4FD\uA500-\uA60C\uA610-\uA61F\uA62A\uA62B\uA640-\uA66E\uA67F-\uA69D\uA6A0-\uA6EF\uA717-\uA71F\uA722-\uA788\uA78B-\uA7AE\uA7B0-\uA7B7\uA7F7-\uA801\uA803-\uA805\uA807-\uA80A\uA80C-\uA822\uA840-\uA873\uA882-\uA8B3\uA8F2-\uA8F7\uA8FB\uA8FD\uA90A-\uA925\uA930-\uA946\uA960-\uA97C\uA984-\uA9B2\uA9CF\uA9E0-\uA9E4\uA9E6-\uA9EF\uA9FA-\uA9FE\uAA00-\uAA28\uAA40-\uAA42\uAA44-\uAA4B\uAA60-\uAA76\uAA7A\uAA7E-\uAAAF\uAAB1\uAAB5\uAAB6\uAAB9-\uAABD\uAAC0\uAAC2\uAADB-\uAADD\uAAE0-\uAAEA\uAAF2-\uAAF4\uAB01-\uAB06\uAB09-\uAB0E\uAB11-\uAB16\uAB20-\uAB26\uAB28-\uAB2E\uAB30-\uAB5A\uAB5C-\uAB65\uAB70-\uABE2\uAC00-\uD7A3\uD7B0-\uD7C6\uD7CB-\uD7FB\uF900-\uFA6D\uFA70-\uFAD9\uFB00-\uFB06\uFB13-\uFB17\uFB1D\uFB1F-\uFB28\uFB2A-\uFB36\uFB38-\uFB3C\uFB3E\uFB40\uFB41\uFB43\uFB44\uFB46-\uFBB1\uFBD3-\uFD3D\uFD50-\uFD8F\uFD92-\uFDC7\uFDF0-\uFDFB\uFE70-\uFE74\uFE76-\uFEFC\uFF21-\uFF3A\uFF41-\uFF5A\uFF66-\uFFBE\uFFC2-\uFFC7\uFFCA-\uFFCF\uFFD2-\uFFD7\uFFDA-\uFFDC]|\uD800[\uDC00-\uDC0B\uDC0D-\uDC26\uDC28-\uDC3A\uDC3C\uDC3D\uDC3F-\uDC4D\uDC50-\uDC5D\uDC80-\uDCFA\uDD40-\uDD74\uDE80-\uDE9C\uDEA0-\uDED0\uDF00-\uDF1F\uDF30-\uDF4A\uDF50-\uDF75\uDF80-\uDF9D\uDFA0-\uDFC3\uDFC8-\uDFCF\uDFD1-\uDFD5]|\uD801[\uDC00-\uDC9D\uDCB0-\uDCD3\uDCD8-\uDCFB\uDD00-\uDD27\uDD30-\uDD63\uDE00-\uDF36\uDF40-\uDF55\uDF60-\uDF67]|\uD802[\uDC00-\uDC05\uDC08\uDC0A-\uDC35\uDC37\uDC38\uDC3C\uDC3F-\uDC55\uDC60-\uDC76\uDC80-\uDC9E\uDCE0-\uDCF2\uDCF4\uDCF5\uDD00-\uDD15\uDD20-\uDD39\uDD80-\uDDB7\uDDBE\uDDBF\uDE00\uDE10-\uDE13\uDE15-\uDE17\uDE19-\uDE33\uDE60-\uDE7C\uDE80-\uDE9C\uDEC0-\uDEC7\uDEC9-\uDEE4\uDF00-\uDF35\uDF40-\uDF55\uDF60-\uDF72\uDF80-\uDF91]|\uD803[\uDC00-\uDC48\uDC80-\uDCB2\uDCC0-\uDCF2]|\uD804[\uDC03-\uDC37\uDC83-\uDCAF\uDCD0-\uDCE8\uDD03-\uDD26\uDD50-\uDD72\uDD76\uDD83-\uDDB2\uDDC1-\uDDC4\uDDDA\uDDDC\uDE00-\uDE11\uDE13-\uDE2B\uDE80-\uDE86\uDE88\uDE8A-\uDE8D\uDE8F-\uDE9D\uDE9F-\uDEA8\uDEB0-\uDEDE\uDF05-\uDF0C\uDF0F\uDF10\uDF13-\uDF28\uDF2A-\uDF30\uDF32\uDF33\uDF35-\uDF39\uDF3D\uDF50\uDF5D-\uDF61]|\uD805[\uDC00-\uDC34\uDC47-\uDC4A\uDC80-\uDCAF\uDCC4\uDCC5\uDCC7\uDD80-\uDDAE\uDDD8-\uDDDB\uDE00-\uDE2F\uDE44\uDE80-\uDEAA\uDF00-\uDF19]|\uD806[\uDCA0-\uDCDF\uDCFF\uDEC0-\uDEF8]|\uD807[\uDC00-\uDC08\uDC0A-\uDC2E\uDC40\uDC72-\uDC8F]|\uD808[\uDC00-\uDF99]|\uD809[\uDC00-\uDC6E\uDC80-\uDD43]|[\uD80C\uD81C-\uD820\uD840-\uD868\uD86A-\uD86C\uD86F-\uD872][\uDC00-\uDFFF]|\uD80D[\uDC00-\uDC2E]|\uD811[\uDC00-\uDE46]|\uD81A[\uDC00-\uDE38\uDE40-\uDE5E\uDED0-\uDEED\uDF00-\uDF2F\uDF40-\uDF43\uDF63-\uDF77\uDF7D-\uDF8F]|\uD81B[\uDF00-\uDF44\uDF50\uDF93-\uDF9F\uDFE0]|\uD821[\uDC00-\uDFEC]|\uD822[\uDC00-\uDEF2]|\uD82C[\uDC00\uDC01]|\uD82F[\uDC00-\uDC6A\uDC70-\uDC7C\uDC80-\uDC88\uDC90-\uDC99]|\uD835[\uDC00-\uDC54\uDC56-\uDC9C\uDC9E\uDC9F\uDCA2\uDCA5\uDCA6\uDCA9-\uDCAC\uDCAE-\uDCB9\uDCBB\uDCBD-\uDCC3\uDCC5-\uDD05\uDD07-\uDD0A\uDD0D-\uDD14\uDD16-\uDD1C\uDD1E-\uDD39\uDD3B-\uDD3E\uDD40-\uDD44\uDD46\uDD4A-\uDD50\uDD52-\uDEA5\uDEA8-\uDEC0\uDEC2-\uDEDA\uDEDC-\uDEFA\uDEFC-\uDF14\uDF16-\uDF34\uDF36-\uDF4E\uDF50-\uDF6E\uDF70-\uDF88\uDF8A-\uDFA8\uDFAA-\uDFC2\uDFC4-\uDFCB]|\uD83A[\uDC00-\uDCC4\uDD00-\uDD43]|\uD83B[\uDE00-\uDE03\uDE05-\uDE1F\uDE21\uDE22\uDE24\uDE27\uDE29-\uDE32\uDE34-\uDE37\uDE39\uDE3B\uDE42\uDE47\uDE49\uDE4B\uDE4D-\uDE4F\uDE51\uDE52\uDE54\uDE57\uDE59\uDE5B\uDE5D\uDE5F\uDE61\uDE62\uDE64\uDE67-\uDE6A\uDE6C-\uDE72\uDE74-\uDE77\uDE79-\uDE7C\uDE7E\uDE80-\uDE89\uDE8B-\uDE9B\uDEA1-\uDEA3\uDEA5-\uDEA9\uDEAB-\uDEBB]|\uD869[\uDC00-\uDED6\uDF00-\uDFFF]|\uD86D[\uDC00-\uDF34\uDF40-\uDFFF]|\uD86E[\uDC00-\uDC1D\uDC20-\uDFFF]|\uD873[\uDC00-\uDEA1]|\uD87E[\uDC00-\uDE1D]/, NonAsciiIdentifierPart: /[\xAA\xB5\xB7\xBA\xC0-\xD6\xD8-\xF6\xF8-\u02C1\u02C6-\u02D1\u02E0-\u02E4\u02EC\u02EE\u0300-\u0374\u0376\u0377\u037A-\u037D\u037F\u0386-\u038A\u038C\u038E-\u03A1\u03A3-\u03F5\u03F7-\u0481\u0483-\u0487\u048A-\u052F\u0531-\u0556\u0559\u0561-\u0587\u0591-\u05BD\u05BF\u05C1\u05C2\u05C4\u05C5\u05C7\u05D0-\u05EA\u05F0-\u05F2\u0610-\u061A\u0620-\u0669\u066E-\u06D3\u06D5-\u06DC\u06DF-\u06E8\u06EA-\u06FC\u06FF\u0710-\u074A\u074D-\u07B1\u07C0-\u07F5\u07FA\u0800-\u082D\u0840-\u085B\u08A0-\u08B4\u08B6-\u08BD\u08D4-\u08E1\u08E3-\u0963\u0966-\u096F\u0971-\u0983\u0985-\u098C\u098F\u0990\u0993-\u09A8\u09AA-\u09B0\u09B2\u09B6-\u09B9\u09BC-\u09C4\u09C7\u09C8\u09CB-\u09CE\u09D7\u09DC\u09DD\u09DF-\u09E3\u09E6-\u09F1\u0A01-\u0A03\u0A05-\u0A0A\u0A0F\u0A10\u0A13-\u0A28\u0A2A-\u0A30\u0A32\u0A33\u0A35\u0A36\u0A38\u0A39\u0A3C\u0A3E-\u0A42\u0A47\u0A48\u0A4B-\u0A4D\u0A51\u0A59-\u0A5C\u0A5E\u0A66-\u0A75\u0A81-\u0A83\u0A85-\u0A8D\u0A8F-\u0A91\u0A93-\u0AA8\u0AAA-\u0AB0\u0AB2\u0AB3\u0AB5-\u0AB9\u0ABC-\u0AC5\u0AC7-\u0AC9\u0ACB-\u0ACD\u0AD0\u0AE0-\u0AE3\u0AE6-\u0AEF\u0AF9\u0B01-\u0B03\u0B05-\u0B0C\u0B0F\u0B10\u0B13-\u0B28\u0B2A-\u0B30\u0B32\u0B33\u0B35-\u0B39\u0B3C-\u0B44\u0B47\u0B48\u0B4B-\u0B4D\u0B56\u0B57\u0B5C\u0B5D\u0B5F-\u0B63\u0B66-\u0B6F\u0B71\u0B82\u0B83\u0B85-\u0B8A\u0B8E-\u0B90\u0B92-\u0B95\u0B99\u0B9A\u0B9C\u0B9E\u0B9F\u0BA3\u0BA4\u0BA8-\u0BAA\u0BAE-\u0BB9\u0BBE-\u0BC2\u0BC6-\u0BC8\u0BCA-\u0BCD\u0BD0\u0BD7\u0BE6-\u0BEF\u0C00-\u0C03\u0C05-\u0C0C\u0C0E-\u0C10\u0C12-\u0C28\u0C2A-\u0C39\u0C3D-\u0C44\u0C46-\u0C48\u0C4A-\u0C4D\u0C55\u0C56\u0C58-\u0C5A\u0C60-\u0C63\u0C66-\u0C6F\u0C80-\u0C83\u0C85-\u0C8C\u0C8E-\u0C90\u0C92-\u0CA8\u0CAA-\u0CB3\u0CB5-\u0CB9\u0CBC-\u0CC4\u0CC6-\u0CC8\u0CCA-\u0CCD\u0CD5\u0CD6\u0CDE\u0CE0-\u0CE3\u0CE6-\u0CEF\u0CF1\u0CF2\u0D01-\u0D03\u0D05-\u0D0C\u0D0E-\u0D10\u0D12-\u0D3A\u0D3D-\u0D44\u0D46-\u0D48\u0D4A-\u0D4E\u0D54-\u0D57\u0D5F-\u0D63\u0D66-\u0D6F\u0D7A-\u0D7F\u0D82\u0D83\u0D85-\u0D96\u0D9A-\u0DB1\u0DB3-\u0DBB\u0DBD\u0DC0-\u0DC6\u0DCA\u0DCF-\u0DD4\u0DD6\u0DD8-\u0DDF\u0DE6-\u0DEF\u0DF2\u0DF3\u0E01-\u0E3A\u0E40-\u0E4E\u0E50-\u0E59\u0E81\u0E82\u0E84\u0E87\u0E88\u0E8A\u0E8D\u0E94-\u0E97\u0E99-\u0E9F\u0EA1-\u0EA3\u0EA5\u0EA7\u0EAA\u0EAB\u0EAD-\u0EB9\u0EBB-\u0EBD\u0EC0-\u0EC4\u0EC6\u0EC8-\u0ECD\u0ED0-\u0ED9\u0EDC-\u0EDF\u0F00\u0F18\u0F19\u0F20-\u0F29\u0F35\u0F37\u0F39\u0F3E-\u0F47\u0F49-\u0F6C\u0F71-\u0F84\u0F86-\u0F97\u0F99-\u0FBC\u0FC6\u1000-\u1049\u1050-\u109D\u10A0-\u10C5\u10C7\u10CD\u10D0-\u10FA\u10FC-\u1248\u124A-\u124D\u1250-\u1256\u1258\u125A-\u125D\u1260-\u1288\u128A-\u128D\u1290-\u12B0\u12B2-\u12B5\u12B8-\u12BE\u12C0\u12C2-\u12C5\u12C8-\u12D6\u12D8-\u1310\u1312-\u1315\u1318-\u135A\u135D-\u135F\u1369-\u1371\u1380-\u138F\u13A0-\u13F5\u13F8-\u13FD\u1401-\u166C\u166F-\u167F\u1681-\u169A\u16A0-\u16EA\u16EE-\u16F8\u1700-\u170C\u170E-\u1714\u1720-\u1734\u1740-\u1753\u1760-\u176C\u176E-\u1770\u1772\u1773\u1780-\u17D3\u17D7\u17DC\u17DD\u17E0-\u17E9\u180B-\u180D\u1810-\u1819\u1820-\u1877\u1880-\u18AA\u18B0-\u18F5\u1900-\u191E\u1920-\u192B\u1930-\u193B\u1946-\u196D\u1970-\u1974\u1980-\u19AB\u19B0-\u19C9\u19D0-\u19DA\u1A00-\u1A1B\u1A20-\u1A5E\u1A60-\u1A7C\u1A7F-\u1A89\u1A90-\u1A99\u1AA7\u1AB0-\u1ABD\u1B00-\u1B4B\u1B50-\u1B59\u1B6B-\u1B73\u1B80-\u1BF3\u1C00-\u1C37\u1C40-\u1C49\u1C4D-\u1C7D\u1C80-\u1C88\u1CD0-\u1CD2\u1CD4-\u1CF6\u1CF8\u1CF9\u1D00-\u1DF5\u1DFB-\u1F15\u1F18-\u1F1D\u1F20-\u1F45\u1F48-\u1F4D\u1F50-\u1F57\u1F59\u1F5B\u1F5D\u1F5F-\u1F7D\u1F80-\u1FB4\u1FB6-\u1FBC\u1FBE\u1FC2-\u1FC4\u1FC6-\u1FCC\u1FD0-\u1FD3\u1FD6-\u1FDB\u1FE0-\u1FEC\u1FF2-\u1FF4\u1FF6-\u1FFC\u200C\u200D\u203F\u2040\u2054\u2071\u207F\u2090-\u209C\u20D0-\u20DC\u20E1\u20E5-\u20F0\u2102\u2107\u210A-\u2113\u2115\u2118-\u211D\u2124\u2126\u2128\u212A-\u2139\u213C-\u213F\u2145-\u2149\u214E\u2160-\u2188\u2C00-\u2C2E\u2C30-\u2C5E\u2C60-\u2CE4\u2CEB-\u2CF3\u2D00-\u2D25\u2D27\u2D2D\u2D30-\u2D67\u2D6F\u2D7F-\u2D96\u2DA0-\u2DA6\u2DA8-\u2DAE\u2DB0-\u2DB6\u2DB8-\u2DBE\u2DC0-\u2DC6\u2DC8-\u2DCE\u2DD0-\u2DD6\u2DD8-\u2DDE\u2DE0-\u2DFF\u3005-\u3007\u3021-\u302F\u3031-\u3035\u3038-\u303C\u3041-\u3096\u3099-\u309F\u30A1-\u30FA\u30FC-\u30FF\u3105-\u312D\u3131-\u318E\u31A0-\u31BA\u31F0-\u31FF\u3400-\u4DB5\u4E00-\u9FD5\uA000-\uA48C\uA4D0-\uA4FD\uA500-\uA60C\uA610-\uA62B\uA640-\uA66F\uA674-\uA67D\uA67F-\uA6F1\uA717-\uA71F\uA722-\uA788\uA78B-\uA7AE\uA7B0-\uA7B7\uA7F7-\uA827\uA840-\uA873\uA880-\uA8C5\uA8D0-\uA8D9\uA8E0-\uA8F7\uA8FB\uA8FD\uA900-\uA92D\uA930-\uA953\uA960-\uA97C\uA980-\uA9C0\uA9CF-\uA9D9\uA9E0-\uA9FE\uAA00-\uAA36\uAA40-\uAA4D\uAA50-\uAA59\uAA60-\uAA76\uAA7A-\uAAC2\uAADB-\uAADD\uAAE0-\uAAEF\uAAF2-\uAAF6\uAB01-\uAB06\uAB09-\uAB0E\uAB11-\uAB16\uAB20-\uAB26\uAB28-\uAB2E\uAB30-\uAB5A\uAB5C-\uAB65\uAB70-\uABEA\uABEC\uABED\uABF0-\uABF9\uAC00-\uD7A3\uD7B0-\uD7C6\uD7CB-\uD7FB\uF900-\uFA6D\uFA70-\uFAD9\uFB00-\uFB06\uFB13-\uFB17\uFB1D-\uFB28\uFB2A-\uFB36\uFB38-\uFB3C\uFB3E\uFB40\uFB41\uFB43\uFB44\uFB46-\uFBB1\uFBD3-\uFD3D\uFD50-\uFD8F\uFD92-\uFDC7\uFDF0-\uFDFB\uFE00-\uFE0F\uFE20-\uFE2F\uFE33\uFE34\uFE4D-\uFE4F\uFE70-\uFE74\uFE76-\uFEFC\uFF10-\uFF19\uFF21-\uFF3A\uFF3F\uFF41-\uFF5A\uFF66-\uFFBE\uFFC2-\uFFC7\uFFCA-\uFFCF\uFFD2-\uFFD7\uFFDA-\uFFDC]|\uD800[\uDC00-\uDC0B\uDC0D-\uDC26\uDC28-\uDC3A\uDC3C\uDC3D\uDC3F-\uDC4D\uDC50-\uDC5D\uDC80-\uDCFA\uDD40-\uDD74\uDDFD\uDE80-\uDE9C\uDEA0-\uDED0\uDEE0\uDF00-\uDF1F\uDF30-\uDF4A\uDF50-\uDF7A\uDF80-\uDF9D\uDFA0-\uDFC3\uDFC8-\uDFCF\uDFD1-\uDFD5]|\uD801[\uDC00-\uDC9D\uDCA0-\uDCA9\uDCB0-\uDCD3\uDCD8-\uDCFB\uDD00-\uDD27\uDD30-\uDD63\uDE00-\uDF36\uDF40-\uDF55\uDF60-\uDF67]|\uD802[\uDC00-\uDC05\uDC08\uDC0A-\uDC35\uDC37\uDC38\uDC3C\uDC3F-\uDC55\uDC60-\uDC76\uDC80-\uDC9E\uDCE0-\uDCF2\uDCF4\uDCF5\uDD00-\uDD15\uDD20-\uDD39\uDD80-\uDDB7\uDDBE\uDDBF\uDE00-\uDE03\uDE05\uDE06\uDE0C-\uDE13\uDE15-\uDE17\uDE19-\uDE33\uDE38-\uDE3A\uDE3F\uDE60-\uDE7C\uDE80-\uDE9C\uDEC0-\uDEC7\uDEC9-\uDEE6\uDF00-\uDF35\uDF40-\uDF55\uDF60-\uDF72\uDF80-\uDF91]|\uD803[\uDC00-\uDC48\uDC80-\uDCB2\uDCC0-\uDCF2]|\uD804[\uDC00-\uDC46\uDC66-\uDC6F\uDC7F-\uDCBA\uDCD0-\uDCE8\uDCF0-\uDCF9\uDD00-\uDD34\uDD36-\uDD3F\uDD50-\uDD73\uDD76\uDD80-\uDDC4\uDDCA-\uDDCC\uDDD0-\uDDDA\uDDDC\uDE00-\uDE11\uDE13-\uDE37\uDE3E\uDE80-\uDE86\uDE88\uDE8A-\uDE8D\uDE8F-\uDE9D\uDE9F-\uDEA8\uDEB0-\uDEEA\uDEF0-\uDEF9\uDF00-\uDF03\uDF05-\uDF0C\uDF0F\uDF10\uDF13-\uDF28\uDF2A-\uDF30\uDF32\uDF33\uDF35-\uDF39\uDF3C-\uDF44\uDF47\uDF48\uDF4B-\uDF4D\uDF50\uDF57\uDF5D-\uDF63\uDF66-\uDF6C\uDF70-\uDF74]|\uD805[\uDC00-\uDC4A\uDC50-\uDC59\uDC80-\uDCC5\uDCC7\uDCD0-\uDCD9\uDD80-\uDDB5\uDDB8-\uDDC0\uDDD8-\uDDDD\uDE00-\uDE40\uDE44\uDE50-\uDE59\uDE80-\uDEB7\uDEC0-\uDEC9\uDF00-\uDF19\uDF1D-\uDF2B\uDF30-\uDF39]|\uD806[\uDCA0-\uDCE9\uDCFF\uDEC0-\uDEF8]|\uD807[\uDC00-\uDC08\uDC0A-\uDC36\uDC38-\uDC40\uDC50-\uDC59\uDC72-\uDC8F\uDC92-\uDCA7\uDCA9-\uDCB6]|\uD808[\uDC00-\uDF99]|\uD809[\uDC00-\uDC6E\uDC80-\uDD43]|[\uD80C\uD81C-\uD820\uD840-\uD868\uD86A-\uD86C\uD86F-\uD872][\uDC00-\uDFFF]|\uD80D[\uDC00-\uDC2E]|\uD811[\uDC00-\uDE46]|\uD81A[\uDC00-\uDE38\uDE40-\uDE5E\uDE60-\uDE69\uDED0-\uDEED\uDEF0-\uDEF4\uDF00-\uDF36\uDF40-\uDF43\uDF50-\uDF59\uDF63-\uDF77\uDF7D-\uDF8F]|\uD81B[\uDF00-\uDF44\uDF50-\uDF7E\uDF8F-\uDF9F\uDFE0]|\uD821[\uDC00-\uDFEC]|\uD822[\uDC00-\uDEF2]|\uD82C[\uDC00\uDC01]|\uD82F[\uDC00-\uDC6A\uDC70-\uDC7C\uDC80-\uDC88\uDC90-\uDC99\uDC9D\uDC9E]|\uD834[\uDD65-\uDD69\uDD6D-\uDD72\uDD7B-\uDD82\uDD85-\uDD8B\uDDAA-\uDDAD\uDE42-\uDE44]|\uD835[\uDC00-\uDC54\uDC56-\uDC9C\uDC9E\uDC9F\uDCA2\uDCA5\uDCA6\uDCA9-\uDCAC\uDCAE-\uDCB9\uDCBB\uDCBD-\uDCC3\uDCC5-\uDD05\uDD07-\uDD0A\uDD0D-\uDD14\uDD16-\uDD1C\uDD1E-\uDD39\uDD3B-\uDD3E\uDD40-\uDD44\uDD46\uDD4A-\uDD50\uDD52-\uDEA5\uDEA8-\uDEC0\uDEC2-\uDEDA\uDEDC-\uDEFA\uDEFC-\uDF14\uDF16-\uDF34\uDF36-\uDF4E\uDF50-\uDF6E\uDF70-\uDF88\uDF8A-\uDFA8\uDFAA-\uDFC2\uDFC4-\uDFCB\uDFCE-\uDFFF]|\uD836[\uDE00-\uDE36\uDE3B-\uDE6C\uDE75\uDE84\uDE9B-\uDE9F\uDEA1-\uDEAF]|\uD838[\uDC00-\uDC06\uDC08-\uDC18\uDC1B-\uDC21\uDC23\uDC24\uDC26-\uDC2A]|\uD83A[\uDC00-\uDCC4\uDCD0-\uDCD6\uDD00-\uDD4A\uDD50-\uDD59]|\uD83B[\uDE00-\uDE03\uDE05-\uDE1F\uDE21\uDE22\uDE24\uDE27\uDE29-\uDE32\uDE34-\uDE37\uDE39\uDE3B\uDE42\uDE47\uDE49\uDE4B\uDE4D-\uDE4F\uDE51\uDE52\uDE54\uDE57\uDE59\uDE5B\uDE5D\uDE5F\uDE61\uDE62\uDE64\uDE67-\uDE6A\uDE6C-\uDE72\uDE74-\uDE77\uDE79-\uDE7C\uDE7E\uDE80-\uDE89\uDE8B-\uDE9B\uDEA1-\uDEA3\uDEA5-\uDEA9\uDEAB-\uDEBB]|\uD869[\uDC00-\uDED6\uDF00-\uDFFF]|\uD86D[\uDC00-\uDF34\uDF40-\uDFFF]|\uD86E[\uDC00-\uDC1D\uDC20-\uDFFF]|\uD873[\uDC00-\uDEA1]|\uD87E[\uDC00-\uDE1D]|\uDB40[\uDD00-\uDDEF]/ };
+        function a(g) {
+          return 48 <= g && g <= 57;
+        }
+        i(a, "isDecimalDigit");
+        function l(g) {
+          return 48 <= g && g <= 57 || 97 <= g && g <= 102 || 65 <= g && g <= 70;
+        }
+        i(l, "isHexDigit");
+        function p(g) {
+          return g >= 48 && g <= 55;
+        }
+        i(p, "isOctalDigit"), r = [5760, 8192, 8193, 8194, 8195, 8196, 8197, 8198, 8199, 8200, 8201, 8202, 8239, 8287, 12288, 65279];
+        function f(g) {
+          return g === 32 || g === 9 || g === 11 || g === 12 || g === 160 || g >= 5760 && r.indexOf(g) >= 0;
+        }
+        i(f, "isWhiteSpace");
+        function m(g) {
+          return g === 10 || g === 13 || g === 8232 || g === 8233;
+        }
+        i(m, "isLineTerminator");
+        function A(g) {
+          if (g <= 65535)
+            return String.fromCharCode(g);
+          var U = String.fromCharCode(Math.floor((g - 65536) / 1024) + 55296), X = String.fromCharCode((g - 65536) % 1024 + 56320);
+          return U + X;
+        }
+        for (i(A, "fromCodePoint"), n = new Array(128), u = 0; u < 128; ++u)
+          n[u] = u >= 97 && u <= 122 || u >= 65 && u <= 90 || u === 36 || u === 95;
+        for (s = new Array(128), u = 0; u < 128; ++u)
+          s[u] = u >= 97 && u <= 122 || u >= 65 && u <= 90 || u >= 48 && u <= 57 || u === 36 || u === 95;
+        function E(g) {
+          return g < 128 ? n[g] : t.NonAsciiIdentifierStart.test(A(g));
+        }
+        i(E, "isIdentifierStartES5");
+        function x(g) {
+          return g < 128 ? s[g] : t.NonAsciiIdentifierPart.test(A(g));
+        }
+        i(x, "isIdentifierPartES5");
+        function F(g) {
+          return g < 128 ? n[g] : e.NonAsciiIdentifierStart.test(A(g));
+        }
+        i(F, "isIdentifierStartES6");
+        function O(g) {
+          return g < 128 ? s[g] : e.NonAsciiIdentifierPart.test(A(g));
+        }
+        i(O, "isIdentifierPartES6"), Jf.exports = { isDecimalDigit: a, isHexDigit: l, isOctalDigit: p, isWhiteSpace: f, isLineTerminator: m, isIdentifierStartES5: E, isIdentifierPartES5: x, isIdentifierStartES6: F, isIdentifierPartES6: O };
+      })();
+    });
+    var zf = c((r5, Qf) => {
+      (function() {
+        "use strict";
+        var e = ba();
+        function t(E) {
+          switch (E) {
+            case "implements":
+            case "interface":
+            case "package":
+            case "private":
+            case "protected":
+            case "public":
+            case "static":
+            case "let":
+              return true;
+            default:
+              return false;
+          }
+        }
+        i(t, "isStrictModeReservedWordES6");
+        function r(E, x) {
+          return !x && E === "yield" ? false : n(E, x);
+        }
+        i(r, "isKeywordES5");
+        function n(E, x) {
+          if (x && t(E))
+            return true;
+          switch (E.length) {
+            case 2:
+              return E === "if" || E === "in" || E === "do";
+            case 3:
+              return E === "var" || E === "for" || E === "new" || E === "try";
+            case 4:
+              return E === "this" || E === "else" || E === "case" || E === "void" || E === "with" || E === "enum";
+            case 5:
+              return E === "while" || E === "break" || E === "catch" || E === "throw" || E === "const" || E === "yield" || E === "class" || E === "super";
+            case 6:
+              return E === "return" || E === "typeof" || E === "delete" || E === "switch" || E === "export" || E === "import";
+            case 7:
+              return E === "default" || E === "finally" || E === "extends";
+            case 8:
+              return E === "function" || E === "continue" || E === "debugger";
+            case 10:
+              return E === "instanceof";
+            default:
+              return false;
+          }
+        }
+        i(n, "isKeywordES6");
+        function s(E, x) {
+          return E === "null" || E === "true" || E === "false" || r(E, x);
+        }
+        i(s, "isReservedWordES5");
+        function u(E, x) {
+          return E === "null" || E === "true" || E === "false" || n(E, x);
+        }
+        i(u, "isReservedWordES6");
+        function a(E) {
+          return E === "eval" || E === "arguments";
+        }
+        i(a, "isRestrictedWord");
+        function l(E) {
+          var x, F, O;
+          if (E.length === 0 || (O = E.charCodeAt(0), !e.isIdentifierStartES5(O)))
+            return false;
+          for (x = 1, F = E.length; x < F; ++x)
+            if (O = E.charCodeAt(x), !e.isIdentifierPartES5(O))
+              return false;
+          return true;
+        }
+        i(l, "isIdentifierNameES5");
+        function p(E, x) {
+          return (E - 55296) * 1024 + (x - 56320) + 65536;
+        }
+        i(p, "decodeUtf16");
+        function f(E) {
+          var x, F, O, g, U;
+          if (E.length === 0)
+            return false;
+          for (U = e.isIdentifierStartES6, x = 0, F = E.length; x < F; ++x) {
+            if (O = E.charCodeAt(x), 55296 <= O && O <= 56319) {
+              if (++x, x >= F || (g = E.charCodeAt(x), !(56320 <= g && g <= 57343)))
+                return false;
+              O = p(O, g);
+            }
+            if (!U(O))
+              return false;
+            U = e.isIdentifierPartES6;
+          }
+          return true;
+        }
+        i(f, "isIdentifierNameES6");
+        function m(E, x) {
+          return l(E) && !s(E, x);
+        }
+        i(m, "isIdentifierES5");
+        function A(E, x) {
+          return f(E) && !u(E, x);
+        }
+        i(A, "isIdentifierES6"), Qf.exports = { isKeywordES5: r, isKeywordES6: n, isReservedWordES5: s, isReservedWordES6: u, isRestrictedWord: a, isIdentifierNameES5: l, isIdentifierNameES6: f, isIdentifierES5: m, isIdentifierES6: A };
+      })();
+    });
+    var Zf = c((hs) => {
+      (function() {
+        "use strict";
+        hs.ast = $f(), hs.code = ba(), hs.keyword = zf();
+      })();
+    });
+    var n0 = c((Je) => {
+      "use strict";
+      Je.__esModule = true;
+      var yS = va(), TS = Ts(yS), xS = Oa(), ys = Ts(xS), gS = Hn(), t0 = Ts(gS);
+      Je.isBinding = BS;
+      Je.isReferenced = OS;
+      Je.isValidIdentifier = bS;
+      Je.isLet = NS;
+      Je.isBlockScoped = IS;
+      Je.isVar = _S;
+      Je.isSpecifierDefault = RS;
+      Je.isScope = PS;
+      Je.isImmutable = LS;
+      Je.isNodesEquivalent = Na;
+      var vS = Fa(), SS = Zf(), e0 = Ts(SS), FS = _t(), Ke = CS(FS), r0 = Ds();
+      function CS(e) {
+        if (e && e.__esModule)
+          return e;
+        var t = {};
+        if (e != null)
+          for (var r in e)
+            Object.prototype.hasOwnProperty.call(e, r) && (t[r] = e[r]);
+        return t.default = e, t;
+      }
+      i(CS, "_interopRequireWildcard");
+      function Ts(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      i(Ts, "_interopRequireDefault");
+      function BS(e, t) {
+        var r = vS.getBindingIdentifiers.keys[t.type];
+        if (r)
+          for (var n = 0; n < r.length; n++) {
+            var s = r[n], u = t[s];
+            if (Array.isArray(u)) {
+              if (u.indexOf(e) >= 0)
+                return true;
+            } else if (u === e)
+              return true;
+          }
+        return false;
+      }
+      i(BS, "isBinding");
+      function OS(e, t) {
+        switch (t.type) {
+          case "BindExpression":
+            return t.object === e || t.callee === e;
+          case "MemberExpression":
+          case "JSXMemberExpression":
+            return t.property === e && t.computed ? true : t.object === e;
+          case "MetaProperty":
+            return false;
+          case "ObjectProperty":
+            if (t.key === e)
+              return t.computed;
+          case "VariableDeclarator":
+            return t.id !== e;
+          case "ArrowFunctionExpression":
+          case "FunctionDeclaration":
+          case "FunctionExpression":
+            for (var s = t.params, r = Array.isArray(s), n = 0, s = r ? s : (0, t0.default)(s); ; ) {
+              var u;
+              if (r) {
+                if (n >= s.length)
+                  break;
+                u = s[n++];
+              } else {
+                if (n = s.next(), n.done)
+                  break;
+                u = n.value;
+              }
+              var a = u;
+              if (a === e)
+                return false;
+            }
+            return t.id !== e;
+          case "ExportSpecifier":
+            return t.source ? false : t.local === e;
+          case "ExportNamespaceSpecifier":
+          case "ExportDefaultSpecifier":
+            return false;
+          case "JSXAttribute":
+            return t.name !== e;
+          case "ClassProperty":
+            return t.key === e ? t.computed : t.value === e;
+          case "ImportDefaultSpecifier":
+          case "ImportNamespaceSpecifier":
+          case "ImportSpecifier":
+            return false;
+          case "ClassDeclaration":
+          case "ClassExpression":
+            return t.id !== e;
+          case "ClassMethod":
+          case "ObjectMethod":
+            return t.key === e && t.computed;
+          case "LabeledStatement":
+            return false;
+          case "CatchClause":
+            return t.param !== e;
+          case "RestElement":
+            return false;
+          case "AssignmentExpression":
+            return t.right === e;
+          case "AssignmentPattern":
+            return t.right === e;
+          case "ObjectPattern":
+          case "ArrayPattern":
+            return false;
+        }
+        return true;
+      }
+      i(OS, "isReferenced");
+      function bS(e) {
+        return typeof e != "string" || e0.default.keyword.isReservedWordES6(e, true) || e === "await" ? false : e0.default.keyword.isIdentifierNameES6(e);
+      }
+      i(bS, "isValidIdentifier");
+      function NS(e) {
+        return Ke.isVariableDeclaration(e) && (e.kind !== "var" || e[r0.BLOCK_SCOPED_SYMBOL]);
+      }
+      i(NS, "isLet");
+      function IS(e) {
+        return Ke.isFunctionDeclaration(e) || Ke.isClassDeclaration(e) || Ke.isLet(e);
+      }
+      i(IS, "isBlockScoped");
+      function _S(e) {
+        return Ke.isVariableDeclaration(e, { kind: "var" }) && !e[r0.BLOCK_SCOPED_SYMBOL];
+      }
+      i(_S, "isVar");
+      function RS(e) {
+        return Ke.isImportDefaultSpecifier(e) || Ke.isIdentifier(e.imported || e.exported, { name: "default" });
+      }
+      i(RS, "isSpecifierDefault");
+      function PS(e, t) {
+        return Ke.isBlockStatement(e) && Ke.isFunction(t, { body: e }) ? false : Ke.isScopable(e);
+      }
+      i(PS, "isScope");
+      function LS(e) {
+        return Ke.isType(e.type, "Immutable") ? true : Ke.isIdentifier(e) ? e.name === "undefined" : false;
+      }
+      i(LS, "isImmutable");
+      function Na(e, t) {
+        if ((typeof e > "u" ? "undefined" : (0, ys.default)(e)) !== "object" || (typeof e > "u" ? "undefined" : (0, ys.default)(e)) !== "object" || e == null || t == null)
+          return e === t;
+        if (e.type !== t.type)
+          return false;
+        for (var r = (0, TS.default)(Ke.NODE_FIELDS[e.type] || e.type), u = r, n = Array.isArray(u), s = 0, u = n ? u : (0, t0.default)(u); ; ) {
+          var a;
+          if (n) {
+            if (s >= u.length)
+              break;
+            a = u[s++];
+          } else {
+            if (s = u.next(), s.done)
+              break;
+            a = s.value;
+          }
+          var l = a;
+          if ((0, ys.default)(e[l]) !== (0, ys.default)(t[l]))
+            return false;
+          if (Array.isArray(e[l])) {
+            if (!Array.isArray(t[l]) || e[l].length !== t[l].length)
+              return false;
+            for (var p = 0; p < e[l].length; p++)
+              if (!Na(e[l][p], t[l][p]))
+                return false;
+            continue;
+          }
+          if (!Na(e[l], t[l]))
+            return false;
+        }
+        return true;
+      }
+      i(Na, "isNodesEquivalent");
+    });
+    var s0 = c(() => {
+      var i0 = Jr();
+      i0(i0.S, "Number", { MAX_SAFE_INTEGER: 9007199254740991 });
+    });
+    var a0 = c((a5, u0) => {
+      s0();
+      u0.exports = 9007199254740991;
+    });
+    var l0 = c((o5, o0) => {
+      o0.exports = { default: a0(), __esModule: true };
+    });
+    var Ia = c((l5, c0) => {
+      var wS = typeof global == "object" && global && global.Object === Object && global;
+      c0.exports = wS;
+    });
+    var tt = c((c5, p0) => {
+      var qS = Ia(), kS = typeof self == "object" && self && self.Object === Object && self, MS = qS || kS || Function("return this")();
+      p0.exports = MS;
+    });
+    var Zr = c((p5, f0) => {
+      var GS = tt(), US = GS.Symbol;
+      f0.exports = US;
+    });
+    var D0 = c((f5, m0) => {
+      var E0 = Zr(), d0 = Object.prototype, YS = d0.hasOwnProperty, jS = d0.toString, Xn = E0 ? E0.toStringTag : void 0;
+      function VS(e) {
+        var t = YS.call(e, Xn), r = e[Xn];
+        try {
+          e[Xn] = void 0;
+          var n = true;
+        } catch {
+        }
+        var s = jS.call(e);
+        return n && (t ? e[Xn] = r : delete e[Xn]), s;
+      }
+      i(VS, "getRawTag");
+      m0.exports = VS;
+    });
+    var h0 = c((E5, A0) => {
+      var KS = Object.prototype, WS = KS.toString;
+      function HS(e) {
+        return WS.call(e);
+      }
+      i(HS, "objectToString");
+      A0.exports = HS;
+    });
+    var nr = c((d5, x0) => {
+      var y0 = Zr(), XS = D0(), $S = h0(), JS = "[object Null]", QS = "[object Undefined]", T0 = y0 ? y0.toStringTag : void 0;
+      function zS(e) {
+        return e == null ? e === void 0 ? QS : JS : T0 && T0 in Object(e) ? XS(e) : $S(e);
+      }
+      i(zS, "baseGetTag");
+      x0.exports = zS;
+    });
+    var _a = c((m5, g0) => {
+      function ZS(e, t) {
+        return function(r) {
+          return e(t(r));
+        };
+      }
+      i(ZS, "overArg");
+      g0.exports = ZS;
+    });
+    var xs = c((D5, v0) => {
+      var eF = _a(), tF = eF(Object.getPrototypeOf, Object);
+      v0.exports = tF;
+    });
+    var Et = c((A5, S0) => {
+      function rF(e) {
+        return e != null && typeof e == "object";
+      }
+      i(rF, "isObjectLike");
+      S0.exports = rF;
+    });
+    var B0 = c((h5, C0) => {
+      var nF = nr(), iF = xs(), sF = Et(), uF = "[object Object]", aF = Function.prototype, oF = Object.prototype, F0 = aF.toString, lF = oF.hasOwnProperty, cF = F0.call(Object);
+      function pF(e) {
+        if (!sF(e) || nF(e) != uF)
+          return false;
+        var t = iF(e);
+        if (t === null)
+          return true;
+        var r = lF.call(t, "constructor") && t.constructor;
+        return typeof r == "function" && r instanceof r && F0.call(r) == cF;
+      }
+      i(pF, "isPlainObject");
+      C0.exports = pF;
+    });
+    var b0 = c((y5, O0) => {
+      var fF = nr(), EF = Et(), dF = "[object RegExp]";
+      function mF(e) {
+        return EF(e) && fF(e) == dF;
+      }
+      i(mF, "baseIsRegExp");
+      O0.exports = mF;
+    });
+    var $n = c((T5, N0) => {
+      function DF(e) {
+        return function(t) {
+          return e(t);
+        };
+      }
+      i(DF, "baseUnary");
+      N0.exports = DF;
+    });
+    var zn = c((Jn, en) => {
+      var AF = Ia(), I0 = typeof Jn == "object" && Jn && !Jn.nodeType && Jn, Qn = I0 && typeof en == "object" && en && !en.nodeType && en, hF = Qn && Qn.exports === I0, Ra = hF && AF.process, yF = function() {
+        try {
+          var e = Qn && Qn.require && Qn.require("util").types;
+          return e || Ra && Ra.binding && Ra.binding("util");
+        } catch {
+        }
+      }();
+      en.exports = yF;
+    });
+    var L0 = c((x5, P0) => {
+      var TF = b0(), xF = $n(), _0 = zn(), R0 = _0 && _0.isRegExp, gF = R0 ? xF(R0) : TF;
+      P0.exports = gF;
+    });
+    var k0 = c((rt) => {
+      "use strict";
+      rt.__esModule = true;
+      var vF = l0(), SF = Zn(vF), FF = ms(), w0 = Zn(FF), CF = Hn(), Pa = Zn(CF);
+      rt.toComputedKey = RF;
+      rt.toSequenceExpression = PF;
+      rt.toKeyAlias = Cr;
+      rt.toIdentifier = q0;
+      rt.toBindingIdentifierName = LF;
+      rt.toStatement = wF;
+      rt.toExpression = qF;
+      rt.toBlock = kF;
+      rt.valueToNode = MF;
+      var BF = B0(), OF = Zn(BF), bF = L0(), NF = Zn(bF), IF = _t(), M = _F(IF);
+      function _F(e) {
+        if (e && e.__esModule)
+          return e;
+        var t = {};
+        if (e != null)
+          for (var r in e)
+            Object.prototype.hasOwnProperty.call(e, r) && (t[r] = e[r]);
+        return t.default = e, t;
+      }
+      i(_F, "_interopRequireWildcard");
+      function Zn(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      i(Zn, "_interopRequireDefault");
+      function RF(e) {
+        var t = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : e.key || e.property;
+        return e.computed || M.isIdentifier(t) && (t = M.stringLiteral(t.name)), t;
+      }
+      i(RF, "toComputedKey");
+      function gs(e, t, r) {
+        for (var n = [], s = true, l = e, u = Array.isArray(l), a = 0, l = u ? l : (0, Pa.default)(l); ; ) {
+          var p;
+          if (u) {
+            if (a >= l.length)
+              break;
+            p = l[a++];
+          } else {
+            if (a = l.next(), a.done)
+              break;
+            p = a.value;
+          }
+          var f = p;
+          if (s = false, M.isExpression(f))
+            n.push(f);
+          else if (M.isExpressionStatement(f))
+            n.push(f.expression);
+          else if (M.isVariableDeclaration(f)) {
+            if (f.kind !== "var")
+              return;
+            for (var E = f.declarations, m = Array.isArray(E), A = 0, E = m ? E : (0, Pa.default)(E); ; ) {
+              var x;
+              if (m) {
+                if (A >= E.length)
+                  break;
+                x = E[A++];
+              } else {
+                if (A = E.next(), A.done)
+                  break;
+                x = A.value;
+              }
+              var F = x, O = M.getBindingIdentifiers(F);
+              for (var g in O)
+                r.push({ kind: f.kind, id: O[g] });
+              F.init && n.push(M.assignmentExpression("=", F.id, F.init));
+            }
+            s = true;
+          } else if (M.isIfStatement(f)) {
+            var U = f.consequent ? gs([f.consequent], t, r) : t.buildUndefinedNode(), X = f.alternate ? gs([f.alternate], t, r) : t.buildUndefinedNode();
+            if (!U || !X)
+              return;
+            n.push(M.conditionalExpression(f.test, U, X));
+          } else if (M.isBlockStatement(f)) {
+            var z = gs(f.body, t, r);
+            if (!z)
+              return;
+            n.push(z);
+          } else if (M.isEmptyStatement(f))
+            s = true;
+          else
+            return;
+        }
+        return s && n.push(t.buildUndefinedNode()), n.length === 1 ? n[0] : M.sequenceExpression(n);
+      }
+      i(gs, "gatherSequenceExpressions");
+      function PF(e, t) {
+        if (!(!e || !e.length)) {
+          var r = [], n = gs(e, t, r);
+          if (!!n) {
+            for (var a = r, s = Array.isArray(a), u = 0, a = s ? a : (0, Pa.default)(a); ; ) {
+              var l;
+              if (s) {
+                if (u >= a.length)
+                  break;
+                l = a[u++];
+              } else {
+                if (u = a.next(), u.done)
+                  break;
+                l = u.value;
+              }
+              var p = l;
+              t.push(p);
+            }
+            return n;
+          }
+        }
+      }
+      i(PF, "toSequenceExpression");
+      function Cr(e) {
+        var t = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : e.key, r = void 0;
+        return e.kind === "method" ? Cr.increment() + "" : (M.isIdentifier(t) ? r = t.name : M.isStringLiteral(t) ? r = (0, w0.default)(t.value) : r = (0, w0.default)(M.removePropertiesDeep(M.cloneDeep(t))), e.computed && (r = "[" + r + "]"), e.static && (r = "static:" + r), r);
+      }
+      i(Cr, "toKeyAlias");
+      Cr.uid = 0;
+      Cr.increment = function() {
+        return Cr.uid >= SF.default ? Cr.uid = 0 : Cr.uid++;
+      };
+      function q0(e) {
+        return e = e + "", e = e.replace(/[^a-zA-Z0-9$_]/g, "-"), e = e.replace(/^[-0-9]+/, ""), e = e.replace(/[-\s]+(.)?/g, function(t, r) {
+          return r ? r.toUpperCase() : "";
+        }), M.isValidIdentifier(e) || (e = "_" + e), e || "_";
+      }
+      i(q0, "toIdentifier");
+      function LF(e) {
+        return e = q0(e), (e === "eval" || e === "arguments") && (e = "_" + e), e;
+      }
+      i(LF, "toBindingIdentifierName");
+      function wF(e, t) {
+        if (M.isStatement(e))
+          return e;
+        var r = false, n = void 0;
+        if (M.isClass(e))
+          r = true, n = "ClassDeclaration";
+        else if (M.isFunction(e))
+          r = true, n = "FunctionDeclaration";
+        else if (M.isAssignmentExpression(e))
+          return M.expressionStatement(e);
+        if (r && !e.id && (n = false), !n) {
+          if (t)
+            return false;
+          throw new Error("cannot turn " + e.type + " to a statement");
+        }
+        return e.type = n, e;
+      }
+      i(wF, "toStatement");
+      function qF(e) {
+        if (M.isExpressionStatement(e) && (e = e.expression), M.isExpression(e))
+          return e;
+        if (M.isClass(e) ? e.type = "ClassExpression" : M.isFunction(e) && (e.type = "FunctionExpression"), !M.isExpression(e))
+          throw new Error("cannot turn " + e.type + " to an expression");
+        return e;
+      }
+      i(qF, "toExpression");
+      function kF(e, t) {
+        return M.isBlockStatement(e) ? e : (M.isEmptyStatement(e) && (e = []), Array.isArray(e) || (M.isStatement(e) || (M.isFunction(t) ? e = M.returnStatement(e) : e = M.expressionStatement(e)), e = [e]), M.blockStatement(e));
+      }
+      i(kF, "toBlock");
+      function MF(e) {
+        if (e === void 0)
+          return M.identifier("undefined");
+        if (e === true || e === false)
+          return M.booleanLiteral(e);
+        if (e === null)
+          return M.nullLiteral();
+        if (typeof e == "string")
+          return M.stringLiteral(e);
+        if (typeof e == "number")
+          return M.numericLiteral(e);
+        if ((0, NF.default)(e)) {
+          var t = e.source, r = e.toString().match(/\/([a-z]+|)$/)[1];
+          return M.regExpLiteral(t, r);
+        }
+        if (Array.isArray(e))
+          return M.arrayExpression(e.map(M.valueToNode));
+        if ((0, OF.default)(e)) {
+          var n = [];
+          for (var s in e) {
+            var u = void 0;
+            M.isValidIdentifier(s) ? u = M.identifier(s) : u = M.stringLiteral(s), n.push(M.objectProperty(u, M.valueToNode(e[s])));
+          }
+          return M.objectExpression(n);
+        }
+        throw new Error("don't know how to turn this value into a node");
+      }
+      i(MF, "valueToNode");
+    });
+    var M0 = c((ei) => {
+      "use strict";
+      ei.__esModule = true;
+      ei.createUnionTypeAnnotation = YF;
+      ei.removeTypeDuplicates = La;
+      ei.createTypeAnnotationBasedOnTypeof = jF;
+      var GF = _t(), we = UF(GF);
+      function UF(e) {
+        if (e && e.__esModule)
+          return e;
+        var t = {};
+        if (e != null)
+          for (var r in e)
+            Object.prototype.hasOwnProperty.call(e, r) && (t[r] = e[r]);
+        return t.default = e, t;
+      }
+      i(UF, "_interopRequireWildcard");
+      function YF(e) {
+        var t = La(e);
+        return t.length === 1 ? t[0] : we.unionTypeAnnotation(t);
+      }
+      i(YF, "createUnionTypeAnnotation");
+      function La(e) {
+        for (var t = {}, r = {}, n = [], s = [], u = 0; u < e.length; u++) {
+          var a = e[u];
+          if (!!a && !(s.indexOf(a) >= 0)) {
+            if (we.isAnyTypeAnnotation(a))
+              return [a];
+            if (we.isFlowBaseAnnotation(a)) {
+              r[a.type] = a;
+              continue;
+            }
+            if (we.isUnionTypeAnnotation(a)) {
+              n.indexOf(a.types) < 0 && (e = e.concat(a.types), n.push(a.types));
+              continue;
+            }
+            if (we.isGenericTypeAnnotation(a)) {
+              var l = a.id.name;
+              if (t[l]) {
+                var p = t[l];
+                p.typeParameters ? a.typeParameters && (p.typeParameters.params = La(p.typeParameters.params.concat(a.typeParameters.params))) : p = a.typeParameters;
+              } else
+                t[l] = a;
+              continue;
+            }
+            s.push(a);
+          }
+        }
+        for (var f in r)
+          s.push(r[f]);
+        for (var m in t)
+          s.push(t[m]);
+        return s;
+      }
+      i(La, "removeTypeDuplicates");
+      function jF(e) {
+        if (e === "string")
+          return we.stringTypeAnnotation();
+        if (e === "number")
+          return we.numberTypeAnnotation();
+        if (e === "undefined")
+          return we.voidTypeAnnotation();
+        if (e === "boolean")
+          return we.booleanTypeAnnotation();
+        if (e === "function")
+          return we.genericTypeAnnotation(we.identifier("Function"));
+        if (e === "object")
+          return we.genericTypeAnnotation(we.identifier("Object"));
+        if (e === "symbol")
+          return we.genericTypeAnnotation(we.identifier("Symbol"));
+        throw new Error("Invalid typeof value");
+      }
+      i(jF, "createTypeAnnotationBasedOnTypeof");
+    });
+    var G0 = c((exports, module) => {
+      "use strict";
+      module.exports = i(function toFastproperties(o) {
+        function Sub() {
+        }
+        i(Sub, "Sub"), Sub.prototype = o;
+        var receiver = new Sub();
+        function ic() {
+          return typeof receiver.foo;
+        }
+        return i(ic, "ic"), ic(), ic(), o;
+        eval("o" + o);
+      }, "toFastproperties");
+    });
+    var Y0 = c((S5, U0) => {
+      function VF() {
+        this.__data__ = [], this.size = 0;
+      }
+      i(VF, "listCacheClear");
+      U0.exports = VF;
+    });
+    var vs = c((F5, j0) => {
+      function KF(e, t) {
+        return e === t || e !== e && t !== t;
+      }
+      i(KF, "eq");
+      j0.exports = KF;
+    });
+    var ti = c((C5, V0) => {
+      var WF = vs();
+      function HF(e, t) {
+        for (var r = e.length; r--; )
+          if (WF(e[r][0], t))
+            return r;
+        return -1;
+      }
+      i(HF, "assocIndexOf");
+      V0.exports = HF;
+    });
+    var W0 = c((B5, K0) => {
+      var XF = ti(), $F = Array.prototype, JF = $F.splice;
+      function QF(e) {
+        var t = this.__data__, r = XF(t, e);
+        if (r < 0)
+          return false;
+        var n = t.length - 1;
+        return r == n ? t.pop() : JF.call(t, r, 1), --this.size, true;
+      }
+      i(QF, "listCacheDelete");
+      K0.exports = QF;
+    });
+    var X0 = c((O5, H0) => {
+      var zF = ti();
+      function ZF(e) {
+        var t = this.__data__, r = zF(t, e);
+        return r < 0 ? void 0 : t[r][1];
+      }
+      i(ZF, "listCacheGet");
+      H0.exports = ZF;
+    });
+    var J0 = c((b5, $0) => {
+      var eC = ti();
+      function tC(e) {
+        return eC(this.__data__, e) > -1;
+      }
+      i(tC, "listCacheHas");
+      $0.exports = tC;
+    });
+    var z0 = c((N5, Q0) => {
+      var rC = ti();
+      function nC(e, t) {
+        var r = this.__data__, n = rC(r, e);
+        return n < 0 ? (++this.size, r.push([e, t])) : r[n][1] = t, this;
+      }
+      i(nC, "listCacheSet");
+      Q0.exports = nC;
+    });
+    var ri = c((I5, Z0) => {
+      var iC = Y0(), sC = W0(), uC = X0(), aC = J0(), oC = z0();
+      function tn(e) {
+        var t = -1, r = e == null ? 0 : e.length;
+        for (this.clear(); ++t < r; ) {
+          var n = e[t];
+          this.set(n[0], n[1]);
+        }
+      }
+      i(tn, "ListCache");
+      tn.prototype.clear = iC;
+      tn.prototype.delete = sC;
+      tn.prototype.get = uC;
+      tn.prototype.has = aC;
+      tn.prototype.set = oC;
+      Z0.exports = tn;
+    });
+    var tE = c((_5, eE) => {
+      var lC = ri();
+      function cC() {
+        this.__data__ = new lC(), this.size = 0;
+      }
+      i(cC, "stackClear");
+      eE.exports = cC;
+    });
+    var nE = c((R5, rE) => {
+      function pC(e) {
+        var t = this.__data__, r = t.delete(e);
+        return this.size = t.size, r;
+      }
+      i(pC, "stackDelete");
+      rE.exports = pC;
+    });
+    var sE = c((P5, iE) => {
+      function fC(e) {
+        return this.__data__.get(e);
+      }
+      i(fC, "stackGet");
+      iE.exports = fC;
+    });
+    var aE = c((L5, uE) => {
+      function EC(e) {
+        return this.__data__.has(e);
+      }
+      i(EC, "stackHas");
+      uE.exports = EC;
+    });
+    var Br = c((w5, oE) => {
+      function dC(e) {
+        var t = typeof e;
+        return e != null && (t == "object" || t == "function");
+      }
+      i(dC, "isObject");
+      oE.exports = dC;
+    });
+    var wa = c((q5, lE) => {
+      var mC = nr(), DC = Br(), AC = "[object AsyncFunction]", hC = "[object Function]", yC = "[object GeneratorFunction]", TC = "[object Proxy]";
+      function xC(e) {
+        if (!DC(e))
+          return false;
+        var t = mC(e);
+        return t == hC || t == yC || t == AC || t == TC;
+      }
+      i(xC, "isFunction");
+      lE.exports = xC;
+    });
+    var pE = c((k5, cE) => {
+      var gC = tt(), vC = gC["__core-js_shared__"];
+      cE.exports = vC;
+    });
+    var dE = c((M5, EE) => {
+      var qa = pE(), fE = function() {
+        var e = /[^.]+$/.exec(qa && qa.keys && qa.keys.IE_PROTO || "");
+        return e ? "Symbol(src)_1." + e : "";
+      }();
+      function SC(e) {
+        return !!fE && fE in e;
+      }
+      i(SC, "isMasked");
+      EE.exports = SC;
+    });
+    var ka = c((G5, mE) => {
+      var FC = Function.prototype, CC = FC.toString;
+      function BC(e) {
+        if (e != null) {
+          try {
+            return CC.call(e);
+          } catch {
+          }
+          try {
+            return e + "";
+          } catch {
+          }
+        }
+        return "";
+      }
+      i(BC, "toSource");
+      mE.exports = BC;
+    });
+    var AE = c((U5, DE) => {
+      var OC = wa(), bC = dE(), NC = Br(), IC = ka(), _C = /[\\^$.*+?()[\]{}|]/g, RC = /^\[object .+?Constructor\]$/, PC = Function.prototype, LC = Object.prototype, wC = PC.toString, qC = LC.hasOwnProperty, kC = RegExp("^" + wC.call(qC).replace(_C, "\\$&").replace(/hasOwnProperty|(function).*?(?=\\\()| for .+?(?=\\\])/g, "$1.*?") + "$");
+      function MC(e) {
+        if (!NC(e) || bC(e))
+          return false;
+        var t = OC(e) ? kC : RC;
+        return t.test(IC(e));
+      }
+      i(MC, "baseIsNative");
+      DE.exports = MC;
+    });
+    var yE = c((Y5, hE) => {
+      function GC(e, t) {
+        return e?.[t];
+      }
+      i(GC, "getValue");
+      hE.exports = GC;
+    });
+    var ir = c((j5, TE) => {
+      var UC = AE(), YC = yE();
+      function jC(e, t) {
+        var r = YC(e, t);
+        return UC(r) ? r : void 0;
+      }
+      i(jC, "getNative");
+      TE.exports = jC;
+    });
+    var Ss = c((V5, xE) => {
+      var VC = ir(), KC = tt(), WC = VC(KC, "Map");
+      xE.exports = WC;
+    });
+    var ni = c((K5, gE) => {
+      var HC = ir(), XC = HC(Object, "create");
+      gE.exports = XC;
+    });
+    var FE = c((W5, SE) => {
+      var vE = ni();
+      function $C() {
+        this.__data__ = vE ? vE(null) : {}, this.size = 0;
+      }
+      i($C, "hashClear");
+      SE.exports = $C;
+    });
+    var BE = c((H5, CE) => {
+      function JC(e) {
+        var t = this.has(e) && delete this.__data__[e];
+        return this.size -= t ? 1 : 0, t;
+      }
+      i(JC, "hashDelete");
+      CE.exports = JC;
+    });
+    var bE = c((X5, OE) => {
+      var QC = ni(), zC = "__lodash_hash_undefined__", ZC = Object.prototype, eB = ZC.hasOwnProperty;
+      function tB(e) {
+        var t = this.__data__;
+        if (QC) {
+          var r = t[e];
+          return r === zC ? void 0 : r;
+        }
+        return eB.call(t, e) ? t[e] : void 0;
+      }
+      i(tB, "hashGet");
+      OE.exports = tB;
+    });
+    var IE = c(($5, NE) => {
+      var rB = ni(), nB = Object.prototype, iB = nB.hasOwnProperty;
+      function sB(e) {
+        var t = this.__data__;
+        return rB ? t[e] !== void 0 : iB.call(t, e);
+      }
+      i(sB, "hashHas");
+      NE.exports = sB;
+    });
+    var RE = c((J5, _E) => {
+      var uB = ni(), aB = "__lodash_hash_undefined__";
+      function oB(e, t) {
+        var r = this.__data__;
+        return this.size += this.has(e) ? 0 : 1, r[e] = uB && t === void 0 ? aB : t, this;
+      }
+      i(oB, "hashSet");
+      _E.exports = oB;
+    });
+    var LE = c((Q5, PE) => {
+      var lB = FE(), cB = BE(), pB = bE(), fB = IE(), EB = RE();
+      function rn(e) {
+        var t = -1, r = e == null ? 0 : e.length;
+        for (this.clear(); ++t < r; ) {
+          var n = e[t];
+          this.set(n[0], n[1]);
+        }
+      }
+      i(rn, "Hash");
+      rn.prototype.clear = lB;
+      rn.prototype.delete = cB;
+      rn.prototype.get = pB;
+      rn.prototype.has = fB;
+      rn.prototype.set = EB;
+      PE.exports = rn;
+    });
+    var kE = c((z5, qE) => {
+      var wE = LE(), dB = ri(), mB = Ss();
+      function DB() {
+        this.size = 0, this.__data__ = { hash: new wE(), map: new (mB || dB)(), string: new wE() };
+      }
+      i(DB, "mapCacheClear");
+      qE.exports = DB;
+    });
+    var GE = c((Z5, ME) => {
+      function AB(e) {
+        var t = typeof e;
+        return t == "string" || t == "number" || t == "symbol" || t == "boolean" ? e !== "__proto__" : e === null;
+      }
+      i(AB, "isKeyable");
+      ME.exports = AB;
+    });
+    var ii = c((ek, UE) => {
+      var hB = GE();
+      function yB(e, t) {
+        var r = e.__data__;
+        return hB(t) ? r[typeof t == "string" ? "string" : "hash"] : r.map;
+      }
+      i(yB, "getMapData");
+      UE.exports = yB;
+    });
+    var jE = c((tk, YE) => {
+      var TB = ii();
+      function xB(e) {
+        var t = TB(this, e).delete(e);
+        return this.size -= t ? 1 : 0, t;
+      }
+      i(xB, "mapCacheDelete");
+      YE.exports = xB;
+    });
+    var KE = c((rk, VE) => {
+      var gB = ii();
+      function vB(e) {
+        return gB(this, e).get(e);
+      }
+      i(vB, "mapCacheGet");
+      VE.exports = vB;
+    });
+    var HE = c((nk, WE) => {
+      var SB = ii();
+      function FB(e) {
+        return SB(this, e).has(e);
+      }
+      i(FB, "mapCacheHas");
+      WE.exports = FB;
+    });
+    var $E = c((ik, XE) => {
+      var CB = ii();
+      function BB(e, t) {
+        var r = CB(this, e), n = r.size;
+        return r.set(e, t), this.size += r.size == n ? 0 : 1, this;
+      }
+      i(BB, "mapCacheSet");
+      XE.exports = BB;
+    });
+    var Fs = c((sk, JE) => {
+      var OB = kE(), bB = jE(), NB = KE(), IB = HE(), _B = $E();
+      function nn(e) {
+        var t = -1, r = e == null ? 0 : e.length;
+        for (this.clear(); ++t < r; ) {
+          var n = e[t];
+          this.set(n[0], n[1]);
+        }
+      }
+      i(nn, "MapCache");
+      nn.prototype.clear = OB;
+      nn.prototype.delete = bB;
+      nn.prototype.get = NB;
+      nn.prototype.has = IB;
+      nn.prototype.set = _B;
+      JE.exports = nn;
+    });
+    var zE = c((uk, QE) => {
+      var RB = ri(), PB = Ss(), LB = Fs(), wB = 200;
+      function qB(e, t) {
+        var r = this.__data__;
+        if (r instanceof RB) {
+          var n = r.__data__;
+          if (!PB || n.length < wB - 1)
+            return n.push([e, t]), this.size = ++r.size, this;
+          r = this.__data__ = new LB(n);
+        }
+        return r.set(e, t), this.size = r.size, this;
+      }
+      i(qB, "stackSet");
+      QE.exports = qB;
+    });
+    var Cs = c((ak, ZE) => {
+      var kB = ri(), MB = tE(), GB = nE(), UB = sE(), YB = aE(), jB = zE();
+      function sn(e) {
+        var t = this.__data__ = new kB(e);
+        this.size = t.size;
+      }
+      i(sn, "Stack");
+      sn.prototype.clear = MB;
+      sn.prototype.delete = GB;
+      sn.prototype.get = UB;
+      sn.prototype.has = YB;
+      sn.prototype.set = jB;
+      ZE.exports = sn;
+    });
+    var td = c((ok, ed) => {
+      function VB(e, t) {
+        for (var r = -1, n = e == null ? 0 : e.length; ++r < n && t(e[r], r, e) !== false; )
+          ;
+        return e;
+      }
+      i(VB, "arrayEach");
+      ed.exports = VB;
+    });
+    var nd = c((lk, rd) => {
+      var KB = ir(), WB = function() {
+        try {
+          var e = KB(Object, "defineProperty");
+          return e({}, "", {}), e;
+        } catch {
+        }
+      }();
+      rd.exports = WB;
+    });
+    var Ma = c((ck, sd) => {
+      var id = nd();
+      function HB(e, t, r) {
+        t == "__proto__" && id ? id(e, t, { configurable: true, enumerable: true, value: r, writable: true }) : e[t] = r;
+      }
+      i(HB, "baseAssignValue");
+      sd.exports = HB;
+    });
+    var Ga = c((pk, ud) => {
+      var XB = Ma(), $B = vs(), JB = Object.prototype, QB = JB.hasOwnProperty;
+      function zB(e, t, r) {
+        var n = e[t];
+        (!(QB.call(e, t) && $B(n, r)) || r === void 0 && !(t in e)) && XB(e, t, r);
+      }
+      i(zB, "assignValue");
+      ud.exports = zB;
+    });
+    var si = c((fk, ad) => {
+      var ZB = Ga(), eO = Ma();
+      function tO(e, t, r, n) {
+        var s = !r;
+        r || (r = {});
+        for (var u = -1, a = t.length; ++u < a; ) {
+          var l = t[u], p = n ? n(r[l], e[l], l, r, e) : void 0;
+          p === void 0 && (p = e[l]), s ? eO(r, l, p) : ZB(r, l, p);
+        }
+        return r;
+      }
+      i(tO, "copyObject");
+      ad.exports = tO;
+    });
+    var ld = c((Ek, od) => {
+      function rO(e, t) {
+        for (var r = -1, n = Array(e); ++r < e; )
+          n[r] = t(r);
+        return n;
+      }
+      i(rO, "baseTimes");
+      od.exports = rO;
+    });
+    var pd = c((dk, cd) => {
+      var nO = nr(), iO = Et(), sO = "[object Arguments]";
+      function uO(e) {
+        return iO(e) && nO(e) == sO;
+      }
+      i(uO, "baseIsArguments");
+      cd.exports = uO;
+    });
+    var Ua = c((mk, dd) => {
+      var fd = pd(), aO = Et(), Ed = Object.prototype, oO = Ed.hasOwnProperty, lO = Ed.propertyIsEnumerable, cO = fd(function() {
+        return arguments;
+      }()) ? fd : function(e) {
+        return aO(e) && oO.call(e, "callee") && !lO.call(e, "callee");
+      };
+      dd.exports = cO;
+    });
+    var nt = c((Dk, md) => {
+      var pO = Array.isArray;
+      md.exports = pO;
+    });
+    var Ad = c((Ak, Dd) => {
+      function fO() {
+        return false;
+      }
+      i(fO, "stubFalse");
+      Dd.exports = fO;
+    });
+    var Bs = c((ui, un) => {
+      var EO = tt(), dO = Ad(), Td = typeof ui == "object" && ui && !ui.nodeType && ui, hd = Td && typeof un == "object" && un && !un.nodeType && un, mO = hd && hd.exports === Td, yd = mO ? EO.Buffer : void 0, DO = yd ? yd.isBuffer : void 0, AO = DO || dO;
+      un.exports = AO;
+    });
+    var Ya = c((hk, xd) => {
+      var hO = 9007199254740991, yO = /^(?:0|[1-9]\d*)$/;
+      function TO(e, t) {
+        var r = typeof e;
+        return t = t ?? hO, !!t && (r == "number" || r != "symbol" && yO.test(e)) && e > -1 && e % 1 == 0 && e < t;
+      }
+      i(TO, "isIndex");
+      xd.exports = TO;
+    });
+    var Os = c((yk, gd) => {
+      var xO = 9007199254740991;
+      function gO(e) {
+        return typeof e == "number" && e > -1 && e % 1 == 0 && e <= xO;
+      }
+      i(gO, "isLength");
+      gd.exports = gO;
+    });
+    var Sd = c((Tk, vd) => {
+      var vO = nr(), SO = Os(), FO = Et(), CO = "[object Arguments]", BO = "[object Array]", OO = "[object Boolean]", bO = "[object Date]", NO = "[object Error]", IO = "[object Function]", _O = "[object Map]", RO = "[object Number]", PO = "[object Object]", LO = "[object RegExp]", wO = "[object Set]", qO = "[object String]", kO = "[object WeakMap]", MO = "[object ArrayBuffer]", GO = "[object DataView]", UO = "[object Float32Array]", YO = "[object Float64Array]", jO = "[object Int8Array]", VO = "[object Int16Array]", KO = "[object Int32Array]", WO = "[object Uint8Array]", HO = "[object Uint8ClampedArray]", XO = "[object Uint16Array]", $O = "[object Uint32Array]", ce = {};
+      ce[UO] = ce[YO] = ce[jO] = ce[VO] = ce[KO] = ce[WO] = ce[HO] = ce[XO] = ce[$O] = true;
+      ce[CO] = ce[BO] = ce[MO] = ce[OO] = ce[GO] = ce[bO] = ce[NO] = ce[IO] = ce[_O] = ce[RO] = ce[PO] = ce[LO] = ce[wO] = ce[qO] = ce[kO] = false;
+      function JO(e) {
+        return FO(e) && SO(e.length) && !!ce[vO(e)];
+      }
+      i(JO, "baseIsTypedArray");
+      vd.exports = JO;
+    });
+    var ja = c((xk, Bd) => {
+      var QO = Sd(), zO = $n(), Fd = zn(), Cd = Fd && Fd.isTypedArray, ZO = Cd ? zO(Cd) : QO;
+      Bd.exports = ZO;
+    });
+    var Va = c((gk, Od) => {
+      var eb = ld(), tb = Ua(), rb = nt(), nb = Bs(), ib = Ya(), sb = ja(), ub = Object.prototype, ab = ub.hasOwnProperty;
+      function ob(e, t) {
+        var r = rb(e), n = !r && tb(e), s = !r && !n && nb(e), u = !r && !n && !s && sb(e), a = r || n || s || u, l = a ? eb(e.length, String) : [], p = l.length;
+        for (var f in e)
+          (t || ab.call(e, f)) && !(a && (f == "length" || s && (f == "offset" || f == "parent") || u && (f == "buffer" || f == "byteLength" || f == "byteOffset") || ib(f, p))) && l.push(f);
+        return l;
+      }
+      i(ob, "arrayLikeKeys");
+      Od.exports = ob;
+    });
+    var bs = c((vk, bd) => {
+      var lb = Object.prototype;
+      function cb(e) {
+        var t = e && e.constructor, r = typeof t == "function" && t.prototype || lb;
+        return e === r;
+      }
+      i(cb, "isPrototype");
+      bd.exports = cb;
+    });
+    var Id = c((Sk, Nd) => {
+      var pb = _a(), fb = pb(Object.keys, Object);
+      Nd.exports = fb;
+    });
+    var Rd = c((Fk, _d) => {
+      var Eb = bs(), db = Id(), mb = Object.prototype, Db = mb.hasOwnProperty;
+      function Ab(e) {
+        if (!Eb(e))
+          return db(e);
+        var t = [];
+        for (var r in Object(e))
+          Db.call(e, r) && r != "constructor" && t.push(r);
+        return t;
+      }
+      i(Ab, "baseKeys");
+      _d.exports = Ab;
+    });
+    var Ns = c((Ck, Pd) => {
+      var hb = wa(), yb = Os();
+      function Tb(e) {
+        return e != null && yb(e.length) && !hb(e);
+      }
+      i(Tb, "isArrayLike");
+      Pd.exports = Tb;
+    });
+    var an = c((Bk, Ld) => {
+      var xb = Va(), gb = Rd(), vb = Ns();
+      function Sb(e) {
+        return vb(e) ? xb(e) : gb(e);
+      }
+      i(Sb, "keys");
+      Ld.exports = Sb;
+    });
+    var qd = c((Ok, wd) => {
+      var Fb = si(), Cb = an();
+      function Bb(e, t) {
+        return e && Fb(t, Cb(t), e);
+      }
+      i(Bb, "baseAssign");
+      wd.exports = Bb;
+    });
+    var Md = c((bk, kd) => {
+      function Ob(e) {
+        var t = [];
+        if (e != null)
+          for (var r in Object(e))
+            t.push(r);
+        return t;
+      }
+      i(Ob, "nativeKeysIn");
+      kd.exports = Ob;
+    });
+    var Ud = c((Nk, Gd) => {
+      var bb = Br(), Nb = bs(), Ib = Md(), _b = Object.prototype, Rb = _b.hasOwnProperty;
+      function Pb(e) {
+        if (!bb(e))
+          return Ib(e);
+        var t = Nb(e), r = [];
+        for (var n in e)
+          n == "constructor" && (t || !Rb.call(e, n)) || r.push(n);
+        return r;
+      }
+      i(Pb, "baseKeysIn");
+      Gd.exports = Pb;
+    });
+    var Is = c((Ik, Yd) => {
+      var Lb = Va(), wb = Ud(), qb = Ns();
+      function kb(e) {
+        return qb(e) ? Lb(e, true) : wb(e);
+      }
+      i(kb, "keysIn");
+      Yd.exports = kb;
+    });
+    var Vd = c((_k, jd) => {
+      var Mb = si(), Gb = Is();
+      function Ub(e, t) {
+        return e && Mb(t, Gb(t), e);
+      }
+      i(Ub, "baseAssignIn");
+      jd.exports = Ub;
+    });
+    var $d = c((ai, on) => {
+      var Yb = tt(), Xd = typeof ai == "object" && ai && !ai.nodeType && ai, Kd = Xd && typeof on == "object" && on && !on.nodeType && on, jb = Kd && Kd.exports === Xd, Wd = jb ? Yb.Buffer : void 0, Hd = Wd ? Wd.allocUnsafe : void 0;
+      function Vb(e, t) {
+        if (t)
+          return e.slice();
+        var r = e.length, n = Hd ? Hd(r) : new e.constructor(r);
+        return e.copy(n), n;
+      }
+      i(Vb, "cloneBuffer");
+      on.exports = Vb;
+    });
+    var Qd = c((Rk, Jd) => {
+      function Kb(e, t) {
+        var r = -1, n = e.length;
+        for (t || (t = Array(n)); ++r < n; )
+          t[r] = e[r];
+        return t;
+      }
+      i(Kb, "copyArray");
+      Jd.exports = Kb;
+    });
+    var Ka = c((Pk, zd) => {
+      function Wb(e, t) {
+        for (var r = -1, n = e == null ? 0 : e.length, s = 0, u = []; ++r < n; ) {
+          var a = e[r];
+          t(a, r, e) && (u[s++] = a);
+        }
+        return u;
+      }
+      i(Wb, "arrayFilter");
+      zd.exports = Wb;
+    });
+    var Wa = c((Lk, Zd) => {
+      function Hb() {
+        return [];
+      }
+      i(Hb, "stubArray");
+      Zd.exports = Hb;
+    });
+    var _s = c((wk, tm) => {
+      var Xb = Ka(), $b = Wa(), Jb = Object.prototype, Qb = Jb.propertyIsEnumerable, em = Object.getOwnPropertySymbols, zb = em ? function(e) {
+        return e == null ? [] : (e = Object(e), Xb(em(e), function(t) {
+          return Qb.call(e, t);
+        }));
+      } : $b;
+      tm.exports = zb;
+    });
+    var nm = c((qk, rm) => {
+      var Zb = si(), eN = _s();
+      function tN(e, t) {
+        return Zb(e, eN(e), t);
+      }
+      i(tN, "copySymbols");
+      rm.exports = tN;
+    });
+    var Ha = c((kk, im) => {
+      function rN(e, t) {
+        for (var r = -1, n = t.length, s = e.length; ++r < n; )
+          e[s + r] = t[r];
+        return e;
+      }
+      i(rN, "arrayPush");
+      im.exports = rN;
+    });
+    var Xa = c((Mk, sm) => {
+      var nN = Ha(), iN = xs(), sN = _s(), uN = Wa(), aN = Object.getOwnPropertySymbols, oN = aN ? function(e) {
+        for (var t = []; e; )
+          nN(t, sN(e)), e = iN(e);
+        return t;
+      } : uN;
+      sm.exports = oN;
+    });
+    var am = c((Gk, um) => {
+      var lN = si(), cN = Xa();
+      function pN(e, t) {
+        return lN(e, cN(e), t);
+      }
+      i(pN, "copySymbolsIn");
+      um.exports = pN;
+    });
+    var $a = c((Uk, om) => {
+      var fN = Ha(), EN = nt();
+      function dN(e, t, r) {
+        var n = t(e);
+        return EN(e) ? n : fN(n, r(e));
+      }
+      i(dN, "baseGetAllKeys");
+      om.exports = dN;
+    });
+    var Ja = c((Yk, lm) => {
+      var mN = $a(), DN = _s(), AN = an();
+      function hN(e) {
+        return mN(e, AN, DN);
+      }
+      i(hN, "getAllKeys");
+      lm.exports = hN;
+    });
+    var pm = c((jk, cm) => {
+      var yN = $a(), TN = Xa(), xN = Is();
+      function gN(e) {
+        return yN(e, xN, TN);
+      }
+      i(gN, "getAllKeysIn");
+      cm.exports = gN;
+    });
+    var Em = c((Vk, fm) => {
+      var vN = ir(), SN = tt(), FN = vN(SN, "DataView");
+      fm.exports = FN;
+    });
+    var mm = c((Kk, dm) => {
+      var CN = ir(), BN = tt(), ON = CN(BN, "Promise");
+      dm.exports = ON;
+    });
+    var Qa = c((Wk, Dm) => {
+      var bN = ir(), NN = tt(), IN = bN(NN, "Set");
+      Dm.exports = IN;
+    });
+    var hm = c((Hk, Am) => {
+      var _N = ir(), RN = tt(), PN = _N(RN, "WeakMap");
+      Am.exports = PN;
+    });
+    var oi = c((Xk, Fm) => {
+      var za = Em(), Za = Ss(), eo = mm(), to = Qa(), ro = hm(), Sm = nr(), ln = ka(), ym = "[object Map]", LN = "[object Object]", Tm = "[object Promise]", xm = "[object Set]", gm = "[object WeakMap]", vm = "[object DataView]", wN = ln(za), qN = ln(Za), kN = ln(eo), MN = ln(to), GN = ln(ro), Or = Sm;
+      (za && Or(new za(new ArrayBuffer(1))) != vm || Za && Or(new Za()) != ym || eo && Or(eo.resolve()) != Tm || to && Or(new to()) != xm || ro && Or(new ro()) != gm) && (Or = i(function(e) {
+        var t = Sm(e), r = t == LN ? e.constructor : void 0, n = r ? ln(r) : "";
+        if (n)
+          switch (n) {
+            case wN:
+              return vm;
+            case qN:
+              return ym;
+            case kN:
+              return Tm;
+            case MN:
+              return xm;
+            case GN:
+              return gm;
+          }
+        return t;
+      }, "getTag"));
+      Fm.exports = Or;
+    });
+    var Bm = c(($k, Cm) => {
+      var UN = Object.prototype, YN = UN.hasOwnProperty;
+      function jN(e) {
+        var t = e.length, r = new e.constructor(t);
+        return t && typeof e[0] == "string" && YN.call(e, "index") && (r.index = e.index, r.input = e.input), r;
+      }
+      i(jN, "initCloneArray");
+      Cm.exports = jN;
+    });
+    var no = c((Jk, Om) => {
+      var VN = tt(), KN = VN.Uint8Array;
+      Om.exports = KN;
+    });
+    var Rs = c((Qk, Nm) => {
+      var bm = no();
+      function WN(e) {
+        var t = new e.constructor(e.byteLength);
+        return new bm(t).set(new bm(e)), t;
+      }
+      i(WN, "cloneArrayBuffer");
+      Nm.exports = WN;
+    });
+    var _m = c((zk, Im) => {
+      var HN = Rs();
+      function XN(e, t) {
+        var r = t ? HN(e.buffer) : e.buffer;
+        return new e.constructor(r, e.byteOffset, e.byteLength);
+      }
+      i(XN, "cloneDataView");
+      Im.exports = XN;
+    });
+    var Pm = c((Zk, Rm) => {
+      var $N = /\w*$/;
+      function JN(e) {
+        var t = new e.constructor(e.source, $N.exec(e));
+        return t.lastIndex = e.lastIndex, t;
+      }
+      i(JN, "cloneRegExp");
+      Rm.exports = JN;
+    });
+    var Mm = c((e4, km) => {
+      var Lm = Zr(), wm = Lm ? Lm.prototype : void 0, qm = wm ? wm.valueOf : void 0;
+      function QN(e) {
+        return qm ? Object(qm.call(e)) : {};
+      }
+      i(QN, "cloneSymbol");
+      km.exports = QN;
+    });
+    var Um = c((t4, Gm) => {
+      var zN = Rs();
+      function ZN(e, t) {
+        var r = t ? zN(e.buffer) : e.buffer;
+        return new e.constructor(r, e.byteOffset, e.length);
+      }
+      i(ZN, "cloneTypedArray");
+      Gm.exports = ZN;
+    });
+    var jm = c((r4, Ym) => {
+      var eI = Rs(), tI = _m(), rI = Pm(), nI = Mm(), iI = Um(), sI = "[object Boolean]", uI = "[object Date]", aI = "[object Map]", oI = "[object Number]", lI = "[object RegExp]", cI = "[object Set]", pI = "[object String]", fI = "[object Symbol]", EI = "[object ArrayBuffer]", dI = "[object DataView]", mI = "[object Float32Array]", DI = "[object Float64Array]", AI = "[object Int8Array]", hI = "[object Int16Array]", yI = "[object Int32Array]", TI = "[object Uint8Array]", xI = "[object Uint8ClampedArray]", gI = "[object Uint16Array]", vI = "[object Uint32Array]";
+      function SI(e, t, r) {
+        var n = e.constructor;
+        switch (t) {
+          case EI:
+            return eI(e);
+          case sI:
+          case uI:
+            return new n(+e);
+          case dI:
+            return tI(e, r);
+          case mI:
+          case DI:
+          case AI:
+          case hI:
+          case yI:
+          case TI:
+          case xI:
+          case gI:
+          case vI:
+            return iI(e, r);
+          case aI:
+            return new n();
+          case oI:
+          case pI:
+            return new n(e);
+          case lI:
+            return rI(e);
+          case cI:
+            return new n();
+          case fI:
+            return nI(e);
+        }
+      }
+      i(SI, "initCloneByTag");
+      Ym.exports = SI;
+    });
+    var Wm = c((n4, Km) => {
+      var FI = Br(), Vm = Object.create, CI = function() {
+        function e() {
+        }
+        return i(e, "object"), function(t) {
+          if (!FI(t))
+            return {};
+          if (Vm)
+            return Vm(t);
+          e.prototype = t;
+          var r = new e();
+          return e.prototype = void 0, r;
+        };
+      }();
+      Km.exports = CI;
+    });
+    var Xm = c((i4, Hm) => {
+      var BI = Wm(), OI = xs(), bI = bs();
+      function NI(e) {
+        return typeof e.constructor == "function" && !bI(e) ? BI(OI(e)) : {};
+      }
+      i(NI, "initCloneObject");
+      Hm.exports = NI;
+    });
+    var Jm = c((s4, $m) => {
+      var II = oi(), _I = Et(), RI = "[object Map]";
+      function PI(e) {
+        return _I(e) && II(e) == RI;
+      }
+      i(PI, "baseIsMap");
+      $m.exports = PI;
+    });
+    var eD = c((u4, Zm) => {
+      var LI = Jm(), wI = $n(), Qm = zn(), zm = Qm && Qm.isMap, qI = zm ? wI(zm) : LI;
+      Zm.exports = qI;
+    });
+    var rD = c((a4, tD) => {
+      var kI = oi(), MI = Et(), GI = "[object Set]";
+      function UI(e) {
+        return MI(e) && kI(e) == GI;
+      }
+      i(UI, "baseIsSet");
+      tD.exports = UI;
+    });
+    var uD = c((o4, sD) => {
+      var YI = rD(), jI = $n(), nD = zn(), iD = nD && nD.isSet, VI = iD ? jI(iD) : YI;
+      sD.exports = VI;
+    });
+    var pD = c((l4, cD) => {
+      var KI = Cs(), WI = td(), HI = Ga(), XI = qd(), $I = Vd(), JI = $d(), QI = Qd(), zI = nm(), ZI = am(), e_ = Ja(), t_ = pm(), r_ = oi(), n_ = Bm(), i_ = jm(), s_ = Xm(), u_ = nt(), a_ = Bs(), o_ = eD(), l_ = Br(), c_ = uD(), p_ = an(), f_ = Is(), E_ = 1, d_ = 2, m_ = 4, aD = "[object Arguments]", D_ = "[object Array]", A_ = "[object Boolean]", h_ = "[object Date]", y_ = "[object Error]", oD = "[object Function]", T_ = "[object GeneratorFunction]", x_ = "[object Map]", g_ = "[object Number]", lD = "[object Object]", v_ = "[object RegExp]", S_ = "[object Set]", F_ = "[object String]", C_ = "[object Symbol]", B_ = "[object WeakMap]", O_ = "[object ArrayBuffer]", b_ = "[object DataView]", N_ = "[object Float32Array]", I_ = "[object Float64Array]", __ = "[object Int8Array]", R_ = "[object Int16Array]", P_ = "[object Int32Array]", L_ = "[object Uint8Array]", w_ = "[object Uint8ClampedArray]", q_ = "[object Uint16Array]", k_ = "[object Uint32Array]", le = {};
+      le[aD] = le[D_] = le[O_] = le[b_] = le[A_] = le[h_] = le[N_] = le[I_] = le[__] = le[R_] = le[P_] = le[x_] = le[g_] = le[lD] = le[v_] = le[S_] = le[F_] = le[C_] = le[L_] = le[w_] = le[q_] = le[k_] = true;
+      le[y_] = le[oD] = le[B_] = false;
+      function Ps(e, t, r, n, s, u) {
+        var a, l = t & E_, p = t & d_, f = t & m_;
+        if (r && (a = s ? r(e, n, s, u) : r(e)), a !== void 0)
+          return a;
+        if (!l_(e))
+          return e;
+        var m = u_(e);
+        if (m) {
+          if (a = n_(e), !l)
+            return QI(e, a);
+        } else {
+          var A = r_(e), E = A == oD || A == T_;
+          if (a_(e))
+            return JI(e, l);
+          if (A == lD || A == aD || E && !s) {
+            if (a = p || E ? {} : s_(e), !l)
+              return p ? ZI(e, $I(a, e)) : zI(e, XI(a, e));
+          } else {
+            if (!le[A])
+              return s ? e : {};
+            a = i_(e, A, l);
+          }
+        }
+        u || (u = new KI());
+        var x = u.get(e);
+        if (x)
+          return x;
+        u.set(e, a), c_(e) ? e.forEach(function(g) {
+          a.add(Ps(g, t, r, g, e, u));
+        }) : o_(e) && e.forEach(function(g, U) {
+          a.set(U, Ps(g, t, r, U, e, u));
+        });
+        var F = f ? p ? t_ : e_ : p ? f_ : p_, O = m ? void 0 : F(e);
+        return WI(O || e, function(g, U) {
+          O && (U = g, g = e[U]), HI(a, U, Ps(g, t, r, U, e, u));
+        }), a;
+      }
+      i(Ps, "baseClone");
+      cD.exports = Ps;
+    });
+    var ED = c((c4, fD) => {
+      var M_ = pD(), G_ = 4;
+      function U_(e) {
+        return M_(e, G_);
+      }
+      i(U_, "clone");
+      fD.exports = U_;
+    });
+    var mD = c((p4, dD) => {
+      var Y_ = "__lodash_hash_undefined__";
+      function j_(e) {
+        return this.__data__.set(e, Y_), this;
+      }
+      i(j_, "setCacheAdd");
+      dD.exports = j_;
+    });
+    var AD = c((f4, DD) => {
+      function V_(e) {
+        return this.__data__.has(e);
+      }
+      i(V_, "setCacheHas");
+      DD.exports = V_;
+    });
+    var io = c((E4, hD) => {
+      var K_ = Fs(), W_ = mD(), H_ = AD();
+      function Ls(e) {
+        var t = -1, r = e == null ? 0 : e.length;
+        for (this.__data__ = new K_(); ++t < r; )
+          this.add(e[t]);
+      }
+      i(Ls, "SetCache");
+      Ls.prototype.add = Ls.prototype.push = W_;
+      Ls.prototype.has = H_;
+      hD.exports = Ls;
+    });
+    var TD = c((d4, yD) => {
+      function X_(e, t, r, n) {
+        for (var s = e.length, u = r + (n ? 1 : -1); n ? u-- : ++u < s; )
+          if (t(e[u], u, e))
+            return u;
+        return -1;
+      }
+      i(X_, "baseFindIndex");
+      yD.exports = X_;
+    });
+    var gD = c((m4, xD) => {
+      function $_(e) {
+        return e !== e;
+      }
+      i($_, "baseIsNaN");
+      xD.exports = $_;
+    });
+    var SD = c((D4, vD) => {
+      function J_(e, t, r) {
+        for (var n = r - 1, s = e.length; ++n < s; )
+          if (e[n] === t)
+            return n;
+        return -1;
+      }
+      i(J_, "strictIndexOf");
+      vD.exports = J_;
+    });
+    var ws = c((A4, FD) => {
+      var Q_ = TD(), z_ = gD(), Z_ = SD();
+      function eR(e, t, r) {
+        return t === t ? Z_(e, t, r) : Q_(e, z_, r);
+      }
+      i(eR, "baseIndexOf");
+      FD.exports = eR;
+    });
+    var BD = c((h4, CD) => {
+      var tR = ws();
+      function rR(e, t) {
+        var r = e == null ? 0 : e.length;
+        return !!r && tR(e, t, 0) > -1;
+      }
+      i(rR, "arrayIncludes");
+      CD.exports = rR;
+    });
+    var bD = c((y4, OD) => {
+      function nR(e, t, r) {
+        for (var n = -1, s = e == null ? 0 : e.length; ++n < s; )
+          if (r(t, e[n]))
+            return true;
+        return false;
+      }
+      i(nR, "arrayIncludesWith");
+      OD.exports = nR;
+    });
+    var so = c((T4, ND) => {
+      function iR(e, t) {
+        return e.has(t);
+      }
+      i(iR, "cacheHas");
+      ND.exports = iR;
+    });
+    var _D = c((x4, ID) => {
+      function sR() {
+      }
+      i(sR, "noop");
+      ID.exports = sR;
+    });
+    var qs = c((g4, RD) => {
+      function uR(e) {
+        var t = -1, r = Array(e.size);
+        return e.forEach(function(n) {
+          r[++t] = n;
+        }), r;
+      }
+      i(uR, "setToArray");
+      RD.exports = uR;
+    });
+    var LD = c((v4, PD) => {
+      var uo = Qa(), aR = _D(), oR = qs(), lR = 1 / 0, cR = uo && 1 / oR(new uo([, -0]))[1] == lR ? function(e) {
+        return new uo(e);
+      } : aR;
+      PD.exports = cR;
+    });
+    var qD = c((S4, wD) => {
+      var pR = io(), fR = BD(), ER = bD(), dR = so(), mR = LD(), DR = qs(), AR = 200;
+      function hR(e, t, r) {
+        var n = -1, s = fR, u = e.length, a = true, l = [], p = l;
+        if (r)
+          a = false, s = ER;
+        else if (u >= AR) {
+          var f = t ? null : mR(e);
+          if (f)
+            return DR(f);
+          a = false, s = dR, p = new pR();
+        } else
+          p = t ? [] : l;
+        e:
+          for (; ++n < u; ) {
+            var m = e[n], A = t ? t(m) : m;
+            if (m = r || m !== 0 ? m : 0, a && A === A) {
+              for (var E = p.length; E--; )
+                if (p[E] === A)
+                  continue e;
+              t && p.push(A), l.push(m);
+            } else
+              s(p, A, r) || (p !== l && p.push(A), l.push(m));
+          }
+        return l;
+      }
+      i(hR, "baseUniq");
+      wD.exports = hR;
+    });
+    var MD = c((F4, kD) => {
+      var yR = qD();
+      function TR(e) {
+        return e && e.length ? yR(e) : [];
+      }
+      i(TR, "uniq");
+      kD.exports = TR;
+    });
+    var Rt = c((Se) => {
+      "use strict";
+      Se.__esModule = true;
+      Se.DEPRECATED_KEYS = Se.BUILDER_KEYS = Se.NODE_FIELDS = Se.ALIAS_KEYS = Se.VISITOR_KEYS = void 0;
+      var xR = Hn(), Ms = ao(xR), gR = ms(), cn = ao(gR), vR = Oa(), SR = ao(vR);
+      Se.assertEach = _R;
+      Se.assertOneOf = RR;
+      Se.assertNodeType = PR;
+      Se.assertNodeOrValueType = LR;
+      Se.assertValueType = YD;
+      Se.chain = wR;
+      Se.default = qR;
+      var FR = _t(), UD = CR(FR);
+      function CR(e) {
+        if (e && e.__esModule)
+          return e;
+        var t = {};
+        if (e != null)
+          for (var r in e)
+            Object.prototype.hasOwnProperty.call(e, r) && (t[r] = e[r]);
+        return t.default = e, t;
+      }
+      i(CR, "_interopRequireWildcard");
+      function ao(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      i(ao, "_interopRequireDefault");
+      var BR = Se.VISITOR_KEYS = {}, OR = Se.ALIAS_KEYS = {}, bR = Se.NODE_FIELDS = {}, NR = Se.BUILDER_KEYS = {}, IR = Se.DEPRECATED_KEYS = {};
+      function ks(e) {
+        return Array.isArray(e) ? "array" : e === null ? "null" : e === void 0 || typeof e > "u" ? "undefined" : (0, SR.default)(e);
+      }
+      i(ks, "getType");
+      function _R(e) {
+        function t(r, n, s) {
+          if (!!Array.isArray(s))
+            for (var u = 0; u < s.length; u++)
+              e(r, n + "[" + u + "]", s[u]);
+        }
+        return i(t, "validator"), t.each = e, t;
+      }
+      i(_R, "assertEach");
+      function RR() {
+        for (var e = arguments.length, t = Array(e), r = 0; r < e; r++)
+          t[r] = arguments[r];
+        function n(s, u, a) {
+          if (t.indexOf(a) < 0)
+            throw new TypeError("Property " + u + " expected value to be one of " + (0, cn.default)(t) + " but got " + (0, cn.default)(a));
+        }
+        return i(n, "validate"), n.oneOf = t, n;
+      }
+      i(RR, "assertOneOf");
+      function PR() {
+        for (var e = arguments.length, t = Array(e), r = 0; r < e; r++)
+          t[r] = arguments[r];
+        function n(s, u, a) {
+          for (var l = false, m = t, p = Array.isArray(m), f = 0, m = p ? m : (0, Ms.default)(m); ; ) {
+            var A;
+            if (p) {
+              if (f >= m.length)
+                break;
+              A = m[f++];
+            } else {
+              if (f = m.next(), f.done)
+                break;
+              A = f.value;
+            }
+            var E = A;
+            if (UD.is(E, a)) {
+              l = true;
+              break;
+            }
+          }
+          if (!l)
+            throw new TypeError("Property " + u + " of " + s.type + " expected node to be of a type " + (0, cn.default)(t) + " " + ("but instead got " + (0, cn.default)(a && a.type)));
+        }
+        return i(n, "validate"), n.oneOfNodeTypes = t, n;
+      }
+      i(PR, "assertNodeType");
+      function LR() {
+        for (var e = arguments.length, t = Array(e), r = 0; r < e; r++)
+          t[r] = arguments[r];
+        function n(s, u, a) {
+          for (var l = false, m = t, p = Array.isArray(m), f = 0, m = p ? m : (0, Ms.default)(m); ; ) {
+            var A;
+            if (p) {
+              if (f >= m.length)
+                break;
+              A = m[f++];
+            } else {
+              if (f = m.next(), f.done)
+                break;
+              A = f.value;
+            }
+            var E = A;
+            if (ks(a) === E || UD.is(E, a)) {
+              l = true;
+              break;
+            }
+          }
+          if (!l)
+            throw new TypeError("Property " + u + " of " + s.type + " expected node to be of a type " + (0, cn.default)(t) + " " + ("but instead got " + (0, cn.default)(a && a.type)));
+        }
+        return i(n, "validate"), n.oneOfNodeOrValueTypes = t, n;
+      }
+      i(LR, "assertNodeOrValueType");
+      function YD(e) {
+        function t(r, n, s) {
+          var u = ks(s) === e;
+          if (!u)
+            throw new TypeError("Property " + n + " expected type of " + e + " but got " + ks(s));
+        }
+        return i(t, "validate"), t.type = e, t;
+      }
+      i(YD, "assertValueType");
+      function wR() {
+        for (var e = arguments.length, t = Array(e), r = 0; r < e; r++)
+          t[r] = arguments[r];
+        function n() {
+          for (var a = t, s = Array.isArray(a), u = 0, a = s ? a : (0, Ms.default)(a); ; ) {
+            var l;
+            if (s) {
+              if (u >= a.length)
+                break;
+              l = a[u++];
+            } else {
+              if (u = a.next(), u.done)
+                break;
+              l = u.value;
+            }
+            var p = l;
+            p.apply(void 0, arguments);
+          }
+        }
+        return i(n, "validate"), n.chainOf = t, n;
+      }
+      i(wR, "chain");
+      function qR(e) {
+        var t = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {}, r = t.inherits && GD[t.inherits] || {};
+        t.fields = t.fields || r.fields || {}, t.visitor = t.visitor || r.visitor || [], t.aliases = t.aliases || r.aliases || [], t.builder = t.builder || r.builder || t.visitor || [], t.deprecatedAlias && (IR[t.deprecatedAlias] = e);
+        for (var u = t.visitor.concat(t.builder), n = Array.isArray(u), s = 0, u = n ? u : (0, Ms.default)(u); ; ) {
+          var a;
+          if (n) {
+            if (s >= u.length)
+              break;
+            a = u[s++];
+          } else {
+            if (s = u.next(), s.done)
+              break;
+            a = s.value;
+          }
+          var l = a;
+          t.fields[l] = t.fields[l] || {};
+        }
+        for (var p in t.fields) {
+          var f = t.fields[p];
+          t.builder.indexOf(p) === -1 && (f.optional = true), f.default === void 0 ? f.default = null : f.validate || (f.validate = YD(ks(f.default)));
+        }
+        BR[e] = t.visitor, NR[e] = t.builder, bR[e] = t.fields, OR[e] = t.aliases, GD[e] = t;
+      }
+      i(qR, "defineType");
+      var GD = {};
+    });
+    var jD = c(() => {
+      "use strict";
+      var kR = _t(), MR = UR(kR), Gs = Ds(), h = Rt(), k = GR(h);
+      function GR(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      i(GR, "_interopRequireDefault");
+      function UR(e) {
+        if (e && e.__esModule)
+          return e;
+        var t = {};
+        if (e != null)
+          for (var r in e)
+            Object.prototype.hasOwnProperty.call(e, r) && (t[r] = e[r]);
+        return t.default = e, t;
+      }
+      i(UR, "_interopRequireWildcard");
+      (0, k.default)("ArrayExpression", { fields: { elements: { validate: (0, h.chain)((0, h.assertValueType)("array"), (0, h.assertEach)((0, h.assertNodeOrValueType)("null", "Expression", "SpreadElement"))), default: [] } }, visitor: ["elements"], aliases: ["Expression"] });
+      (0, k.default)("AssignmentExpression", { fields: { operator: { validate: (0, h.assertValueType)("string") }, left: { validate: (0, h.assertNodeType)("LVal") }, right: { validate: (0, h.assertNodeType)("Expression") } }, builder: ["operator", "left", "right"], visitor: ["left", "right"], aliases: ["Expression"] });
+      (0, k.default)("BinaryExpression", { builder: ["operator", "left", "right"], fields: { operator: { validate: h.assertOneOf.apply(void 0, Gs.BINARY_OPERATORS) }, left: { validate: (0, h.assertNodeType)("Expression") }, right: { validate: (0, h.assertNodeType)("Expression") } }, visitor: ["left", "right"], aliases: ["Binary", "Expression"] });
+      (0, k.default)("Directive", { visitor: ["value"], fields: { value: { validate: (0, h.assertNodeType)("DirectiveLiteral") } } });
+      (0, k.default)("DirectiveLiteral", { builder: ["value"], fields: { value: { validate: (0, h.assertValueType)("string") } } });
+      (0, k.default)("BlockStatement", { builder: ["body", "directives"], visitor: ["directives", "body"], fields: { directives: { validate: (0, h.chain)((0, h.assertValueType)("array"), (0, h.assertEach)((0, h.assertNodeType)("Directive"))), default: [] }, body: { validate: (0, h.chain)((0, h.assertValueType)("array"), (0, h.assertEach)((0, h.assertNodeType)("Statement"))) } }, aliases: ["Scopable", "BlockParent", "Block", "Statement"] });
+      (0, k.default)("BreakStatement", { visitor: ["label"], fields: { label: { validate: (0, h.assertNodeType)("Identifier"), optional: true } }, aliases: ["Statement", "Terminatorless", "CompletionStatement"] });
+      (0, k.default)("CallExpression", { visitor: ["callee", "arguments"], fields: { callee: { validate: (0, h.assertNodeType)("Expression") }, arguments: { validate: (0, h.chain)((0, h.assertValueType)("array"), (0, h.assertEach)((0, h.assertNodeType)("Expression", "SpreadElement"))) } }, aliases: ["Expression"] });
+      (0, k.default)("CatchClause", { visitor: ["param", "body"], fields: { param: { validate: (0, h.assertNodeType)("Identifier") }, body: { validate: (0, h.assertNodeType)("BlockStatement") } }, aliases: ["Scopable"] });
+      (0, k.default)("ConditionalExpression", { visitor: ["test", "consequent", "alternate"], fields: { test: { validate: (0, h.assertNodeType)("Expression") }, consequent: { validate: (0, h.assertNodeType)("Expression") }, alternate: { validate: (0, h.assertNodeType)("Expression") } }, aliases: ["Expression", "Conditional"] });
+      (0, k.default)("ContinueStatement", { visitor: ["label"], fields: { label: { validate: (0, h.assertNodeType)("Identifier"), optional: true } }, aliases: ["Statement", "Terminatorless", "CompletionStatement"] });
+      (0, k.default)("DebuggerStatement", { aliases: ["Statement"] });
+      (0, k.default)("DoWhileStatement", { visitor: ["test", "body"], fields: { test: { validate: (0, h.assertNodeType)("Expression") }, body: { validate: (0, h.assertNodeType)("Statement") } }, aliases: ["Statement", "BlockParent", "Loop", "While", "Scopable"] });
+      (0, k.default)("EmptyStatement", { aliases: ["Statement"] });
+      (0, k.default)("ExpressionStatement", { visitor: ["expression"], fields: { expression: { validate: (0, h.assertNodeType)("Expression") } }, aliases: ["Statement", "ExpressionWrapper"] });
+      (0, k.default)("File", { builder: ["program", "comments", "tokens"], visitor: ["program"], fields: { program: { validate: (0, h.assertNodeType)("Program") } } });
+      (0, k.default)("ForInStatement", { visitor: ["left", "right", "body"], aliases: ["Scopable", "Statement", "For", "BlockParent", "Loop", "ForXStatement"], fields: { left: { validate: (0, h.assertNodeType)("VariableDeclaration", "LVal") }, right: { validate: (0, h.assertNodeType)("Expression") }, body: { validate: (0, h.assertNodeType)("Statement") } } });
+      (0, k.default)("ForStatement", { visitor: ["init", "test", "update", "body"], aliases: ["Scopable", "Statement", "For", "BlockParent", "Loop"], fields: { init: { validate: (0, h.assertNodeType)("VariableDeclaration", "Expression"), optional: true }, test: { validate: (0, h.assertNodeType)("Expression"), optional: true }, update: { validate: (0, h.assertNodeType)("Expression"), optional: true }, body: { validate: (0, h.assertNodeType)("Statement") } } });
+      (0, k.default)("FunctionDeclaration", { builder: ["id", "params", "body", "generator", "async"], visitor: ["id", "params", "body", "returnType", "typeParameters"], fields: { id: { validate: (0, h.assertNodeType)("Identifier") }, params: { validate: (0, h.chain)((0, h.assertValueType)("array"), (0, h.assertEach)((0, h.assertNodeType)("LVal"))) }, body: { validate: (0, h.assertNodeType)("BlockStatement") }, generator: { default: false, validate: (0, h.assertValueType)("boolean") }, async: { default: false, validate: (0, h.assertValueType)("boolean") } }, aliases: ["Scopable", "Function", "BlockParent", "FunctionParent", "Statement", "Pureish", "Declaration"] });
+      (0, k.default)("FunctionExpression", { inherits: "FunctionDeclaration", aliases: ["Scopable", "Function", "BlockParent", "FunctionParent", "Expression", "Pureish"], fields: { id: { validate: (0, h.assertNodeType)("Identifier"), optional: true }, params: { validate: (0, h.chain)((0, h.assertValueType)("array"), (0, h.assertEach)((0, h.assertNodeType)("LVal"))) }, body: { validate: (0, h.assertNodeType)("BlockStatement") }, generator: { default: false, validate: (0, h.assertValueType)("boolean") }, async: { default: false, validate: (0, h.assertValueType)("boolean") } } });
+      (0, k.default)("Identifier", { builder: ["name"], visitor: ["typeAnnotation"], aliases: ["Expression", "LVal"], fields: { name: { validate: i(function(t, r, n) {
+        MR.isValidIdentifier(n);
+      }, "validate") }, decorators: { validate: (0, h.chain)((0, h.assertValueType)("array"), (0, h.assertEach)((0, h.assertNodeType)("Decorator"))) } } });
+      (0, k.default)("IfStatement", { visitor: ["test", "consequent", "alternate"], aliases: ["Statement", "Conditional"], fields: { test: { validate: (0, h.assertNodeType)("Expression") }, consequent: { validate: (0, h.assertNodeType)("Statement") }, alternate: { optional: true, validate: (0, h.assertNodeType)("Statement") } } });
+      (0, k.default)("LabeledStatement", { visitor: ["label", "body"], aliases: ["Statement"], fields: { label: { validate: (0, h.assertNodeType)("Identifier") }, body: { validate: (0, h.assertNodeType)("Statement") } } });
+      (0, k.default)("StringLiteral", { builder: ["value"], fields: { value: { validate: (0, h.assertValueType)("string") } }, aliases: ["Expression", "Pureish", "Literal", "Immutable"] });
+      (0, k.default)("NumericLiteral", { builder: ["value"], deprecatedAlias: "NumberLiteral", fields: { value: { validate: (0, h.assertValueType)("number") } }, aliases: ["Expression", "Pureish", "Literal", "Immutable"] });
+      (0, k.default)("NullLiteral", { aliases: ["Expression", "Pureish", "Literal", "Immutable"] });
+      (0, k.default)("BooleanLiteral", { builder: ["value"], fields: { value: { validate: (0, h.assertValueType)("boolean") } }, aliases: ["Expression", "Pureish", "Literal", "Immutable"] });
+      (0, k.default)("RegExpLiteral", { builder: ["pattern", "flags"], deprecatedAlias: "RegexLiteral", aliases: ["Expression", "Literal"], fields: { pattern: { validate: (0, h.assertValueType)("string") }, flags: { validate: (0, h.assertValueType)("string"), default: "" } } });
+      (0, k.default)("LogicalExpression", { builder: ["operator", "left", "right"], visitor: ["left", "right"], aliases: ["Binary", "Expression"], fields: { operator: { validate: h.assertOneOf.apply(void 0, Gs.LOGICAL_OPERATORS) }, left: { validate: (0, h.assertNodeType)("Expression") }, right: { validate: (0, h.assertNodeType)("Expression") } } });
+      (0, k.default)("MemberExpression", { builder: ["object", "property", "computed"], visitor: ["object", "property"], aliases: ["Expression", "LVal"], fields: { object: { validate: (0, h.assertNodeType)("Expression") }, property: { validate: i(function(t, r, n) {
+        var s = t.computed ? "Expression" : "Identifier";
+        (0, h.assertNodeType)(s)(t, r, n);
+      }, "validate") }, computed: { default: false } } });
+      (0, k.default)("NewExpression", { visitor: ["callee", "arguments"], aliases: ["Expression"], fields: { callee: { validate: (0, h.assertNodeType)("Expression") }, arguments: { validate: (0, h.chain)((0, h.assertValueType)("array"), (0, h.assertEach)((0, h.assertNodeType)("Expression", "SpreadElement"))) } } });
+      (0, k.default)("Program", { visitor: ["directives", "body"], builder: ["body", "directives"], fields: { directives: { validate: (0, h.chain)((0, h.assertValueType)("array"), (0, h.assertEach)((0, h.assertNodeType)("Directive"))), default: [] }, body: { validate: (0, h.chain)((0, h.assertValueType)("array"), (0, h.assertEach)((0, h.assertNodeType)("Statement"))) } }, aliases: ["Scopable", "BlockParent", "Block", "FunctionParent"] });
+      (0, k.default)("ObjectExpression", { visitor: ["properties"], aliases: ["Expression"], fields: { properties: { validate: (0, h.chain)((0, h.assertValueType)("array"), (0, h.assertEach)((0, h.assertNodeType)("ObjectMethod", "ObjectProperty", "SpreadProperty"))) } } });
+      (0, k.default)("ObjectMethod", { builder: ["kind", "key", "params", "body", "computed"], fields: { kind: { validate: (0, h.chain)((0, h.assertValueType)("string"), (0, h.assertOneOf)("method", "get", "set")), default: "method" }, computed: { validate: (0, h.assertValueType)("boolean"), default: false }, key: { validate: i(function(t, r, n) {
+        var s = t.computed ? ["Expression"] : ["Identifier", "StringLiteral", "NumericLiteral"];
+        h.assertNodeType.apply(void 0, s)(t, r, n);
+      }, "validate") }, decorators: { validate: (0, h.chain)((0, h.assertValueType)("array"), (0, h.assertEach)((0, h.assertNodeType)("Decorator"))) }, body: { validate: (0, h.assertNodeType)("BlockStatement") }, generator: { default: false, validate: (0, h.assertValueType)("boolean") }, async: { default: false, validate: (0, h.assertValueType)("boolean") } }, visitor: ["key", "params", "body", "decorators", "returnType", "typeParameters"], aliases: ["UserWhitespacable", "Function", "Scopable", "BlockParent", "FunctionParent", "Method", "ObjectMember"] });
+      (0, k.default)("ObjectProperty", { builder: ["key", "value", "computed", "shorthand", "decorators"], fields: { computed: { validate: (0, h.assertValueType)("boolean"), default: false }, key: { validate: i(function(t, r, n) {
+        var s = t.computed ? ["Expression"] : ["Identifier", "StringLiteral", "NumericLiteral"];
+        h.assertNodeType.apply(void 0, s)(t, r, n);
+      }, "validate") }, value: { validate: (0, h.assertNodeType)("Expression", "Pattern", "RestElement") }, shorthand: { validate: (0, h.assertValueType)("boolean"), default: false }, decorators: { validate: (0, h.chain)((0, h.assertValueType)("array"), (0, h.assertEach)((0, h.assertNodeType)("Decorator"))), optional: true } }, visitor: ["key", "value", "decorators"], aliases: ["UserWhitespacable", "Property", "ObjectMember"] });
+      (0, k.default)("RestElement", { visitor: ["argument", "typeAnnotation"], aliases: ["LVal"], fields: { argument: { validate: (0, h.assertNodeType)("LVal") }, decorators: { validate: (0, h.chain)((0, h.assertValueType)("array"), (0, h.assertEach)((0, h.assertNodeType)("Decorator"))) } } });
+      (0, k.default)("ReturnStatement", { visitor: ["argument"], aliases: ["Statement", "Terminatorless", "CompletionStatement"], fields: { argument: { validate: (0, h.assertNodeType)("Expression"), optional: true } } });
+      (0, k.default)("SequenceExpression", { visitor: ["expressions"], fields: { expressions: { validate: (0, h.chain)((0, h.assertValueType)("array"), (0, h.assertEach)((0, h.assertNodeType)("Expression"))) } }, aliases: ["Expression"] });
+      (0, k.default)("SwitchCase", { visitor: ["test", "consequent"], fields: { test: { validate: (0, h.assertNodeType)("Expression"), optional: true }, consequent: { validate: (0, h.chain)((0, h.assertValueType)("array"), (0, h.assertEach)((0, h.assertNodeType)("Statement"))) } } });
+      (0, k.default)("SwitchStatement", { visitor: ["discriminant", "cases"], aliases: ["Statement", "BlockParent", "Scopable"], fields: { discriminant: { validate: (0, h.assertNodeType)("Expression") }, cases: { validate: (0, h.chain)((0, h.assertValueType)("array"), (0, h.assertEach)((0, h.assertNodeType)("SwitchCase"))) } } });
+      (0, k.default)("ThisExpression", { aliases: ["Expression"] });
+      (0, k.default)("ThrowStatement", { visitor: ["argument"], aliases: ["Statement", "Terminatorless", "CompletionStatement"], fields: { argument: { validate: (0, h.assertNodeType)("Expression") } } });
+      (0, k.default)("TryStatement", { visitor: ["block", "handler", "finalizer"], aliases: ["Statement"], fields: { body: { validate: (0, h.assertNodeType)("BlockStatement") }, handler: { optional: true, handler: (0, h.assertNodeType)("BlockStatement") }, finalizer: { optional: true, validate: (0, h.assertNodeType)("BlockStatement") } } });
+      (0, k.default)("UnaryExpression", { builder: ["operator", "argument", "prefix"], fields: { prefix: { default: true }, argument: { validate: (0, h.assertNodeType)("Expression") }, operator: { validate: h.assertOneOf.apply(void 0, Gs.UNARY_OPERATORS) } }, visitor: ["argument"], aliases: ["UnaryLike", "Expression"] });
+      (0, k.default)("UpdateExpression", { builder: ["operator", "argument", "prefix"], fields: { prefix: { default: false }, argument: { validate: (0, h.assertNodeType)("Expression") }, operator: { validate: h.assertOneOf.apply(void 0, Gs.UPDATE_OPERATORS) } }, visitor: ["argument"], aliases: ["Expression"] });
+      (0, k.default)("VariableDeclaration", { builder: ["kind", "declarations"], visitor: ["declarations"], aliases: ["Statement", "Declaration"], fields: { kind: { validate: (0, h.chain)((0, h.assertValueType)("string"), (0, h.assertOneOf)("var", "let", "const")) }, declarations: { validate: (0, h.chain)((0, h.assertValueType)("array"), (0, h.assertEach)((0, h.assertNodeType)("VariableDeclarator"))) } } });
+      (0, k.default)("VariableDeclarator", { visitor: ["id", "init"], fields: { id: { validate: (0, h.assertNodeType)("LVal") }, init: { optional: true, validate: (0, h.assertNodeType)("Expression") } } });
+      (0, k.default)("WhileStatement", { visitor: ["test", "body"], aliases: ["Statement", "BlockParent", "Loop", "While", "Scopable"], fields: { test: { validate: (0, h.assertNodeType)("Expression") }, body: { validate: (0, h.assertNodeType)("BlockStatement", "Statement") } } });
+      (0, k.default)("WithStatement", { visitor: ["object", "body"], aliases: ["Statement"], fields: { object: { object: (0, h.assertNodeType)("Expression") }, body: { validate: (0, h.assertNodeType)("BlockStatement", "Statement") } } });
+    });
+    var VD = c(() => {
+      "use strict";
+      var T = Rt(), de = YR(T);
+      function YR(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      i(YR, "_interopRequireDefault");
+      (0, de.default)("AssignmentPattern", { visitor: ["left", "right"], aliases: ["Pattern", "LVal"], fields: { left: { validate: (0, T.assertNodeType)("Identifier") }, right: { validate: (0, T.assertNodeType)("Expression") }, decorators: { validate: (0, T.chain)((0, T.assertValueType)("array"), (0, T.assertEach)((0, T.assertNodeType)("Decorator"))) } } });
+      (0, de.default)("ArrayPattern", { visitor: ["elements", "typeAnnotation"], aliases: ["Pattern", "LVal"], fields: { elements: { validate: (0, T.chain)((0, T.assertValueType)("array"), (0, T.assertEach)((0, T.assertNodeType)("Identifier", "Pattern", "RestElement"))) }, decorators: { validate: (0, T.chain)((0, T.assertValueType)("array"), (0, T.assertEach)((0, T.assertNodeType)("Decorator"))) } } });
+      (0, de.default)("ArrowFunctionExpression", { builder: ["params", "body", "async"], visitor: ["params", "body", "returnType", "typeParameters"], aliases: ["Scopable", "Function", "BlockParent", "FunctionParent", "Expression", "Pureish"], fields: { params: { validate: (0, T.chain)((0, T.assertValueType)("array"), (0, T.assertEach)((0, T.assertNodeType)("LVal"))) }, body: { validate: (0, T.assertNodeType)("BlockStatement", "Expression") }, async: { validate: (0, T.assertValueType)("boolean"), default: false } } });
+      (0, de.default)("ClassBody", { visitor: ["body"], fields: { body: { validate: (0, T.chain)((0, T.assertValueType)("array"), (0, T.assertEach)((0, T.assertNodeType)("ClassMethod", "ClassProperty"))) } } });
+      (0, de.default)("ClassDeclaration", { builder: ["id", "superClass", "body", "decorators"], visitor: ["id", "body", "superClass", "mixins", "typeParameters", "superTypeParameters", "implements", "decorators"], aliases: ["Scopable", "Class", "Statement", "Declaration", "Pureish"], fields: { id: { validate: (0, T.assertNodeType)("Identifier") }, body: { validate: (0, T.assertNodeType)("ClassBody") }, superClass: { optional: true, validate: (0, T.assertNodeType)("Expression") }, decorators: { validate: (0, T.chain)((0, T.assertValueType)("array"), (0, T.assertEach)((0, T.assertNodeType)("Decorator"))) } } });
+      (0, de.default)("ClassExpression", { inherits: "ClassDeclaration", aliases: ["Scopable", "Class", "Expression", "Pureish"], fields: { id: { optional: true, validate: (0, T.assertNodeType)("Identifier") }, body: { validate: (0, T.assertNodeType)("ClassBody") }, superClass: { optional: true, validate: (0, T.assertNodeType)("Expression") }, decorators: { validate: (0, T.chain)((0, T.assertValueType)("array"), (0, T.assertEach)((0, T.assertNodeType)("Decorator"))) } } });
+      (0, de.default)("ExportAllDeclaration", { visitor: ["source"], aliases: ["Statement", "Declaration", "ModuleDeclaration", "ExportDeclaration"], fields: { source: { validate: (0, T.assertNodeType)("StringLiteral") } } });
+      (0, de.default)("ExportDefaultDeclaration", { visitor: ["declaration"], aliases: ["Statement", "Declaration", "ModuleDeclaration", "ExportDeclaration"], fields: { declaration: { validate: (0, T.assertNodeType)("FunctionDeclaration", "ClassDeclaration", "Expression") } } });
+      (0, de.default)("ExportNamedDeclaration", { visitor: ["declaration", "specifiers", "source"], aliases: ["Statement", "Declaration", "ModuleDeclaration", "ExportDeclaration"], fields: { declaration: { validate: (0, T.assertNodeType)("Declaration"), optional: true }, specifiers: { validate: (0, T.chain)((0, T.assertValueType)("array"), (0, T.assertEach)((0, T.assertNodeType)("ExportSpecifier"))) }, source: { validate: (0, T.assertNodeType)("StringLiteral"), optional: true } } });
+      (0, de.default)("ExportSpecifier", { visitor: ["local", "exported"], aliases: ["ModuleSpecifier"], fields: { local: { validate: (0, T.assertNodeType)("Identifier") }, exported: { validate: (0, T.assertNodeType)("Identifier") } } });
+      (0, de.default)("ForOfStatement", { visitor: ["left", "right", "body"], aliases: ["Scopable", "Statement", "For", "BlockParent", "Loop", "ForXStatement"], fields: { left: { validate: (0, T.assertNodeType)("VariableDeclaration", "LVal") }, right: { validate: (0, T.assertNodeType)("Expression") }, body: { validate: (0, T.assertNodeType)("Statement") } } });
+      (0, de.default)("ImportDeclaration", { visitor: ["specifiers", "source"], aliases: ["Statement", "Declaration", "ModuleDeclaration"], fields: { specifiers: { validate: (0, T.chain)((0, T.assertValueType)("array"), (0, T.assertEach)((0, T.assertNodeType)("ImportSpecifier", "ImportDefaultSpecifier", "ImportNamespaceSpecifier"))) }, source: { validate: (0, T.assertNodeType)("StringLiteral") } } });
+      (0, de.default)("ImportDefaultSpecifier", { visitor: ["local"], aliases: ["ModuleSpecifier"], fields: { local: { validate: (0, T.assertNodeType)("Identifier") } } });
+      (0, de.default)("ImportNamespaceSpecifier", { visitor: ["local"], aliases: ["ModuleSpecifier"], fields: { local: { validate: (0, T.assertNodeType)("Identifier") } } });
+      (0, de.default)("ImportSpecifier", { visitor: ["local", "imported"], aliases: ["ModuleSpecifier"], fields: { local: { validate: (0, T.assertNodeType)("Identifier") }, imported: { validate: (0, T.assertNodeType)("Identifier") }, importKind: { validate: (0, T.assertOneOf)(null, "type", "typeof") } } });
+      (0, de.default)("MetaProperty", { visitor: ["meta", "property"], aliases: ["Expression"], fields: { meta: { validate: (0, T.assertValueType)("string") }, property: { validate: (0, T.assertValueType)("string") } } });
+      (0, de.default)("ClassMethod", { aliases: ["Function", "Scopable", "BlockParent", "FunctionParent", "Method"], builder: ["kind", "key", "params", "body", "computed", "static"], visitor: ["key", "params", "body", "decorators", "returnType", "typeParameters"], fields: { kind: { validate: (0, T.chain)((0, T.assertValueType)("string"), (0, T.assertOneOf)("get", "set", "method", "constructor")), default: "method" }, computed: { default: false, validate: (0, T.assertValueType)("boolean") }, static: { default: false, validate: (0, T.assertValueType)("boolean") }, key: { validate: i(function(t, r, n) {
+        var s = t.computed ? ["Expression"] : ["Identifier", "StringLiteral", "NumericLiteral"];
+        T.assertNodeType.apply(void 0, s)(t, r, n);
+      }, "validate") }, params: { validate: (0, T.chain)((0, T.assertValueType)("array"), (0, T.assertEach)((0, T.assertNodeType)("LVal"))) }, body: { validate: (0, T.assertNodeType)("BlockStatement") }, generator: { default: false, validate: (0, T.assertValueType)("boolean") }, async: { default: false, validate: (0, T.assertValueType)("boolean") } } });
+      (0, de.default)("ObjectPattern", { visitor: ["properties", "typeAnnotation"], aliases: ["Pattern", "LVal"], fields: { properties: { validate: (0, T.chain)((0, T.assertValueType)("array"), (0, T.assertEach)((0, T.assertNodeType)("RestProperty", "Property"))) }, decorators: { validate: (0, T.chain)((0, T.assertValueType)("array"), (0, T.assertEach)((0, T.assertNodeType)("Decorator"))) } } });
+      (0, de.default)("SpreadElement", { visitor: ["argument"], aliases: ["UnaryLike"], fields: { argument: { validate: (0, T.assertNodeType)("Expression") } } });
+      (0, de.default)("Super", { aliases: ["Expression"] });
+      (0, de.default)("TaggedTemplateExpression", { visitor: ["tag", "quasi"], aliases: ["Expression"], fields: { tag: { validate: (0, T.assertNodeType)("Expression") }, quasi: { validate: (0, T.assertNodeType)("TemplateLiteral") } } });
+      (0, de.default)("TemplateElement", { builder: ["value", "tail"], fields: { value: {}, tail: { validate: (0, T.assertValueType)("boolean"), default: false } } });
+      (0, de.default)("TemplateLiteral", { visitor: ["quasis", "expressions"], aliases: ["Expression", "Literal"], fields: { quasis: { validate: (0, T.chain)((0, T.assertValueType)("array"), (0, T.assertEach)((0, T.assertNodeType)("TemplateElement"))) }, expressions: { validate: (0, T.chain)((0, T.assertValueType)("array"), (0, T.assertEach)((0, T.assertNodeType)("Expression"))) } } });
+      (0, de.default)("YieldExpression", { builder: ["argument", "delegate"], visitor: ["argument"], aliases: ["Expression", "Terminatorless"], fields: { delegate: { validate: (0, T.assertValueType)("boolean"), default: false }, argument: { optional: true, validate: (0, T.assertNodeType)("Expression") } } });
+    });
+    var WD = c(() => {
+      "use strict";
+      var KD = Rt(), G = jR(KD);
+      function jR(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      i(jR, "_interopRequireDefault");
+      (0, G.default)("AnyTypeAnnotation", { aliases: ["Flow", "FlowBaseAnnotation"], fields: {} });
+      (0, G.default)("ArrayTypeAnnotation", { visitor: ["elementType"], aliases: ["Flow"], fields: {} });
+      (0, G.default)("BooleanTypeAnnotation", { aliases: ["Flow", "FlowBaseAnnotation"], fields: {} });
+      (0, G.default)("BooleanLiteralTypeAnnotation", { aliases: ["Flow"], fields: {} });
+      (0, G.default)("NullLiteralTypeAnnotation", { aliases: ["Flow", "FlowBaseAnnotation"], fields: {} });
+      (0, G.default)("ClassImplements", { visitor: ["id", "typeParameters"], aliases: ["Flow"], fields: {} });
+      (0, G.default)("ClassProperty", { visitor: ["key", "value", "typeAnnotation", "decorators"], builder: ["key", "value", "typeAnnotation", "decorators", "computed"], aliases: ["Property"], fields: { computed: { validate: (0, KD.assertValueType)("boolean"), default: false } } });
+      (0, G.default)("DeclareClass", { visitor: ["id", "typeParameters", "extends", "body"], aliases: ["Flow", "FlowDeclaration", "Statement", "Declaration"], fields: {} });
+      (0, G.default)("DeclareFunction", { visitor: ["id"], aliases: ["Flow", "FlowDeclaration", "Statement", "Declaration"], fields: {} });
+      (0, G.default)("DeclareInterface", { visitor: ["id", "typeParameters", "extends", "body"], aliases: ["Flow", "FlowDeclaration", "Statement", "Declaration"], fields: {} });
+      (0, G.default)("DeclareModule", { visitor: ["id", "body"], aliases: ["Flow", "FlowDeclaration", "Statement", "Declaration"], fields: {} });
+      (0, G.default)("DeclareModuleExports", { visitor: ["typeAnnotation"], aliases: ["Flow", "FlowDeclaration", "Statement", "Declaration"], fields: {} });
+      (0, G.default)("DeclareTypeAlias", { visitor: ["id", "typeParameters", "right"], aliases: ["Flow", "FlowDeclaration", "Statement", "Declaration"], fields: {} });
+      (0, G.default)("DeclareOpaqueType", { visitor: ["id", "typeParameters", "supertype"], aliases: ["Flow", "FlowDeclaration", "Statement", "Declaration"], fields: {} });
+      (0, G.default)("DeclareVariable", { visitor: ["id"], aliases: ["Flow", "FlowDeclaration", "Statement", "Declaration"], fields: {} });
+      (0, G.default)("DeclareExportDeclaration", { visitor: ["declaration", "specifiers", "source"], aliases: ["Flow", "FlowDeclaration", "Statement", "Declaration"], fields: {} });
+      (0, G.default)("ExistentialTypeParam", { aliases: ["Flow"] });
+      (0, G.default)("FunctionTypeAnnotation", { visitor: ["typeParameters", "params", "rest", "returnType"], aliases: ["Flow"], fields: {} });
+      (0, G.default)("FunctionTypeParam", { visitor: ["name", "typeAnnotation"], aliases: ["Flow"], fields: {} });
+      (0, G.default)("GenericTypeAnnotation", { visitor: ["id", "typeParameters"], aliases: ["Flow"], fields: {} });
+      (0, G.default)("InterfaceExtends", { visitor: ["id", "typeParameters"], aliases: ["Flow"], fields: {} });
+      (0, G.default)("InterfaceDeclaration", { visitor: ["id", "typeParameters", "extends", "body"], aliases: ["Flow", "FlowDeclaration", "Statement", "Declaration"], fields: {} });
+      (0, G.default)("IntersectionTypeAnnotation", { visitor: ["types"], aliases: ["Flow"], fields: {} });
+      (0, G.default)("MixedTypeAnnotation", { aliases: ["Flow", "FlowBaseAnnotation"] });
+      (0, G.default)("EmptyTypeAnnotation", { aliases: ["Flow", "FlowBaseAnnotation"] });
+      (0, G.default)("NullableTypeAnnotation", { visitor: ["typeAnnotation"], aliases: ["Flow"], fields: {} });
+      (0, G.default)("NumericLiteralTypeAnnotation", { aliases: ["Flow"], fields: {} });
+      (0, G.default)("NumberTypeAnnotation", { aliases: ["Flow", "FlowBaseAnnotation"], fields: {} });
+      (0, G.default)("StringLiteralTypeAnnotation", { aliases: ["Flow"], fields: {} });
+      (0, G.default)("StringTypeAnnotation", { aliases: ["Flow", "FlowBaseAnnotation"], fields: {} });
+      (0, G.default)("ThisTypeAnnotation", { aliases: ["Flow", "FlowBaseAnnotation"], fields: {} });
+      (0, G.default)("TupleTypeAnnotation", { visitor: ["types"], aliases: ["Flow"], fields: {} });
+      (0, G.default)("TypeofTypeAnnotation", { visitor: ["argument"], aliases: ["Flow"], fields: {} });
+      (0, G.default)("TypeAlias", { visitor: ["id", "typeParameters", "right"], aliases: ["Flow", "FlowDeclaration", "Statement", "Declaration"], fields: {} });
+      (0, G.default)("OpaqueType", { visitor: ["id", "typeParameters", "impltype", "supertype"], aliases: ["Flow", "FlowDeclaration", "Statement", "Declaration"], fields: {} });
+      (0, G.default)("TypeAnnotation", { visitor: ["typeAnnotation"], aliases: ["Flow"], fields: {} });
+      (0, G.default)("TypeCastExpression", { visitor: ["expression", "typeAnnotation"], aliases: ["Flow", "ExpressionWrapper", "Expression"], fields: {} });
+      (0, G.default)("TypeParameter", { visitor: ["bound"], aliases: ["Flow"], fields: {} });
+      (0, G.default)("TypeParameterDeclaration", { visitor: ["params"], aliases: ["Flow"], fields: {} });
+      (0, G.default)("TypeParameterInstantiation", { visitor: ["params"], aliases: ["Flow"], fields: {} });
+      (0, G.default)("ObjectTypeAnnotation", { visitor: ["properties", "indexers", "callProperties"], aliases: ["Flow"], fields: {} });
+      (0, G.default)("ObjectTypeCallProperty", { visitor: ["value"], aliases: ["Flow", "UserWhitespacable"], fields: {} });
+      (0, G.default)("ObjectTypeIndexer", { visitor: ["id", "key", "value"], aliases: ["Flow", "UserWhitespacable"], fields: {} });
+      (0, G.default)("ObjectTypeProperty", { visitor: ["key", "value"], aliases: ["Flow", "UserWhitespacable"], fields: {} });
+      (0, G.default)("ObjectTypeSpreadProperty", { visitor: ["argument"], aliases: ["Flow", "UserWhitespacable"], fields: {} });
+      (0, G.default)("QualifiedTypeIdentifier", { visitor: ["id", "qualification"], aliases: ["Flow"], fields: {} });
+      (0, G.default)("UnionTypeAnnotation", { visitor: ["types"], aliases: ["Flow"], fields: {} });
+      (0, G.default)("VoidTypeAnnotation", { aliases: ["Flow", "FlowBaseAnnotation"], fields: {} });
+    });
+    var HD = c(() => {
+      "use strict";
+      var pe = Rt(), Qe = VR(pe);
+      function VR(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      i(VR, "_interopRequireDefault");
+      (0, Qe.default)("JSXAttribute", { visitor: ["name", "value"], aliases: ["JSX", "Immutable"], fields: { name: { validate: (0, pe.assertNodeType)("JSXIdentifier", "JSXNamespacedName") }, value: { optional: true, validate: (0, pe.assertNodeType)("JSXElement", "StringLiteral", "JSXExpressionContainer") } } });
+      (0, Qe.default)("JSXClosingElement", { visitor: ["name"], aliases: ["JSX", "Immutable"], fields: { name: { validate: (0, pe.assertNodeType)("JSXIdentifier", "JSXMemberExpression") } } });
+      (0, Qe.default)("JSXElement", { builder: ["openingElement", "closingElement", "children", "selfClosing"], visitor: ["openingElement", "children", "closingElement"], aliases: ["JSX", "Immutable", "Expression"], fields: { openingElement: { validate: (0, pe.assertNodeType)("JSXOpeningElement") }, closingElement: { optional: true, validate: (0, pe.assertNodeType)("JSXClosingElement") }, children: { validate: (0, pe.chain)((0, pe.assertValueType)("array"), (0, pe.assertEach)((0, pe.assertNodeType)("JSXText", "JSXExpressionContainer", "JSXSpreadChild", "JSXElement"))) } } });
+      (0, Qe.default)("JSXEmptyExpression", { aliases: ["JSX", "Expression"] });
+      (0, Qe.default)("JSXExpressionContainer", { visitor: ["expression"], aliases: ["JSX", "Immutable"], fields: { expression: { validate: (0, pe.assertNodeType)("Expression") } } });
+      (0, Qe.default)("JSXSpreadChild", { visitor: ["expression"], aliases: ["JSX", "Immutable"], fields: { expression: { validate: (0, pe.assertNodeType)("Expression") } } });
+      (0, Qe.default)("JSXIdentifier", { builder: ["name"], aliases: ["JSX", "Expression"], fields: { name: { validate: (0, pe.assertValueType)("string") } } });
+      (0, Qe.default)("JSXMemberExpression", { visitor: ["object", "property"], aliases: ["JSX", "Expression"], fields: { object: { validate: (0, pe.assertNodeType)("JSXMemberExpression", "JSXIdentifier") }, property: { validate: (0, pe.assertNodeType)("JSXIdentifier") } } });
+      (0, Qe.default)("JSXNamespacedName", { visitor: ["namespace", "name"], aliases: ["JSX"], fields: { namespace: { validate: (0, pe.assertNodeType)("JSXIdentifier") }, name: { validate: (0, pe.assertNodeType)("JSXIdentifier") } } });
+      (0, Qe.default)("JSXOpeningElement", { builder: ["name", "attributes", "selfClosing"], visitor: ["name", "attributes"], aliases: ["JSX", "Immutable"], fields: { name: { validate: (0, pe.assertNodeType)("JSXIdentifier", "JSXMemberExpression") }, selfClosing: { default: false, validate: (0, pe.assertValueType)("boolean") }, attributes: { validate: (0, pe.chain)((0, pe.assertValueType)("array"), (0, pe.assertEach)((0, pe.assertNodeType)("JSXAttribute", "JSXSpreadAttribute"))) } } });
+      (0, Qe.default)("JSXSpreadAttribute", { visitor: ["argument"], aliases: ["JSX"], fields: { argument: { validate: (0, pe.assertNodeType)("Expression") } } });
+      (0, Qe.default)("JSXText", { aliases: ["JSX", "Immutable"], builder: ["value"], fields: { value: { validate: (0, pe.assertValueType)("string") } } });
+    });
+    var JD = c(() => {
+      "use strict";
+      var XD = Rt(), $D = KR(XD);
+      function KR(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      i(KR, "_interopRequireDefault");
+      (0, $D.default)("Noop", { visitor: [] });
+      (0, $D.default)("ParenthesizedExpression", { visitor: ["expression"], aliases: ["Expression", "ExpressionWrapper"], fields: { expression: { validate: (0, XD.assertNodeType)("Expression") } } });
+    });
+    var QD = c(() => {
+      "use strict";
+      var it = Rt(), dt = WR(it);
+      function WR(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      i(WR, "_interopRequireDefault");
+      (0, dt.default)("AwaitExpression", { builder: ["argument"], visitor: ["argument"], aliases: ["Expression", "Terminatorless"], fields: { argument: { validate: (0, it.assertNodeType)("Expression") } } });
+      (0, dt.default)("ForAwaitStatement", { visitor: ["left", "right", "body"], aliases: ["Scopable", "Statement", "For", "BlockParent", "Loop", "ForXStatement"], fields: { left: { validate: (0, it.assertNodeType)("VariableDeclaration", "LVal") }, right: { validate: (0, it.assertNodeType)("Expression") }, body: { validate: (0, it.assertNodeType)("Statement") } } });
+      (0, dt.default)("BindExpression", { visitor: ["object", "callee"], aliases: ["Expression"], fields: {} });
+      (0, dt.default)("Import", { aliases: ["Expression"] });
+      (0, dt.default)("Decorator", { visitor: ["expression"], fields: { expression: { validate: (0, it.assertNodeType)("Expression") } } });
+      (0, dt.default)("DoExpression", { visitor: ["body"], aliases: ["Expression"], fields: { body: { validate: (0, it.assertNodeType)("BlockStatement") } } });
+      (0, dt.default)("ExportDefaultSpecifier", { visitor: ["exported"], aliases: ["ModuleSpecifier"], fields: { exported: { validate: (0, it.assertNodeType)("Identifier") } } });
+      (0, dt.default)("ExportNamespaceSpecifier", { visitor: ["exported"], aliases: ["ModuleSpecifier"], fields: { exported: { validate: (0, it.assertNodeType)("Identifier") } } });
+      (0, dt.default)("RestProperty", { visitor: ["argument"], aliases: ["UnaryLike"], fields: { argument: { validate: (0, it.assertNodeType)("LVal") } } });
+      (0, dt.default)("SpreadProperty", { visitor: ["argument"], aliases: ["UnaryLike"], fields: { argument: { validate: (0, it.assertNodeType)("Expression") } } });
+    });
+    var zD = c(() => {
+      "use strict";
+      Rt();
+      jD();
+      VD();
+      WD();
+      HD();
+      JD();
+      QD();
+    });
+    var ZD = c((pn) => {
+      "use strict";
+      pn.__esModule = true;
+      pn.isReactComponent = void 0;
+      pn.isCompatTag = $R;
+      pn.buildChildren = QR;
+      var HR = _t(), li = XR(HR);
+      function XR(e) {
+        if (e && e.__esModule)
+          return e;
+        var t = {};
+        if (e != null)
+          for (var r in e)
+            Object.prototype.hasOwnProperty.call(e, r) && (t[r] = e[r]);
+        return t.default = e, t;
+      }
+      i(XR, "_interopRequireWildcard");
+      var U4 = pn.isReactComponent = li.buildMatchMemberExpression("React.Component");
+      function $R(e) {
+        return !!e && /^[a-z]|\-/.test(e);
+      }
+      i($R, "isCompatTag");
+      function JR(e, t) {
+        for (var r = e.value.split(/\r\n|\n|\r/), n = 0, s = 0; s < r.length; s++)
+          r[s].match(/[^ \t]/) && (n = s);
+        for (var u = "", a = 0; a < r.length; a++) {
+          var l = r[a], p = a === 0, f = a === r.length - 1, m = a === n, A = l.replace(/\t/g, " ");
+          p || (A = A.replace(/^[ ]+/, "")), f || (A = A.replace(/[ ]+$/, "")), A && (m || (A += " "), u += A);
+        }
+        u && t.push(li.stringLiteral(u));
+      }
+      i(JR, "cleanJSXElementLiteralChild");
+      function QR(e) {
+        for (var t = [], r = 0; r < e.children.length; r++) {
+          var n = e.children[r];
+          if (li.isJSXText(n)) {
+            JR(n, t);
+            continue;
+          }
+          li.isJSXExpressionContainer(n) && (n = n.expression), !li.isJSXEmptyExpression(n) && t.push(n);
+        }
+        return t;
+      }
+      i(QR, "buildChildren");
+    });
+    var _t = c((y) => {
+      "use strict";
+      y.__esModule = true;
+      y.createTypeAnnotationBasedOnTypeof = y.removeTypeDuplicates = y.createUnionTypeAnnotation = y.valueToNode = y.toBlock = y.toExpression = y.toStatement = y.toBindingIdentifierName = y.toIdentifier = y.toKeyAlias = y.toSequenceExpression = y.toComputedKey = y.isNodesEquivalent = y.isImmutable = y.isScope = y.isSpecifierDefault = y.isVar = y.isBlockScoped = y.isLet = y.isValidIdentifier = y.isReferenced = y.isBinding = y.getOuterBindingIdentifiers = y.getBindingIdentifiers = y.TYPES = y.react = y.DEPRECATED_KEYS = y.BUILDER_KEYS = y.NODE_FIELDS = y.ALIAS_KEYS = y.VISITOR_KEYS = y.NOT_LOCAL_BINDING = y.BLOCK_SCOPED_SYMBOL = y.INHERIT_KEYS = y.UNARY_OPERATORS = y.STRING_UNARY_OPERATORS = y.NUMBER_UNARY_OPERATORS = y.BOOLEAN_UNARY_OPERATORS = y.BINARY_OPERATORS = y.NUMBER_BINARY_OPERATORS = y.BOOLEAN_BINARY_OPERATORS = y.COMPARISON_BINARY_OPERATORS = y.EQUALITY_BINARY_OPERATORS = y.BOOLEAN_NUMBER_BINARY_OPERATORS = y.UPDATE_OPERATORS = y.LOGICAL_OPERATORS = y.COMMENT_KEYS = y.FOR_INIT_KEYS = y.FLATTENABLE_KEYS = y.STATEMENT_OR_BLOCK_KEYS = void 0;
+      var zR = Ip(), ZR = Nr(zR), e2 = Hn(), mt = Nr(e2), t2 = va(), br = Nr(t2), r2 = ms(), eA = Nr(r2), Fe = Ds();
+      Object.defineProperty(y, "STATEMENT_OR_BLOCK_KEYS", { enumerable: true, get: i(function() {
+        return Fe.STATEMENT_OR_BLOCK_KEYS;
+      }, "get") });
+      Object.defineProperty(y, "FLATTENABLE_KEYS", { enumerable: true, get: i(function() {
+        return Fe.FLATTENABLE_KEYS;
+      }, "get") });
+      Object.defineProperty(y, "FOR_INIT_KEYS", { enumerable: true, get: i(function() {
+        return Fe.FOR_INIT_KEYS;
+      }, "get") });
+      Object.defineProperty(y, "COMMENT_KEYS", { enumerable: true, get: i(function() {
+        return Fe.COMMENT_KEYS;
+      }, "get") });
+      Object.defineProperty(y, "LOGICAL_OPERATORS", { enumerable: true, get: i(function() {
+        return Fe.LOGICAL_OPERATORS;
+      }, "get") });
+      Object.defineProperty(y, "UPDATE_OPERATORS", { enumerable: true, get: i(function() {
+        return Fe.UPDATE_OPERATORS;
+      }, "get") });
+      Object.defineProperty(y, "BOOLEAN_NUMBER_BINARY_OPERATORS", { enumerable: true, get: i(function() {
+        return Fe.BOOLEAN_NUMBER_BINARY_OPERATORS;
+      }, "get") });
+      Object.defineProperty(y, "EQUALITY_BINARY_OPERATORS", { enumerable: true, get: i(function() {
+        return Fe.EQUALITY_BINARY_OPERATORS;
+      }, "get") });
+      Object.defineProperty(y, "COMPARISON_BINARY_OPERATORS", { enumerable: true, get: i(function() {
+        return Fe.COMPARISON_BINARY_OPERATORS;
+      }, "get") });
+      Object.defineProperty(y, "BOOLEAN_BINARY_OPERATORS", { enumerable: true, get: i(function() {
+        return Fe.BOOLEAN_BINARY_OPERATORS;
+      }, "get") });
+      Object.defineProperty(y, "NUMBER_BINARY_OPERATORS", { enumerable: true, get: i(function() {
+        return Fe.NUMBER_BINARY_OPERATORS;
+      }, "get") });
+      Object.defineProperty(y, "BINARY_OPERATORS", { enumerable: true, get: i(function() {
+        return Fe.BINARY_OPERATORS;
+      }, "get") });
+      Object.defineProperty(y, "BOOLEAN_UNARY_OPERATORS", { enumerable: true, get: i(function() {
+        return Fe.BOOLEAN_UNARY_OPERATORS;
+      }, "get") });
+      Object.defineProperty(y, "NUMBER_UNARY_OPERATORS", { enumerable: true, get: i(function() {
+        return Fe.NUMBER_UNARY_OPERATORS;
+      }, "get") });
+      Object.defineProperty(y, "STRING_UNARY_OPERATORS", { enumerable: true, get: i(function() {
+        return Fe.STRING_UNARY_OPERATORS;
+      }, "get") });
+      Object.defineProperty(y, "UNARY_OPERATORS", { enumerable: true, get: i(function() {
+        return Fe.UNARY_OPERATORS;
+      }, "get") });
+      Object.defineProperty(y, "INHERIT_KEYS", { enumerable: true, get: i(function() {
+        return Fe.INHERIT_KEYS;
+      }, "get") });
+      Object.defineProperty(y, "BLOCK_SCOPED_SYMBOL", { enumerable: true, get: i(function() {
+        return Fe.BLOCK_SCOPED_SYMBOL;
+      }, "get") });
+      Object.defineProperty(y, "NOT_LOCAL_BINDING", { enumerable: true, get: i(function() {
+        return Fe.NOT_LOCAL_BINDING;
+      }, "get") });
+      y.is = p2;
+      y.isType = uA;
+      y.validate = aA;
+      y.shallowEqual = E2;
+      y.appendToMemberExpression = d2;
+      y.prependToMemberExpression = m2;
+      y.ensureBlock = D2;
+      y.clone = oA;
+      y.cloneWithoutLoc = A2;
+      y.cloneDeep = h2;
+      y.buildMatchMemberExpression = y2;
+      y.removeComments = T2;
+      y.inheritsComments = x2;
+      y.inheritTrailingComments = lA;
+      y.inheritLeadingComments = cA;
+      y.inheritInnerComments = pA;
+      y.inherits = g2;
+      y.assertNode = v2;
+      y.isNode = fA;
+      y.traverseFast = Us;
+      y.removeProperties = dA;
+      y.removePropertiesDeep = F2;
+      var nA = Fa();
+      Object.defineProperty(y, "getBindingIdentifiers", { enumerable: true, get: i(function() {
+        return nA.getBindingIdentifiers;
+      }, "get") });
+      Object.defineProperty(y, "getOuterBindingIdentifiers", { enumerable: true, get: i(function() {
+        return nA.getOuterBindingIdentifiers;
+      }, "get") });
+      var Dt = n0();
+      Object.defineProperty(y, "isBinding", { enumerable: true, get: i(function() {
+        return Dt.isBinding;
+      }, "get") });
+      Object.defineProperty(y, "isReferenced", { enumerable: true, get: i(function() {
+        return Dt.isReferenced;
+      }, "get") });
+      Object.defineProperty(y, "isValidIdentifier", { enumerable: true, get: i(function() {
+        return Dt.isValidIdentifier;
+      }, "get") });
+      Object.defineProperty(y, "isLet", { enumerable: true, get: i(function() {
+        return Dt.isLet;
+      }, "get") });
+      Object.defineProperty(y, "isBlockScoped", { enumerable: true, get: i(function() {
+        return Dt.isBlockScoped;
+      }, "get") });
+      Object.defineProperty(y, "isVar", { enumerable: true, get: i(function() {
+        return Dt.isVar;
+      }, "get") });
+      Object.defineProperty(y, "isSpecifierDefault", { enumerable: true, get: i(function() {
+        return Dt.isSpecifierDefault;
+      }, "get") });
+      Object.defineProperty(y, "isScope", { enumerable: true, get: i(function() {
+        return Dt.isScope;
+      }, "get") });
+      Object.defineProperty(y, "isImmutable", { enumerable: true, get: i(function() {
+        return Dt.isImmutable;
+      }, "get") });
+      Object.defineProperty(y, "isNodesEquivalent", { enumerable: true, get: i(function() {
+        return Dt.isNodesEquivalent;
+      }, "get") });
+      var Pt = k0();
+      Object.defineProperty(y, "toComputedKey", { enumerable: true, get: i(function() {
+        return Pt.toComputedKey;
+      }, "get") });
+      Object.defineProperty(y, "toSequenceExpression", { enumerable: true, get: i(function() {
+        return Pt.toSequenceExpression;
+      }, "get") });
+      Object.defineProperty(y, "toKeyAlias", { enumerable: true, get: i(function() {
+        return Pt.toKeyAlias;
+      }, "get") });
+      Object.defineProperty(y, "toIdentifier", { enumerable: true, get: i(function() {
+        return Pt.toIdentifier;
+      }, "get") });
+      Object.defineProperty(y, "toBindingIdentifierName", { enumerable: true, get: i(function() {
+        return Pt.toBindingIdentifierName;
+      }, "get") });
+      Object.defineProperty(y, "toStatement", { enumerable: true, get: i(function() {
+        return Pt.toStatement;
+      }, "get") });
+      Object.defineProperty(y, "toExpression", { enumerable: true, get: i(function() {
+        return Pt.toExpression;
+      }, "get") });
+      Object.defineProperty(y, "toBlock", { enumerable: true, get: i(function() {
+        return Pt.toBlock;
+      }, "get") });
+      Object.defineProperty(y, "valueToNode", { enumerable: true, get: i(function() {
+        return Pt.valueToNode;
+      }, "get") });
+      var oo = M0();
+      Object.defineProperty(y, "createUnionTypeAnnotation", { enumerable: true, get: i(function() {
+        return oo.createUnionTypeAnnotation;
+      }, "get") });
+      Object.defineProperty(y, "removeTypeDuplicates", { enumerable: true, get: i(function() {
+        return oo.removeTypeDuplicates;
+      }, "get") });
+      Object.defineProperty(y, "createTypeAnnotationBasedOnTypeof", { enumerable: true, get: i(function() {
+        return oo.createTypeAnnotationBasedOnTypeof;
+      }, "get") });
+      var n2 = G0(), iA = Nr(n2), i2 = ED(), s2 = Nr(i2), u2 = MD(), a2 = Nr(u2);
+      zD();
+      var fn = Rt(), o2 = ZD(), l2 = c2(o2);
+      function c2(e) {
+        if (e && e.__esModule)
+          return e;
+        var t = {};
+        if (e != null)
+          for (var r in e)
+            Object.prototype.hasOwnProperty.call(e, r) && (t[r] = e[r]);
+        return t.default = e, t;
+      }
+      i(c2, "_interopRequireWildcard");
+      function Nr(e) {
+        return e && e.__esModule ? e : { default: e };
+      }
+      i(Nr, "_interopRequireDefault");
+      var w = y;
+      function sA(e) {
+        var t = w["is" + e];
+        t || (t = w["is" + e] = function(r, n) {
+          return w.is(e, r, n);
+        }), w["assert" + e] = function(r, n) {
+          if (n = n || {}, !t(r, n))
+            throw new Error("Expected type " + (0, eA.default)(e) + " with option " + (0, eA.default)(n));
+        };
+      }
+      i(sA, "registerType");
+      y.VISITOR_KEYS = fn.VISITOR_KEYS;
+      y.ALIAS_KEYS = fn.ALIAS_KEYS;
+      y.NODE_FIELDS = fn.NODE_FIELDS;
+      y.BUILDER_KEYS = fn.BUILDER_KEYS;
+      y.DEPRECATED_KEYS = fn.DEPRECATED_KEYS;
+      y.react = l2;
+      for (tA in w.VISITOR_KEYS)
+        sA(tA);
+      var tA;
+      w.FLIPPED_ALIAS_KEYS = {};
+      (0, br.default)(w.ALIAS_KEYS).forEach(function(e) {
+        w.ALIAS_KEYS[e].forEach(function(t) {
+          var r = w.FLIPPED_ALIAS_KEYS[t] = w.FLIPPED_ALIAS_KEYS[t] || [];
+          r.push(e);
+        });
+      });
+      (0, br.default)(w.FLIPPED_ALIAS_KEYS).forEach(function(e) {
+        w[e.toUpperCase() + "_TYPES"] = w.FLIPPED_ALIAS_KEYS[e], sA(e);
+      });
+      var j4 = y.TYPES = (0, br.default)(w.VISITOR_KEYS).concat((0, br.default)(w.FLIPPED_ALIAS_KEYS)).concat((0, br.default)(w.DEPRECATED_KEYS));
+      function p2(e, t, r) {
+        if (!t)
+          return false;
+        var n = uA(t.type, e);
+        return n ? typeof r > "u" ? true : w.shallowEqual(t, r) : false;
+      }
+      i(p2, "is");
+      function uA(e, t) {
+        if (e === t)
+          return true;
+        if (w.ALIAS_KEYS[t])
+          return false;
+        var r = w.FLIPPED_ALIAS_KEYS[t];
+        if (r) {
+          if (r[0] === e)
+            return true;
+          for (var u = r, n = Array.isArray(u), s = 0, u = n ? u : (0, mt.default)(u); ; ) {
+            var a;
+            if (n) {
+              if (s >= u.length)
+                break;
+              a = u[s++];
+            } else {
+              if (s = u.next(), s.done)
+                break;
+              a = s.value;
+            }
+            var l = a;
+            if (e === l)
+              return true;
+          }
+        }
+        return false;
+      }
+      i(uA, "isType");
+      (0, br.default)(w.BUILDER_KEYS).forEach(function(e) {
+        var t = w.BUILDER_KEYS[e];
+        function r() {
+          if (arguments.length > t.length)
+            throw new Error("t." + e + ": Too many arguments passed. Received " + arguments.length + " but can receive " + ("no more than " + t.length));
+          var n = {};
+          n.type = e;
+          for (var s = 0, l = t, u = Array.isArray(l), a = 0, l = u ? l : (0, mt.default)(l); ; ) {
+            var p;
+            if (u) {
+              if (a >= l.length)
+                break;
+              p = l[a++];
+            } else {
+              if (a = l.next(), a.done)
+                break;
+              p = a.value;
+            }
+            var f = p, m = w.NODE_FIELDS[e][f], A = arguments[s++];
+            A === void 0 && (A = (0, s2.default)(m.default)), n[f] = A;
+          }
+          for (var E in n)
+            aA(n, E, n[E]);
+          return n;
+        }
+        i(r, "builder"), w[e] = r, w[e[0].toLowerCase() + e.slice(1)] = r;
+      });
+      var f2 = i(function(t) {
+        var r = w.DEPRECATED_KEYS[t];
+        function n(s) {
+          return function() {
+            return console.trace("The node type " + t + " has been renamed to " + r), s.apply(this, arguments);
+          };
+        }
+        i(n, "proxy"), w[t] = w[t[0].toLowerCase() + t.slice(1)] = n(w[r]), w["is" + t] = n(w["is" + r]), w["assert" + t] = n(w["assert" + r]);
+      }, "_loop");
+      for (rA in w.DEPRECATED_KEYS)
+        f2(rA);
+      var rA;
+      function aA(e, t, r) {
+        if (!!e) {
+          var n = w.NODE_FIELDS[e.type];
+          if (!!n) {
+            var s = n[t];
+            !s || !s.validate || s.optional && r == null || s.validate(e, t, r);
+          }
+        }
+      }
+      i(aA, "validate");
+      function E2(e, t) {
+        for (var r = (0, br.default)(t), u = r, n = Array.isArray(u), s = 0, u = n ? u : (0, mt.default)(u); ; ) {
+          var a;
+          if (n) {
+            if (s >= u.length)
+              break;
+            a = u[s++];
+          } else {
+            if (s = u.next(), s.done)
+              break;
+            a = s.value;
+          }
+          var l = a;
+          if (e[l] !== t[l])
+            return false;
+        }
+        return true;
+      }
+      i(E2, "shallowEqual");
+      function d2(e, t, r) {
+        return e.object = w.memberExpression(e.object, e.property, e.computed), e.property = t, e.computed = !!r, e;
+      }
+      i(d2, "appendToMemberExpression");
+      function m2(e, t) {
+        return e.object = w.memberExpression(t, e.object), e;
+      }
+      i(m2, "prependToMemberExpression");
+      function D2(e) {
+        var t = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : "body";
+        return e[t] = w.toBlock(e[t], e);
+      }
+      i(D2, "ensureBlock");
+      function oA(e) {
+        if (!e)
+          return e;
+        var t = {};
+        for (var r in e)
+          r[0] !== "_" && (t[r] = e[r]);
+        return t;
+      }
+      i(oA, "clone");
+      function A2(e) {
+        var t = oA(e);
+        return delete t.loc, t;
+      }
+      i(A2, "cloneWithoutLoc");
+      function h2(e) {
+        if (!e)
+          return e;
+        var t = {};
+        for (var r in e)
+          if (r[0] !== "_") {
+            var n = e[r];
+            n && (n.type ? n = w.cloneDeep(n) : Array.isArray(n) && (n = n.map(w.cloneDeep))), t[r] = n;
+          }
+        return t;
+      }
+      i(h2, "cloneDeep");
+      function y2(e, t) {
+        var r = e.split(".");
+        return function(n) {
+          if (!w.isMemberExpression(n))
+            return false;
+          for (var s = [n], u = 0; s.length; ) {
+            var a = s.shift();
+            if (t && u === r.length)
+              return true;
+            if (w.isIdentifier(a)) {
+              if (r[u] !== a.name)
+                return false;
+            } else if (w.isStringLiteral(a)) {
+              if (r[u] !== a.value)
+                return false;
+            } else if (w.isMemberExpression(a)) {
+              if (a.computed && !w.isStringLiteral(a.property))
+                return false;
+              s.push(a.object), s.push(a.property);
+              continue;
+            } else
+              return false;
+            if (++u > r.length)
+              return false;
+          }
+          return true;
+        };
+      }
+      i(y2, "buildMatchMemberExpression");
+      function T2(e) {
+        for (var n = w.COMMENT_KEYS, t = Array.isArray(n), r = 0, n = t ? n : (0, mt.default)(n); ; ) {
+          var s;
+          if (t) {
+            if (r >= n.length)
+              break;
+            s = n[r++];
+          } else {
+            if (r = n.next(), r.done)
+              break;
+            s = r.value;
+          }
+          var u = s;
+          delete e[u];
+        }
+        return e;
+      }
+      i(T2, "removeComments");
+      function x2(e, t) {
+        return lA(e, t), cA(e, t), pA(e, t), e;
+      }
+      i(x2, "inheritsComments");
+      function lA(e, t) {
+        lo("trailingComments", e, t);
+      }
+      i(lA, "inheritTrailingComments");
+      function cA(e, t) {
+        lo("leadingComments", e, t);
+      }
+      i(cA, "inheritLeadingComments");
+      function pA(e, t) {
+        lo("innerComments", e, t);
+      }
+      i(pA, "inheritInnerComments");
+      function lo(e, t, r) {
+        t && r && (t[e] = (0, a2.default)([].concat(t[e], r[e]).filter(Boolean)));
+      }
+      i(lo, "_inheritComments");
+      function g2(e, t) {
+        if (!e || !t)
+          return e;
+        for (var s = w.INHERIT_KEYS.optional, r = Array.isArray(s), n = 0, s = r ? s : (0, mt.default)(s); ; ) {
+          var u;
+          if (r) {
+            if (n >= s.length)
+              break;
+            u = s[n++];
+          } else {
+            if (n = s.next(), n.done)
+              break;
+            u = n.value;
+          }
+          var a = u;
+          e[a] == null && (e[a] = t[a]);
+        }
+        for (var l in t)
+          l[0] === "_" && (e[l] = t[l]);
+        for (var m = w.INHERIT_KEYS.force, p = Array.isArray(m), f = 0, m = p ? m : (0, mt.default)(m); ; ) {
+          var A;
+          if (p) {
+            if (f >= m.length)
+              break;
+            A = m[f++];
+          } else {
+            if (f = m.next(), f.done)
+              break;
+            A = f.value;
+          }
+          var E = A;
+          e[E] = t[E];
+        }
+        return w.inheritsComments(e, t), e;
+      }
+      i(g2, "inherits");
+      function v2(e) {
+        if (!fA(e))
+          throw new TypeError("Not a valid node " + (e && e.type));
+      }
+      i(v2, "assertNode");
+      function fA(e) {
+        return !!(e && fn.VISITOR_KEYS[e.type]);
+      }
+      i(fA, "isNode");
+      (0, iA.default)(w);
+      (0, iA.default)(w.VISITOR_KEYS);
+      function Us(e, t, r) {
+        if (!!e) {
+          var n = w.VISITOR_KEYS[e.type];
+          if (!!n) {
+            r = r || {}, t(e, r);
+            for (var a = n, s = Array.isArray(a), u = 0, a = s ? a : (0, mt.default)(a); ; ) {
+              var l;
+              if (s) {
+                if (u >= a.length)
+                  break;
+                l = a[u++];
+              } else {
+                if (u = a.next(), u.done)
+                  break;
+                l = u.value;
+              }
+              var p = l, f = e[p];
+              if (Array.isArray(f))
+                for (var E = f, m = Array.isArray(E), A = 0, E = m ? E : (0, mt.default)(E); ; ) {
+                  var x;
+                  if (m) {
+                    if (A >= E.length)
+                      break;
+                    x = E[A++];
+                  } else {
+                    if (A = E.next(), A.done)
+                      break;
+                    x = A.value;
+                  }
+                  var F = x;
+                  Us(F, t, r);
+                }
+              else
+                Us(f, t, r);
+            }
+          }
+        }
+      }
+      i(Us, "traverseFast");
+      var EA = ["tokens", "start", "end", "loc", "raw", "rawValue"], S2 = w.COMMENT_KEYS.concat(["comments"]).concat(EA);
+      function dA(e, t) {
+        t = t || {};
+        for (var r = t.preserveComments ? EA : S2, u = r, n = Array.isArray(u), s = 0, u = n ? u : (0, mt.default)(u); ; ) {
+          var a;
+          if (n) {
+            if (s >= u.length)
+              break;
+            a = u[s++];
+          } else {
+            if (s = u.next(), s.done)
+              break;
+            a = s.value;
+          }
+          var l = a;
+          e[l] != null && (e[l] = void 0);
+        }
+        for (var p in e)
+          p[0] === "_" && e[p] != null && (e[p] = void 0);
+        for (var f = (0, ZR.default)(e), E = f, m = Array.isArray(E), A = 0, E = m ? E : (0, mt.default)(E); ; ) {
+          var x;
+          if (m) {
+            if (A >= E.length)
+              break;
+            x = E[A++];
+          } else {
+            if (A = E.next(), A.done)
+              break;
+            x = A.value;
+          }
+          var F = x;
+          e[F] = null;
+        }
+      }
+      i(dA, "removeProperties");
+      function F2(e, t) {
+        return Us(e, dA, t), e;
+      }
+      i(F2, "removePropertiesDeep");
+    });
+    var re = c((V) => {
+      "use strict";
+      Object.defineProperty(V, "__esModule", { value: true });
+      var C2 = _t(), J = i(function(e, t) {
+        if (!(e instanceof t))
+          throw new TypeError("Cannot call a class as a function");
+      }, "classCallCheck"), ee = i(function(e, t) {
+        if (typeof t != "function" && t !== null)
+          throw new TypeError("Super expression must either be null or a function, not " + typeof t);
+        e.prototype = Object.create(t && t.prototype, { constructor: { value: e, enumerable: false, writable: true, configurable: true } }), t && (Object.setPrototypeOf ? Object.setPrototypeOf(e, t) : e.__proto__ = t);
+      }, "inherits"), te = i(function(e, t) {
+        if (!e)
+          throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+        return t && (typeof t == "object" || typeof t == "function") ? t : e;
+      }, "possibleConstructorReturn"), mA = /* @__PURE__ */ Object.create(null), Ys = /* @__PURE__ */ Object.create(null), DA = Symbol(), ci = /* @__PURE__ */ Object.create(null), ie = function() {
+        function e() {
+          J(this, e), this.loc = { source: null, start: { line: 0, column: 0 }, end: { line: 0, column: 0 } }, this[DA] = [];
+        }
+        return i(e, "Node"), e.prototype.toJSON = i(function() {
+          var r = this;
+          return Object.getOwnPropertyNames(this).reduce(function(n, s) {
+            if (s === "loc" || s === "parent")
+              return n;
+            var u = r[s];
+            return Array.isArray(u) ? n[s] = u.map(function(a) {
+              return a.toJSON();
+            }) : n[s] = u && u.toJSON ? u.toJSON() : u, n;
+          }, { type: this.type });
+        }, "toJSON"), e.registerType = i(function(r) {
+          e["is" + r] || (e["is" + r] = function(n) {
+            return js(n, r);
+          });
+        }, "registerType"), e;
+      }();
+      ie.registerType("Scope");
+      function js(e, t) {
+        return e ? e.type === t || ci[t] && ci[t][e.type] || C2.is(t, e) : false;
+      }
+      i(js, "is");
+      function he(e) {
+        for (var t = arguments.length, r = Array(t > 1 ? t - 1 : 0), n = 1; n < t; n++)
+          r[n - 1] = arguments[n];
+        e.prototype.visitorKeys = r;
+      }
+      i(he, "visitor");
+      function me(e) {
+        for (var t = arguments.length, r = Array(t > 1 ? t - 1 : 0), n = 1; n < t; n++)
+          r[n - 1] = arguments[n];
+        e.prototype.aliases = r;
+        for (var s = 0, u = r.length; s < u; s++) {
+          var a = r[s];
+          Ys[a] || (Ys[a] = []), Ys[a].push(e.prototype.type), ci[a] || (ci[a] = {}), ci[a][e.prototype.type] = true, ie.registerType(a);
+        }
+      }
+      i(me, "alias");
+      function Q(e, t) {
+        e.prototype.type = t, mA[t] = e, ie.registerType(t);
+      }
+      i(Q, "type");
+      var Vs = function(e) {
+        ee(t, e);
+        function t(r) {
+          J(this, t);
+          var n = te(this, e.call(this));
+          return n.value = r, n;
+        }
+        return i(t, "Fragment"), t;
+      }(ie);
+      Q(Vs, "Fragment");
+      me(Vs, "Statement");
+      he(Vs, "value");
+      var Ks = function(e) {
+        ee(t, e);
+        function t(r) {
+          J(this, t);
+          var n = te(this, e.call(this));
+          return n.value = r, n;
+        }
+        return i(t, "PrintExpressionStatement"), t;
+      }(ie);
+      Q(Ks, "PrintExpressionStatement");
+      me(Ks, "Statement", "PrintStatement");
+      he(Ks, "value");
+      var Ws = function(e) {
+        ee(t, e);
+        function t(r) {
+          J(this, t);
+          var n = te(this, e.call(this));
+          return n.value = r, n;
+        }
+        return i(t, "PrintTextStatement"), t;
+      }(ie);
+      Q(Ws, "PrintTextStatement");
+      me(Ws, "Statement", "PrintStatement");
+      he(Ws, "value");
+      var Ir = function(e) {
+        ee(t, e);
+        function t(r) {
+          J(this, t);
+          var n = te(this, e.call(this));
+          return n.value = r, n;
+        }
+        return i(t, "ConstantValue"), t.prototype.toString = i(function() {
+          return "Const(" + this.value + ")";
+        }, "toString"), t;
+      }(ie);
+      Q(Ir, "ConstantValue");
+      me(Ir, "Expression", "Literal", "Immutable");
+      var co = function(e) {
+        ee(t, e);
+        function t() {
+          return J(this, t), te(this, e.apply(this, arguments));
+        }
+        return i(t, "StringLiteral"), t;
+      }(Ir);
+      Q(co, "StringLiteral");
+      me(co, "Expression", "Literal", "Immutable");
+      var po = function(e) {
+        ee(t, e);
+        function t() {
+          return J(this, t), te(this, e.apply(this, arguments));
+        }
+        return i(t, "NumericLiteral"), t;
+      }(Ir);
+      Q(po, "NumericLiteral");
+      me(po, "Expression", "Literal", "Immutable");
+      var fo = function(e) {
+        ee(t, e);
+        function t(r) {
+          return J(this, t), te(this, e.call(this, r));
+        }
+        return i(t, "BooleanLiteral"), t;
+      }(Ir);
+      Q(fo, "BooleanLiteral");
+      me(fo, "Expression", "Literal", "Immutable");
+      var Eo = function(e) {
+        ee(t, e);
+        function t() {
+          return J(this, t), te(this, e.call(this, null));
+        }
+        return i(t, "NullLiteral"), t;
+      }(Ir);
+      Q(Eo, "NullLiteral");
+      me(Eo, "Expression", "Literal", "Immutable");
+      var mo = function(e) {
+        ee(t, e);
+        function t(r) {
+          J(this, t);
+          var n = te(this, e.call(this));
+          return n.name = r, n;
+        }
+        return i(t, "Identifier"), t;
+      }(ie);
+      Q(mo, "Identifier");
+      me(mo, "Expression");
+      var Hs = function(e) {
+        ee(t, e);
+        function t(r, n) {
+          J(this, t);
+          var s = te(this, e.call(this));
+          return s.operator = r, s.argument = n, s;
+        }
+        return i(t, "UnaryExpression"), t;
+      }(ie);
+      Q(Hs, "UnaryExpression");
+      me(Hs, "Expression", "UnaryLike");
+      he(Hs, "argument");
+      var pi = function(e) {
+        ee(t, e);
+        function t(r, n, s) {
+          J(this, t);
+          var u = te(this, e.call(this));
+          return u.operator = r, u.left = n, u.right = s, u;
+        }
+        return i(t, "BinaryExpression"), t;
+      }(ie);
+      Q(pi, "BinaryExpression");
+      me(pi, "Binary", "Expression");
+      he(pi, "left", "right");
+      var Xs = function(e) {
+        ee(t, e);
+        function t(r, n) {
+          J(this, t);
+          var s = te(this, e.call(this, "~", r, n));
+          return s.wasImplicitConcatenation = false, s;
+        }
+        return i(t, "BinaryConcatExpression"), t;
+      }(pi);
+      Q(Xs, "BinaryConcatExpression");
+      me(Xs, "BinaryExpression", "Binary", "Expression");
+      he(Xs, "left", "right");
+      var $s = function(e) {
+        ee(t, e);
+        function t(r, n, s) {
+          J(this, t);
+          var u = te(this, e.call(this));
+          return u.test = r, u.consequent = n, u.alternate = s, u;
+        }
+        return i(t, "ConditionalExpression"), t;
+      }(ie);
+      Q($s, "ConditionalExpression");
+      me($s, "Expression", "Conditional");
+      he($s, "test", "consequent", "alternate");
+      var Js = function(e) {
+        ee(t, e);
+        function t() {
+          var r = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : [];
+          J(this, t);
+          var n = te(this, e.call(this));
+          return n.elements = r, n;
+        }
+        return i(t, "ArrayExpression"), t;
+      }(ie);
+      Q(Js, "ArrayExpression");
+      me(Js, "Expression");
+      he(Js, "elements");
+      var Qs = function(e) {
+        ee(t, e);
+        function t(r, n, s) {
+          J(this, t);
+          var u = te(this, e.call(this));
+          return u.object = r, u.property = n, u.computed = s, u;
+        }
+        return i(t, "MemberExpression"), t;
+      }(ie);
+      Q(Qs, "MemberExpression");
+      me(Qs, "Expression", "LVal");
+      he(Qs, "object", "property");
+      var zs = function(e) {
+        ee(t, e);
+        function t(r, n) {
+          J(this, t);
+          var s = te(this, e.call(this));
+          return s.callee = r, s.arguments = n, s;
+        }
+        return i(t, "CallExpression"), t;
+      }(ie);
+      Q(zs, "CallExpression");
+      me(zs, "Expression", "FunctionInvocation");
+      he(zs, "callee", "arguments");
+      var Zs = function(e) {
+        ee(t, e);
+        function t(r, n) {
+          J(this, t);
+          var s = te(this, e.call(this));
+          return s.name = r, s.value = n, s;
+        }
+        return i(t, "NamedArgumentExpression"), t;
+      }(ie);
+      Q(Zs, "NamedArgumentExpression");
+      me(Zs, "Expression");
+      he(Zs, "name", "value");
+      var eu = function(e) {
+        ee(t, e);
+        function t() {
+          var r = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : [];
+          J(this, t);
+          var n = te(this, e.call(this));
+          return n.properties = r, n;
+        }
+        return i(t, "ObjectExpression"), t;
+      }(ie);
+      Q(eu, "ObjectExpression");
+      me(eu, "Expression");
+      he(eu, "properties");
+      var tu = function(e) {
+        ee(t, e);
+        function t(r, n, s) {
+          J(this, t);
+          var u = te(this, e.call(this));
+          return u.key = r, u.value = n, u.computed = s, u;
+        }
+        return i(t, "ObjectProperty"), t;
+      }(ie);
+      Q(tu, "ObjectProperty");
+      me(tu, "Property", "ObjectMember");
+      he(tu, "key", "value");
+      var ru = function(e) {
+        ee(t, e);
+        function t() {
+          var r = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : [];
+          J(this, t);
+          var n = te(this, e.call(this));
+          return n.expressions = r, n;
+        }
+        return i(t, "SequenceExpression"), t.prototype.add = i(function(n) {
+          this.expressions.push(n), this.loc.end = n.loc.end;
+        }, "add"), t;
+      }(ie);
+      Q(ru, "SequenceExpression");
+      me(ru, "Expression", "Scope");
+      he(ru, "expressions");
+      var nu = function(e) {
+        ee(t, e);
+        function t(r, n, s) {
+          J(this, t);
+          var u = te(this, e.call(this));
+          return u.target = r, u.start = n, u.end = s, u;
+        }
+        return i(t, "SliceExpression"), t;
+      }(ie);
+      Q(nu, "SliceExpression");
+      me(nu, "Expression");
+      he(nu, "source", "start", "end");
+      var iu = function(e) {
+        ee(t, e);
+        function t(r, n, s) {
+          J(this, t);
+          var u = te(this, e.call(this));
+          return u.target = r, u.name = n, u.arguments = s, u;
+        }
+        return i(t, "FilterExpression"), t;
+      }(ie);
+      Q(iu, "FilterExpression");
+      me(iu, "Expression");
+      he(iu, "target", "arguments");
+      var su = function(e) {
+        ee(t, e);
+        function t(r) {
+          J(this, t);
+          var n = te(this, e.call(this));
+          return n.name = r, n.attributes = [], n.children = [], n.selfClosing = false, n;
+        }
+        return i(t, "Element"), t;
+      }(ie);
+      Q(su, "Element");
+      me(su, "Expression");
+      he(su, "attributes", "children");
+      var Do = function(e) {
+        ee(t, e);
+        function t(r) {
+          var n = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : null;
+          J(this, t);
+          var s = te(this, e.call(this));
+          return s.name = r, s.value = n, s;
+        }
+        return i(t, "Attribute"), t.prototype.isImmutable = i(function() {
+          return js(this.name, "Identifier") && js(this.value, "Immutable");
+        }, "isImmutable"), t;
+      }(ie);
+      Q(Do, "Attribute");
+      he(Do, "name", "value");
+      var Ao = function(e) {
+        ee(t, e);
+        function t(r) {
+          J(this, t);
+          var n = te(this, e.call(this));
+          return n.value = r, n;
+        }
+        return i(t, "TwigComment"), t;
+      }(ie);
+      Q(Ao, "TwigComment");
+      he(Ao, "value");
+      var ho = function(e) {
+        ee(t, e);
+        function t(r) {
+          J(this, t);
+          var n = te(this, e.call(this));
+          return n.value = r, n;
+        }
+        return i(t, "HtmlComment"), t;
+      }(ie);
+      Q(ho, "HtmlComment");
+      he(ho, "value");
+      var yo = function(e) {
+        ee(t, e);
+        function t(r) {
+          J(this, t);
+          var n = te(this, e.call(this));
+          return n.declarationType = r, n.parts = [], n;
+        }
+        return i(t, "Declaration"), t;
+      }(ie);
+      Q(yo, "Declaration");
+      he(yo, "parts");
+      var AA = function(e) {
+        ee(t, e);
+        function t(r) {
+          J(this, t);
+          var n = te(this, e.call(this));
+          return n.tagName = r, n.parts = [], n.sections = [], n;
+        }
+        return i(t, "GenericTwigTag"), t;
+      }(ie);
+      Q(AA, "GenericTwigTag");
+      var hA = function(e) {
+        ee(t, e);
+        function t(r, n) {
+          J(this, t);
+          var s = te(this, e.call(this));
+          return s.tokenType = r, s.tokenText = n, s;
+        }
+        return i(t, "GenericToken"), t;
+      }(ie);
+      Q(hA, "GenericToken");
+      V.TYPE_MAP = mA;
+      V.ALIAS_TO_TYPE = Ys;
+      V.PATH_CACHE_KEY = DA;
+      V.Node = ie;
+      V.is = js;
+      V.visitor = he;
+      V.alias = me;
+      V.type = Q;
+      V.Fragment = Vs;
+      V.PrintExpressionStatement = Ks;
+      V.PrintTextStatement = Ws;
+      V.ConstantValue = Ir;
+      V.StringLiteral = co;
+      V.NumericLiteral = po;
+      V.BooleanLiteral = fo;
+      V.NullLiteral = Eo;
+      V.Identifier = mo;
+      V.UnaryExpression = Hs;
+      V.BinaryExpression = pi;
+      V.BinaryConcatExpression = Xs;
+      V.ConditionalExpression = $s;
+      V.ArrayExpression = Js;
+      V.MemberExpression = Qs;
+      V.CallExpression = zs;
+      V.NamedArgumentExpression = Zs;
+      V.ObjectExpression = eu;
+      V.ObjectProperty = tu;
+      V.SequenceExpression = ru;
+      V.SliceExpression = nu;
+      V.FilterExpression = iu;
+      V.Element = su;
+      V.Attribute = Do;
+      V.TwigComment = Ao;
+      V.HtmlComment = ho;
+      V.Declaration = yo;
+      V.GenericTwigTag = AA;
+      V.GenericToken = hA;
+    });
+    var _A = c((x9, IA) => {
+      function Y2(e, t) {
+        for (var r = -1, n = e == null ? 0 : e.length, s = Array(n); ++r < n; )
+          s[r] = t(e[r], r, e);
+        return s;
+      }
+      i(Y2, "arrayMap");
+      IA.exports = Y2;
+    });
+    var yu = c((g9, RA) => {
+      var j2 = nr(), V2 = Et(), K2 = "[object Symbol]";
+      function W2(e) {
+        return typeof e == "symbol" || V2(e) && j2(e) == K2;
+      }
+      i(W2, "isSymbol");
+      RA.exports = W2;
+    });
+    var Tu = c((v9, kA) => {
+      var PA = Zr(), H2 = _A(), X2 = nt(), $2 = yu(), J2 = 1 / 0, LA = PA ? PA.prototype : void 0, wA = LA ? LA.toString : void 0;
+      function qA(e) {
+        if (typeof e == "string")
+          return e;
+        if (X2(e))
+          return H2(e, qA) + "";
+        if ($2(e))
+          return wA ? wA.call(e) : "";
+        var t = e + "";
+        return t == "0" && 1 / e == -J2 ? "-0" : t;
+      }
+      i(qA, "baseToString");
+      kA.exports = qA;
+    });
+    var GA = c((S9, MA) => {
+      function Q2(e, t, r) {
+        var n = -1, s = e.length;
+        t < 0 && (t = -t > s ? 0 : s + t), r = r > s ? s : r, r < 0 && (r += s), s = t > r ? 0 : r - t >>> 0, t >>>= 0;
+        for (var u = Array(s); ++n < s; )
+          u[n] = e[n + t];
+        return u;
+      }
+      i(Q2, "baseSlice");
+      MA.exports = Q2;
+    });
+    var Oo = c((F9, UA) => {
+      var z2 = GA();
+      function Z2(e, t, r) {
+        var n = e.length;
+        return r = r === void 0 ? n : r, !t && r >= n ? e : z2(e, t, r);
+      }
+      i(Z2, "castSlice");
+      UA.exports = Z2;
+    });
+    var jA = c((C9, YA) => {
+      var e8 = ws();
+      function t8(e, t) {
+        for (var r = e.length; r-- && e8(t, e[r], 0) > -1; )
+          ;
+        return r;
+      }
+      i(t8, "charsEndIndex");
+      YA.exports = t8;
+    });
+    var KA = c((B9, VA) => {
+      function r8(e) {
+        return e.split("");
+      }
+      i(r8, "asciiToArray");
+      VA.exports = r8;
+    });
+    var HA = c((O9, WA) => {
+      var n8 = "\\ud800-\\udfff", i8 = "\\u0300-\\u036f", s8 = "\\ufe20-\\ufe2f", u8 = "\\u20d0-\\u20ff", a8 = i8 + s8 + u8, o8 = "\\ufe0e\\ufe0f", l8 = "\\u200d", c8 = RegExp("[" + l8 + n8 + a8 + o8 + "]");
+      function p8(e) {
+        return c8.test(e);
+      }
+      i(p8, "hasUnicode");
+      WA.exports = p8;
+    });
+    var th = c((b9, eh) => {
+      var XA = "\\ud800-\\udfff", f8 = "\\u0300-\\u036f", E8 = "\\ufe20-\\ufe2f", d8 = "\\u20d0-\\u20ff", m8 = f8 + E8 + d8, D8 = "\\ufe0e\\ufe0f", A8 = "[" + XA + "]", bo = "[" + m8 + "]", No = "\\ud83c[\\udffb-\\udfff]", h8 = "(?:" + bo + "|" + No + ")", $A = "[^" + XA + "]", JA = "(?:\\ud83c[\\udde6-\\uddff]){2}", QA = "[\\ud800-\\udbff][\\udc00-\\udfff]", y8 = "\\u200d", zA = h8 + "?", ZA = "[" + D8 + "]?", T8 = "(?:" + y8 + "(?:" + [$A, JA, QA].join("|") + ")" + ZA + zA + ")*", x8 = ZA + zA + T8, g8 = "(?:" + [$A + bo + "?", bo, JA, QA, A8].join("|") + ")", v8 = RegExp(No + "(?=" + No + ")|" + g8 + x8, "g");
+      function S8(e) {
+        return e.match(v8) || [];
+      }
+      i(S8, "unicodeToArray");
+      eh.exports = S8;
+    });
+    var Io = c((N9, rh) => {
+      var F8 = KA(), C8 = HA(), B8 = th();
+      function O8(e) {
+        return C8(e) ? B8(e) : F8(e);
+      }
+      i(O8, "stringToArray");
+      rh.exports = O8;
+    });
+    var xu = c((I9, nh) => {
+      var b8 = Tu();
+      function N8(e) {
+        return e == null ? "" : b8(e);
+      }
+      i(N8, "toString");
+      nh.exports = N8;
+    });
+    var sh = c((_9, ih) => {
+      var I8 = /\s/;
+      function _8(e) {
+        for (var t = e.length; t-- && I8.test(e.charAt(t)); )
+          ;
+        return t;
+      }
+      i(_8, "trimmedEndIndex");
+      ih.exports = _8;
+    });
+    var oh = c((R9, ah) => {
+      var R8 = Tu(), P8 = Oo(), L8 = jA(), uh = Io(), w8 = xu(), q8 = sh();
+      function k8(e, t, r) {
+        if (e = w8(e), e && (r || t === void 0))
+          return e.slice(0, q8(e) + 1);
+        if (!e || !(t = R8(t)))
+          return e;
+        var n = uh(e), s = L8(n, uh(t)) + 1;
+        return P8(n, 0, s).join("");
+      }
+      i(k8, "trimEnd");
+      ah.exports = k8;
+    });
+    var ch = c((P9, lh) => {
+      var M8 = ws();
+      function G8(e, t) {
+        for (var r = -1, n = e.length; ++r < n && M8(t, e[r], 0) > -1; )
+          ;
+        return r;
+      }
+      i(G8, "charsStartIndex");
+      lh.exports = G8;
+    });
+    var Eh = c((L9, fh) => {
+      var U8 = Tu(), Y8 = Oo(), j8 = ch(), ph = Io(), V8 = xu(), K8 = /^\s+/;
+      function W8(e, t, r) {
+        if (e = V8(e), e && (r || t === void 0))
+          return e.replace(K8, "");
+        if (!e || !(t = U8(t)))
+          return e;
+        var n = ph(e), s = j8(n, ph(t));
+        return Y8(n, s).join("");
+      }
+      i(W8, "trimStart");
+      fh.exports = W8;
+    });
+    var zh = c((m7, Qh) => {
+      function J8(e) {
+        return function(t, r, n) {
+          for (var s = -1, u = Object(t), a = n(t), l = a.length; l--; ) {
+            var p = a[e ? l : ++s];
+            if (r(u[p], p, u) === false)
+              break;
+          }
+          return t;
+        };
+      }
+      i(J8, "createBaseFor");
+      Qh.exports = J8;
+    });
+    var ey = c((D7, Zh) => {
+      var Q8 = zh(), z8 = Q8();
+      Zh.exports = z8;
+    });
+    var ry = c((A7, ty) => {
+      var Z8 = ey(), eP = an();
+      function tP(e, t) {
+        return e && Z8(e, t, eP);
+      }
+      i(tP, "baseForOwn");
+      ty.exports = tP;
+    });
+    var iy = c((h7, ny) => {
+      var rP = Ns();
+      function nP(e, t) {
+        return function(r, n) {
+          if (r == null)
+            return r;
+          if (!rP(r))
+            return e(r, n);
+          for (var s = r.length, u = t ? s : -1, a = Object(r); (t ? u-- : ++u < s) && n(a[u], u, a) !== false; )
+            ;
+          return r;
+        };
+      }
+      i(nP, "createBaseEach");
+      ny.exports = nP;
+    });
+    var uy = c((y7, sy) => {
+      var iP = ry(), sP = iy(), uP = sP(iP);
+      sy.exports = uP;
+    });
+    var oy = c((T7, ay) => {
+      var aP = uy();
+      function oP(e, t) {
+        var r = [];
+        return aP(e, function(n, s, u) {
+          t(n, s, u) && r.push(n);
+        }), r;
+      }
+      i(oP, "baseFilter");
+      ay.exports = oP;
+    });
+    var cy = c((x7, ly) => {
+      function lP(e, t) {
+        for (var r = -1, n = e == null ? 0 : e.length; ++r < n; )
+          if (t(e[r], r, e))
+            return true;
+        return false;
+      }
+      i(lP, "arraySome");
+      ly.exports = lP;
+    });
+    var Uo = c((g7, py) => {
+      var cP = io(), pP = cy(), fP = so(), EP = 1, dP = 2;
+      function mP(e, t, r, n, s, u) {
+        var a = r & EP, l = e.length, p = t.length;
+        if (l != p && !(a && p > l))
+          return false;
+        var f = u.get(e), m = u.get(t);
+        if (f && m)
+          return f == t && m == e;
+        var A = -1, E = true, x = r & dP ? new cP() : void 0;
+        for (u.set(e, t), u.set(t, e); ++A < l; ) {
+          var F = e[A], O = t[A];
+          if (n)
+            var g = a ? n(O, F, A, t, e, u) : n(F, O, A, e, t, u);
+          if (g !== void 0) {
+            if (g)
+              continue;
+            E = false;
+            break;
+          }
+          if (x) {
+            if (!pP(t, function(U, X) {
+              if (!fP(x, X) && (F === U || s(F, U, r, n, u)))
+                return x.push(X);
+            })) {
+              E = false;
+              break;
+            }
+          } else if (!(F === O || s(F, O, r, n, u))) {
+            E = false;
+            break;
+          }
+        }
+        return u.delete(e), u.delete(t), E;
+      }
+      i(mP, "equalArrays");
+      py.exports = mP;
+    });
+    var Ey = c((v7, fy) => {
+      function DP(e) {
+        var t = -1, r = Array(e.size);
+        return e.forEach(function(n, s) {
+          r[++t] = [s, n];
+        }), r;
+      }
+      i(DP, "mapToArray");
+      fy.exports = DP;
+    });
+    var hy = c((S7, Ay) => {
+      var dy = Zr(), my = no(), AP = vs(), hP = Uo(), yP = Ey(), TP = qs(), xP = 1, gP = 2, vP = "[object Boolean]", SP = "[object Date]", FP = "[object Error]", CP = "[object Map]", BP = "[object Number]", OP = "[object RegExp]", bP = "[object Set]", NP = "[object String]", IP = "[object Symbol]", _P = "[object ArrayBuffer]", RP = "[object DataView]", Dy = dy ? dy.prototype : void 0, Yo = Dy ? Dy.valueOf : void 0;
+      function PP(e, t, r, n, s, u, a) {
+        switch (r) {
+          case RP:
+            if (e.byteLength != t.byteLength || e.byteOffset != t.byteOffset)
+              return false;
+            e = e.buffer, t = t.buffer;
+          case _P:
+            return !(e.byteLength != t.byteLength || !u(new my(e), new my(t)));
+          case vP:
+          case SP:
+          case BP:
+            return AP(+e, +t);
+          case FP:
+            return e.name == t.name && e.message == t.message;
+          case OP:
+          case NP:
+            return e == t + "";
+          case CP:
+            var l = yP;
+          case bP:
+            var p = n & xP;
+            if (l || (l = TP), e.size != t.size && !p)
+              return false;
+            var f = a.get(e);
+            if (f)
+              return f == t;
+            n |= gP, a.set(e, t);
+            var m = hP(l(e), l(t), n, s, u, a);
+            return a.delete(e), m;
+          case IP:
+            if (Yo)
+              return Yo.call(e) == Yo.call(t);
+        }
+        return false;
+      }
+      i(PP, "equalByTag");
+      Ay.exports = PP;
+    });
+    var xy = c((F7, Ty) => {
+      var yy = Ja(), LP = 1, wP = Object.prototype, qP = wP.hasOwnProperty;
+      function kP(e, t, r, n, s, u) {
+        var a = r & LP, l = yy(e), p = l.length, f = yy(t), m = f.length;
+        if (p != m && !a)
+          return false;
+        for (var A = p; A--; ) {
+          var E = l[A];
+          if (!(a ? E in t : qP.call(t, E)))
+            return false;
+        }
+        var x = u.get(e), F = u.get(t);
+        if (x && F)
+          return x == t && F == e;
+        var O = true;
+        u.set(e, t), u.set(t, e);
+        for (var g = a; ++A < p; ) {
+          E = l[A];
+          var U = e[E], X = t[E];
+          if (n)
+            var z = a ? n(X, U, E, t, e, u) : n(U, X, E, e, t, u);
+          if (!(z === void 0 ? U === X || s(U, X, r, n, u) : z)) {
+            O = false;
+            break;
+          }
+          g || (g = E == "constructor");
+        }
+        if (O && !g) {
+          var ke = e.constructor, He = t.constructor;
+          ke != He && "constructor" in e && "constructor" in t && !(typeof ke == "function" && ke instanceof ke && typeof He == "function" && He instanceof He) && (O = false);
+        }
+        return u.delete(e), u.delete(t), O;
+      }
+      i(kP, "equalObjects");
+      Ty.exports = kP;
+    });
+    var by = c((C7, Oy) => {
+      var jo = Cs(), MP = Uo(), GP = hy(), UP = xy(), gy = oi(), vy = nt(), Sy = Bs(), YP = ja(), jP = 1, Fy = "[object Arguments]", Cy = "[object Array]", vu = "[object Object]", VP = Object.prototype, By = VP.hasOwnProperty;
+      function KP(e, t, r, n, s, u) {
+        var a = vy(e), l = vy(t), p = a ? Cy : gy(e), f = l ? Cy : gy(t);
+        p = p == Fy ? vu : p, f = f == Fy ? vu : f;
+        var m = p == vu, A = f == vu, E = p == f;
+        if (E && Sy(e)) {
+          if (!Sy(t))
+            return false;
+          a = true, m = false;
+        }
+        if (E && !m)
+          return u || (u = new jo()), a || YP(e) ? MP(e, t, r, n, s, u) : GP(e, t, p, r, n, s, u);
+        if (!(r & jP)) {
+          var x = m && By.call(e, "__wrapped__"), F = A && By.call(t, "__wrapped__");
+          if (x || F) {
+            var O = x ? e.value() : e, g = F ? t.value() : t;
+            return u || (u = new jo()), s(O, g, r, n, u);
+          }
+        }
+        return E ? (u || (u = new jo()), UP(e, t, r, n, s, u)) : false;
+      }
+      i(KP, "baseIsEqualDeep");
+      Oy.exports = KP;
+    });
+    var Vo = c((B7, _y) => {
+      var WP = by(), Ny = Et();
+      function Iy(e, t, r, n, s) {
+        return e === t ? true : e == null || t == null || !Ny(e) && !Ny(t) ? e !== e && t !== t : WP(e, t, r, n, Iy, s);
+      }
+      i(Iy, "baseIsEqual");
+      _y.exports = Iy;
+    });
+    var Py = c((O7, Ry) => {
+      var HP = Cs(), XP = Vo(), $P = 1, JP = 2;
+      function QP(e, t, r, n) {
+        var s = r.length, u = s, a = !n;
+        if (e == null)
+          return !u;
+        for (e = Object(e); s--; ) {
+          var l = r[s];
+          if (a && l[2] ? l[1] !== e[l[0]] : !(l[0] in e))
+            return false;
+        }
+        for (; ++s < u; ) {
+          l = r[s];
+          var p = l[0], f = e[p], m = l[1];
+          if (a && l[2]) {
+            if (f === void 0 && !(p in e))
+              return false;
+          } else {
+            var A = new HP();
+            if (n)
+              var E = n(f, m, p, e, t, A);
+            if (!(E === void 0 ? XP(m, f, $P | JP, n, A) : E))
+              return false;
+          }
+        }
+        return true;
+      }
+      i(QP, "baseIsMatch");
+      Ry.exports = QP;
+    });
+    var Ko = c((b7, Ly) => {
+      var zP = Br();
+      function ZP(e) {
+        return e === e && !zP(e);
+      }
+      i(ZP, "isStrictComparable");
+      Ly.exports = ZP;
+    });
+    var qy = c((N7, wy) => {
+      var eL = Ko(), tL = an();
+      function rL(e) {
+        for (var t = tL(e), r = t.length; r--; ) {
+          var n = t[r], s = e[n];
+          t[r] = [n, s, eL(s)];
+        }
+        return t;
+      }
+      i(rL, "getMatchData");
+      wy.exports = rL;
+    });
+    var Wo = c((I7, ky) => {
+      function nL(e, t) {
+        return function(r) {
+          return r == null ? false : r[e] === t && (t !== void 0 || e in Object(r));
+        };
+      }
+      i(nL, "matchesStrictComparable");
+      ky.exports = nL;
+    });
+    var Gy = c((_7, My) => {
+      var iL = Py(), sL = qy(), uL = Wo();
+      function aL(e) {
+        var t = sL(e);
+        return t.length == 1 && t[0][2] ? uL(t[0][0], t[0][1]) : function(r) {
+          return r === e || iL(r, e, t);
+        };
+      }
+      i(aL, "baseMatches");
+      My.exports = aL;
+    });
+    var Su = c((R7, Uy) => {
+      var oL = nt(), lL = yu(), cL = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\\]|\\.)*?\1)\]/, pL = /^\w*$/;
+      function fL(e, t) {
+        if (oL(e))
+          return false;
+        var r = typeof e;
+        return r == "number" || r == "symbol" || r == "boolean" || e == null || lL(e) ? true : pL.test(e) || !cL.test(e) || t != null && e in Object(t);
+      }
+      i(fL, "isKey");
+      Uy.exports = fL;
+    });
+    var Vy = c((P7, jy) => {
+      var Yy = Fs(), EL = "Expected a function";
+      function Ho(e, t) {
+        if (typeof e != "function" || t != null && typeof t != "function")
+          throw new TypeError(EL);
+        var r = i(function() {
+          var n = arguments, s = t ? t.apply(this, n) : n[0], u = r.cache;
+          if (u.has(s))
+            return u.get(s);
+          var a = e.apply(this, n);
+          return r.cache = u.set(s, a) || u, a;
+        }, "memoized");
+        return r.cache = new (Ho.Cache || Yy)(), r;
+      }
+      i(Ho, "memoize");
+      Ho.Cache = Yy;
+      jy.exports = Ho;
+    });
+    var Wy = c((L7, Ky) => {
+      var dL = Vy(), mL = 500;
+      function DL(e) {
+        var t = dL(e, function(n) {
+          return r.size === mL && r.clear(), n;
+        }), r = t.cache;
+        return t;
+      }
+      i(DL, "memoizeCapped");
+      Ky.exports = DL;
+    });
+    var Xy = c((w7, Hy) => {
+      var AL = Wy(), hL = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|$))/g, yL = /\\(\\)?/g, TL = AL(function(e) {
+        var t = [];
+        return e.charCodeAt(0) === 46 && t.push(""), e.replace(hL, function(r, n, s, u) {
+          t.push(s ? u.replace(yL, "$1") : n || r);
+        }), t;
+      });
+      Hy.exports = TL;
+    });
+    var Xo = c((q7, $y) => {
+      var xL = nt(), gL = Su(), vL = Xy(), SL = xu();
+      function FL(e, t) {
+        return xL(e) ? e : gL(e, t) ? [e] : vL(SL(e));
+      }
+      i(FL, "castPath");
+      $y.exports = FL;
+    });
+    var Oi = c((k7, Jy) => {
+      var CL = yu(), BL = 1 / 0;
+      function OL(e) {
+        if (typeof e == "string" || CL(e))
+          return e;
+        var t = e + "";
+        return t == "0" && 1 / e == -BL ? "-0" : t;
+      }
+      i(OL, "toKey");
+      Jy.exports = OL;
+    });
+    var $o = c((M7, Qy) => {
+      var bL = Xo(), NL = Oi();
+      function IL(e, t) {
+        t = bL(t, e);
+        for (var r = 0, n = t.length; e != null && r < n; )
+          e = e[NL(t[r++])];
+        return r && r == n ? e : void 0;
+      }
+      i(IL, "baseGet");
+      Qy.exports = IL;
+    });
+    var Zy = c((G7, zy) => {
+      var _L = $o();
+      function RL(e, t, r) {
+        var n = e == null ? void 0 : _L(e, t);
+        return n === void 0 ? r : n;
+      }
+      i(RL, "get");
+      zy.exports = RL;
+    });
+    var t1 = c((U7, e1) => {
+      function PL(e, t) {
+        return e != null && t in Object(e);
+      }
+      i(PL, "baseHasIn");
+      e1.exports = PL;
+    });
+    var n1 = c((Y7, r1) => {
+      var LL = Xo(), wL = Ua(), qL = nt(), kL = Ya(), ML = Os(), GL = Oi();
+      function UL(e, t, r) {
+        t = LL(t, e);
+        for (var n = -1, s = t.length, u = false; ++n < s; ) {
+          var a = GL(t[n]);
+          if (!(u = e != null && r(e, a)))
+            break;
+          e = e[a];
+        }
+        return u || ++n != s ? u : (s = e == null ? 0 : e.length, !!s && ML(s) && kL(a, s) && (qL(e) || wL(e)));
+      }
+      i(UL, "hasPath");
+      r1.exports = UL;
+    });
+    var s1 = c((j7, i1) => {
+      var YL = t1(), jL = n1();
+      function VL(e, t) {
+        return e != null && jL(e, t, YL);
+      }
+      i(VL, "hasIn");
+      i1.exports = VL;
+    });
+    var a1 = c((V7, u1) => {
+      var KL = Vo(), WL = Zy(), HL = s1(), XL = Su(), $L = Ko(), JL = Wo(), QL = Oi(), zL = 1, ZL = 2;
+      function e6(e, t) {
+        return XL(e) && $L(t) ? JL(QL(e), t) : function(r) {
+          var n = WL(r, e);
+          return n === void 0 && n === t ? HL(r, e) : KL(t, n, zL | ZL);
+        };
+      }
+      i(e6, "baseMatchesProperty");
+      u1.exports = e6;
+    });
+    var l1 = c((K7, o1) => {
+      function t6(e) {
+        return e;
+      }
+      i(t6, "identity");
+      o1.exports = t6;
+    });
+    var p1 = c((W7, c1) => {
+      function r6(e) {
+        return function(t) {
+          return t?.[e];
+        };
+      }
+      i(r6, "baseProperty");
+      c1.exports = r6;
+    });
+    var E1 = c((H7, f1) => {
+      var n6 = $o();
+      function i6(e) {
+        return function(t) {
+          return n6(t, e);
+        };
+      }
+      i(i6, "basePropertyDeep");
+      f1.exports = i6;
+    });
+    var m1 = c((X7, d1) => {
+      var s6 = p1(), u6 = E1(), a6 = Su(), o6 = Oi();
+      function l6(e) {
+        return a6(e) ? s6(o6(e)) : u6(e);
+      }
+      i(l6, "property");
+      d1.exports = l6;
+    });
+    var A1 = c(($7, D1) => {
+      var c6 = Gy(), p6 = a1(), f6 = l1(), E6 = nt(), d6 = m1();
+      function m6(e) {
+        return typeof e == "function" ? e : e == null ? f6 : typeof e == "object" ? E6(e) ? p6(e[0], e[1]) : c6(e) : d6(e);
+      }
+      i(m6, "baseIteratee");
+      D1.exports = m6;
+    });
+    var y1 = c((J7, h1) => {
+      var D6 = Ka(), A6 = oy(), h6 = A1(), y6 = nt();
+      function T6(e, t) {
+        var r = y6(e) ? D6 : A6;
+        return r(e, h6(t, 3));
+      }
+      i(T6, "filter");
+      h1.exports = T6;
+    });
+    var Rw = {};
+    al(Rw, { EXPRESSION_NEEDED: () => Y, FILTER_BLOCK: () => Ln, GROUP_TOP_LEVEL_LOGICAL: () => hr, INSIDE_OF_STRING: () => ft, IS_ROOT_LOGICAL_EXPRESSION: () => yr, NEWLINES_ONLY: () => wn, OVERRIDE_QUOTE_CHAR: () => Pn, PRESERVE_LEADING_WHITESPACE: () => Dr, PRESERVE_TRAILING_WHITESPACE: () => Ar, STRING_NEEDS_QUOTES: () => L, countNewlines: () => st, createTextGroups: () => So, findParentNode: () => sr, firstValueInAncestorChain: () => At, getDeepProperty: () => di, hasAtLeastTwoNewlines: () => N2, hasNoNewlines: () => lu, indentWithHardline: () => An, isContractableNodeType: () => fi, isEmptySequence: () => Fo, isHtmlCommentEqualTo: () => mi, isInlineElement: () => Ai, isMelodyNode: () => dn, isMultipartExpression: () => Ei, isNotExpression: () => xo, isRootNode: () => vo, isTwigCommentEqualTo: () => Di, isValidIdentifierName: () => go, isWhitespaceNode: () => mn, isWhitespaceOnly: () => _r, languages: () => vw, normalizeHtmlComment: () => fu, normalizeTwigComment: () => Eu, options: () => _w, parsers: () => Bw, printChildBlock: () => Re, printChildGroups: () => hn, printers: () => Iw, quoteChar: () => En, registerContractableNodeType: () => O2, removeSurroundingWhitespace: () => Dn, setDeepProperty: () => FA, shouldExpressionsBeWrapped: () => au, someParentNode: () => uu, stripHtmlCommentChars: () => cu, stripTwigCommentChars: () => pu, testCurrentAndParentNodes: () => b2, testCurrentNode: () => xA, walkParents: () => TA, wrapExpressionIfNeeded: () => qe, wrapInEnvironment: () => gA, wrapInStringInterpolation: () => ou });
+    module.exports = zT(Rw);
+    function Nn(e) {
+      if (typeof e != "string") {
+        if (Array.isArray(e)) {
+          for (let t of e)
+            Nn(t);
+          return;
+        }
+        if (!(e && typeof e.type == "string"))
+          throw new Error("Value " + JSON.stringify(e) + " is not a valid document");
+      }
+    }
+    i(Nn, "assertDoc");
+    function d(e) {
+      if (process.env.NODE_ENV !== "production")
+        for (let t of e)
+          Nn(t);
+      return { type: "concat", parts: e };
+    }
+    i(d, "concat");
+    function _(e) {
+      return process.env.NODE_ENV !== "production" && Nn(e), { type: "indent", contents: e };
+    }
+    i(_, "indent");
+    function C(e, t = {}) {
+      return process.env.NODE_ENV !== "production" && Nn(e), { type: "group", id: t.id, contents: e, break: Boolean(t.shouldBreak), expandedStates: t.expandedStates };
+    }
+    i(C, "group");
+    function Wr(e) {
+      if (process.env.NODE_ENV !== "production")
+        for (let t of e)
+          Nn(t);
+      return { type: "fill", parts: e };
+    }
+    i(Wr, "fill");
+    var ll = { type: "break-parent" };
+    var ZT = { type: "line", hard: true };
+    var ex = { type: "line", hard: true, literal: true };
+    var B = { type: "line" };
+    var ne = { type: "line", soft: true };
+    var P = d([ZT, ll]);
+    var Lw = d([ex, ll]);
+    var ww = { type: "cursor", placeholder: Symbol("cursor") };
+    function Ee(e, t) {
+      let r = [];
+      for (let n = 0; n < t.length; n++)
+        n !== 0 && r.push(e), r.push(t[n]);
+      return d(r);
+    }
+    i(Ee, "join");
+    var qi = H(require("path"));
+    var jl = H(Yl());
+    var ki = i((e) => e.twigMelodyPlugins && Array.isArray(e.twigMelodyPlugins) ? e.twigMelodyPlugins.map((t) => t.trim()) : [], "getPluginPathsFromOptions");
+    var Kx = i(() => {
+      let e = __dirname.split(qi.default.sep), t = e.length - 1, r = e[t];
+      for (; r !== "node_modules" && t > 0; )
+        t--, r = e[t];
+      t === 0 && (t = e.length - 2);
+      let n = e.slice(0, t), s = qi.default.join(...n), u = __dirname.indexOf(s);
+      return __dirname.slice(0, u) + s;
+    }, "getProjectRoot");
+    var Wx = i((pluginPath) => {
+      try {
+        let projectRoot = Kx(), requirePath = jl.default.sync(qi.default.resolve(projectRoot, pluginPath));
+        return eval("require")(requirePath);
+      } catch (e) {
+        console.error("Could not load plugin path " + pluginPath);
+        return;
+      }
+    }, "tryLoadPlugin");
+    var ku = i((e) => {
+      let t = [];
+      return e && Array.isArray(e) && e.forEach((r) => {
+        let n = Wx(r);
+        n && t.push(n);
+      }), t;
+    }, "loadPlugins");
+    var Vl = i((e) => {
+      let t = [];
+      return ku(e).forEach((n) => {
+        t = t.concat(n.melodyExtensions);
+      }), t.filter((n) => !!n);
+    }, "getAdditionalMelodyExtensions");
+    var L = Symbol("STRING_NEEDS_QUOTES");
+    var Pn = Symbol("OVERRIDE_QUOTE_CHAR");
+    var Y = Symbol("EXPRESSION_NEEDED");
+    var ft = Symbol("INSIDE_OF_STRING");
+    var Ln = Symbol("FILTER_BLOCK");
+    var Dr = Symbol("PRESERVE_LEADING_WHITESPACE");
+    var Ar = Symbol("PRESERVE_TRAILING_WHITESPACE");
+    var wn = Symbol("NEWLINES_ONLY");
+    var hr = Symbol("GROUP_TOP_LEVEL_LOGICAL");
+    var yr = Symbol("IS_ROOT_LOGICAL_EXPRESSION");
+    var Ce = H(re());
+    var B2 = ["title", "h1", "h2", "h3", "h4", "h5", "h6", "a", "abbr", "acronym", "b", "bdo", "big", "br", "button", "cite", "code", "dd", "dfn", "em", "i", "img", "kbd", "label", "mark", "q", "s", "u", "samp", "strike", "strong", "sup", "sub", "small", "span", "time", "tt", "var"];
+    var To = ["ObjectExpression", "BinaryExpression", "ConditionalExpression", "ArrayExpression"];
+    var O2 = i((e) => {
+      To.push(e);
+    }, "registerContractableNodeType");
+    var fi = i((e) => {
+      for (let t = 0; t < To.length; t++) {
+        let r = To[t], n = "is" + r;
+        if (Ce.Node[n] && Ce.Node[n].call(null, e))
+          return true;
+      }
+      return !!Ce.Node.isUnaryLike(e);
+    }, "isContractableNodeType");
+    var xo = i((e) => Ce.Node.isUnaryLike(e) && e.operator === "not", "isNotExpression");
+    var Ei = i((e) => Ce.Node.isBinaryExpression(e) || Ce.Node.isConditionalExpression(e) || Ce.Node.isUnaryLike(e), "isMultipartExpression");
+    var TA = i((e, t, r = false) => {
+      let n = e.stack.length - 1;
+      for (r || (n -= 1); n >= 0; ) {
+        let s = e.stack[n];
+        if (dn(s) && t(s) === false)
+          return;
+        n--;
+      }
+    }, "walkParents");
+    var At = i((e, t, r) => {
+      let n = e.stack.length - 2;
+      for (; n >= 0; ) {
+        let s = e.stack[n];
+        if (dn(s) && s[t] !== void 0)
+          return s[t];
+        n--;
+      }
+      return r;
+    }, "firstValueInAncestorChain");
+    var En = i((e) => e && e.twigSingleQuote ? "'" : '"', "quoteChar");
+    var go = i((e) => typeof e == "string" && /^[A-Z][0-9A-Z_$]*$/i.test(e), "isValidIdentifierName");
+    var dn = i((e) => {
+      let t = e.__proto__;
+      return typeof e == "object" && t.type && typeof Ce.Node["is" + t.type] == "function";
+    }, "isMelodyNode");
+    var sr = i((e) => {
+      let t = e.stack.length - 2;
+      for (; t >= 0; ) {
+        let r = e.stack[t];
+        if (dn(r))
+          return r;
+        t--;
+      }
+      return null;
+    }, "findParentNode");
+    var vo = i((e) => sr(e) === null, "isRootNode");
+    var b2 = i((e, t) => xA(e, t) || uu(e, t), "testCurrentAndParentNodes");
+    var xA = i((e, t) => {
+      let r = e.stack.length - 1;
+      if (r >= 0) {
+        let n = e.stack[r];
+        return dn(n) && t(n);
+      }
+      return false;
+    }, "testCurrentNode");
+    var uu = i((e, t) => {
+      let r = e.stack.length - 2;
+      for (; r >= 0; ) {
+        let n = e.stack[r];
+        if (dn(n) && t(n))
+          return true;
+        r--;
+      }
+      return false;
+    }, "someParentNode");
+    var au = i((e) => {
+      let t = false;
+      return TA(e, (r) => {
+        if (r[ft] === true)
+          return t = ft, false;
+        if (r[Y] === true)
+          return t = Y, false;
+        if (r[Y] === false || r[ft] === false)
+          return false;
+      }), t;
+    }, "shouldExpressionsBeWrapped");
+    var qe = i((e, t, r = {}) => {
+      let n = au(e);
+      return n === Y ? gA(t, r.trimLeft, r.trimRight) : n === ft && ou(t), t;
+    }, "wrapExpressionIfNeeded");
+    var gA = i((e, t = false, r = false) => {
+      let n = t ? "{{-" : "{{", s = r ? "-}}" : "}}";
+      e.unshift(n, B), e.push(B, s);
+    }, "wrapInEnvironment");
+    var ou = i((e) => {
+      e.unshift("#{"), e.push("}");
+    }, "wrapInStringInterpolation");
+    var _r = i((e) => typeof e == "string" && e.trim() === "", "isWhitespaceOnly");
+    var st = i((e) => (e.match(/\n/g) || "").length, "countNewlines");
+    var lu = i((e) => st(e) === 0, "hasNoNewlines");
+    var N2 = i((e) => st(e) >= 2, "hasAtLeastTwoNewlines");
+    var vA = i((e) => e.split(/([\s\n]+)/gm), "splitByWhitespace");
+    var SA = i((e, t = " ") => vA(e).filter((r) => !_r(r)).join(t), "unifyWhitespace");
+    var I2 = i((e) => {
+      let t = st(e);
+      return t > 0 ? t > 1 ? [P, P] : [P] : [B];
+    }, "normalizeWhitespace");
+    var So = i((e, t, r) => {
+      let n = vA(e), s = [], u = [], a = n.length;
+      return n.forEach((l, p) => {
+        if (l !== "")
+          if (_r(l)) {
+            let f = s.length === 0 && u.length === 0, m = p === a - 1 || p === a - 2 && n[a - 1] === "";
+            f && t || m && r ? u.push(...I2(l)) : !f && !m && (st(l) <= 1 ? u.push(B) : (s.push(u), u = []));
+          } else
+            u.push(l);
+      }), u.length > 0 && s.push(u), s.map((l) => Wr(l));
+    }, "createTextGroups");
+    var mn = i((e) => Ce.Node.isPrintTextStatement(e) && _r(e.value.value) || Ce.Node.isStringLiteral(e) && _r(e.value), "isWhitespaceNode");
+    var Fo = i((e) => Ce.Node.isSequenceExpression(e) && e.expressions.length === 0, "isEmptySequence");
+    var Dn = i((e) => {
+      if (!Array.isArray(e))
+        return e;
+      let t = [];
+      return e.forEach((r, n) => {
+        (n === 0 || n === e.length - 1) && mn(r) || t.push(r);
+      }), t;
+    }, "removeSurroundingWhitespace");
+    var di = i((e, ...t) => {
+      let r = e;
+      return t.forEach((n) => {
+        r = r[n];
+      }), r;
+    }, "getDeepProperty");
+    var FA = i((e, t, ...r) => {
+      let n = e, s = r.length;
+      for (let u = 0; u < s - 1; u++)
+        n = n[r[u]];
+      n[r[s - 1]] = t;
+    }, "setDeepProperty");
+    var Re = i((e, t, r, ...n) => {
+      let s = di(e, ...n);
+      FA(e, Dn(s), ...n);
+      let u = hn(e, t, r, ...n);
+      return _(C(d([P, ...u])));
+    }, "printChildBlock");
+    var _2 = i((e) => {
+      e.length > 0 && e.push(P);
+    }, "addNewlineIfNotEmpty");
+    var R2 = i((e) => e.endsWith("-->"), "endsWithHtmlComment");
+    var P2 = i((e, t) => (r) => {
+      let n = r;
+      return n.startsWith(e) && (n = n.slice(e.length)), n.endsWith(t) && (n = n.slice(0, 0 - t.length)), n;
+    }, "stripCommentChars");
+    var cu = P2("<!--", "-->");
+    var pu = i((e) => {
+      let t = e;
+      return t.startsWith("{#") && (t = t.slice(2)), t.startsWith("-") && (t = t.slice(1)), t.endsWith("#}") && (t = t.slice(0, -2)), t.endsWith("-") && (t = t.slice(0, -1)), t;
+    }, "stripTwigCommentChars");
+    var fu = i((e) => {
+      let t = cu(e);
+      return "<!-- " + SA(t) + " -->";
+    }, "normalizeHtmlComment");
+    var Eu = i((e, t, r) => {
+      let n = pu(e), s = t ? "{#-" : "{#", u = r ? "-#}" : "#}";
+      return s + " " + SA(n) + " " + u;
+    }, "normalizeTwigComment");
+    var mi = i((e) => (t) => t.constructor.name === "HtmlComment" && t.value.value && fu(t.value.value) === "<!-- " + e + " -->", "isHtmlCommentEqualTo");
+    var Di = i((e) => (t) => t.constructor.name === "TwigComment" && t.value.value && Eu(t.value.value) === "{# " + e + " #}", "isTwigCommentEqualTo");
+    var L2 = i((e) => {
+      if (!Ce.Node.isPrintTextStatement(e))
+        return false;
+      let t = typeof e.value.value == "string" && e.value.value.trim();
+      return !R2(t);
+    }, "isInlineTextStatement");
+    var Ai = i((e) => Ce.Node.isElement(e) && B2.indexOf(e.name) >= 0 || Ce.Node.isPrintExpressionStatement(e) || L2(e), "isInlineElement");
+    var yA = i((e) => Ce.Node.isTwigComment(e) || Ce.Node.isHtmlComment(e), "isCommentNode");
+    var w2 = i((e) => e.map((t) => Ai(t)), "createInlineMap");
+    var q2 = i((e) => {
+      e.forEach((t) => {
+        Ce.Node.isPrintTextStatement(t) && (t[wn] = true);
+      });
+    }, "textStatementsOnlyNewlines");
+    var k2 = i((e, t) => {
+      t.forEach((r, n) => {
+        let s = n > 0 && yA(t[n - 1]), u = n < t.length - 1 && yA(t[n + 1]);
+        Ce.Node.isPrintTextStatement(r) && ((n > 0 && e[n - 1] || s) && (r[Dr] = true), (n < e.length - 1 && e[n + 1] || u) && (r[Ar] = true));
+      });
+    }, "addPreserveWhitespaceInfo");
+    var An = i((e) => _(d([P, e])), "indentWithHardline");
+    var hn = i((e, t, r, ...n) => {
+      let s = di(e, ...n), u = w2(s);
+      k2(u, s), q2(s);
+      let a = t.map(r, ...n), l = [], p = [];
+      return a.forEach((f, m) => {
+        u[m] ? l.push(f) : (l.length > 0 && (p.push(Wr(l)), l = []), p.length > 0 && !u[m - 1] && _2(p), p.push(f));
+      }), l.length > 0 && p.push(Wr(l)), p;
+    }, "printChildGroups");
+    var CA = H(re());
+    var M2 = { ",": true };
+    var BA = i((e, t, r) => {
+      let s = [e.trimLeft ? "{%-" : "{%", " ", e.tagName], u = t.map(r, "parts");
+      u.length > 0 && s.push(" ", u[0]);
+      let a = [];
+      for (let p = 1; p < e.parts.length; p++) {
+        let f = e.parts[p], A = CA.Node.isGenericToken(f) && M2[f.tokenText] ? "" : B;
+        a.push(A, u[p]);
+      }
+      e.parts.length > 1 && s.push(_(d(a)));
+      let l = e.trimRight ? "-%}" : "%}";
+      return s.push(B, l), C(d(s));
+    }, "printSingleTwigTag");
+    var OA = i((e, t, r) => {
+      e[L] = false, e.expressions = Dn(e.expressions);
+      let n = hn(e, t, r, "expressions");
+      return vo(t) ? d([...n, P]) : d(n);
+    }, "printSequenceExpression");
+    var fr = H(re());
+    var ve = H(re());
+    var S = H(re());
+    var D = {};
+    al(D, { ASSIGNMENT: () => wr, COLON: () => at, COMMA: () => lr, COMMENT: () => Lt, DECLARATION_START: () => hi, DOT: () => gn, ELEMENT_END: () => ot, ELEMENT_START: () => qr, ENTITY: () => Ti, EOF: () => We, EOF_TOKEN: () => Mr, ERROR: () => vn, ERROR_TABLE: () => du, EXPRESSION_END: () => Ye, EXPRESSION_START: () => ze, FALSE: () => gi, HTML_COMMENT: () => Rr, INTERPOLATION_END: () => Tn, INTERPOLATION_START: () => yn, LBRACE: () => Lr, LBRACKET: () => xn, LPAREN: () => xt, NULL: () => vi, NUMBER: () => kr, OPERATOR: () => Pr, PIPE: () => cr, QUESTION_MARK: () => Si, RBRACE: () => ut, RBRACKET: () => or, RPAREN: () => ar, SLASH: () => gt, STRING: () => Tt, STRING_END: () => yt, STRING_START: () => et, SYMBOL: () => Oe, TAG_END: () => Ze, TAG_START: () => ht, TEXT: () => ur, TRUE: () => xi, WHITESPACE: () => yi });
+    var ze = "expressionStart";
+    var Ye = "expressionEnd";
+    var ht = "tagStart";
+    var Ze = "tagEnd";
+    var yn = "interpolationStart";
+    var Tn = "interpolationEnd";
+    var et = "stringStart";
+    var yt = "stringEnd";
+    var hi = "declarationStart";
+    var Lt = "comment";
+    var yi = "whitespace";
+    var Rr = "htmlComment";
+    var ur = "text";
+    var Ti = "entity";
+    var Oe = "symbol";
+    var Tt = "string";
+    var Pr = "operator";
+    var xi = "true";
+    var gi = "false";
+    var vi = "null";
+    var Lr = "[";
+    var ut = "]";
+    var xt = "(";
+    var ar = ")";
+    var xn = "{";
+    var or = "}";
+    var at = ":";
+    var lr = ",";
+    var gn = ".";
+    var cr = "|";
+    var Si = "?";
+    var wr = "=";
+    var qr = "<";
+    var gt = "/";
+    var ot = ">";
+    var kr = "number";
+    var We = "EOF";
+    var vn = "ERROR";
+    var Mr = { type: We, pos: { index: -1, line: -1, pos: -1 }, end: -1, length: 0, source: null, text: "" };
+    var du = { [Ye]: 'expression end "}}"', [ze]: 'expression start "{{"', [ht]: 'tag start "{%"', [Ze]: 'tag end "%}"', [yn]: 'interpolation start "#{"', [Tn]: 'interpolation end "}"' };
+    var $ = Symbol();
+    var G2 = Symbol();
+    function R(e, { pos: { index: t, line: r, column: n } }) {
+      return e.loc.start = { line: r, column: n, index: t }, e;
+    }
+    i(R, "setStartFromToken");
+    function b(e, { pos: { line: t, column: r }, end: n }) {
+      return e.loc.end = { line: t, column: r, index: n }, e;
+    }
+    i(b, "setEndFromToken");
+    function Co(e, t, { pos: { index: r, line: n, column: s } }) {
+      return e[t] = { line: n, column: s, index: r }, e;
+    }
+    i(Co, "setMarkFromToken");
+    function je(e, { loc: { start: { line: t, column: r, index: n } } }) {
+      return e.loc.start.line = t, e.loc.start.column = r, e.loc.start.index = n, e;
+    }
+    i(je, "copyStart");
+    function Pe(e, t) {
+      return e.loc.end.line = t.loc.end.line, e.loc.end.column = t.loc.end.column, e.loc.end.index = t.loc.end.index, e;
+    }
+    i(Pe, "copyEnd");
+    function Sn(e, { loc: { start: t, end: r } }) {
+      return e.loc.start.line = t.line, e.loc.start.column = t.column, e.loc.start.index = t.index, e.loc.end.line = r.line, e.loc.end.column = r.column, e.loc.end.index = r.index, e;
+    }
+    i(Sn, "copyLoc");
+    function I(e, t, ...r) {
+      return b(R(new e(...r), t), t);
+    }
+    i(I, "createNode");
+    function se(e) {
+      return e.text.endsWith("-");
+    }
+    i(se, "hasTagStartTokenTrimLeft");
+    function ue(e) {
+      return e.text.startsWith("-");
+    }
+    i(ue, "hasTagEndTokenTrimRight");
+    var mu = H(re());
+    var Fi = { name: "genericTwigTag", parse(e) {
+      let t = e.tokens, r = t.la(-2), n, s = new mu.GenericTwigTag(t.la(-1).text);
+      for (; (n = t.la(0)) && n.type !== Ze; )
+        try {
+          s.parts.push(e.matchExpression());
+        } catch (u) {
+          if (u.errorType === "UNEXPECTED_TOKEN")
+            s.parts.push(new mu.GenericToken(u.tokenType, u.tokenText)), t.next();
+          else
+            throw u;
+        }
+      return t.expect(Ze), s.trimLeft = se(r), s.trimRight = ue(n), s;
+    } };
+    var U2 = i((e, t) => {
+      for (let r = 0; r < t.length; r++)
+        if (e.test(Oe, t[r]))
+          return true;
+      return false;
+    }, "tagMatchesOneOf");
+    var bA = i((e, t = []) => ({ name: "genericTwigMultiTag", parse(r, n) {
+      let s = r.tokens, u = s.la(-1);
+      t.length === 0 && t.push("end" + e);
+      let a = Fi.parse(r, n), l = e, p = t[t.length - 1];
+      for (; l !== p; ) {
+        a.sections.push(r.parse((m, A, E) => A.type === ht && U2(E, t))), s.next();
+        let f = Fi.parse(r);
+        a.sections.push(f), l = f.tagName;
+      }
+      return R(a, u), b(a, s.la(0)), a;
+    } }), "createMultiTagParser");
+    var NA = { area: true, base: true, br: true, col: true, embed: true, hr: true, img: true, input: true, keygen: true, link: true, meta: true, param: true, source: true, track: true, wbr: true };
+    var Du = Symbol();
+    var Bo = Symbol();
+    var Au = Symbol();
+    var hu = Symbol();
+    var Gr = class {
+      constructor(t, r) {
+        this.tokens = t, this[Du] = {}, this[Bo] = {}, this[Au] = {}, this[hu] = {}, this.options = Object.assign({}, { ignoreComments: true, ignoreHtmlComments: true, ignoreDeclarations: true, decodeEntities: true, preserveSourceLiterally: false, allowUnknownTags: false, multiTags: {} }, r), Object.keys(this.options.multiTags).length > 0 && (this.options.allowUnknownTags = true);
+      }
+      applyExtension(t) {
+        if (t.tags)
+          for (let r of t.tags)
+            this.addTag(r);
+        if (t.unaryOperators)
+          for (let r of t.unaryOperators)
+            this.addUnaryOperator(r);
+        if (t.binaryOperators)
+          for (let r of t.binaryOperators)
+            this.addBinaryOperator(r);
+        if (t.tests)
+          for (let r of t.tests)
+            this.addTest(r);
+      }
+      addUnaryOperator(t) {
+        return this[Du][t.text] = t, this;
+      }
+      addBinaryOperator(t) {
+        return this[Bo][t.text] = t, this;
+      }
+      addTag(t) {
+        return this[Au][t.name] = t, this;
+      }
+      addTest(t) {
+        this[hu][t.text] = t;
+      }
+      hasTest(t) {
+        return !!this[hu][t];
+      }
+      getTest(t) {
+        return this[hu][t];
+      }
+      isUnary(t) {
+        return t.type === Pr && !!this[Du][t.text];
+      }
+      getBinaryOperator(t) {
+        return t.type === Pr && this[Bo][t.text];
+      }
+      parse(t = null) {
+        let r = this.tokens, n = R(new S.SequenceExpression(), r.la(0));
+        for (; !r.test(We); ) {
+          let s = r.next();
+          if (n || (n = R(new S.SequenceExpression(), s)), t && t(r.la(0).text, s, r))
+            return b(n, s), n;
+          switch (s.type) {
+            case ze: {
+              let u = this.matchExpression(), a = new S.PrintExpressionStatement(u), l = r.expect(Ye);
+              R(a, s), b(a, l), b(n, l), a.trimLeft = !!u.trimLeft, a.trimRight = !!u.trimRight, n.add(a);
+              break;
+            }
+            case ht:
+              n.add(this.matchTag());
+              break;
+            case ur: {
+              let u = I(S.StringLiteral, s, s.text), a = I(S.PrintTextStatement, s, u);
+              n.add(a);
+              break;
+            }
+            case Ti: {
+              let u = I(S.StringLiteral, s, s.text), a = I(S.PrintTextStatement, s, u);
+              n.add(a);
+              break;
+            }
+            case qr:
+              n.add(this.matchElement());
+              break;
+            case hi: {
+              let u = this.matchDeclaration();
+              this.options.ignoreDeclarations || n.add(u);
+              break;
+            }
+            case Lt:
+              if (!this.options.ignoreComments) {
+                let u = I(S.StringLiteral, s, s.text), a = I(S.TwigComment, s, u);
+                n.add(a);
+              }
+              break;
+            case Rr:
+              if (!this.options.ignoreHtmlComments) {
+                let u = I(S.StringLiteral, s, s.text), a = I(S.HtmlComment, s, u);
+                n.add(a);
+              }
+              break;
+          }
+        }
+        return n;
+      }
+      matchDeclaration() {
+        let t = this.tokens, r = t.la(-1), n = null, s = null;
+        (n = t.nextIf(Oe)) || this.error({ title: "Expected declaration start", pos: r.pos, advice: "After '<!', an unquoted symbol like DOCTYPE is expected" });
+        let u = new S.Declaration(n.text);
+        for (; s = t.next(); )
+          if (s.type === Oe) {
+            let a = I(S.Identifier, s, s.text);
+            u.parts.push(a);
+          } else if (s.type === et) {
+            let a = t.expect(Tt);
+            u.parts.push(I(S.StringLiteral, a, a.text)), t.expect(yt);
+          } else if (s.type === ze) {
+            let a = this.matchExpression();
+            u.parts.push(Sn(new S.PrintExpressionStatement(a), a)), t.expect(Ye);
+          } else {
+            if (s.type === ot)
+              break;
+            this.error({ title: "Expected string, symbol, or expression", pos: s.pos, advice: "Only strings or symbols can be part of a declaration" });
+          }
+        return R(u, r), b(u, s), u;
+      }
+      matchElement() {
+        let t = this.tokens, r = t.la(0), n = t.la(-1), s;
+        (s = t.nextIf(Oe)) || this.error({ title: "Expected element start", pos: r.pos, advice: t.lat(0) === gt ? `Unexpected closing "${t.la(1).text}" tag. Seems like your DOM is out of control.` : "Expected an element to start" });
+        let u = new S.Element(s.text);
+        if (this.matchAttributes(u, t), t.nextIf(gt))
+          t.expect(ot), u.selfClosing = true;
+        else if (t.expect(ot), NA[s.text])
+          u.selfClosing = true;
+        else if (s.text.toLowerCase() == "script") {
+          let a = t.next(), l = a;
+          for (; !t.test(We); ) {
+            if (a.type === qr && t.lat(0) === gt) {
+              let O = t.la(1);
+              if (O.type === Oe && O.text === s.text) {
+                t.next(), t.next(), t.expect(ot);
+                break;
+              }
+            }
+            a = t.next();
+          }
+          t.test(We) && this.error({ title: "Expected <\/script>, but not found", pos: r.pos, advice: "Script tag must have an end tag" });
+          let { pos: { index: p, line: f, column: m } } = l, A = a.end - 1, E = { pos: { index: p, line: f, column: m }, end: A }, x = I(S.StringLiteral, E, t.input.input.input.slice(p, A)), F = I(S.PrintTextStatement, E, x);
+          u.children.push(F);
+        } else
+          u.children = this.parse(function(a, l, p) {
+            if (l.type === qr && p.lat(0) === gt) {
+              let f = p.la(1);
+              if (f.type === Oe && f.text === s.text)
+                return p.next(), p.next(), p.expect(ot), true;
+            }
+            return false;
+          }).expressions;
+        return R(u, n), b(u, t.la(-1)), Co(u, "elementNameLoc", r), u;
+      }
+      matchAttributes(t, r) {
+        for (; r.lat(0) !== gt && r.lat(0) !== ot; ) {
+          let n = r.nextIf(Oe);
+          if (n) {
+            let s = new S.Identifier(n.text);
+            if (R(s, n), b(s, n), r.nextIf(wr)) {
+              let u = r.expect(et), a = true, l = [], p;
+              for (; !r.test(yt); )
+                if (a && (p = r.nextIf(Tt)))
+                  l[l.length] = I(S.StringLiteral, p, p.text), a = false;
+                else if (p = r.nextIf(ze))
+                  l[l.length] = this.matchExpression(), r.expect(Ye), a = true;
+                else
+                  break;
+              if (r.expect(yt), !l.length) {
+                let A = I(S.StringLiteral, u, "");
+                l.push(A);
+              }
+              let f = l[0];
+              for (let A = 1, E = l.length; A < E; A++) {
+                let { line: x, column: F } = f.loc.start;
+                f = new S.BinaryConcatExpression(f, l[A]), f.loc.start.line = x, f.loc.start.column = F, Pe(f, f.right);
+              }
+              l.length > 1 && (f.wasImplicitConcatenation = true);
+              let m = new S.Attribute(s, f);
+              je(m, s), Pe(m, f), t.attributes.push(m);
+            } else
+              t.attributes.push(Sn(new S.Attribute(s), s));
+          } else
+            r.nextIf(ze) ? (t.attributes.push(this.matchExpression()), r.expect(Ye)) : this.error({ title: "Invalid token", pos: r.la(0).pos, advice: "A tag must consist of attributes or expressions. Twig Tags are not allowed." });
+        }
+      }
+      error(t, r = {}) {
+        this.tokens.error(t.title, t.pos, t.advice, 1, r);
+      }
+      getGenericParserFor(t) {
+        return this.options.multiTags[t] ? bA(t, this.options.multiTags[t]) : Fi;
+      }
+      matchTag() {
+        let t = this.tokens, r = t.la(-1), n = t.expect(Oe), s = this[Au][n.text], u = false;
+        s || (this.options.allowUnknownTags ? (s = this.getGenericParserFor(n.text), u = true) : t.error(`Unknown tag "${n.text}"`, n.pos, `Expected a known tag such as
 - ${Object.getOwnPropertyNames(this[Au]).join(`
-- `)}`,r.length));let u=n.parse(this,r),s=e.la(-1);return a||(u.trimLeft=t.text.endsWith("-"),u.trimRight=s.text.startsWith("-")),R(u,t),b(u,s),Co(u,"tagNameLoc",r),u}matchExpression(e=0){let t=this.tokens,r=t.la(0),n,a,u=!1;t.la(-1).type===ze&&t.la(-1).text.endsWith("-")&&(u=!0);let s=this.getPrimary();for(;(n=t.la(0))&&n.type!==We&&(a=this.getBinaryOperator(n))&&a.precedence>=e;){let f=t.next();if(a.parse)s=a.parse(this,f,s);else{let m=this.matchExpression(a.associativity===$?a.precedence+1:a.precedence);s=a.createNode(n,s,m)}n=t.la(0)}var l=s;e===0&&(b(s,t.la(-1)),l=this.matchConditionalExpression(s),n=t.la(0)),n.type===Ye&&n.text.startsWith("-")&&(l.trimRight=!0),u&&(l.trimLeft=u);let p=t.la(-1);return R(l,r),b(l,p),l}getPrimary(){let e=this.tokens,t=e.la(0);if(this.isUnary(t)){let r=this[Du][t.text];e.next();let n=this.matchExpression(r.precedence);return this.matchPostfixExpression(r.createNode(t,n))}else if(e.test(xt)){e.next();let r=this.matchExpression();return e.expect(ar),this.matchPostfixExpression(r)}return this.matchPrimaryExpression()}matchPrimaryExpression(){let e=this.tokens,t=e.la(0),r;switch(t.type){case vi:r=I(S.NullLiteral,e.next());break;case gi:r=I(S.BooleanLiteral,e.next(),!1);break;case xi:r=I(S.BooleanLiteral,e.next(),!0);break;case Oe:e.next(),e.test(xt)?(r=new S.CallExpression(I(S.Identifier,t,t.text),this.matchArguments()),je(r,r.callee),b(r,e.la(-1))):r=I(S.Identifier,t,t.text);break;case kr:r=I(S.NumericLiteral,t,Number(e.next()));break;case et:r=this.matchStringExpression();break;default:t.type===Lr?r=this.matchArray():t.type===xn?r=this.matchMap():this.error({title:'Unexpected token "'+t.type+'" of value "'+t.text+'"',pos:t.pos},{errorType:"UNEXPECTED_TOKEN",tokenText:t.text,tokenType:t.type});break}return this.matchPostfixExpression(r)}matchStringExpression(){let e=!0,t,r=this.tokens,n=[],a=r.expect(et);for(;!r.test(yt);)if(e&&(t=r.nextIf(Tt)))n[n.length]=I(S.StringLiteral,t,t.text),e=!1;else if(t=r.nextIf(yn))n[n.length]=this.matchExpression(),r.expect(Tn),e=!0;else break;let u=r.expect(yt);if(!n.length)return b(I(S.StringLiteral,a,""),u);let s=n[0];for(let l=1,p=n.length;l<p;l++){let{line:f,column:m}=s.loc.start;s=new S.BinaryConcatExpression(s,n[l]),s.loc.start.line=f,s.loc.start.column=m,Pe(s,s.right)}return n.length>1&&(s.wasImplicitConcatenation=!0),R(s,a),b(s,u),s}matchConditionalExpression(e){let t=this.tokens,r=e,n,a;for(;t.nextIf(Si);){t.nextIf(at)?(n=null,a=this.matchExpression()):(n=this.matchExpression(),t.nextIf(at)?a=this.matchExpression():a=null);let{line:u,column:s}=r.loc.start;r=new S.ConditionalExpression(r,n,a),r.loc.start={line:u,column:s},Pe(r,a||n)}return r}matchArray(){let e=this.tokens,t=new S.ArrayExpression,r=e.expect(Lr);for(R(t,r);!e.test(ut)&&!e.test(We)&&(t.elements.push(this.matchExpression()),!(!e.test(ut)&&(e.expect(lr),e.test(ut)))););return b(t,e.expect(ut)),t}matchMap(){let e=this.tokens,t,r=new S.ObjectExpression,n=e.expect(xn);for(R(r,n);!e.test(or)&&!e.test(We);){let a=!1,u,s;e.test(et)?(u=this.matchStringExpression(),S.is(u,"StringLiteral")||(a=!0)):(t=e.nextIf(Oe))?u=I(S.Identifier,t,t.text):(t=e.nextIf(kr))?u=I(S.NumericLiteral,t,Number(t.text)):e.test(xt)?(u=this.matchExpression(),a=!0):this.error({title:"Invalid map key",pos:e.la(0).pos,advice:"Key must be a string, symbol or a number but was "+e.next()}),e.expect(at),s=this.matchExpression();let l=new S.ObjectProperty(u,s,a);if(je(l,u),Pe(l,s),r.properties.push(l),!e.test(or)&&(e.expect(lr),e.test(or)))break}return b(r,e.expect(or)),r}matchPostfixExpression(e){let t=this.tokens,r=e;for(;!t.test(We);)if(t.test(gn)||t.test(Lr))r=this.matchSubscriptExpression(r);else if(t.test(cr))t.next(),r=this.matchFilterExpression(r);else break;return r}matchSubscriptExpression(e){let t=this.tokens;if(t.next().type===gn){let r=t.next(),n=!1,a;r.type===Oe?a=I(S.Identifier,r,r.text):r.type===kr?(a=I(S.NumericLiteral,r,Number(r.text)),n=!0):this.error({title:"Invalid token",pos:r.pos,advice:"Expected number or symbol, found "+r+" instead"});let u=new S.MemberExpression(e,a,n);if(je(u,e),Pe(u,a),t.test(xt)){let s=new S.CallExpression(u,this.matchArguments());return je(s,u),b(s,t.la(-1)),s}return u}else{let r,n;if(t.test(at)?(t.next(),n=null):(r=this.matchExpression(),t.test(at)&&(n=r,r=null,t.next())),r)return b(je(new S.MemberExpression(e,r,!0),e),t.expect(ut));{let a=new S.SliceExpression(e,n,t.test(ut)?null:this.matchExpression());return je(a,e),b(a,t.expect(ut)),a}}}matchFilterExpression(e){let t=this.tokens,r=e;for(;!t.test(We);){let a=t.expect(Oe),u=I(S.Identifier,a,a.text),s;var n=!1;t.test(xt)?s=this.matchArguments():t.test(at)?(s=this.matchDjangoFilterArguments(),n=!0):s=[];let l=new S.FilterExpression(r,u,s);if(je(l,r),l.arguments.length?Pe(l,l.arguments[l.arguments.length-1]):Pe(l,r),r=l,r.isDjango=n,!t.test(cr)||t.test(We))break;t.next()}return r}matchArguments(){let e=this.tokens,t=[];for(e.expect(xt);!e.test(ar)&&!e.test(We);){if(e.test(Oe)&&e.lat(1)===wr){let r=e.next();e.next();let n=this.matchExpression(),a=new S.NamedArgumentExpression(I(S.Identifier,r,r.text),n);Pe(a,n),t.push(a)}else t.push(this.matchExpression());if(!e.test(lr))return e.expect(ar),t;e.expect(lr)}return e.expect(ar),t}matchDjangoFilterArguments(){let e=this.tokens,t=[];for(e.expect(at);!e.test(cr)&&!e.test(Ye)&&!e.test(Ze);)t.push(this.matchExpression());return e.expect([cr,Ye,Ze]),e.index--,t}};i(Gr,"Parser");var Ro=H(oh()),dh=H(Eh()),wt=Symbol(),_o=Symbol(),Ur=class{constructor(e,t){this.input=e,this.index=0;let r=Object.assign({},{ignoreComments:!0,ignoreHtmlComments:!0,ignoreWhitespace:!0,applyWhitespaceTrimming:!0},t);if(this[wt]=H8(e,r),this[_o]=this[wt].length,this[wt].length&&this[wt][this[wt].length-1].type===vn){let n=this[wt][this[wt].length-1];this.error(n.message,n.pos,n.advice,n.endPos.index-n.pos.index||1)}}la(e){var t=this.index+e;return t<this[_o]?this[wt][t]:Mr}lat(e){return this.la(e).type}test(e,t){let r=this.la(0);return r.type===e&&(!t||r.text===t)}next(){if(this.index===this[_o])return Mr;let e=this[wt][this.index];return this.index++,e}nextIf(e,t){return this.test(e,t)?this.next():!1}expect(e,t=null,r=null){let n=this.la(0);if(Array.isArray(e)||(e=[e]),e.includes(n.type)&&(!t||n.text===t))return this.next();var a=e[0],u=du[a]||a||t;u!=t&&u+""+t;var s=n.pos;s.line==-1&&r&&(s=r.pos),this.error("Invalid Token",s,`Expected ${u} but found ${du[n.type]||n.type||n.text} instead.`,n.length)}error(e,t,r,n=1,a={}){let u=`ERROR: ${e}. `;r&&(u+=r);let s=new Error(u+" 	 ");throw Object.assign(s,a),s.loc={start:{line:Math.max(1,t.line||0),column:Math.max(0,t.column||0)+1},end:{line:Math.max(1,t.line||0)+1,column:1}},s}};i(Ur,"TokenStream");function H8(e,t){let r,n=[],a=!1,u=!1;for(;(r=e.next())!==Mr;){let s=u;if(u=!1,a)switch(r.type){case ze:case ht:r.text[r.text.length-1]==="-"&&(n[n.length-1].text=(0,Ro.default)(n[n.length-1].text));break;case Ye:case Ze:r.text[0]==="-"&&(u=!0);break;case Lt:n[n.length-1].type===ur&&(n[n.length-1].text=(0,Ro.default)(n.text)),u=!0;break}if(s&&(r.type===ur||r.type===Tt)&&(r.text=(0,dh.default)(r.text)),(r.type!==Lt||!t.ignoreComments)&&(r.type!==yi||!t.ignoreWhitespace)&&(r.type!==Rr||!t.ignoreHtmlComments)&&(n[n.length]=r),a=t.applyWhitespaceTrimming,r.type===vn)return n}return n}i(H8,"getAllTokens");var Le=Symbol(),Fn=class{constructor(e){this.input=String(e),this.length=this.input.length,this.index=0,this.position={line:1,column:0}}get source(){return this.input}reset(){this.rewind({line:1,column:0,index:0})}mark(){let{line:e,column:t}=this.position,r=this.index;return{line:e,column:t,index:r}}rewind(e){this.position.line=e.line,this.position.column=e.column,this.index=e.index}la(e){var t=this.index+e;return t<this.length?this.input.charAt(t):Le}lac(e){var t=this.index+e;return t<this.length?this.input.charCodeAt(t):Le}next(){if(this.index===this.length)return Le;var e=this.input.charAt(this.index);return this.index++,this.position.column++,e===`
-`&&(this.position.line+=1,this.position.column=0),e}match(e){let t=this.mark();for(let r=0,n=e.length;r<n;r++){let a=this.next();if(a!==e.charAt(r)||a===Le)return this.rewind(t),!1}return!0}};i(Fn,"CharStream");var ae={TEXT:"TEXT",EXPRESSION:"EXPRESSION",TAG:"TAG",INTERPOLATION:"INTERPOLATION",STRING_SINGLE:"STRING_SINGLE",STRING_DOUBLE:"STRING_DOUBLE",ELEMENT:"ELEMENT",ATTRIBUTE_VALUE:"ATTRIBUTE_VALUE",DECLARATION:"DECLARATION"},Cn=Symbol(),gu=Symbol(),X8=Symbol(),mh={"[":Lr,"]":ut,"(":xt,")":ar,"{":xn,"}":or,":":at,".":gn,"|":cr,",":lr,"?":Si,"=":wr,"/":gt},jr=class{constructor(e,{preserveSourceLiterally:t=!1}={}){this.input=e,this[Cn]=[ae.TEXT],this[gu]=[],this[X8]=null,this.options={preserveSourceLiterally:t===!0}}applyExtension(e){e.unaryOperators&&this.addOperators(...e.unaryOperators.map(t=>t.text)),e.binaryOperators&&this.addOperators(...e.binaryOperators.map(t=>t.text))}reset(){this.input.reset(),this[Cn]=[ae.TEXT]}get source(){return this.input.source}addOperators(...e){this[gu].push(...e),this[gu].sort((t,r)=>t.length>r.length?-1:1)}get state(){return this[Cn][this[Cn].length-1]}pushState(e){this[Cn].push(e)}popState(){this[Cn].length--}createToken(e,t){let r=this.input,n=r.mark(),a=n.index;return{type:e,pos:t,endPos:n,end:a,length:a-t.index,source:r.input,text:r.input.substr(t.index,a-t.index),toString:function(){return this.text}}}next(){let e=this.input,t,r;for(;(r=e.la(0))!==Le;){if(t=e.mark(),this.state!==ae.TEXT&&this.state!==ae.STRING_DOUBLE&&this.state!==ae.STRING_SINGLE&&this.state!==ae.ATTRIBUTE_VALUE&&Po(r)){for(e.next();(r=e.la(0))!==Le&&Po(r);)e.next();return this.createToken(yi,t)}if(r==="{"&&e.la(1)==="#")for(e.next(),e.next(),e.la(0)==="-"&&e.next();(r=e.la(0))!==Le;){if(r==="#"&&e.la(1)==="}"||r==="-"&&e.la(1)==="#"&&e.la(2)==="}")return r==="-"&&e.next(),e.next(),e.next(),this.createToken(Lt,t);e.next()}if(this.state===ae.TEXT){let n;if(r==="<"){if(e.la(1)==="{"||Yr(e.lac(1))||e.la(1)==="/")return e.next(),this.pushState(ae.ELEMENT),this.createToken(qr,t);if(e.la(1)==="!"&&e.la(2)==="-"&&e.la(3)==="-"){for(e.next(),e.next(),e.next(),e.next();(r=e.la(0))!==Le;){if(r==="-"&&e.la(1)==="-"){e.next(),e.next(),!(r=e.next())===">"&&this.error("Unexpected end for HTML comment",e.mark(),`Expected comment to end with '>' but found '${r}' instead.`);break}e.next()}return this.createToken(Rr,t)}else return e.la(1)==="!"&&(Yr(e.lac(2))||Po(e.la(2)))?(e.next(),e.next(),this.pushState(ae.DECLARATION),this.createToken(hi,t)):this.matchText(t)}else return r==="{"?this.matchExpressionToken(t):r==="&"&&(n=this.matchEntity(t))?n:this.matchText(t)}else{if(this.state===ae.EXPRESSION)return r==="}"&&e.la(1)==="}"||r==="-"&&e.la(1)==="}"&&e.la(2)==="}"?(r==="-"&&e.next(),e.next(),e.next(),this.popState(),this.createToken(Ye,t)):this.matchExpression(t);if(this.state===ae.TAG)return r==="%"&&e.la(1)==="}"||r==="-"&&e.la(1)==="%"&&e.la(2)==="}"?(r==="-"&&e.next(),e.next(),e.next(),this.popState(),this.createToken(Ze,t)):this.matchExpression(t);if(this.state===ae.STRING_SINGLE||this.state===ae.STRING_DOUBLE)return this.matchString(t,!0);if(this.state===ae.INTERPOLATION)return r==="}"?(e.next(),this.popState(),this.createToken(Tn,t)):this.matchExpression(t);if(this.state===ae.ELEMENT)switch(r){case"/":return e.next(),this.createToken(gt,t);case"{":return this.matchExpressionToken(t);case">":return e.next(),this.popState(),this.createToken(ot,t);case'"':return e.next(),this.pushState(ae.ATTRIBUTE_VALUE),this.createToken(et,t);case"=":return e.next(),this.createToken(wr,t);default:return this.matchSymbol(t)}else{if(this.state===ae.ATTRIBUTE_VALUE)return r==='"'?(e.next(),this.popState(),this.createToken(yt,t)):this.matchAttributeValue(t);if(this.state===ae.DECLARATION)switch(r){case">":return e.next(),this.popState(),this.createToken(ot,t);case'"':return e.next(),this.pushState(ae.STRING_DOUBLE),this.createToken(et,t);case"{":return this.matchExpressionToken(t);default:return this.matchSymbol(t)}else return this.error(`Invalid state ${this.state}`,t)}}}return Mr}matchExpressionToken(e){let t=this.input;switch(t.la(1)){case"{":return t.next(),t.next(),this.pushState(ae.EXPRESSION),t.la(0)==="-"&&t.next(),this.createToken(ze,e);case"%":return t.next(),t.next(),this.pushState(ae.TAG),t.la(0)==="-"&&t.next(),this.createToken(ht,e);case"#":return t.next(),t.next(),t.la(0)==="-"&&t.next(),this.matchComment(e);default:return this.matchText(e)}}matchExpression(e){let t=this.input,r=t.la(0);switch(r){case"'":return this.pushState(ae.STRING_SINGLE),t.next(),this.createToken(et,e);case'"':return this.pushState(ae.STRING_DOUBLE),t.next(),this.createToken(et,e);default:{if(vt(t.lac(0)))return t.next(),this.matchNumber(e);if(r==="t"&&t.match("true")||r==="T"&&t.match("TRUE"))return this.createToken(xi,e);if(r==="f"&&t.match("false")||r==="F"&&t.match("FALSE"))return this.createToken(gi,e);if(r==="n"&&(t.match("null")||t.match("none"))||r==="N"&&(t.match("NULL")||t.match("NONE")))return this.createToken(vi,e);let{longestMatchingOperator:n,longestMatchEndPos:a}=this.findLongestMatchingOperator(),u=t.lac(0);if(u===95||Yr(u)||vt(u)){t.next();let s=this.matchSymbol(e);return s.text.length<=n.length?(t.rewind(a),this.createToken(Pr,e)):s}else return n?(t.rewind(a),this.createToken(Pr,e)):mh.hasOwnProperty(r)?(t.next(),this.createToken(mh[r],e)):r==="\xA0"?this.error("Unsupported token: Non-breaking space",e):this.error(`Unknown token ${r}`,e)}}}findLongestMatchingOperator(){let e=this.input,t=e.mark(),r="",n=null;for(let a=0,u=this[gu],s=u.length;a<s;a++){let l=u[a];if(l.length>r.length&&e.match(l)){let p=e.lac(0);(l.indexOf(" ")===-1||!(Yr(p)||vt(p)))&&(r=l,n=e.mark()),e.rewind(t)}}return e.rewind(t),{longestMatchingOperator:r,longestMatchEndPos:n}}error(e,t,r=""){let n=this.createToken(vn,t);return n.message=e,n.advice=r,n}matchEntity(e){let t=this.input;if(t.next(),t.la(0)==="#")if(t.next(),t.la(0)==="x"){t.next();let r=t.la(0);for(;"a"<=r&&r<="f"||"A"<=r&&r<="F"||vt(t.lac(0));)t.next(),r=t.la(0);if(t.la(0)===";")t.next();else return t.rewind(e),null}else if(vt(t.lac(0))){do t.next();while(vt(t.lac(0)));if(t.la(0)===";")t.next();else return t.rewind(e),null}else return t.rewind(e),null;else{for(;Yr(t.lac(0));)t.next();if(t.la(0)===";")t.next();else return t.rewind(e),null}return this.createToken(Ti,e)}matchSymbol(e){let t=this.input,r=this.state===ae.ELEMENT,n;for(;(n=t.lac(0))&&(n===95||Yr(n)||vt(n)||r&&(n===45||n===58));)t.next();var a=t.mark();return e.index===a.index?this.error("Expected an Identifier",e,r?`Expected a valid attribute name, but instead found "${t.la(0)}", which is not part of a valid attribute name.`:`Expected letter, digit or underscore but found ${t.la(0)} instead.`):this.createToken(Oe,e)}matchString(e,t=!0){let r=this.input,n=this.state===ae.STRING_SINGLE?"'":'"',a;if(t&&r.la(0)==="#"&&r.la(1)==="{")return this.pushState(ae.INTERPOLATION),r.next(),r.next(),this.createToken(yn,e);if(r.la(0)===n)return r.next(),this.popState(),this.createToken(yt,e);for(;(a=r.la(0))!==n&&a!==Le;)if(a==="\\"&&r.la(1)===n)r.next(),r.next();else{if(t&&a==="#"&&r.la(1)==="{")break;r.next()}var u=this.createToken(Tt,e);return this.options.preserveSourceLiterally||(u.text=u.text.replace(new RegExp("(?:\\\\)("+n+")","g"),"$1")),u}matchAttributeValue(e){let t=this.input,r=this.state===ae.STRING_SINGLE?"'":'"',n;if(t.la(0)==="{")return this.matchExpressionToken(e);for(;(n=t.la(0))!==r&&n!==Le;)if(n==="\\"&&t.la(1)===r)t.next(),t.next();else{if(n==="{"||n===r)break;t.next()}var a=this.createToken(Tt,e);return this.options.preserveSourceLiterally||(a.text=a.text.replace(new RegExp("(?:\\\\)("+r+")","g"),"$1")),a}matchNumber(e){let t=this.input,r;for(;(r=t.lac(0))!==Le&&vt(r);)t.next();if(t.la(0)==="."&&vt(t.lac(1)))for(t.next();(r=t.lac(0))!==Le&&vt(r);)t.next();return this.createToken(kr,e)}matchText(e){let t=this.input,r;for(;(r=t.la(0))&&r!==Le;){if(r==="{"){let n=t.la(1);if(n==="{"||n==="#"||n==="%")break}else if(r==="<"){let n=t.la(1);if(n==="/"||n==="!"||Yr(t.lac(1)))break;if(t.la(1)==="{"){let a=t.la(1);if(a==="{"||a==="#"||a==="%")break}}t.next()}return this.createToken(ur,e)}matchComment(e){let t=this.input,r;for(;(r=t.next())!==Le;)if(r==="#"&&t.la(0)==="}"){t.next();break}return this.createToken(Lt,e)}};i(jr,"Lexer");function Po(e){return e===`
-`||e===" "||e==="	"}i(Po,"isWhitespace");function Yr(e){return 65<=e&&e<=90||97<=e&&e<=122}i(Yr,"isAlpha");function vt(e){return 48<=e&&e<=57}i(vt,"isDigit");var Lo=[],Ci=[],Bn=[],wo=Go("not","UnaryNotExpression",50),Dh=Go("-","UnaryNeqExpression",500),Ah=Go("+","UnaryPosExpression",500),hh=fe({text:"or",type:"BinaryOrExpression",precedence:10,associativity:$}),yh=fe({text:"and",type:"BinaryAndExpression",precedence:15,associativity:$}),Th=fe({text:"b-or",type:"BitwiseOrExpression",precedence:16,associativity:$}),xh=fe({text:"b-xor",type:"BitwiseXOrExpression",precedence:17,associativity:$}),gh=fe({text:"b-and",type:"BitwiseAndExpression",precedence:18,associativity:$}),vh=fe({text:"==",type:"BinaryEqualsExpression",precedence:20,associativity:$}),Sh=fe({text:"!=",type:"BinaryNotEqualsExpression",precedence:20,associativity:$}),Fh=fe({text:"<",type:"BinaryLessThanExpression",precedence:20,associativity:$}),Ch=fe({text:">",type:"BinaryGreaterThanExpression",precedence:20,associativity:$}),Bh=fe({text:"<=",type:"BinaryLessThanOrEqualExpression",precedence:20,associativity:$}),Oh=fe({text:">=",type:"BinaryGreaterThanOrEqualExpression",precedence:20,associativity:$}),bh=fe({text:"not in",type:"BinaryNotInExpression",precedence:20,associativity:$}),Nh=fe({text:"in",type:"BinaryInExpression",precedence:20,associativity:$}),Ih=fe({text:"matches",type:"BinaryMatchesExpression",precedence:20,associativity:$}),_h=fe({text:"starts with",type:"BinaryStartsWithExpression",precedence:20,associativity:$}),Rh=fe({text:"ends with",type:"BinaryEndsWithExpression",precedence:20,associativity:$}),Ph=fe({text:"..",type:"BinaryRangeExpression",precedence:25,associativity:$}),Lh=fe({text:"+",type:"BinaryAddExpression",precedence:30,associativity:$}),Q9=fe({text:"-",type:"BinarySubExpression",precedence:30,associativity:$});Ci.push({text:"~",precedence:40,associativity:$,createNode(e,t,r){let n=new ve.BinaryConcatExpression(t,r);return je(n,t),Pe(n,r),n}});var wh=fe({text:"*",type:"BinaryMulExpression",precedence:60,associativity:$}),qh=fe({text:"/",type:"BinaryDivExpression",precedence:60,associativity:$}),kh=fe({text:"//",type:"BinaryFloorDivExpression",precedence:60,associativity:$}),Mh=fe({text:"%",type:"BinaryModExpression",precedence:60,associativity:$});Ci.push({text:"is",precedence:100,associativity:$,parse(e,t,r){let n=e.tokens,a=!1;n.nextIf(D.OPERATOR,"not")&&(a=!0);let u=$8(e),s=null;n.test(D.LPAREN)&&(s=e.matchArguments());let l=u.createNode(r,s);return R(l,t),b(l,n.la(-1)),a?Sn(new wo(l),l):l}});function $8(e){let t=e.tokens,r=t.la(0);r.type!==D.NULL?t.expect(D.SYMBOL):t.next();let n=r.text;if(!e.hasTest(n)){let a=t.expect(D.SYMBOL);n+=" "+a.text,e.hasTest(n)||e.error({title:`Unknown test "${n}"`,pos:r.pos})}return e.getTest(n)}i($8,"getTest");var Gh=fe({text:"**",type:"BinaryPowerExpression",precedence:200,associativity:$}),Uh=fe({text:"??",type:"BinaryNullCoalesceExpression",precedence:300,associativity:$}),Yh=qt("even","TestEvenExpression"),jh=qt("odd","TestOddExpression"),Vh=qt("defined","TestDefinedExpression"),qo=qt("same as","TestSameAsExpression");Bn.push({text:"sameas",createNode(e,t){return new qo(e,t)}});var ko=qt("null","TestNullExpression");Bn.push({text:"none",createNode(e,t){return new ko(e,t)}});var Mo=qt("divisible by","TestDivisibleByExpression");Bn.push({text:"divisibleby",createNode(e,t){return new Mo(e,t)}});var Kh=qt("constant","TestConstantExpression"),Wh=qt("empty","TestEmptyExpression"),Hh=qt("iterable","TestIterableExpression");function qt(e,t){let r=i(class extends ve.Node{constructor(n,a){super(),this.expression=n,this.arguments=a}},"TestExpression");return(0,ve.type)(r,t),(0,ve.alias)(r,"Expression","TestExpression"),(0,ve.visitor)(r,"expression","arguments"),Bn.push({text:e,createNode(n,a){return new r(n,a)}}),r}i(qt,"createTest");function fe(e){let{text:t,precedence:r,associativity:n}=e,a=i(class extends ve.BinaryExpression{constructor(s,l){super(t,s,l)}},"BinarySubclass");(0,ve.type)(a,e.type),(0,ve.alias)(a,"BinaryExpression","Binary","Expression"),(0,ve.visitor)(a,"left","right");let u={text:t,precedence:r,associativity:n};return e.parse?u.parse=e.parse:e.createNode?u.createNode=e.createNode:u.createNode=(s,l,p)=>new a(l,p),Ci.push(u),a}i(fe,"createBinaryOperatorNode");function Go(e,t,r){let n=i(class extends ve.UnaryExpression{constructor(a){super(e,a)}},"UnarySubclass");return(0,ve.type)(n,t),(0,ve.alias)(n,"Expression","UnaryLike"),(0,ve.visitor)(n,"argument"),Lo.push({text:e,precedence:r,createNode(a,u){let s=new n(u);return R(s,a),Pe(s,u),s}}),n}i(Go,"createUnaryOperator");var v=H(re()),kt=class extends v.Node{constructor(e,t){super(),this.escapeType=e,this.expressions=t}};i(kt,"AutoescapeBlock");(0,v.type)(kt,"AutoescapeBlock");(0,v.alias)(kt,"Block","Escape");(0,v.visitor)(kt,"expressions");var St=class extends v.Node{constructor(e,t){super(),this.name=e,this.body=t}};i(St,"BlockStatement");(0,v.type)(St,"BlockStatement");(0,v.alias)(St,"Statement","Scope","RootScope");(0,v.visitor)(St,"body");var Vr=class extends v.Node{constructor(e,t=[]){super(),this.callee=e,this.arguments=t}};i(Vr,"BlockCallExpression");(0,v.type)(Vr,"BlockCallExpression");(0,v.alias)(Vr,"Expression","FunctionInvocation");(0,v.visitor)(Vr,"arguments");var Mt=class extends v.Node{constructor(e,t,r,n,a,u){super(),this.name=e,this.source=t,this.key=r,this.argument=n,this.async=a,this.delayBy=u,this.errorVariableName=null,this.body=null,this.otherwise=null}};i(Mt,"MountStatement");(0,v.type)(Mt,"MountStatement");(0,v.alias)(Mt,"Statement","Scope");(0,v.visitor)(Mt,"name","source","key","argument","body","otherwise");var Gt=class extends v.Node{constructor(e){super(),this.value=e}};i(Gt,"DoStatement");(0,v.type)(Gt,"DoStatement");(0,v.alias)(Gt,"Statement");(0,v.visitor)(Gt,"value");var Ut=class extends v.Node{constructor(e){super(),this.parent=e,this.argument=null,this.contextFree=!1,this.ignoreMissing=!1,this.blocks=null}};i(Ut,"EmbedStatement");(0,v.type)(Ut,"EmbedStatement");(0,v.alias)(Ut,"Statement","Include");(0,v.visitor)(Ut,"argument","blocks");var Yt=class extends v.Node{constructor(e){super(),this.parentName=e}};i(Yt,"ExtendsStatement");(0,v.type)(Yt,"ExtendsStatement");(0,v.alias)(Yt,"Statement","Include");(0,v.visitor)(Yt,"parentName");var jt=class extends v.Node{constructor(e,t){super(),this.filterExpression=e,this.body=t}};i(jt,"FilterBlockStatement");(0,v.type)(jt,"FilterBlockStatement");(0,v.alias)(jt,"Statement","Block");(0,v.visitor)(jt,"filterExpression","body");var pr=class extends v.Node{constructor(){super()}};i(pr,"FlushStatement");(0,v.type)(pr,"FlushStatement");(0,v.alias)(pr,"Statement");var Vt=class extends v.Node{constructor(e=null,t=null,r=null,n=null,a=null,u=null){super(),this.keyTarget=e,this.valueTarget=t,this.sequence=r,this.condition=n,this.body=a,this.otherwise=u}};i(Vt,"ForStatement");(0,v.type)(Vt,"ForStatement");(0,v.alias)(Vt,"Statement","Scope","Loop");(0,v.visitor)(Vt,"keyTarget","valueTarget","sequence","condition","body","otherwise");var lt=class extends v.Node{constructor(e,t){super(),this.key=e,this.alias=t}};i(lt,"ImportDeclaration");(0,v.type)(lt,"ImportDeclaration");(0,v.alias)(lt,"VariableDeclaration");(0,v.visitor)(lt,"key","value");var Kt=class extends v.Node{constructor(e,t){super(),this.source=e,this.imports=t}};i(Kt,"FromStatement");(0,v.type)(Kt,"FromStatement");(0,v.alias)(Kt,"Statement");(0,v.visitor)(Kt,"source","imports");var Ft=class extends v.Node{constructor(e,t=null,r=null){super(),this.test=e,this.consequent=t,this.alternate=r}};i(Ft,"IfStatement");(0,v.type)(Ft,"IfStatement");(0,v.alias)(Ft,"Statement","Conditional");(0,v.visitor)(Ft,"test","consequent","alternate");var Wt=class extends v.Node{constructor(e){super(),this.source=e,this.argument=null,this.contextFree=!1,this.ignoreMissing=!1}};i(Wt,"IncludeStatement");(0,v.type)(Wt,"IncludeStatement");(0,v.alias)(Wt,"Statement","Include");(0,v.visitor)(Wt,"source","argument");var Ht=class extends v.Node{constructor(e,t,r){super(),this.name=e,this.arguments=t,this.body=r}};i(Ht,"MacroDeclarationStatement");(0,v.type)(Ht,"MacroDeclarationStatement");(0,v.alias)(Ht,"Statement","Scope","RootScope");(0,v.visitor)(Ht,"name","arguments","body");var Xt=class extends v.Node{constructor(e,t){super(),this.name=e,this.value=t}};i(Xt,"VariableDeclarationStatement");(0,v.type)(Xt,"VariableDeclarationStatement");(0,v.alias)(Xt,"Statement");(0,v.visitor)(Xt,"name","value");var $t=class extends v.Node{constructor(e){super(),this.assignments=e}};i($t,"SetStatement");(0,v.type)($t,"SetStatement");(0,v.alias)($t,"Statement","ContextMutation");(0,v.visitor)($t,"assignments");var Jt=class extends v.Node{constructor(e=null){super(),this.body=e}};i(Jt,"SpacelessBlock");(0,v.type)(Jt,"SpacelessBlock");(0,v.alias)(Jt,"Statement","Block");(0,v.visitor)(Jt,"body");var Qt=class extends v.Node{constructor(e,t){super(),this.name=e,this.alias=t}};i(Qt,"AliasExpression");(0,v.type)(Qt,"AliasExpression");(0,v.alias)(Qt,"Expression");(0,v.visitor)(Qt,"name","alias");var zt=class extends v.Node{constructor(e,t){super(),this.source=e,this.aliases=t}};i(zt,"UseStatement");(0,v.type)(zt,"UseStatement");(0,v.alias)(zt,"Statement","Include");(0,v.visitor)(zt,"source","aliases");var Xh={name:"autoescape",parse(e,t){let r=e.tokens,n=r.la(-2),a=null,u,s,l;r.nextIf(D.TAG_END)?(s=r.la(-1),a=null):(u=r.nextIf(D.STRING_START))?(a=r.expect(D.STRING).text,r.nextIf(D.STRING_END)||e.error({title:"autoescape type declaration must be a simple string",pos:r.la(0).pos,advice:`The type declaration for autoescape must be a simple string such as 'html' or 'js'.
-I expected the current string to end with a ${u.text} but instead found ${D.ERROR_TABLE[r.lat(0)]||r.lat(0)}.`}),s=r.la(0)):r.nextIf(D.FALSE)?(a=!1,s=r.la(0)):r.nextIf(D.TRUE)?(a=!0,s=r.la(0)):e.error({title:"Invalid autoescape type declaration",pos:r.la(0).pos,advice:`Expected type of autoescape to be a string, boolean or not specified. Found ${r.la(0).type} instead.`});let p=new kt(a);R(p,t);let f;return p.expressions=e.parse((m,h,A)=>h.type===D.TAG_START&&A.nextIf(D.SYMBOL,"endautoescape")?(l=h,f=A.expect(D.TAG_END,"",n),!0):!1).expressions,b(p,f),p.trimRightAutoescape=ue(s),p.trimLeftEndautoescape=se(l),p}},Bi=H(re()),$h={name:"block",parse(e,t){let r=e.tokens,n=r.la(-2),a=r.expect(D.SYMBOL),u,s,l;if(s=r.nextIf(D.TAG_END)){if(u=new St(I(Bi.Identifier,a,a.text),e.parse((p,f,m)=>{let h=!!(f.type===D.TAG_START&&m.nextIf(D.SYMBOL,"endblock"));return h&&(l=f),h}).expressions),r.nextIf(D.SYMBOL,a.text)&&r.lat(0)!==D.TAG_END){let p=r.next();e.error({title:"Block name mismatch",pos:p.pos,advice:p.type==D.SYMBOL?`Expected end of block ${a.text} but instead found end of block ${r.la(0).text}.`:`endblock must be followed by either '%}' or the name of the open block. Found a token of type ${D.ERROR_TABLE[p.type]||p.type} instead.`})}}else u=new St(I(Bi.Identifier,a,a.text),new Bi.PrintExpressionStatement(e.matchExpression()));return R(u,t),b(u,r.expect(D.TAG_END,null,n)),u.trimRightBlock=s&&ue(s),u.trimLeftEndblock=!!(l&&se(l)),u}},Jh={name:"do",parse(e,t){let r=e.tokens,n=r.la(-2),a=new Gt(e.matchExpression());return R(a,t),b(a,r.expect(D.TAG_END,"",n)),a}},T1=H(re()),x1=H(y1()),g1={name:"embed",parse(e,t){let r=e.tokens,n=r.la(-2),a=new Ut(e.matchExpression());r.nextIf(D.SYMBOL,"ignore")&&(r.expect(D.SYMBOL,"missing"),a.ignoreMissing=!0),r.nextIf(D.SYMBOL,"with")&&(a.argument=e.matchExpression()),r.nextIf(D.SYMBOL,"only")&&(a.contextFree=!0),r.expect(D.TAG_END);let u=r.la(-1),s;return a.blocks=(0,x1.default)(e.parse((l,p,f)=>{let m=!!(p.type===D.TAG_START&&f.nextIf(D.SYMBOL,"endembed"));return m&&(s=p),m}).expressions,T1.Node.isBlockStatement),R(a,t),b(a,r.expect(D.TAG_END,"",n)),a.trimRightEmbed=ue(u),a.trimLeftEndembed=s&&se(s),a}},v1={name:"extends",parse(e,t){let r=e.tokens,n=new Yt(e.matchExpression());return R(n,t),b(n,r.expect(D.TAG_END)),n}},S1=H(re()),F1={name:"filter",parse(e,t){let r=e.tokens,n=r.la(-2),a=I(S1.Identifier,t,"filter"),u=e.matchFilterExpression(a);r.expect(D.TAG_END);let s=r.la(-1),l,p=e.parse((m,h,A)=>{let g=h.type===D.TAG_START&&A.nextIf(D.SYMBOL,"endfilter");return g&&(l=h),g}).expressions,f=new jt(u,p);return R(f,t),b(f,r.expect(D.TAG_END,"",n)),f.trimRightFilter=ue(s),f.trimLeftEndfilter=l&&se(l),f}},C1={name:"flush",parse(e,t){let r=e.tokens,n=new pr;return R(n,t),b(n,r.expect(D.TAG_END)),n}},Fu=H(re()),B1={name:"for",parse(e,t){let r=e.tokens,n=new Vt,a=r.la(-2),u=r.expect(D.SYMBOL);if(r.nextIf(D.COMMA)){n.keyTarget=I(Fu.Identifier,u,u.text);let m=r.expect(D.SYMBOL);n.valueTarget=I(Fu.Identifier,m,m.text)}else n.keyTarget=null,n.valueTarget=I(Fu.Identifier,u,u.text);r.expect(D.OPERATOR,"in"),n.sequence=e.matchExpression(),r.nextIf(D.SYMBOL,"if")&&(n.condition=e.matchExpression()),r.expect(D.TAG_END);let s=r.la(-1),l,p;n.body=e.parse((m,h,A)=>{let g=h.type===D.TAG_START&&(A.test(D.SYMBOL,"else")||A.test(D.SYMBOL,"endfor"));return g&&A.test(D.SYMBOL,"else")&&(l=h),g}),r.nextIf(D.SYMBOL,"else")&&(r.expect(D.TAG_END),p=r.la(-1),n.otherwise=e.parse((m,h,A)=>h.type===D.TAG_START&&A.test(D.SYMBOL,"endfor")));let f=r.la(-1);return r.expect(D.SYMBOL,"endfor",a),R(n,t),b(n,r.expect(D.TAG_END)),n.trimRightFor=ue(s),n.trimLeftElse=!!(l&&se(l)),n.trimRightElse=!!(p&&ue(p)),n.trimLeftEndfor=se(f),n}},Jo=H(re()),O1={name:"from",parse(e,t){let r=e.tokens,n=e.matchExpression(),a=[];r.expect(D.SYMBOL,"import");do{let s=r.expect(D.SYMBOL),l=s;r.nextIf(D.SYMBOL,"as")&&(l=r.expect(D.SYMBOL));let p=new lt(I(Jo.Identifier,s,s.text),I(Jo.Identifier,l,l.text));if(R(p,s),b(p,l),a.push(p),!r.nextIf(D.COMMA))break}while(!r.test(D.EOF));let u=new Kt(n,a);return R(u,t),b(u,r.expect(D.TAG_END)),u}},N1={name:"if",parse(e,t){let r=e.tokens,n=r.la(-2),a=e.matchExpression(),u=null;r.expect(D.TAG_END);let s=r.la(-1),l=new Ft(a,e.parse(b1).expressions),p,f,m,h;do{if(r.nextIf(D.SYMBOL,"else"))p=r.la(-2),r.expect(D.TAG_END),f=r.la(-1),(u||l).alternate=e.parse(x6).expressions;else if(r.nextIf(D.SYMBOL,"elseif")){m=r.la(-2),a=e.matchExpression(),r.expect(D.TAG_END),h=r.la(-1);let g=e.parse(b1).expressions;u=(u||l).alternate=new Ft(a,g),u.trimLeft=se(m),u.trimRightIf=ue(h)}if(r.nextIf(D.SYMBOL,"endif"))break}while(!r.test(D.EOF));let A=r.la(-2);return R(l,t),b(l,r.expect(D.TAG_END,"",n)),l.trimRightIf=ue(s),l.trimLeftElse=!!(p&&se(p)),l.trimRightElse=!!(f&&ue(f)),l.trimLeftEndif=se(A),l}};function b1(e,t,r){if(t.type===D.TAG_START){let n=r.la(0).text;return n==="else"||n==="endif"||n==="elseif"}return!1}i(b1,"matchConsequent");function x6(e,t,r){return t.type===D.TAG_START&&r.test(D.SYMBOL,"endif")}i(x6,"matchAlternate");var I1=H(re()),_1={name:"import",parse(e,t){let r=e.tokens,n=e.matchExpression();r.expect(D.SYMBOL,"as");let a=r.expect(D.SYMBOL),u=new lt(n,I(I1.Identifier,a,a.text));return R(u,t),b(u,r.expect(D.TAG_END)),u}},R1={name:"include",parse(e,t){let r=e.tokens,n=new Wt(e.matchExpression());return r.nextIf(D.SYMBOL,"ignore")&&(r.expect(D.SYMBOL,"missing"),n.ignoreMissing=!0),r.nextIf(D.SYMBOL,"with")&&(n.argument=e.matchExpression()),r.nextIf(D.SYMBOL,"only")&&(n.contextFree=!0),R(n,t),b(n,r.expect(D.TAG_END)),n}},Qo=H(re()),P1={name:"macro",parse(e,t){let r=e.tokens,n=r.la(-2),a=r.expect(D.SYMBOL),u=[];for(r.expect(D.LPAREN);!r.test(D.RPAREN)&&!r.test(D.EOF);){let h=r.expect(D.SYMBOL);u.push(I(Qo.Identifier,h,h.text)),!r.nextIf(D.COMMA)&&!r.test(D.RPAREN)&&e.error({title:'Expected comma or ")"',pos:r.la(0).pos,advice:"The argument list of a macro can only consist of parameter names separated by commas."})}r.expect(D.RPAREN);let s=r.la(0),l,p=e.parse((h,A,g)=>{let y=!!(A.type===D.TAG_START&&g.nextIf(D.SYMBOL,"endmacro"));return y&&(l=A),y});if(r.test(D.SYMBOL)){var f=r.next();a.text!==f.text&&e.error({title:`Macro name mismatch, expected "${a.text}" but found "${f.text}"`,pos:f.pos})}let m=new Ht(I(Qo.Identifier,a,a.text),u,p);return R(m,t),b(m,r.expect(D.TAG_END,"",n)),m.trimRightMacro=ue(s),m.trimLeftEndmacro=se(l),m}},L1=H(re()),w1={name:"set",parse(e,t){let r=e.tokens,n=[],a=[],u,s;do{let f=r.expect(D.SYMBOL);n.push(I(L1.Identifier,f,f.text))}while(r.nextIf(D.COMMA));if(r.nextIf(D.ASSIGNMENT))do a.push(e.matchExpression());while(r.nextIf(D.COMMA));else n.length!==1&&e.error({title:"Illegal multi-set",pos:r.la(0).pos,advice:"When using set with a block, you cannot have multiple targets."}),r.expect(D.TAG_END),u=r.la(-1),a[0]=e.parse((f,m,h)=>{let A=!!(m.type===D.TAG_START&&h.nextIf(D.SYMBOL,"endset"));return A&&(s=m),A}).expressions;n.length!==a.length&&e.error({title:"Mismatch of set names and values",pos:t.pos,advice:`When using set, you must ensure that the number of
+- `)}`, n.length));
+        let a = s.parse(this, n), l = t.la(-1);
+        return u || (a.trimLeft = r.text.endsWith("-"), a.trimRight = l.text.startsWith("-")), R(a, r), b(a, l), Co(a, "tagNameLoc", n), a;
+      }
+      matchExpression(t = 0) {
+        let r = this.tokens, n = r.la(0), s, u, a = false;
+        r.la(-1).type === ze && r.la(-1).text.endsWith("-") && (a = true);
+        let l = this.getPrimary();
+        for (; (s = r.la(0)) && s.type !== We && (u = this.getBinaryOperator(s)) && u.precedence >= t; ) {
+          let m = r.next();
+          if (u.parse)
+            l = u.parse(this, m, l);
+          else {
+            let A = this.matchExpression(u.associativity === $ ? u.precedence + 1 : u.precedence);
+            l = u.createNode(s, l, A);
+          }
+          s = r.la(0);
+        }
+        var p = l;
+        t === 0 && (b(l, r.la(-1)), p = this.matchConditionalExpression(l), s = r.la(0)), s.type === Ye && s.text.startsWith("-") && (p.trimRight = true), a && (p.trimLeft = a);
+        let f = r.la(-1);
+        return R(p, n), b(p, f), p;
+      }
+      getPrimary() {
+        let t = this.tokens, r = t.la(0);
+        if (this.isUnary(r)) {
+          let n = this[Du][r.text];
+          t.next();
+          let s = this.matchExpression(n.precedence);
+          return this.matchPostfixExpression(n.createNode(r, s));
+        } else if (t.test(xt)) {
+          t.next();
+          let n = this.matchExpression();
+          return t.expect(ar), this.matchPostfixExpression(n);
+        }
+        return this.matchPrimaryExpression();
+      }
+      matchPrimaryExpression() {
+        let t = this.tokens, r = t.la(0), n;
+        switch (r.type) {
+          case vi:
+            n = I(S.NullLiteral, t.next());
+            break;
+          case gi:
+            n = I(S.BooleanLiteral, t.next(), false);
+            break;
+          case xi:
+            n = I(S.BooleanLiteral, t.next(), true);
+            break;
+          case Oe:
+            t.next(), t.test(xt) ? (n = new S.CallExpression(I(S.Identifier, r, r.text), this.matchArguments()), je(n, n.callee), b(n, t.la(-1))) : n = I(S.Identifier, r, r.text);
+            break;
+          case kr:
+            n = I(S.NumericLiteral, r, Number(t.next()));
+            break;
+          case et:
+            n = this.matchStringExpression();
+            break;
+          default:
+            r.type === Lr ? n = this.matchArray() : r.type === xn ? n = this.matchMap() : this.error({ title: 'Unexpected token "' + r.type + '" of value "' + r.text + '"', pos: r.pos }, { errorType: "UNEXPECTED_TOKEN", tokenText: r.text, tokenType: r.type });
+            break;
+        }
+        return this.matchPostfixExpression(n);
+      }
+      matchStringExpression() {
+        let t = true, r, n = this.tokens, s = [], u = n.expect(et);
+        for (; !n.test(yt); )
+          if (t && (r = n.nextIf(Tt)))
+            s[s.length] = I(S.StringLiteral, r, r.text), t = false;
+          else if (r = n.nextIf(yn))
+            s[s.length] = this.matchExpression(), n.expect(Tn), t = true;
+          else
+            break;
+        let a = n.expect(yt);
+        if (!s.length)
+          return b(I(S.StringLiteral, u, ""), a);
+        let l = s[0];
+        for (let p = 1, f = s.length; p < f; p++) {
+          let { line: m, column: A } = l.loc.start;
+          l = new S.BinaryConcatExpression(l, s[p]), l.loc.start.line = m, l.loc.start.column = A, Pe(l, l.right);
+        }
+        return s.length > 1 && (l.wasImplicitConcatenation = true), R(l, u), b(l, a), l;
+      }
+      matchConditionalExpression(t) {
+        let r = this.tokens, n = t, s, u;
+        for (; r.nextIf(Si); ) {
+          r.nextIf(at) ? (s = null, u = this.matchExpression()) : (s = this.matchExpression(), r.nextIf(at) ? u = this.matchExpression() : u = null);
+          let { line: a, column: l } = n.loc.start;
+          n = new S.ConditionalExpression(n, s, u), n.loc.start = { line: a, column: l }, Pe(n, u || s);
+        }
+        return n;
+      }
+      matchArray() {
+        let t = this.tokens, r = new S.ArrayExpression(), n = t.expect(Lr);
+        for (R(r, n); !t.test(ut) && !t.test(We) && (r.elements.push(this.matchExpression()), !(!t.test(ut) && (t.expect(lr), t.test(ut)))); )
+          ;
+        return b(r, t.expect(ut)), r;
+      }
+      matchMap() {
+        let t = this.tokens, r, n = new S.ObjectExpression(), s = t.expect(xn);
+        for (R(n, s); !t.test(or) && !t.test(We); ) {
+          let u = false, a, l;
+          t.test(et) ? (a = this.matchStringExpression(), S.is(a, "StringLiteral") || (u = true)) : (r = t.nextIf(Oe)) ? a = I(S.Identifier, r, r.text) : (r = t.nextIf(kr)) ? a = I(S.NumericLiteral, r, Number(r.text)) : t.test(xt) ? (a = this.matchExpression(), u = true) : this.error({ title: "Invalid map key", pos: t.la(0).pos, advice: "Key must be a string, symbol or a number but was " + t.next() }), t.expect(at), l = this.matchExpression();
+          let p = new S.ObjectProperty(a, l, u);
+          if (je(p, a), Pe(p, l), n.properties.push(p), !t.test(or) && (t.expect(lr), t.test(or)))
+            break;
+        }
+        return b(n, t.expect(or)), n;
+      }
+      matchPostfixExpression(t) {
+        let r = this.tokens, n = t;
+        for (; !r.test(We); )
+          if (r.test(gn) || r.test(Lr))
+            n = this.matchSubscriptExpression(n);
+          else if (r.test(cr))
+            r.next(), n = this.matchFilterExpression(n);
+          else
+            break;
+        return n;
+      }
+      matchSubscriptExpression(t) {
+        let r = this.tokens;
+        if (r.next().type === gn) {
+          let s = r.next(), u = false, a;
+          s.type === Oe ? a = I(S.Identifier, s, s.text) : s.type === kr ? (a = I(S.NumericLiteral, s, Number(s.text)), u = true) : this.error({ title: "Invalid token", pos: s.pos, advice: "Expected number or symbol, found " + s + " instead" });
+          let l = new S.MemberExpression(t, a, u);
+          if (je(l, t), Pe(l, a), r.test(xt)) {
+            let p = new S.CallExpression(l, this.matchArguments());
+            return je(p, l), b(p, r.la(-1)), p;
+          }
+          return l;
+        } else {
+          let s, u;
+          if (r.test(at) ? (r.next(), u = null) : (s = this.matchExpression(), r.test(at) && (u = s, s = null, r.next())), s)
+            return b(je(new S.MemberExpression(t, s, true), t), r.expect(ut));
+          {
+            let a = new S.SliceExpression(t, u, r.test(ut) ? null : this.matchExpression());
+            return je(a, t), b(a, r.expect(ut)), a;
+          }
+        }
+      }
+      matchFilterExpression(t) {
+        let r = this.tokens, n = t;
+        for (; !r.test(We); ) {
+          let u = r.expect(Oe), a = I(S.Identifier, u, u.text), l;
+          var s = false;
+          r.test(xt) ? l = this.matchArguments() : r.test(at) ? (l = this.matchDjangoFilterArguments(), s = true) : l = [];
+          let p = new S.FilterExpression(n, a, l);
+          if (je(p, n), p.arguments.length ? Pe(p, p.arguments[p.arguments.length - 1]) : Pe(p, n), n = p, n.isDjango = s, !r.test(cr) || r.test(We))
+            break;
+          r.next();
+        }
+        return n;
+      }
+      matchArguments() {
+        let t = this.tokens, r = [];
+        for (t.expect(xt); !t.test(ar) && !t.test(We); ) {
+          if (t.test(Oe) && t.lat(1) === wr) {
+            let n = t.next();
+            t.next();
+            let s = this.matchExpression(), u = new S.NamedArgumentExpression(I(S.Identifier, n, n.text), s);
+            Pe(u, s), r.push(u);
+          } else
+            r.push(this.matchExpression());
+          if (!t.test(lr))
+            return t.expect(ar), r;
+          t.expect(lr);
+        }
+        return t.expect(ar), r;
+      }
+      matchDjangoFilterArguments() {
+        let t = this.tokens, r = [];
+        for (t.expect(at); !t.test(cr) && !t.test(Ye) && !t.test(Ze); )
+          r.push(this.matchExpression());
+        return t.expect([cr, Ye, Ze]), t.index--, r;
+      }
+    };
+    i(Gr, "Parser");
+    var Ro = H(oh());
+    var dh = H(Eh());
+    var wt = Symbol();
+    var _o = Symbol();
+    var Ur = class {
+      constructor(t, r) {
+        this.input = t, this.index = 0;
+        let n = Object.assign({}, { ignoreComments: true, ignoreHtmlComments: true, ignoreWhitespace: true, applyWhitespaceTrimming: true }, r);
+        if (this[wt] = H8(t, n), this[_o] = this[wt].length, this[wt].length && this[wt][this[wt].length - 1].type === vn) {
+          let s = this[wt][this[wt].length - 1];
+          this.error(s.message, s.pos, s.advice, s.endPos.index - s.pos.index || 1);
+        }
+      }
+      la(t) {
+        var r = this.index + t;
+        return r < this[_o] ? this[wt][r] : Mr;
+      }
+      lat(t) {
+        return this.la(t).type;
+      }
+      test(t, r) {
+        let n = this.la(0);
+        return n.type === t && (!r || n.text === r);
+      }
+      next() {
+        if (this.index === this[_o])
+          return Mr;
+        let t = this[wt][this.index];
+        return this.index++, t;
+      }
+      nextIf(t, r) {
+        return this.test(t, r) ? this.next() : false;
+      }
+      expect(t, r = null, n = null) {
+        let s = this.la(0);
+        if (Array.isArray(t) || (t = [t]), t.includes(s.type) && (!r || s.text === r))
+          return this.next();
+        var u = t[0], a = du[u] || u || r;
+        a != r && a + "" + r;
+        var l = s.pos;
+        l.line == -1 && n && (l = n.pos), this.error("Invalid Token", l, `Expected ${a} but found ${du[s.type] || s.type || s.text} instead.`, s.length);
+      }
+      error(t, r, n, s = 1, u = {}) {
+        let a = `ERROR: ${t}. `;
+        n && (a += n);
+        let l = new Error(a + " 	 ");
+        throw Object.assign(l, u), l.loc = { start: { line: Math.max(1, r.line || 0), column: Math.max(0, r.column || 0) + 1 }, end: { line: Math.max(1, r.line || 0) + 1, column: 1 } }, l;
+      }
+    };
+    i(Ur, "TokenStream");
+    function H8(e, t) {
+      let r, n = [], s = false, u = false;
+      for (; (r = e.next()) !== Mr; ) {
+        let a = u;
+        if (u = false, s)
+          switch (r.type) {
+            case ze:
+            case ht:
+              r.text[r.text.length - 1] === "-" && (n[n.length - 1].text = (0, Ro.default)(n[n.length - 1].text));
+              break;
+            case Ye:
+            case Ze:
+              r.text[0] === "-" && (u = true);
+              break;
+            case Lt:
+              n[n.length - 1].type === ur && (n[n.length - 1].text = (0, Ro.default)(n.text)), u = true;
+              break;
+          }
+        if (a && (r.type === ur || r.type === Tt) && (r.text = (0, dh.default)(r.text)), (r.type !== Lt || !t.ignoreComments) && (r.type !== yi || !t.ignoreWhitespace) && (r.type !== Rr || !t.ignoreHtmlComments) && (n[n.length] = r), s = t.applyWhitespaceTrimming, r.type === vn)
+          return n;
+      }
+      return n;
+    }
+    i(H8, "getAllTokens");
+    var Le = Symbol();
+    var Fn = class {
+      constructor(t) {
+        this.input = String(t), this.length = this.input.length, this.index = 0, this.position = { line: 1, column: 0 };
+      }
+      get source() {
+        return this.input;
+      }
+      reset() {
+        this.rewind({ line: 1, column: 0, index: 0 });
+      }
+      mark() {
+        let { line: t, column: r } = this.position, n = this.index;
+        return { line: t, column: r, index: n };
+      }
+      rewind(t) {
+        this.position.line = t.line, this.position.column = t.column, this.index = t.index;
+      }
+      la(t) {
+        var r = this.index + t;
+        return r < this.length ? this.input.charAt(r) : Le;
+      }
+      lac(t) {
+        var r = this.index + t;
+        return r < this.length ? this.input.charCodeAt(r) : Le;
+      }
+      next() {
+        if (this.index === this.length)
+          return Le;
+        var t = this.input.charAt(this.index);
+        return this.index++, this.position.column++, t === `
+` && (this.position.line += 1, this.position.column = 0), t;
+      }
+      match(t) {
+        let r = this.mark();
+        for (let n = 0, s = t.length; n < s; n++) {
+          let u = this.next();
+          if (u !== t.charAt(n) || u === Le)
+            return this.rewind(r), false;
+        }
+        return true;
+      }
+    };
+    i(Fn, "CharStream");
+    var ae = { TEXT: "TEXT", EXPRESSION: "EXPRESSION", TAG: "TAG", INTERPOLATION: "INTERPOLATION", STRING_SINGLE: "STRING_SINGLE", STRING_DOUBLE: "STRING_DOUBLE", ELEMENT: "ELEMENT", ATTRIBUTE_VALUE: "ATTRIBUTE_VALUE", DECLARATION: "DECLARATION" };
+    var Cn = Symbol();
+    var gu = Symbol();
+    var X8 = Symbol();
+    var mh = { "[": Lr, "]": ut, "(": xt, ")": ar, "{": xn, "}": or, ":": at, ".": gn, "|": cr, ",": lr, "?": Si, "=": wr, "/": gt };
+    var jr = class {
+      constructor(t, { preserveSourceLiterally: r = false } = {}) {
+        this.input = t, this[Cn] = [ae.TEXT], this[gu] = [], this[X8] = null, this.options = { preserveSourceLiterally: r === true };
+      }
+      applyExtension(t) {
+        t.unaryOperators && this.addOperators(...t.unaryOperators.map((r) => r.text)), t.binaryOperators && this.addOperators(...t.binaryOperators.map((r) => r.text));
+      }
+      reset() {
+        this.input.reset(), this[Cn] = [ae.TEXT];
+      }
+      get source() {
+        return this.input.source;
+      }
+      addOperators(...t) {
+        this[gu].push(...t), this[gu].sort((r, n) => r.length > n.length ? -1 : 1);
+      }
+      get state() {
+        return this[Cn][this[Cn].length - 1];
+      }
+      pushState(t) {
+        this[Cn].push(t);
+      }
+      popState() {
+        this[Cn].length--;
+      }
+      createToken(t, r) {
+        let n = this.input, s = n.mark(), u = s.index;
+        return { type: t, pos: r, endPos: s, end: u, length: u - r.index, source: n.input, text: n.input.substr(r.index, u - r.index), toString: function() {
+          return this.text;
+        } };
+      }
+      next() {
+        let t = this.input, r, n;
+        for (; (n = t.la(0)) !== Le; ) {
+          if (r = t.mark(), this.state !== ae.TEXT && this.state !== ae.STRING_DOUBLE && this.state !== ae.STRING_SINGLE && this.state !== ae.ATTRIBUTE_VALUE && Po(n)) {
+            for (t.next(); (n = t.la(0)) !== Le && Po(n); )
+              t.next();
+            return this.createToken(yi, r);
+          }
+          if (n === "{" && t.la(1) === "#")
+            for (t.next(), t.next(), t.la(0) === "-" && t.next(); (n = t.la(0)) !== Le; ) {
+              if (n === "#" && t.la(1) === "}" || n === "-" && t.la(1) === "#" && t.la(2) === "}")
+                return n === "-" && t.next(), t.next(), t.next(), this.createToken(Lt, r);
+              t.next();
+            }
+          if (this.state === ae.TEXT) {
+            let s;
+            if (n === "<") {
+              if (t.la(1) === "{" || Yr(t.lac(1)) || t.la(1) === "/")
+                return t.next(), this.pushState(ae.ELEMENT), this.createToken(qr, r);
+              if (t.la(1) === "!" && t.la(2) === "-" && t.la(3) === "-") {
+                for (t.next(), t.next(), t.next(), t.next(); (n = t.la(0)) !== Le; ) {
+                  if (n === "-" && t.la(1) === "-") {
+                    t.next(), t.next(), !(n = t.next()) === ">" && this.error("Unexpected end for HTML comment", t.mark(), `Expected comment to end with '>' but found '${n}' instead.`);
+                    break;
+                  }
+                  t.next();
+                }
+                return this.createToken(Rr, r);
+              } else
+                return t.la(1) === "!" && (Yr(t.lac(2)) || Po(t.la(2))) ? (t.next(), t.next(), this.pushState(ae.DECLARATION), this.createToken(hi, r)) : this.matchText(r);
+            } else
+              return n === "{" ? this.matchExpressionToken(r) : n === "&" && (s = this.matchEntity(r)) ? s : this.matchText(r);
+          } else {
+            if (this.state === ae.EXPRESSION)
+              return n === "}" && t.la(1) === "}" || n === "-" && t.la(1) === "}" && t.la(2) === "}" ? (n === "-" && t.next(), t.next(), t.next(), this.popState(), this.createToken(Ye, r)) : this.matchExpression(r);
+            if (this.state === ae.TAG)
+              return n === "%" && t.la(1) === "}" || n === "-" && t.la(1) === "%" && t.la(2) === "}" ? (n === "-" && t.next(), t.next(), t.next(), this.popState(), this.createToken(Ze, r)) : this.matchExpression(r);
+            if (this.state === ae.STRING_SINGLE || this.state === ae.STRING_DOUBLE)
+              return this.matchString(r, true);
+            if (this.state === ae.INTERPOLATION)
+              return n === "}" ? (t.next(), this.popState(), this.createToken(Tn, r)) : this.matchExpression(r);
+            if (this.state === ae.ELEMENT)
+              switch (n) {
+                case "/":
+                  return t.next(), this.createToken(gt, r);
+                case "{":
+                  return this.matchExpressionToken(r);
+                case ">":
+                  return t.next(), this.popState(), this.createToken(ot, r);
+                case '"':
+                  return t.next(), this.pushState(ae.ATTRIBUTE_VALUE), this.createToken(et, r);
+                case "=":
+                  return t.next(), this.createToken(wr, r);
+                default:
+                  return this.matchSymbol(r);
+              }
+            else {
+              if (this.state === ae.ATTRIBUTE_VALUE)
+                return n === '"' ? (t.next(), this.popState(), this.createToken(yt, r)) : this.matchAttributeValue(r);
+              if (this.state === ae.DECLARATION)
+                switch (n) {
+                  case ">":
+                    return t.next(), this.popState(), this.createToken(ot, r);
+                  case '"':
+                    return t.next(), this.pushState(ae.STRING_DOUBLE), this.createToken(et, r);
+                  case "{":
+                    return this.matchExpressionToken(r);
+                  default:
+                    return this.matchSymbol(r);
+                }
+              else
+                return this.error(`Invalid state ${this.state}`, r);
+            }
+          }
+        }
+        return Mr;
+      }
+      matchExpressionToken(t) {
+        let r = this.input;
+        switch (r.la(1)) {
+          case "{":
+            return r.next(), r.next(), this.pushState(ae.EXPRESSION), r.la(0) === "-" && r.next(), this.createToken(ze, t);
+          case "%":
+            return r.next(), r.next(), this.pushState(ae.TAG), r.la(0) === "-" && r.next(), this.createToken(ht, t);
+          case "#":
+            return r.next(), r.next(), r.la(0) === "-" && r.next(), this.matchComment(t);
+          default:
+            return this.matchText(t);
+        }
+      }
+      matchExpression(t) {
+        let r = this.input, n = r.la(0);
+        switch (n) {
+          case "'":
+            return this.pushState(ae.STRING_SINGLE), r.next(), this.createToken(et, t);
+          case '"':
+            return this.pushState(ae.STRING_DOUBLE), r.next(), this.createToken(et, t);
+          default: {
+            if (vt(r.lac(0)))
+              return r.next(), this.matchNumber(t);
+            if (n === "t" && r.match("true") || n === "T" && r.match("TRUE"))
+              return this.createToken(xi, t);
+            if (n === "f" && r.match("false") || n === "F" && r.match("FALSE"))
+              return this.createToken(gi, t);
+            if (n === "n" && (r.match("null") || r.match("none")) || n === "N" && (r.match("NULL") || r.match("NONE")))
+              return this.createToken(vi, t);
+            let { longestMatchingOperator: s, longestMatchEndPos: u } = this.findLongestMatchingOperator(), a = r.lac(0);
+            if (a === 95 || Yr(a) || vt(a)) {
+              r.next();
+              let l = this.matchSymbol(t);
+              return l.text.length <= s.length ? (r.rewind(u), this.createToken(Pr, t)) : l;
+            } else
+              return s ? (r.rewind(u), this.createToken(Pr, t)) : mh.hasOwnProperty(n) ? (r.next(), this.createToken(mh[n], t)) : n === "\xA0" ? this.error("Unsupported token: Non-breaking space", t) : this.error(`Unknown token ${n}`, t);
+          }
+        }
+      }
+      findLongestMatchingOperator() {
+        let t = this.input, r = t.mark(), n = "", s = null;
+        for (let u = 0, a = this[gu], l = a.length; u < l; u++) {
+          let p = a[u];
+          if (p.length > n.length && t.match(p)) {
+            let f = t.lac(0);
+            (p.indexOf(" ") === -1 || !(Yr(f) || vt(f))) && (n = p, s = t.mark()), t.rewind(r);
+          }
+        }
+        return t.rewind(r), { longestMatchingOperator: n, longestMatchEndPos: s };
+      }
+      error(t, r, n = "") {
+        let s = this.createToken(vn, r);
+        return s.message = t, s.advice = n, s;
+      }
+      matchEntity(t) {
+        let r = this.input;
+        if (r.next(), r.la(0) === "#")
+          if (r.next(), r.la(0) === "x") {
+            r.next();
+            let n = r.la(0);
+            for (; "a" <= n && n <= "f" || "A" <= n && n <= "F" || vt(r.lac(0)); )
+              r.next(), n = r.la(0);
+            if (r.la(0) === ";")
+              r.next();
+            else
+              return r.rewind(t), null;
+          } else if (vt(r.lac(0))) {
+            do
+              r.next();
+            while (vt(r.lac(0)));
+            if (r.la(0) === ";")
+              r.next();
+            else
+              return r.rewind(t), null;
+          } else
+            return r.rewind(t), null;
+        else {
+          for (; Yr(r.lac(0)); )
+            r.next();
+          if (r.la(0) === ";")
+            r.next();
+          else
+            return r.rewind(t), null;
+        }
+        return this.createToken(Ti, t);
+      }
+      matchSymbol(t) {
+        let r = this.input, n = this.state === ae.ELEMENT, s;
+        for (; (s = r.lac(0)) && (s === 95 || Yr(s) || vt(s) || n && (s === 45 || s === 58)); )
+          r.next();
+        var u = r.mark();
+        return t.index === u.index ? this.error("Expected an Identifier", t, n ? `Expected a valid attribute name, but instead found "${r.la(0)}", which is not part of a valid attribute name.` : `Expected letter, digit or underscore but found ${r.la(0)} instead.`) : this.createToken(Oe, t);
+      }
+      matchString(t, r = true) {
+        let n = this.input, s = this.state === ae.STRING_SINGLE ? "'" : '"', u;
+        if (r && n.la(0) === "#" && n.la(1) === "{")
+          return this.pushState(ae.INTERPOLATION), n.next(), n.next(), this.createToken(yn, t);
+        if (n.la(0) === s)
+          return n.next(), this.popState(), this.createToken(yt, t);
+        for (; (u = n.la(0)) !== s && u !== Le; )
+          if (u === "\\" && n.la(1) === s)
+            n.next(), n.next();
+          else {
+            if (r && u === "#" && n.la(1) === "{")
+              break;
+            n.next();
+          }
+        var a = this.createToken(Tt, t);
+        return this.options.preserveSourceLiterally || (a.text = a.text.replace(new RegExp("(?:\\\\)(" + s + ")", "g"), "$1")), a;
+      }
+      matchAttributeValue(t) {
+        let r = this.input, n = this.state === ae.STRING_SINGLE ? "'" : '"', s;
+        if (r.la(0) === "{")
+          return this.matchExpressionToken(t);
+        for (; (s = r.la(0)) !== n && s !== Le; )
+          if (s === "\\" && r.la(1) === n)
+            r.next(), r.next();
+          else {
+            if (s === "{")
+              break;
+            if (s === n)
+              break;
+            r.next();
+          }
+        var u = this.createToken(Tt, t);
+        return this.options.preserveSourceLiterally || (u.text = u.text.replace(new RegExp("(?:\\\\)(" + n + ")", "g"), "$1")), u;
+      }
+      matchNumber(t) {
+        let r = this.input, n;
+        for (; (n = r.lac(0)) !== Le && vt(n); )
+          r.next();
+        if (r.la(0) === "." && vt(r.lac(1)))
+          for (r.next(); (n = r.lac(0)) !== Le && vt(n); )
+            r.next();
+        return this.createToken(kr, t);
+      }
+      matchText(t) {
+        let r = this.input, n;
+        for (; (n = r.la(0)) && n !== Le; ) {
+          if (n === "{") {
+            let s = r.la(1);
+            if (s === "{" || s === "#" || s === "%")
+              break;
+          } else if (n === "<") {
+            let s = r.la(1);
+            if (s === "/" || s === "!" || Yr(r.lac(1)))
+              break;
+            if (r.la(1) === "{") {
+              let u = r.la(1);
+              if (u === "{" || u === "#" || u === "%")
+                break;
+            }
+          }
+          r.next();
+        }
+        return this.createToken(ur, t);
+      }
+      matchComment(t) {
+        let r = this.input, n;
+        for (; (n = r.next()) !== Le; )
+          if (n === "#" && r.la(0) === "}") {
+            r.next();
+            break;
+          }
+        return this.createToken(Lt, t);
+      }
+    };
+    i(jr, "Lexer");
+    function Po(e) {
+      return e === `
+` || e === " " || e === "	";
+    }
+    i(Po, "isWhitespace");
+    function Yr(e) {
+      return 65 <= e && e <= 90 || 97 <= e && e <= 122;
+    }
+    i(Yr, "isAlpha");
+    function vt(e) {
+      return 48 <= e && e <= 57;
+    }
+    i(vt, "isDigit");
+    var Lo = [];
+    var Ci = [];
+    var Bn = [];
+    var wo = Go("not", "UnaryNotExpression", 50);
+    var Dh = Go("-", "UnaryNeqExpression", 500);
+    var Ah = Go("+", "UnaryPosExpression", 500);
+    var hh = fe({ text: "or", type: "BinaryOrExpression", precedence: 10, associativity: $ });
+    var yh = fe({ text: "and", type: "BinaryAndExpression", precedence: 15, associativity: $ });
+    var Th = fe({ text: "b-or", type: "BitwiseOrExpression", precedence: 16, associativity: $ });
+    var xh = fe({ text: "b-xor", type: "BitwiseXOrExpression", precedence: 17, associativity: $ });
+    var gh = fe({ text: "b-and", type: "BitwiseAndExpression", precedence: 18, associativity: $ });
+    var vh = fe({ text: "==", type: "BinaryEqualsExpression", precedence: 20, associativity: $ });
+    var Sh = fe({ text: "!=", type: "BinaryNotEqualsExpression", precedence: 20, associativity: $ });
+    var Fh = fe({ text: "<", type: "BinaryLessThanExpression", precedence: 20, associativity: $ });
+    var Ch = fe({ text: ">", type: "BinaryGreaterThanExpression", precedence: 20, associativity: $ });
+    var Bh = fe({ text: "<=", type: "BinaryLessThanOrEqualExpression", precedence: 20, associativity: $ });
+    var Oh = fe({ text: ">=", type: "BinaryGreaterThanOrEqualExpression", precedence: 20, associativity: $ });
+    var bh = fe({ text: "not in", type: "BinaryNotInExpression", precedence: 20, associativity: $ });
+    var Nh = fe({ text: "in", type: "BinaryInExpression", precedence: 20, associativity: $ });
+    var Ih = fe({ text: "matches", type: "BinaryMatchesExpression", precedence: 20, associativity: $ });
+    var _h = fe({ text: "starts with", type: "BinaryStartsWithExpression", precedence: 20, associativity: $ });
+    var Rh = fe({ text: "ends with", type: "BinaryEndsWithExpression", precedence: 20, associativity: $ });
+    var Ph = fe({ text: "..", type: "BinaryRangeExpression", precedence: 25, associativity: $ });
+    var Lh = fe({ text: "+", type: "BinaryAddExpression", precedence: 30, associativity: $ });
+    var Q9 = fe({ text: "-", type: "BinarySubExpression", precedence: 30, associativity: $ });
+    Ci.push({ text: "~", precedence: 40, associativity: $, createNode(e, t, r) {
+      let n = new ve.BinaryConcatExpression(t, r);
+      return je(n, t), Pe(n, r), n;
+    } });
+    var wh = fe({ text: "*", type: "BinaryMulExpression", precedence: 60, associativity: $ });
+    var qh = fe({ text: "/", type: "BinaryDivExpression", precedence: 60, associativity: $ });
+    var kh = fe({ text: "//", type: "BinaryFloorDivExpression", precedence: 60, associativity: $ });
+    var Mh = fe({ text: "%", type: "BinaryModExpression", precedence: 60, associativity: $ });
+    Ci.push({ text: "is", precedence: 100, associativity: $, parse(e, t, r) {
+      let n = e.tokens, s = false;
+      n.nextIf(D.OPERATOR, "not") && (s = true);
+      let u = $8(e), a = null;
+      n.test(D.LPAREN) && (a = e.matchArguments());
+      let l = u.createNode(r, a);
+      return R(l, t), b(l, n.la(-1)), s ? Sn(new wo(l), l) : l;
+    } });
+    function $8(e) {
+      let t = e.tokens, r = t.la(0);
+      r.type !== D.NULL ? t.expect(D.SYMBOL) : t.next();
+      let n = r.text;
+      if (!e.hasTest(n)) {
+        let s = t.expect(D.SYMBOL);
+        n += " " + s.text, e.hasTest(n) || e.error({ title: `Unknown test "${n}"`, pos: r.pos });
+      }
+      return e.getTest(n);
+    }
+    i($8, "getTest");
+    var Gh = fe({ text: "**", type: "BinaryPowerExpression", precedence: 200, associativity: $ });
+    var Uh = fe({ text: "??", type: "BinaryNullCoalesceExpression", precedence: 300, associativity: $ });
+    var Yh = qt("even", "TestEvenExpression");
+    var jh = qt("odd", "TestOddExpression");
+    var Vh = qt("defined", "TestDefinedExpression");
+    var qo = qt("same as", "TestSameAsExpression");
+    Bn.push({ text: "sameas", createNode(e, t) {
+      return new qo(e, t);
+    } });
+    var ko = qt("null", "TestNullExpression");
+    Bn.push({ text: "none", createNode(e, t) {
+      return new ko(e, t);
+    } });
+    var Mo = qt("divisible by", "TestDivisibleByExpression");
+    Bn.push({ text: "divisibleby", createNode(e, t) {
+      return new Mo(e, t);
+    } });
+    var Kh = qt("constant", "TestConstantExpression");
+    var Wh = qt("empty", "TestEmptyExpression");
+    var Hh = qt("iterable", "TestIterableExpression");
+    function qt(e, t) {
+      let r = i(class extends ve.Node {
+        constructor(n, s) {
+          super(), this.expression = n, this.arguments = s;
+        }
+      }, "TestExpression");
+      return (0, ve.type)(r, t), (0, ve.alias)(r, "Expression", "TestExpression"), (0, ve.visitor)(r, "expression", "arguments"), Bn.push({ text: e, createNode(n, s) {
+        return new r(n, s);
+      } }), r;
+    }
+    i(qt, "createTest");
+    function fe(e) {
+      let { text: t, precedence: r, associativity: n } = e, s = i(class extends ve.BinaryExpression {
+        constructor(a, l) {
+          super(t, a, l);
+        }
+      }, "BinarySubclass");
+      (0, ve.type)(s, e.type), (0, ve.alias)(s, "BinaryExpression", "Binary", "Expression"), (0, ve.visitor)(s, "left", "right");
+      let u = { text: t, precedence: r, associativity: n };
+      return e.parse ? u.parse = e.parse : e.createNode ? u.createNode = e.createNode : u.createNode = (a, l, p) => new s(l, p), Ci.push(u), s;
+    }
+    i(fe, "createBinaryOperatorNode");
+    function Go(e, t, r) {
+      let n = i(class extends ve.UnaryExpression {
+        constructor(s) {
+          super(e, s);
+        }
+      }, "UnarySubclass");
+      return (0, ve.type)(n, t), (0, ve.alias)(n, "Expression", "UnaryLike"), (0, ve.visitor)(n, "argument"), Lo.push({ text: e, precedence: r, createNode(s, u) {
+        let a = new n(u);
+        return R(a, s), Pe(a, u), a;
+      } }), n;
+    }
+    i(Go, "createUnaryOperator");
+    var v = H(re());
+    var kt = class extends v.Node {
+      constructor(t, r) {
+        super(), this.escapeType = t, this.expressions = r;
+      }
+    };
+    i(kt, "AutoescapeBlock");
+    (0, v.type)(kt, "AutoescapeBlock");
+    (0, v.alias)(kt, "Block", "Escape");
+    (0, v.visitor)(kt, "expressions");
+    var St = class extends v.Node {
+      constructor(t, r) {
+        super(), this.name = t, this.body = r;
+      }
+    };
+    i(St, "BlockStatement");
+    (0, v.type)(St, "BlockStatement");
+    (0, v.alias)(St, "Statement", "Scope", "RootScope");
+    (0, v.visitor)(St, "body");
+    var Vr = class extends v.Node {
+      constructor(t, r = []) {
+        super(), this.callee = t, this.arguments = r;
+      }
+    };
+    i(Vr, "BlockCallExpression");
+    (0, v.type)(Vr, "BlockCallExpression");
+    (0, v.alias)(Vr, "Expression", "FunctionInvocation");
+    (0, v.visitor)(Vr, "arguments");
+    var Mt = class extends v.Node {
+      constructor(t, r, n, s, u, a) {
+        super(), this.name = t, this.source = r, this.key = n, this.argument = s, this.async = u, this.delayBy = a, this.errorVariableName = null, this.body = null, this.otherwise = null;
+      }
+    };
+    i(Mt, "MountStatement");
+    (0, v.type)(Mt, "MountStatement");
+    (0, v.alias)(Mt, "Statement", "Scope");
+    (0, v.visitor)(Mt, "name", "source", "key", "argument", "body", "otherwise");
+    var Gt = class extends v.Node {
+      constructor(t) {
+        super(), this.value = t;
+      }
+    };
+    i(Gt, "DoStatement");
+    (0, v.type)(Gt, "DoStatement");
+    (0, v.alias)(Gt, "Statement");
+    (0, v.visitor)(Gt, "value");
+    var Ut = class extends v.Node {
+      constructor(t) {
+        super(), this.parent = t, this.argument = null, this.contextFree = false, this.ignoreMissing = false, this.blocks = null;
+      }
+    };
+    i(Ut, "EmbedStatement");
+    (0, v.type)(Ut, "EmbedStatement");
+    (0, v.alias)(Ut, "Statement", "Include");
+    (0, v.visitor)(Ut, "argument", "blocks");
+    var Yt = class extends v.Node {
+      constructor(t) {
+        super(), this.parentName = t;
+      }
+    };
+    i(Yt, "ExtendsStatement");
+    (0, v.type)(Yt, "ExtendsStatement");
+    (0, v.alias)(Yt, "Statement", "Include");
+    (0, v.visitor)(Yt, "parentName");
+    var jt = class extends v.Node {
+      constructor(t, r) {
+        super(), this.filterExpression = t, this.body = r;
+      }
+    };
+    i(jt, "FilterBlockStatement");
+    (0, v.type)(jt, "FilterBlockStatement");
+    (0, v.alias)(jt, "Statement", "Block");
+    (0, v.visitor)(jt, "filterExpression", "body");
+    var pr = class extends v.Node {
+      constructor() {
+        super();
+      }
+    };
+    i(pr, "FlushStatement");
+    (0, v.type)(pr, "FlushStatement");
+    (0, v.alias)(pr, "Statement");
+    var Vt = class extends v.Node {
+      constructor(t = null, r = null, n = null, s = null, u = null, a = null) {
+        super(), this.keyTarget = t, this.valueTarget = r, this.sequence = n, this.condition = s, this.body = u, this.otherwise = a;
+      }
+    };
+    i(Vt, "ForStatement");
+    (0, v.type)(Vt, "ForStatement");
+    (0, v.alias)(Vt, "Statement", "Scope", "Loop");
+    (0, v.visitor)(Vt, "keyTarget", "valueTarget", "sequence", "condition", "body", "otherwise");
+    var lt = class extends v.Node {
+      constructor(t, r) {
+        super(), this.key = t, this.alias = r;
+      }
+    };
+    i(lt, "ImportDeclaration");
+    (0, v.type)(lt, "ImportDeclaration");
+    (0, v.alias)(lt, "VariableDeclaration");
+    (0, v.visitor)(lt, "key", "value");
+    var Kt = class extends v.Node {
+      constructor(t, r) {
+        super(), this.source = t, this.imports = r;
+      }
+    };
+    i(Kt, "FromStatement");
+    (0, v.type)(Kt, "FromStatement");
+    (0, v.alias)(Kt, "Statement");
+    (0, v.visitor)(Kt, "source", "imports");
+    var Ft = class extends v.Node {
+      constructor(t, r = null, n = null) {
+        super(), this.test = t, this.consequent = r, this.alternate = n;
+      }
+    };
+    i(Ft, "IfStatement");
+    (0, v.type)(Ft, "IfStatement");
+    (0, v.alias)(Ft, "Statement", "Conditional");
+    (0, v.visitor)(Ft, "test", "consequent", "alternate");
+    var Wt = class extends v.Node {
+      constructor(t) {
+        super(), this.source = t, this.argument = null, this.contextFree = false, this.ignoreMissing = false;
+      }
+    };
+    i(Wt, "IncludeStatement");
+    (0, v.type)(Wt, "IncludeStatement");
+    (0, v.alias)(Wt, "Statement", "Include");
+    (0, v.visitor)(Wt, "source", "argument");
+    var Ht = class extends v.Node {
+      constructor(t, r, n) {
+        super(), this.name = t, this.arguments = r, this.body = n;
+      }
+    };
+    i(Ht, "MacroDeclarationStatement");
+    (0, v.type)(Ht, "MacroDeclarationStatement");
+    (0, v.alias)(Ht, "Statement", "Scope", "RootScope");
+    (0, v.visitor)(Ht, "name", "arguments", "body");
+    var Xt = class extends v.Node {
+      constructor(t, r) {
+        super(), this.name = t, this.value = r;
+      }
+    };
+    i(Xt, "VariableDeclarationStatement");
+    (0, v.type)(Xt, "VariableDeclarationStatement");
+    (0, v.alias)(Xt, "Statement");
+    (0, v.visitor)(Xt, "name", "value");
+    var $t = class extends v.Node {
+      constructor(t) {
+        super(), this.assignments = t;
+      }
+    };
+    i($t, "SetStatement");
+    (0, v.type)($t, "SetStatement");
+    (0, v.alias)($t, "Statement", "ContextMutation");
+    (0, v.visitor)($t, "assignments");
+    var Jt = class extends v.Node {
+      constructor(t = null) {
+        super(), this.body = t;
+      }
+    };
+    i(Jt, "SpacelessBlock");
+    (0, v.type)(Jt, "SpacelessBlock");
+    (0, v.alias)(Jt, "Statement", "Block");
+    (0, v.visitor)(Jt, "body");
+    var Qt = class extends v.Node {
+      constructor(t, r) {
+        super(), this.name = t, this.alias = r;
+      }
+    };
+    i(Qt, "AliasExpression");
+    (0, v.type)(Qt, "AliasExpression");
+    (0, v.alias)(Qt, "Expression");
+    (0, v.visitor)(Qt, "name", "alias");
+    var zt = class extends v.Node {
+      constructor(t, r) {
+        super(), this.source = t, this.aliases = r;
+      }
+    };
+    i(zt, "UseStatement");
+    (0, v.type)(zt, "UseStatement");
+    (0, v.alias)(zt, "Statement", "Include");
+    (0, v.visitor)(zt, "source", "aliases");
+    var Xh = { name: "autoescape", parse(e, t) {
+      let r = e.tokens, n = r.la(-2), s = null, u, a, l;
+      r.nextIf(D.TAG_END) ? (a = r.la(-1), s = null) : (u = r.nextIf(D.STRING_START)) ? (s = r.expect(D.STRING).text, r.nextIf(D.STRING_END) || e.error({ title: "autoescape type declaration must be a simple string", pos: r.la(0).pos, advice: `The type declaration for autoescape must be a simple string such as 'html' or 'js'.
+I expected the current string to end with a ${u.text} but instead found ${D.ERROR_TABLE[r.lat(0)] || r.lat(0)}.` }), a = r.la(0)) : r.nextIf(D.FALSE) ? (s = false, a = r.la(0)) : r.nextIf(D.TRUE) ? (s = true, a = r.la(0)) : e.error({ title: "Invalid autoescape type declaration", pos: r.la(0).pos, advice: `Expected type of autoescape to be a string, boolean or not specified. Found ${r.la(0).type} instead.` });
+      let p = new kt(s);
+      R(p, t);
+      let f;
+      return p.expressions = e.parse((m, A, E) => A.type === D.TAG_START && E.nextIf(D.SYMBOL, "endautoescape") ? (l = A, f = E.expect(D.TAG_END, "", n), true) : false).expressions, b(p, f), p.trimRightAutoescape = ue(a), p.trimLeftEndautoescape = se(l), p;
+    } };
+    var Bi = H(re());
+    var $h = { name: "block", parse(e, t) {
+      let r = e.tokens, n = r.la(-2), s = r.expect(D.SYMBOL), u, a, l;
+      if (a = r.nextIf(D.TAG_END)) {
+        if (u = new St(I(Bi.Identifier, s, s.text), e.parse((p, f, m) => {
+          let A = !!(f.type === D.TAG_START && m.nextIf(D.SYMBOL, "endblock"));
+          return A && (l = f), A;
+        }).expressions), r.nextIf(D.SYMBOL, s.text) && r.lat(0) !== D.TAG_END) {
+          let p = r.next();
+          e.error({ title: "Block name mismatch", pos: p.pos, advice: p.type == D.SYMBOL ? `Expected end of block ${s.text} but instead found end of block ${r.la(0).text}.` : `endblock must be followed by either '%}' or the name of the open block. Found a token of type ${D.ERROR_TABLE[p.type] || p.type} instead.` });
+        }
+      } else
+        u = new St(I(Bi.Identifier, s, s.text), new Bi.PrintExpressionStatement(e.matchExpression()));
+      return R(u, t), b(u, r.expect(D.TAG_END, null, n)), u.trimRightBlock = a && ue(a), u.trimLeftEndblock = !!(l && se(l)), u;
+    } };
+    var Jh = { name: "do", parse(e, t) {
+      let r = e.tokens, n = r.la(-2), s = new Gt(e.matchExpression());
+      return R(s, t), b(s, r.expect(D.TAG_END, "", n)), s;
+    } };
+    var T1 = H(re());
+    var x1 = H(y1());
+    var g1 = { name: "embed", parse(e, t) {
+      let r = e.tokens, n = r.la(-2), s = new Ut(e.matchExpression());
+      r.nextIf(D.SYMBOL, "ignore") && (r.expect(D.SYMBOL, "missing"), s.ignoreMissing = true), r.nextIf(D.SYMBOL, "with") && (s.argument = e.matchExpression()), r.nextIf(D.SYMBOL, "only") && (s.contextFree = true), r.expect(D.TAG_END);
+      let u = r.la(-1), a;
+      return s.blocks = (0, x1.default)(e.parse((l, p, f) => {
+        let m = !!(p.type === D.TAG_START && f.nextIf(D.SYMBOL, "endembed"));
+        return m && (a = p), m;
+      }).expressions, T1.Node.isBlockStatement), R(s, t), b(s, r.expect(D.TAG_END, "", n)), s.trimRightEmbed = ue(u), s.trimLeftEndembed = a && se(a), s;
+    } };
+    var v1 = { name: "extends", parse(e, t) {
+      let r = e.tokens, n = new Yt(e.matchExpression());
+      return R(n, t), b(n, r.expect(D.TAG_END)), n;
+    } };
+    var S1 = H(re());
+    var F1 = { name: "filter", parse(e, t) {
+      let r = e.tokens, n = r.la(-2), s = I(S1.Identifier, t, "filter"), u = e.matchFilterExpression(s);
+      r.expect(D.TAG_END);
+      let a = r.la(-1), l, p = e.parse((m, A, E) => {
+        let x = A.type === D.TAG_START && E.nextIf(D.SYMBOL, "endfilter");
+        return x && (l = A), x;
+      }).expressions, f = new jt(u, p);
+      return R(f, t), b(f, r.expect(D.TAG_END, "", n)), f.trimRightFilter = ue(a), f.trimLeftEndfilter = l && se(l), f;
+    } };
+    var C1 = { name: "flush", parse(e, t) {
+      let r = e.tokens, n = new pr();
+      return R(n, t), b(n, r.expect(D.TAG_END)), n;
+    } };
+    var Fu = H(re());
+    var B1 = { name: "for", parse(e, t) {
+      let r = e.tokens, n = new Vt(), s = r.la(-2), u = r.expect(D.SYMBOL);
+      if (r.nextIf(D.COMMA)) {
+        n.keyTarget = I(Fu.Identifier, u, u.text);
+        let m = r.expect(D.SYMBOL);
+        n.valueTarget = I(Fu.Identifier, m, m.text);
+      } else
+        n.keyTarget = null, n.valueTarget = I(Fu.Identifier, u, u.text);
+      r.expect(D.OPERATOR, "in"), n.sequence = e.matchExpression(), r.nextIf(D.SYMBOL, "if") && (n.condition = e.matchExpression()), r.expect(D.TAG_END);
+      let a = r.la(-1), l, p;
+      n.body = e.parse((m, A, E) => {
+        let x = A.type === D.TAG_START && (E.test(D.SYMBOL, "else") || E.test(D.SYMBOL, "endfor"));
+        return x && E.test(D.SYMBOL, "else") && (l = A), x;
+      }), r.nextIf(D.SYMBOL, "else") && (r.expect(D.TAG_END), p = r.la(-1), n.otherwise = e.parse((m, A, E) => A.type === D.TAG_START && E.test(D.SYMBOL, "endfor")));
+      let f = r.la(-1);
+      return r.expect(D.SYMBOL, "endfor", s), R(n, t), b(n, r.expect(D.TAG_END)), n.trimRightFor = ue(a), n.trimLeftElse = !!(l && se(l)), n.trimRightElse = !!(p && ue(p)), n.trimLeftEndfor = se(f), n;
+    } };
+    var Jo = H(re());
+    var O1 = { name: "from", parse(e, t) {
+      let r = e.tokens, n = e.matchExpression(), s = [];
+      r.expect(D.SYMBOL, "import");
+      do {
+        let a = r.expect(D.SYMBOL), l = a;
+        r.nextIf(D.SYMBOL, "as") && (l = r.expect(D.SYMBOL));
+        let p = new lt(I(Jo.Identifier, a, a.text), I(Jo.Identifier, l, l.text));
+        if (R(p, a), b(p, l), s.push(p), !r.nextIf(D.COMMA))
+          break;
+      } while (!r.test(D.EOF));
+      let u = new Kt(n, s);
+      return R(u, t), b(u, r.expect(D.TAG_END)), u;
+    } };
+    var N1 = { name: "if", parse(e, t) {
+      let r = e.tokens, n = r.la(-2), s = e.matchExpression(), u = null;
+      r.expect(D.TAG_END);
+      let a = r.la(-1), l = new Ft(s, e.parse(b1).expressions), p, f, m, A;
+      do {
+        if (r.nextIf(D.SYMBOL, "else"))
+          p = r.la(-2), r.expect(D.TAG_END), f = r.la(-1), (u || l).alternate = e.parse(x6).expressions;
+        else if (r.nextIf(D.SYMBOL, "elseif")) {
+          m = r.la(-2), s = e.matchExpression(), r.expect(D.TAG_END), A = r.la(-1);
+          let x = e.parse(b1).expressions;
+          u = (u || l).alternate = new Ft(s, x), u.trimLeft = se(m), u.trimRightIf = ue(A);
+        }
+        if (r.nextIf(D.SYMBOL, "endif"))
+          break;
+      } while (!r.test(D.EOF));
+      let E = r.la(-2);
+      return R(l, t), b(l, r.expect(D.TAG_END, "", n)), l.trimRightIf = ue(a), l.trimLeftElse = !!(p && se(p)), l.trimRightElse = !!(f && ue(f)), l.trimLeftEndif = se(E), l;
+    } };
+    function b1(e, t, r) {
+      if (t.type === D.TAG_START) {
+        let n = r.la(0).text;
+        return n === "else" || n === "endif" || n === "elseif";
+      }
+      return false;
+    }
+    i(b1, "matchConsequent");
+    function x6(e, t, r) {
+      return t.type === D.TAG_START && r.test(D.SYMBOL, "endif");
+    }
+    i(x6, "matchAlternate");
+    var I1 = H(re());
+    var _1 = { name: "import", parse(e, t) {
+      let r = e.tokens, n = e.matchExpression();
+      r.expect(D.SYMBOL, "as");
+      let s = r.expect(D.SYMBOL), u = new lt(n, I(I1.Identifier, s, s.text));
+      return R(u, t), b(u, r.expect(D.TAG_END)), u;
+    } };
+    var R1 = { name: "include", parse(e, t) {
+      let r = e.tokens, n = new Wt(e.matchExpression());
+      return r.nextIf(D.SYMBOL, "ignore") && (r.expect(D.SYMBOL, "missing"), n.ignoreMissing = true), r.nextIf(D.SYMBOL, "with") && (n.argument = e.matchExpression()), r.nextIf(D.SYMBOL, "only") && (n.contextFree = true), R(n, t), b(n, r.expect(D.TAG_END)), n;
+    } };
+    var Qo = H(re());
+    var P1 = { name: "macro", parse(e, t) {
+      let r = e.tokens, n = r.la(-2), s = r.expect(D.SYMBOL), u = [];
+      for (r.expect(D.LPAREN); !r.test(D.RPAREN) && !r.test(D.EOF); ) {
+        let A = r.expect(D.SYMBOL);
+        u.push(I(Qo.Identifier, A, A.text)), !r.nextIf(D.COMMA) && !r.test(D.RPAREN) && e.error({ title: 'Expected comma or ")"', pos: r.la(0).pos, advice: "The argument list of a macro can only consist of parameter names separated by commas." });
+      }
+      r.expect(D.RPAREN);
+      let a = r.la(0), l, p = e.parse((A, E, x) => {
+        let F = !!(E.type === D.TAG_START && x.nextIf(D.SYMBOL, "endmacro"));
+        return F && (l = E), F;
+      });
+      if (r.test(D.SYMBOL)) {
+        var f = r.next();
+        s.text !== f.text && e.error({ title: `Macro name mismatch, expected "${s.text}" but found "${f.text}"`, pos: f.pos });
+      }
+      let m = new Ht(I(Qo.Identifier, s, s.text), u, p);
+      return R(m, t), b(m, r.expect(D.TAG_END, "", n)), m.trimRightMacro = ue(a), m.trimLeftEndmacro = se(l), m;
+    } };
+    var L1 = H(re());
+    var w1 = { name: "set", parse(e, t) {
+      let r = e.tokens, n = [], s = [], u, a;
+      do {
+        let f = r.expect(D.SYMBOL);
+        n.push(I(L1.Identifier, f, f.text));
+      } while (r.nextIf(D.COMMA));
+      if (r.nextIf(D.ASSIGNMENT))
+        do
+          s.push(e.matchExpression());
+        while (r.nextIf(D.COMMA));
+      else
+        n.length !== 1 && e.error({ title: "Illegal multi-set", pos: r.la(0).pos, advice: "When using set with a block, you cannot have multiple targets." }), r.expect(D.TAG_END), u = r.la(-1), s[0] = e.parse((f, m, A) => {
+          let E = !!(m.type === D.TAG_START && A.nextIf(D.SYMBOL, "endset"));
+          return E && (a = m), E;
+        }).expressions;
+      n.length !== s.length && e.error({ title: "Mismatch of set names and values", pos: t.pos, advice: `When using set, you must ensure that the number of
 assigned variable names is identical to the supplied values. However, here I've found
-${n.length} variable names and ${a.length} values.`});let l=[];for(let f=0,m=n.length;f<m;f++)l[f]=new Xt(n[f],a[f]);let p=new $t(l);return R(p,t),b(p,r.expect(D.TAG_END)),p.trimRightSet=!!(u&&ue(u)),p.trimLeftEndset=!!(s&&se(s)),p}},q1={name:"spaceless",parse(e,t){let r=e.tokens,n=r.la(-2);r.expect(D.TAG_END);let a=r.la(-1),u,s=e.parse((p,f,m)=>{let h=!!(f.type===D.TAG_START&&m.nextIf(D.SYMBOL,"endspaceless"));return u=f,h}).expressions,l=new Jt(s);return R(l,t),b(l,r.expect(D.TAG_END,"",n)),r.expect(D.SYMBOL,"endfor",n),l.trimRightSpaceless=ue(a),l.trimLeftEndspaceless=!!(u&&se(u)),l}},zo=H(re()),k1={name:"use",parse(e,t){let r=e.tokens,n=e.matchExpression(),a=[];if(r.nextIf(D.SYMBOL,"with"))do{let s=r.expect(D.SYMBOL),l=I(zo.Identifier,s,s.text),p=l;if(r.nextIf(D.SYMBOL,"as")){let m=r.expect(D.SYMBOL);p=I(zo.Identifier,m,m.text)}let f=new Qt(l,p);je(f,l),Pe(f,p),a.push(f)}while(r.nextIf(D.COMMA));let u=new zt(n,a);return R(u,t),b(u,r.expect(D.TAG_END)),u}},Zo=H(re()),M1={name:"mount",parse(e,t){let r=e.tokens,n=r.la(-2),a=null,u=null,s=null,l=!1,p=0,f=null;if(r.test(D.SYMBOL,"async")&&r.la(1).type===D.STRING_START&&(l=!0,r.next()),r.test(D.STRING_START))u=e.matchStringExpression();else{let k=r.expect(D.SYMBOL);a=I(Zo.Identifier,k,k.text),r.nextIf(D.SYMBOL,"from")&&(u=e.matchStringExpression())}r.nextIf(D.SYMBOL,"as")&&(s=e.matchExpression()),r.nextIf(D.SYMBOL,"with")&&(f=e.matchExpression()),l&&r.nextIf(D.SYMBOL,"delay")&&(r.expect(D.SYMBOL,"placeholder"),r.expect(D.SYMBOL,"by"),p=Number.parseInt(r.expect(D.NUMBER).text,10),r.nextIf(D.SYMBOL,"s")?p*=1e3:r.expect(D.SYMBOL,"ms"));let m=new Mt(a,u,s,f,l,p),h,A,g,y;if(l){if(r.expect(D.TAG_END),h=r.la(-1),m.body=e.parse((k,oe,J)=>oe.type===D.TAG_START&&(J.test(D.SYMBOL,"catch")||J.test(D.SYMBOL,"endmount"))),r.nextIf(D.SYMBOL,"catch")){A=r.la(-2);let k=r.expect(D.SYMBOL);m.errorVariableName=I(Zo.Identifier,k,k.text),r.expect(D.TAG_END),g=r.la(-1),m.otherwise=e.parse((oe,J,F)=>J.type===D.TAG_START&&F.test(D.SYMBOL,"endmount"))}r.expect(D.SYMBOL,"endmount"),y=r.la(-2)}return R(m,t),b(m,r.expect(D.TAG_END,"",n)),m.trimRightMount=!!(h&&ue(h)),m.trimLeftCatch=!!(A&&se(A)),m.trimRightCatch=!!(g&&ue(g)),m.trimLeftEndmount=!!(y&&se(y)),m}},Cu={tags:[Xh,$h,Jh,g1,v1,F1,C1,B1,O1,N1,_1,R1,P1,w1,q1,k1,M1],unaryOperators:Lo,binaryOperators:Ci,tests:Bn},G1=Symbol("ALREADY_INDENTED"),g6=Symbol("OPERATOR_PRECEDENCE"),v6=[".."],el=Cu.binaryOperators.reduce((e,t)=>(e[t.text]=t.precedence,e),{}),S6=i((e,t,r,n)=>{e[L]=!1,e[ft]=!0;let a=['"'],u=e,s=[];for(;fr.Node.isBinaryConcatExpression(u);)a.unshift(t.call(r,...s,"right")),s.push("left"),u=u.left;return a.unshift(t.call(r,...s)),a.unshift('"'),d(a)},"printInterpolatedString"),F6=i(e=>v6.indexOf(e)<0,"operatorNeedsSpaces"),C6=i(e=>e.operator==="or"||e.operator==="and","hasLogicalOperator"),U1=i((e,t)=>{let r=e[t],n=fr.Node.isBinaryExpression(r),a=el[e.operator],u=n?el[e[t].operator]:Number.MAX_SAFE_INTEGER;return u<a||u>a&&n&&C6(r)||fr.Node.isFilterExpression(r)||fr.Node.isBinaryConcatExpression(e)&&fr.Node.isConditionalExpression(r)},"otherNeedsParentheses"),B6=i((e,t,r)=>{e[Y]=!1,e[L]=!0;let n=fr.Node.isBinaryExpression(e.right),a=["and","or"].indexOf(e.operator)>-1,u=F6(e.operator),s=At(t,G1,!1);!s&&n&&(e.right[G1]=!0);let l=At(t,yr,!1),p=sr(t)[hr]!==!1;l||(e[yr]=!0);let f=l?At(t,"operator"):"";e[g6]=el[e.operator];let m=t.call(r,"left"),h=t.call(r,"right"),A=[],g=U1(e,"left"),y=U1(e,"right");g&&A.push("("),A.push(m),g&&A.push(")");let k=[u?B:ne,e.operator,u?" ":""];y&&k.push("("),k.push(h),y&&k.push(")");let oe=s?d(k):_(d(k)),J=d(qe(t,[...A,oe],e)),F=!l&&p,G=a&&e.operator!==f;return F||!a||l&&G?C(J):J},"_printBinaryExpression"),Bu=i((e,t,r,n)=>fr.Node.isBinaryConcatExpression(e)&&e.wasImplicitConcatenation?S6(e,t,r,n):B6(e,t,r),"printBinaryExpression"),Y1=i((e,t,r)=>{e[Y]=!1,e[L]=!0;let n=[B,"?"];e.consequent&&n.push(d([" ",t.call(r,"consequent")])),e.alternate&&n.push(B,": ",t.call(r,"alternate"));let a=[t.call(r,"test"),_(d(n))];return qe(t,a,e),C(d(a))},"printConditionalExpression"),tl=i((e,t,r)=>{let n="<"+e.name,a=O6(t,r,"","attributes"),u=e.selfClosing?" />":">";return e.attributes&&e.attributes.length>0?d([n,_(d([" ",a])),u]):d([n,u])},"printOpeningTag"),O6=i((e,t,r,n)=>Ee(d([r,B]),e.map(t,n)),"printSeparatedList"),j1=i((e,t,r)=>{e[Y]=!0;let n=C(tl(e,t,r));e[Y]=!1,e[L]=!1;let a=e.name.toLowerCase();if(a=="script"||a=="style"){let{value:s}=e.children?.[0]?.value||{};return s?[n,s,d(["</",e.name,">"])]:[n,d(["</",e.name,">"])]}if(!e.selfClosing){e.children=Dn(e.children);let s=hn(e,t,r,"children"),l=d(["</",e.name,">"]),p=[n],f=d(s);if(Ai(e))p.push(_(d([ne,f])),ne);else{let m=[];var u=e.children.findIndex(h=>h.type!="PrintExpressionStatement"&&h.type!="PrintTextStatement")==-1;s.length>0&&(u||m.push(P)),m.push(f),p.push(_(d(m))),s.length>0&&(u||p.push(P))}return p.push(l),Ai(e)?C(d(p)):d(p)}return n},"printElement"),Ou=H(re()),b6=i(e=>["id","class","type"].indexOf(e)>-1,"mayCorrectWhitespace"),N6=i(e=>e.replace(/\s+/g," ").trim(),"sanitizeWhitespace"),I6=i((e,t,r,...n)=>{let a=[],u=e,s=n;for(;Ou.Node.isBinaryConcatExpression(u);)a.unshift(t.call(r,...s,"right")),s.push("left"),u=u.left;return a.unshift(t.call(r,...s)),d(a)},"printConcatenatedString"),V1=i((e,t,r=r)=>{e[Y]=!1;let n=[t.call(r,"name")];if(e[Y]=!0,e[L]=!1,e.value){if(n.push('="'),Ou.Node.isBinaryConcatExpression(e.value)&&e.value.wasImplicitConcatenation)n.push(I6(e.value,t,r,"value"));else{let a=Ou.Node.isStringLiteral(e.value);b6(e.name.name)&&a&&(e.value.value=N6(e.value.value)),n.push(t.call(r,"value"))}n.push('"')}return d(n)},"printAttribute"),K1=i((e,t)=>{e[Y]=!1;let r=[e.name];qe(t,r,e);let n=d(r);return r.length===1?n:C(n)},"printIdentifier"),W1=H(re()),H1=i((e,t,r)=>{e[Y]=!1,e[L]=!0;let n=e.trimLeft?"{{-":"{{",a=e.trimRight?"-}}":"}}",u=fi(e.value)&&!W1.Node.isObjectExpression(e.value),s=u?" ":B,l=d([s,t.call(r,"value")]),p=u?l:_(l);return C(d([n,p,s,a]))},"printExpressionStatement"),X1=i((e,t,r)=>{e[Y]=!1,e[L]=!0;let n=[t.call(r,"object")];return n.push(e.computed?"[":"."),n.push(t.call(r,"property")),e.computed&&n.push("]"),qe(t,n,e),C(d(n))},"printMemberExpression"),rl=H(re()),_6=i(e=>uu(e,t=>t[Ln]===!0),"isInFilterBlock"),R6=i((e,t,r,n)=>{if(!(e.arguments&&e.arguments.length>0))return"";let a=t.map(r,...n,"arguments");return e.arguments.length===1&&rl.Node.isObjectExpression(e.arguments[0])?e.isDjango?C(d([":",a[0]])):C(d(["(",a[0],")"])):e.isDjango?C(d([":",_(d([ne,Ee(d([",",B]),a)])),ne])):C(d(["(",_(d([ne,Ee(d([",",B]),a)])),ne,")"]))},"printArguments"),$1=i((e,t,r,n)=>{let a=R6(e,t,r,n),u=t.call(r,...n,"name");return d([u,a])},"printOneFilterExpression"),P6=i((e,t="")=>Ee(d([t===""?ne:B,"|",t]),e),"joinFilters"),J1=i((e,t,r,n)=>{let a=e;e[Y]=!1,e[L]=!0;let u=n.twigFollowOfficialCodingStandards===!1,s=u?" ":"",l=["target"],p=[$1(e,t,r,[])];for(;rl.Node.isFilterExpression(a.target);)p.unshift($1(a.target,t,r,l)),l.push("target"),a=a.target;let f=t.call(r,...l),m=_6(t),h=Ei(di(e,...l)),A=[];if(h&&A.push("("),A.push(f),h&&A.push(")"),m&&(A.push(d([" ",p[0]])),p=p.slice(1)),p.length===1)A.push(`${s}|${s}`,p[0]);else if(p.length>1){let y=d([u?B:ne,`|${s}`,P6(p,s)]);A.push(_(y))}let g=au(t);return g===Y?(A.push(" }}"),A.unshift("{{ ")):g===ft&&ou(A),C(d(A))},"printFilterExpression"),Q1=i((e,t,r,n)=>{if(e.properties.length===0)return"{}";e[Y]=!1;let a=t.map(r,"properties"),u=n.twigAlwaysBreakObjects?P:B,s=d([B,Ee(d([",",u]),a)]),l=["{",_(s),u,"}"];return qe(t,l,e),C(d(l))},"printObjectExpression"),z1=H(re()),Z1=i((e,t,r,n)=>{e[L]=!e.computed&&z1.Node.isStringLiteral(e.key)&&!go(e.key.value);let a=e.key.wasImplicitConcatenation,u=e.computed&&!a,s=[];return u&&s.push("("),s.push(t.call(r,"key")),u&&s.push(")"),s.push(": "),e[L]=!0,s.push(t.call(r,"value")),d(s)},"printObjectProperty"),eT=H(re()),tT=i((e,t,r)=>{e[Y]=!1,e[L]=!0;let n=t.map(r,"arguments"),a=[t.call(r,"callee"),"("];return e.arguments.length===0?a.push(")"):e.arguments.length===1&&eT.Node.isObjectExpression(e.arguments[0])?a.push(n[0],")"):a.push(_(d([ne,Ee(d([",",B]),n)])),ne,")"),qe(t,a,e),C(d(a))},"printCallExpression"),rT={TestNullExpression:"null",TestDivisibleByExpression:"divisible by",TestDefinedExpression:"defined",TestEmptyExpression:"empty",TestEvenExpression:"even",TestOddExpression:"odd",TestIterableExpression:"iterable",TestSameAsExpression:"same as"},L6=i(e=>e.constructor.name==="UnarySubclass"&&e.operator==="not","isNegator"),nT=i((e,t,r)=>{let n=e.__proto__.type,a=[t.call(r,"expression")," is "],u=sr(t),s=Array.isArray(e.arguments)&&e.arguments.length>0;if(L6(u)&&a.push("not "),rT[n]?a.push(rT[n]):console.error("TestExpression: No text for "+n+" defined"),s){let l=t.map(r,"arguments"),p=Ee(d([",",B]),l);a.push(C(d(["(",_(d([ne,p])),ne,")"])))}return d(a)},"printTestExpression"),iT=i((e,t,r)=>{e[Y]=!1,e[L]=!0;let n=[e.operator,t.call(r,"argument")];return qe(t,n,e),C(d(n))},"printUnaryExpression"),sT=H(re()),w6=i(e=>Ei(e),"argumentNeedsParentheses"),q6=i(e=>e==="not","isLogicalOperator"),k6=i((e,t,r)=>{let n=At(t,yr,!1);n||(e[yr]=!0);let a=sr(t)[hr]!==!1,u=[e.operator," "],s=w6(e.argument),l=t.call(r,"argument");s?u.push("(",_(d([ne,l])),d([ne,")"])):u.push(l);let p=d(u);return!n&&a?C(p):p},"printLogicalExpression"),uT=i((e,t,r)=>{let n=[],a=sT.Node.isTestExpression(e.argument);return q6(e.operator)&&!a?k6(e,t,r):(a||n.push(e.operator," "),n.push(t.call(r,"argument")),d(n))},"printUnarySubclass"),M6=i((e,t=!0)=>{let r=st(e);return r===0?t?B:"":r===1?P:d([P,P])},"newlinesOnly"),aT=i((e,t,r)=>{let n=e[Dr]===!0,a=e[Ar]===!0,u=t.call(r,"value");if(_r(u)&&e[wn])return M6(u);let s=So(u,n,a);return Ee(d([P,P]),s)},"printTextStatement"),G6=i((e,t)=>t===0||e[t-1]!=="\\","isUnmaskedOccurrence"),oT=i(e=>t=>{let r=t.indexOf(e);for(;r>=0;){if(G6(t,r))return!0;r=t.indexOf(e,r+1)}return!1},"containsUnmasked"),U6=oT("'"),Y6=oT('"'),j6=i((e,t)=>U6(e)?'"':Y6(e)?"'":En(t),"getQuoteChar"),lT=i((e,t,r,n)=>{let a=At(t,L,!1),u=At(t,Pn,null);if(a){let s=u||j6(e.value,n);return s+e.value+s}return e.value},"printStringLiteral"),cT=i((e,t,r)=>{e[L]=!0;let n=t.map(r,"elements"),a=d([ne,Ee(d([",",B]),n)]);return C(d(["[",_(a),ne,"]"]))},"printArrayExpression"),pT=i((e,t,r)=>{let n=t.call(r,"target"),a=e.start?t.call(r,"start"):"",u=e.end?t.call(r,"end"):"";return d([n,"[",a,":",u,"]"])},"printSliceExpression"),fT=i((e,t,r)=>{let n=[e.trimLeft?"{%-":"{%",' use "',t.call(r,"source"),'"'];if(e.aliases&&e.aliases.length>0){n.push(" with");let a=t.map(r,"aliases");n.push(_(d([B,Ee(d([",",B]),a)]))),n.push(B)}else n.push(" ");return n.push(e.trimRight?"-%}":"%}"),C(d(n))},"printUseStatement"),ET=i((e,t,r)=>d([t.call(r,"name")," as ",t.call(r,"alias")]),"printAliasExpression"),dT=H(re()),mT=i((e,t,r,n)=>{e[Y]=!1;let a=Array.isArray(e.body),u=n.twigOutputEndblockName===!0;if(a){let s=t.call(r,"name"),l=[d([e.trimLeft?"{%-":"{%"," block ",s,e.trimRightBlock?" -%}":" %}"])];if(e.body.length>0){let p=Re(e,t,r,"body");l.push(p)}return l.push(P),l.push(e.trimLeftEndblock?"{%-":"{%"," endblock",u?d([" ",s]):"",e.trimRight?" -%}":" %}"),C(d(l))}else if(dT.Node.isPrintExpressionStatement(e.body)){let s=[e.trimLeft?"{%-":"{%"," block ",t.call(r,"name")," ",t.call(r,"body","value"),e.trimRight?" -%}":" %}"];return d(s)}},"printBlockStatement"),DT=i((e,t,r)=>{let n=[e.trimLeft?"{%-":"{%"," spaceless ",e.trimRightSpaceless?"-%}":"%}"];return n.push(Re(e,t,r,"body")),n.push(P),n.push(e.trimLeftEndspaceless?"{%-":"{%"," endspaceless ",e.trimRight?"-%}":"%}"),C(d(n))},"printSpacelessBlock"),V6=i((e,t)=>d([e.trimLeft?"{%-":"{%"," autoescape ",En(t),e.escapeType||"html",En(t)," ",e.trimRightAutoescape?"-%}":"%}"]),"createOpener"),AT=i((e,t,r,n)=>{let a=[V6(e,n)];return a.push(Re(e,t,r,"expressions")),a.push(P,e.trimLeftEndautoescape?"{%-":"{%"," endautoescape ",e.trimRight?"-%}":"%}"),d(a)},"printAutoescapeBlock"),hT=i((e,t,r)=>{let n=e.trimLeft?"-":"",a=e.trimRight?"-":"";return`{%${n} flush ${a}%}`},"printFlushStatement"),yT=i((e,t,r)=>{e[L]=!0;let n=[e.trimLeft?"{%-":"{%"," include ",t.call(r,"source")];if(e.argument){let a=t.call(r,"argument");n.push(" with "),n.push(a)}return e.contextFree&&n.push(" only"),n.push(e.trimRight?" -%}":" %}"),C(d(n))},"printIncludeStatement"),bi=H(re()),TT=Symbol("IS_ELSEIF"),xT=i((e,t,r)=>{e[Y]=!1;let n=Array.isArray(e.alternate)&&e.alternate.length>0,a=bi.Node.isIfStatement(e.alternate),u=e[TT]===!0,s=e.consequent.length===0,l=e.consequent.length===1,p=e.consequent[0],f=!u&&!e.alternate&&(s||l&&!bi.Node.isElement(p)&&(!bi.Node.isPrintTextStatement(p)||lu(p.value.value)));l&&bi.Node.isPrintTextStatement(p)&&lu(p.value.value)&&(p[Dr]=!0,p[Ar]=!0);let m=C(d([e.trimLeft?"{%- ":"{% ",u?"elseif":"if",_(d([B,t.call(r,"test")]))," ",e.trimRightIf?"-%}":"%}"])),h=f?s?"":t.call(r,"consequent","0"):Re(e,t,r,"consequent"),A=[m,h];return n?(A.push(P,e.trimLeftElse?"{%-":"{%"," else ",e.trimRightElse?"-%}":"%}"),A.push(Re(e,t,r,"alternate"))):a&&(e.alternate[TT]=!0,A.push(P),A.push(t.call(r,"alternate"))),u||A.push(f?"":P,e.trimLeftEndif?"{%-":"{%"," endif ",e.trimRight?"-%}":"%}"),d(A)},"printIfStatement"),K6=i(e=>""+e/1e3+"s","formatDelay"),W6=i((e,t,r)=>{let n=[],a=[e.trimLeft?"{%-":"{%"," mount"];e.async===!0&&a.push(" async"),e.name&&a.push(" ",t.call(r,"name")),e.name&&e.source&&a.push(" from"),e.source&&a.push(" ",t.call(r,"source")),e.key&&a.push(_(d([B,"as ",t.call(r,"key")]))),n.push(C(d(a))),e.argument&&n.push(_(d([" with ",t.call(r,"argument")]))),e.delayBy&&n.push(_(d([B,"delay placeholder by ",K6(e.delayBy)])));let u=e.body||e.otherwise?e.trimRightMount:e.trimRight;return n.push(d([B,u?"-%}":"%}"])),C(d(n))},"buildOpener"),H6=i((e,t)=>_(d([P,e.call(t,"body")])),"buildBody"),X6=i((e,t,r)=>{let n=[];return n.push(d([P,e.trimLeftCatch?"{%-":"{%"," catch "])),e.errorVariableName&&n.push(t.call(r,"errorVariableName")," "),n.push(e.trimRightCatch?"-%}":"%}"),n.push(_(d([P,t.call(r,"otherwise")]))),d(n)},"buildErrorHandling"),gT=i((e,t,r)=>{e[Y]=!1,e[L]=!0;let n=[W6(e,t,r)];return e.body&&n.push(H6(t,r)),e.otherwise&&n.push(X6(e,t,r)),(e.body||e.otherwise)&&n.push(d([P,e.trimLeftEndmount?"{%-":"{%"," endmount ",e.trimRight?"-%}":"%}"])),d(n)},"printMountStatement"),$6=i((e,t,r)=>{let n=[e.trimLeft?"{%-":"{%"," for "];return e.keyTarget&&n.push(t.call(r,"keyTarget"),", "),n.push(t.call(r,"valueTarget")," in ",t.call(r,"sequence")),e.condition&&n.push(_(d([B,"if ",t.call(r,"condition")]))),n.push(d([" ",e.trimRightFor?"-%}":"%}"])),C(d(n))},"printFor"),vT=i((e,t,r)=>{e[Y]=!1;let n=[$6(e,t,r)],a=e.body.expressions.length===0||e.body.expressions.length===1&&mn(e.body.expressions[0]),u=t.call(r,"body");if((!a||e.otherwise)&&n.push(An(u)),e.otherwise){n.push(P,e.trimLeftElse?"{%-":"{%"," else ",e.trimRightElse?"-%}":"%}");let s=t.call(r,"otherwise");n.push(An(s))}return n.push(a?"":P,e.trimLeftEndfor?"{%-":"{%"," endfor ",e.trimRight?"-%}":"%}"),d(n)},"printForStatement"),nl=H(re()),J6=i(e=>nl.Node.isObjectExpression(e)||xo(e)||nl.Node.isArrayExpression(e),"shouldAvoidBreakBeforeClosing"),Q6=i((e,t,r,n)=>{let a=e.assignments[n];a[hr]=!1;let u=J6(a.value);return C(d([e.trimLeft?"{%-":"{%"," set ",t.call(r,"assignments",n),u?" ":B,e.trimRight?"-%}":"%}"]))},"buildSetStatement"),z6=i(e=>Array.isArray(e.assignments)&&e.assignments.length===1&&Array.isArray(e.assignments[0].value),"isEmbracingSet"),Z6=i((e,t,r)=>{let n=[];return Array.isArray(e.assignments)&&e.assignments.length>0&&e.assignments.forEach((a,u)=>{n.length>0&&n.push(P),n.push(Q6(e,t,r,u))}),d(n)},"printRegularSet"),ew=i((e,t,r)=>{let n=[e.trimLeft?"{%-":"{%"," set ",t.call(r,"assignments","0","name"),e.trimRightSet?" -%}":" %}"];e[L]=!1;let a=Re(e,t,r,"assignments","0","value");return n.push(a),n.push(P,e.trimLeftEndset?"{%-":"{%"," endset ",e.trimRight?"-%}":"%}"),d(n)},"printEmbracingSet"),ST=i((e,t,r)=>(e[L]=!0,z6(e)?ew(e,t,r):Z6(e,t,r)),"printSetStatement"),FT=i((e,t,r)=>d([e.trimLeft?"{%-":"{%"," do ",t.call(r,"value"),e.trimRight?" -%}":" %}"]),"printDoStatement"),CT=i((e,t,r)=>(e[L]=!0,d([e.trimLeft?"{%-":"{%"," extends ",t.call(r,"parentName"),e.trimRight?" -%}":" %}"])),"printExtendsStatement"),tw=i((e,t,r)=>{e[Y]=!1,e[L]=!0;let n=[e.trimLeft?"{%-":"{%"," embed ",t.call(r,"parent")];return e.argument&&n.push(_(d([B,"with ",t.call(r,"argument")]))),n.push(d([B,e.trimRightEmbed?"-%}":"%}"])),C(d(n))},"printOpener"),BT=i((e,t,r)=>{let n=Re(e,t,r,"blocks"),a=tw(e,t,r),u=d([P,e.trimLeftEndembed?"{%-":"{%"," endembed ",e.trimRight?"-%}":"%}"]);return d([a,n,u])},"printEmbedStatement"),OT=i((e,t,r)=>(e[L]=!0,C(d([e.trimLeft?"{%-":"{%"," import ",t.call(r,"key"),_(d([B,"as ",t.call(r,"alias")])),B,e.trimRight?"-%}":"%}"]))),"printImportDeclaration"),rw=i(e=>{let t=[e.key.name];return e.key.name!==e.alias.name&&t.push(" as ",e.alias.name),d(t)},"printImportDeclaration"),bT=i((e,t,r)=>{e[L]=!0;let n=e.imports.map(rw),a=_(d([B,Ee(d([",",B]),n)]));return C(d([e.trimLeft?"{%-":"{%"," from ",t.call(r,"source")," import",a,B,e.trimRight?"-%}":"%}"]))},"printFromStatement"),NT=i(e=>{let t=e.value.value||"",r=pu(t),n=t.length>=3?t[2]==="-":!1,a=t.length>=3?t.slice(-3,-2)==="-":!1;return st(r)===0?Eu(r,n,a):d([n?"{#-":"{#",r,a?"-#}":"#}"])},"printTwigComment"),IT=i((e,t,r)=>{let n=cu(e.value.value||"");return st(n)===0?fu(n):d(["<!-- ",n," -->"])},"printHtmlComment"),_T=i((e,t,r)=>{e[L]=!0,e[Pn]='"';let n="<!"+(e.declarationType||"").toUpperCase(),a=t.map(r,"parts");return Wr([n," ",Ee(" ",a),">"])},"printDeclaration"),RT=H(re()),PT=i((e,t,r)=>{e[L]=!0;let n=[BA(e,t,r)],a=t.map(r,"sections");return e.sections.forEach((u,s)=>{RT.Node.isGenericTwigTag(u)?n.push(d([P,a[s]])):Fo(u)||n.push(An(a[s]))}),d(n)},"printGenericTwigTag"),LT=i((e,t,r)=>e.tokenText,"printGenericToken"),nw=i((e,t,r)=>{let n=[e.trimLeft?"{%-":"{%"," macro ",t.call(r,"name"),"("],a=t.map(r,"arguments"),u=Ee(d([",",B]),a);return n.push(_(d([ne,u]))),n.push(")",B,e.trimRightMacro?"-%}":"%}"),C(d(n))},"printOpener"),wT=i((e,t,r)=>{let n=[nw(e,t,r)];return n.push(_(d([P,t.call(r,"body")]))),n.push(P,e.trimLeftEndmacro?"{%-":"{%"," endmacro ",e.trimRight?"-%}":"%}"),d(n)},"printMacroDeclarationStatement"),iw=i((e,t,r)=>{let n=[e.trimLeft?"{%- ":"{% "],a=t.call(r,"filterExpression");return n.push(a,B,e.trimRightFilter?"-%}":"%}"),C(d(n))},"printOpeningGroup"),qT=i((e,t,r)=>{e[Ln]=!0;let n=iw(e,t,r),a=Re(e,t,r,"body"),u=d([P,e.trimLeftEndfilter?"{%-":"{%"," endfilter ",e.trimRight?"-%}":"%}"]);return d([n,a,u])},"printFilterBlockStatement"),kT=i((e,t,r)=>{let n=t.call(r,"name");e[L]=!0;let a=t.call(r,"value"),u=fi(e.value)?d([" ",a]):_(d([B,a]));return d([n," =",u])},"printVariableDeclarationStatement"),MT=i((e,t,r)=>{e[L]=!0;let n=t.call(r,"name"),a=t.call(r,"value");return d([n," = ",a])},"printNamedArgumentExpression"),bu="ORIGINAL_SOURCE",sw=i((e,...t)=>{let r=new jr(new Fn(e));for(let n of t)n.unaryOperators&&r.addOperators(...n.unaryOperators.map(a=>a.text)),n.binaryOperators&&r.addOperators(...n.binaryOperators.map(a=>a.text));return r},"createConfiguredLexer"),uw=i((e,...t)=>{for(let r of t){if(r.tags)for(let n of r.tags)e.addTag(n);if(r.unaryOperators)for(let n of r.unaryOperators)e.addUnaryOperator(n);if(r.binaryOperators)for(let n of r.binaryOperators)e.addBinaryOperator(n);if(r.tests)for(let n of r.tests)e.addTest(n)}},"applyParserExtensions"),aw=i((e,t,...r)=>{let n=new Gr(new Ur(sw(e,...r),{ignoreWhitespace:!0,ignoreComments:!1,ignoreHtmlComments:!1,applyWhitespaceTrimming:!1}),{ignoreComments:!1,ignoreHtmlComments:!1,ignoreDeclarations:!1,decodeEntities:!1,multiTags:t,allowUnknownTags:!0});return uw(n,...r),n},"createConfiguredParser"),ow=i((e=[])=>e.reduce((t,r)=>{let n=r.split(",");return t[n[0].trim()]=n.slice(1).map(a=>a.trim()),t},{}),"getMultiTagConfig"),GT=i((e,t,r)=>{let n=ki(r),a=ow(r.twigMultiTags||[]),u=[Cu,...Vl(n)],s=aw(e,a,...u).parse();return s[bu]=e,s},"parse"),N={},lw=i(e=>{if(e&&e.printers)for(let t of Object.keys(e.printers))N[t]=e.printers[t]},"applyPlugin"),cw=i(e=>{let t=ki(e);ku(t).forEach(r=>{lw(r)})},"applyPlugins"),pw=mi("prettier-ignore"),fw=mi("prettier-ignore-start"),Ew=mi("prettier-ignore-end"),dw=Di("prettier-ignore"),mw=Di("prettier-ignore-start"),Dw=Di("prettier-ignore-end"),Aw=i(e=>pw(e)||dw(e),"isIgnoreNextComment"),hw=i(e=>fw(e)||mw(e),"isIgnoreRegionStartComment"),yw=i(e=>Ew(e)||Dw(e),"isIgnoreRegionEndComment"),sl="",Ni=!1,il=!1,UT=i(e=>{il=il&&!YT(e)||Aw(e),Ni=Ni||hw(e)},"checkForIgnoreStart"),Tw=i(e=>{Ni&&yw(e)&&(Ni=!1)},"checkForIgnoreEnd"),YT=i(e=>!mn(e),"shouldApplyIgnoreNext"),jT=i((e,t,r)=>{cw(t);let n=e.getValue(),a=n.constructor.name;n[bu]&&(sl=n[bu]),t.twigPrintWidth&&(t.printWidth=t.twigPrintWidth),Tw(n);let u=YT(n)&&il||Ni,s=N[a];return!u&&s?(UT(n),N[a](n,e,r,t)):(s||console.warn(`No print function available for node type "${a}"`),UT(n),gw(n)?xw(n):"")},"print"),xw=i(e=>sl.substring(e.loc.start.index,e.loc.end.index),"getSubstringForNode"),gw=i(e=>sl&&e.loc&&e.loc.start&&e.loc.end&&e.loc.start.index&&e.loc.end.index,"canGetSubstringForNode");N.SequenceExpression=OA;N.ConstantValue=e=>e.value;N.StringLiteral=lT;N.Identifier=K1;N.UnaryExpression=iT;N.BinaryExpression=Bu;N.BinarySubclass=Bu;N.UnarySubclass=uT;N.TestExpression=nT;N.ConditionalExpression=Y1;N.Element=j1;N.Attribute=V1;N.PrintTextStatement=aT;N.PrintExpressionStatement=H1;N.MemberExpression=X1;N.FilterExpression=J1;N.ObjectExpression=Q1;N.ObjectProperty=Z1;var VT=i(e=>""+e.value,"returnNodeValue");N.Fragment=(e,t,r)=>t.call(r,"value");N.NumericLiteral=VT;N.BooleanLiteral=VT;N.NullLiteral=()=>"null";N.ArrayExpression=cT;N.CallExpression=tT;N.NamedArgumentExpression=MT;N.SliceExpression=pT;N.UseStatement=fT;N.AliasExpression=ET;N.BlockStatement=mT;N.SpacelessBlock=DT;N.AutoescapeBlock=AT;N.FlushStatement=hT;N.IncludeStatement=yT;N.IfStatement=xT;N.MountStatement=gT;N.ForStatement=vT;N.BinaryConcatExpression=Bu;N.SetStatement=ST;N.VariableDeclarationStatement=kT;N.DoStatement=FT;N.ExtendsStatement=CT;N.EmbedStatement=BT;N.FilterBlockStatement=qT;N.ImportDeclaration=OT;N.FromStatement=bT;N.MacroDeclarationStatement=wT;N.TwigComment=NT;N.HtmlComment=IT;N.Declaration=_T;N.GenericTwigTag=(e,t,r,n)=>{let a=e.tagName;return N[a+"Tag"]?N[a+"Tag"](e,t,r,n):PT(e,t,r,n)};N.GenericToken=LT;N.String=e=>e;var KT=H(re());function WT(e,t,r,n){let a=e.getValue();if(n.embeddedLanguageFormatting=="auto"&&a instanceof KT.Element){let u=a.name.toLowerCase();if(u=="script"||u=="style"){let s=u=="script"?"babel":"css",{value:l}=a.children?.[0].value;if(l){let p=C(tl(a,e,t)),f=_([ne,r(l,{...n,parser:s},{stripTrailingHardline:!0})]);return[p,f,P,d(["</",a.name,">"])]}}}return!1}i(WT,"embed");var vw=[{name:"melody",parsers:["melody"],group:"Melody",tmScope:"melody.twig",aceMode:"html",codemirrorMode:"clike",codemirrorMimeType:"text/melody-twig",extensions:[".melody.twig",".html.twig",".twig",".django",".jinja"],linguistLanguageId:0,vscodeLanguageIds:["twig","django","django-html"]}];function Sw(){return!1}i(Sw,"hasPragma");function Fw(){return-1}i(Fw,"locStart");function Cw(){return-1}i(Cw,"locEnd");var Bw={melody:{parse:GT,astFormat:"melody",hasPragma:Sw,locStart:Fw,locEnd:Cw}};function Ow(e){return e.ast_type&&e.ast_type!=="comment"}i(Ow,"canAttachComment");function bw(e){let t=e.getValue();switch(t.ast_type){case"comment":return t.value;default:throw new Error("Not a comment: "+JSON.stringify(t))}}i(bw,"printComment");function Nw(e,t){delete t.lineno,delete t.col_offset}i(Nw,"clean");var Iw={melody:{print:jT,embed:WT,printComment:bw,canAttachComment:Ow,massageAstNode:Nw,willPrintOwnComments:()=>!0}},_w={twigMelodyPlugins:{type:"path",category:"Global",array:!0,default:[{value:[]}],description:"Provide additional plugins for Melody. Relative file path from the project root."},twigMultiTags:{type:"path",category:"Global",array:!0,default:[{value:[]}],description:"Make custom Twig tags known to the parser."},twigSingleQuote:{type:"boolean",category:"Global",default:!0,description:"Use single quotes in Twig files?"},twigAlwaysBreakObjects:{type:"boolean",category:"Global",default:!0,description:"Should objects always break in Twig files?"},twigPrintWidth:{type:"int",category:"Global",default:80,description:"Print width for Twig files"},twigFollowOfficialCodingStandards:{type:"boolean",category:"Global",default:!0,description:"See https://twig.symfony.com/doc/2.x/coding_standards.html"},twigOutputEndblockName:{type:"boolean",category:"Global",default:!1,description:"Output the Twig block name in the 'endblock' tag"}}});var un={};zr(un,{activate:()=>rn,deactivate:()=>nn});module.exports=Qr(un);var rt=require("vscode");var mt=require("prettier"),Ot=require("vscode"),vr=rr(require("prettier/parser-html")),en=rr(dr());function mr(e,t){let r={tabWidth:2,printWidth:5e3,semi:!1,singleQuote:!0,trailingComma:"none",twigPrintWidth:5e3,twigMultiTags:["with,endwith"],twigAlwaysBreakObjects:!1,twigSingleQuote:!0,parser:"melody",plugins:[],htmlWhitespaceSensitivity:"ignore",embeddedLanguageFormatting:"auto"};Object.assign(r,mt.resolveConfig.sync(e.uri.fsPath)??[]),r.twigSingleQuote=!0,r.plugins=[en],r.parser="melody",r.htmlWhitespaceSensitivity="ignore",r.embeddedLanguageFormatting="off";let n={text:e.getText()};try{if(n.text=(0,mt.format)(n.text,r),!n.text)throw new Error("django-html: formatting failed");tn(n,r),t?.clear()}catch(a){if(t&&a.loc){t.clear();let u=a.loc;u.end||(u.end={line:u.start.line,column:u.start.column+1});let s=u.start.line-1,l=u.start.column-1,p=u.end.line-1,f=u.end.column-1,m=new Ot.Range(s,l,p,f);setTimeout(()=>t.set(e.uri,[new Ot.Diagnostic(m,a.message.split(" 	 ")[0].split(`
-`)[0],0)]),250)}else console.log(a)}return n.text}function tn(e,t){let r="  ";t.useTabs?r="	":t.tabWidth&&(r=" ".repeat(t.tabWidth));let n=e.text.includes(`\r
-`)?`\r
-`:`
-`,a=vr.parsers.html.parse(e.text,null,{}),u=0,s=0,l=p=>{if(!!p.children)for(let f=0;f<p.children.length;f++){let m=p.children[f];if(m.type=="element"&&(m.name=="script"||m.name=="style")){if(m.children.length==0)continue;if(m.prev&&m.prev.value){let y=m.prev.value.trim();if(y.endsWith("{# prettier-ignore #}")||y.endsWith("{% comment %}"))continue}let h=m.children[0],A=h.value;if(A.trim()){t.parser=m.name=="script"?"babel":"css";let y=m.sourceSpan.start.offset,k=y;for(;k>-1&&e.text[k+u]!=`
-`;)k--;let oe=e.text.slice(k+1+u,y+u).replace(/\S/g," ");A=`
-`.repeat(h.sourceSpan.start.line+s)+" ".repeat(h.sourceSpan.start.col)+h.value,A=n+(0,mt.format)(A,t).trim().split(n).map(J=>oe+r+J).join(n)+n+oe}else A="";let g=h.sourceSpan.start.offset;e.text=e.text.slice(0,g+u)+A+e.text.slice(g+h.value.length+u),u+=A.length-h.value.length,s+=A.split(`
-`).length-h.value.split(`
-`).length}else l(m)}};l(a)}var dt=require("vscode"),Ct=new Map,It=new Map;dt.workspace.registerTextDocumentContentProvider("dj-embedded-content",{provideTextDocumentContent:e=>{let t=e.path.lastIndexOf("/"),r=e.path.slice(1).slice(0,t-1),n=decodeURIComponent(r);return Ct.get(n)}});function Er(e,t){e.subscriptions.push(dt.workspace.onDidChangeTextDocument(r=>{t.includes(r.document.languageId)&&It.delete(r.document.uri.toString())})),e.subscriptions.push(dt.workspace.onDidCloseTextDocument(r=>{r.languageId=="html"&&Ct.delete(r.uri.toString())})),e.subscriptions.push(dt.workspace.onDidRenameFiles(r=>{r.files.forEach(n=>{Ct.delete(n.oldUri.toString())})}))}function Pt(e,t){t=t??"html";let r=e.uri.toString();t!="html"&&(r+="."+t),Ct.set(r,e.getText());let n;return It.has(r)?n=It.get(r):(n=`/${encodeURIComponent(r)}/${Math.random()}.${t}`,It.set(r,n)),dt.Uri.from({scheme:"dj-embedded-content",authority:"django-html",path:n})}function Fr(){Ct.clear()}var Zt=["django-html"];function rn(e){Er(e,Zt);let t=rt.languages.createDiagnosticCollection("django");e.subscriptions.push(t),e.subscriptions.push(rt.languages.registerDocumentFormattingEditProvider("django-html",{provideDocumentFormattingEdits:async(r,n,a)=>{let u=r.getText();if(!u)return;let l=mr(r,t);if(l&&l!=u){let p=new rt.Range(r.positionAt(0),r.positionAt(u.length));return[new rt.TextEdit(p,l)]}else return[]}})),e.subscriptions.push(rt.languages.registerCompletionItemProvider(Zt,{provideCompletionItems:async(r,n,a,u)=>{let s=Pt(r);return await rt.commands.executeCommand("vscode.executeCompletionItemProvider",s,n,u.triggerCharacter)}},".","(",":","<")),e.subscriptions.push(rt.languages.registerHoverProvider(Zt,{provideHover:async(r,n,a)=>{let u=Pt(r);return(await rt.commands.executeCommand("vscode.executeHoverProvider",u,n))?.[0]}}))}function nn(){Fr()}0&&(module.exports={activate,deactivate});
+${n.length} variable names and ${s.length} values.` });
+      let l = [];
+      for (let f = 0, m = n.length; f < m; f++)
+        l[f] = new Xt(n[f], s[f]);
+      let p = new $t(l);
+      return R(p, t), b(p, r.expect(D.TAG_END)), p.trimRightSet = !!(u && ue(u)), p.trimLeftEndset = !!(a && se(a)), p;
+    } };
+    var q1 = { name: "spaceless", parse(e, t) {
+      let r = e.tokens, n = r.la(-2);
+      r.expect(D.TAG_END);
+      let s = r.la(-1), u, a = e.parse((p, f, m) => {
+        let A = !!(f.type === D.TAG_START && m.nextIf(D.SYMBOL, "endspaceless"));
+        return u = f, A;
+      }).expressions, l = new Jt(a);
+      return R(l, t), b(l, r.expect(D.TAG_END, "", n)), r.expect(D.SYMBOL, "endfor", n), l.trimRightSpaceless = ue(s), l.trimLeftEndspaceless = !!(u && se(u)), l;
+    } };
+    var zo = H(re());
+    var k1 = { name: "use", parse(e, t) {
+      let r = e.tokens, n = e.matchExpression(), s = [];
+      if (r.nextIf(D.SYMBOL, "with"))
+        do {
+          let a = r.expect(D.SYMBOL), l = I(zo.Identifier, a, a.text), p = l;
+          if (r.nextIf(D.SYMBOL, "as")) {
+            let m = r.expect(D.SYMBOL);
+            p = I(zo.Identifier, m, m.text);
+          }
+          let f = new Qt(l, p);
+          je(f, l), Pe(f, p), s.push(f);
+        } while (r.nextIf(D.COMMA));
+      let u = new zt(n, s);
+      return R(u, t), b(u, r.expect(D.TAG_END)), u;
+    } };
+    var Zo = H(re());
+    var M1 = { name: "mount", parse(e, t) {
+      let r = e.tokens, n = r.la(-2), s = null, u = null, a = null, l = false, p = 0, f = null;
+      if (r.test(D.SYMBOL, "async") && r.la(1).type === D.STRING_START && (l = true, r.next()), r.test(D.STRING_START))
+        u = e.matchStringExpression();
+      else {
+        let O = r.expect(D.SYMBOL);
+        s = I(Zo.Identifier, O, O.text), r.nextIf(D.SYMBOL, "from") && (u = e.matchStringExpression());
+      }
+      r.nextIf(D.SYMBOL, "as") && (a = e.matchExpression()), r.nextIf(D.SYMBOL, "with") && (f = e.matchExpression()), l && r.nextIf(D.SYMBOL, "delay") && (r.expect(D.SYMBOL, "placeholder"), r.expect(D.SYMBOL, "by"), p = Number.parseInt(r.expect(D.NUMBER).text, 10), r.nextIf(D.SYMBOL, "s") ? p *= 1e3 : r.expect(D.SYMBOL, "ms"));
+      let m = new Mt(s, u, a, f, l, p), A, E, x, F;
+      if (l) {
+        if (r.expect(D.TAG_END), A = r.la(-1), m.body = e.parse((O, g, U) => g.type === D.TAG_START && (U.test(D.SYMBOL, "catch") || U.test(D.SYMBOL, "endmount"))), r.nextIf(D.SYMBOL, "catch")) {
+          E = r.la(-2);
+          let O = r.expect(D.SYMBOL);
+          m.errorVariableName = I(Zo.Identifier, O, O.text), r.expect(D.TAG_END), x = r.la(-1), m.otherwise = e.parse((g, U, X) => U.type === D.TAG_START && X.test(D.SYMBOL, "endmount"));
+        }
+        r.expect(D.SYMBOL, "endmount"), F = r.la(-2);
+      }
+      return R(m, t), b(m, r.expect(D.TAG_END, "", n)), m.trimRightMount = !!(A && ue(A)), m.trimLeftCatch = !!(E && se(E)), m.trimRightCatch = !!(x && ue(x)), m.trimLeftEndmount = !!(F && se(F)), m;
+    } };
+    var Cu = { tags: [Xh, $h, Jh, g1, v1, F1, C1, B1, O1, N1, _1, R1, P1, w1, q1, k1, M1], unaryOperators: Lo, binaryOperators: Ci, tests: Bn };
+    var G1 = Symbol("ALREADY_INDENTED");
+    var g6 = Symbol("OPERATOR_PRECEDENCE");
+    var v6 = [".."];
+    var el = Cu.binaryOperators.reduce((e, t) => (e[t.text] = t.precedence, e), {});
+    var S6 = i((e, t, r, n) => {
+      e[L] = false, e[ft] = true;
+      let s = ['"'], u = e, a = [];
+      for (; fr.Node.isBinaryConcatExpression(u); )
+        s.unshift(t.call(r, ...a, "right")), a.push("left"), u = u.left;
+      return s.unshift(t.call(r, ...a)), s.unshift('"'), d(s);
+    }, "printInterpolatedString");
+    var F6 = i((e) => v6.indexOf(e) < 0, "operatorNeedsSpaces");
+    var C6 = i((e) => e.operator === "or" || e.operator === "and", "hasLogicalOperator");
+    var U1 = i((e, t) => {
+      let r = e[t], n = fr.Node.isBinaryExpression(r), s = el[e.operator], u = n ? el[e[t].operator] : Number.MAX_SAFE_INTEGER;
+      return u < s || u > s && n && C6(r) || fr.Node.isFilterExpression(r) || fr.Node.isBinaryConcatExpression(e) && fr.Node.isConditionalExpression(r);
+    }, "otherNeedsParentheses");
+    var B6 = i((e, t, r) => {
+      e[Y] = false, e[L] = true;
+      let n = fr.Node.isBinaryExpression(e.right), s = ["and", "or"].indexOf(e.operator) > -1, u = F6(e.operator), a = At(t, G1, false);
+      !a && n && (e.right[G1] = true);
+      let l = At(t, yr, false), f = sr(t)[hr] !== false;
+      l || (e[yr] = true);
+      let m = l ? At(t, "operator") : "";
+      e[g6] = el[e.operator];
+      let A = t.call(r, "left"), E = t.call(r, "right"), x = [], F = U1(e, "left"), O = U1(e, "right");
+      F && x.push("("), x.push(A), F && x.push(")");
+      let g = [u ? B : ne, e.operator, u ? " " : ""];
+      O && g.push("("), g.push(E), O && g.push(")");
+      let U = a ? d(g) : _(d(g)), X = d(qe(t, [...x, U], e)), z = !l && f, ke = s && e.operator !== m;
+      return z || !s || l && ke ? C(X) : X;
+    }, "_printBinaryExpression");
+    var Bu = i((e, t, r, n) => fr.Node.isBinaryConcatExpression(e) && e.wasImplicitConcatenation ? S6(e, t, r, n) : B6(e, t, r), "printBinaryExpression");
+    var Y1 = i((e, t, r) => {
+      e[Y] = false, e[L] = true;
+      let n = [B, "?"];
+      e.consequent && n.push(d([" ", t.call(r, "consequent")])), e.alternate && n.push(B, ": ", t.call(r, "alternate"));
+      let s = [t.call(r, "test"), _(d(n))];
+      return qe(t, s, e), C(d(s));
+    }, "printConditionalExpression");
+    var tl = i((e, t, r) => {
+      let n = "<" + e.name, s = O6(t, r, "", "attributes"), u = e.selfClosing ? " />" : ">";
+      return e.attributes && e.attributes.length > 0 ? d([n, _(d([" ", s])), u]) : d([n, u]);
+    }, "printOpeningTag");
+    var O6 = i((e, t, r, n) => Ee(d([r, B]), e.map(t, n)), "printSeparatedList");
+    var j1 = i((e, t, r) => {
+      e[Y] = true;
+      let n = C(tl(e, t, r));
+      e[Y] = false, e[L] = false;
+      let s = e.name.toLowerCase();
+      if (s == "script" || s == "style") {
+        let { value: a } = e.children?.[0]?.value || {};
+        return a ? [n, a, d(["</", e.name, ">"])] : [n, d(["</", e.name, ">"])];
+      }
+      if (!e.selfClosing) {
+        e.children = Dn(e.children);
+        let a = hn(e, t, r, "children"), l = d(["</", e.name, ">"]), p = [n], f = d(a);
+        if (Ai(e))
+          p.push(_(d([ne, f])), ne);
+        else {
+          let m = [];
+          var u = e.children.findIndex((A) => A.type != "PrintExpressionStatement" && A.type != "PrintTextStatement") == -1;
+          a.length > 0 && (u || m.push(P)), m.push(f), p.push(_(d(m))), a.length > 0 && (u || p.push(P));
+        }
+        return p.push(l), Ai(e) ? C(d(p)) : d(p);
+      }
+      return n;
+    }, "printElement");
+    var Ou = H(re());
+    var b6 = i((e) => ["id", "class", "type"].indexOf(e) > -1, "mayCorrectWhitespace");
+    var N6 = i((e) => e.replace(/\s+/g, " ").trim(), "sanitizeWhitespace");
+    var I6 = i((e, t, r, ...n) => {
+      let s = [], u = e, a = n;
+      for (; Ou.Node.isBinaryConcatExpression(u); )
+        s.unshift(t.call(r, ...a, "right")), a.push("left"), u = u.left;
+      return s.unshift(t.call(r, ...a)), d(s);
+    }, "printConcatenatedString");
+    var V1 = i((e, t, r = r) => {
+      e[Y] = false;
+      let n = [t.call(r, "name")];
+      if (e[Y] = true, e[L] = false, e.value) {
+        if (n.push('="'), Ou.Node.isBinaryConcatExpression(e.value) && e.value.wasImplicitConcatenation)
+          n.push(I6(e.value, t, r, "value"));
+        else {
+          let s = Ou.Node.isStringLiteral(e.value);
+          b6(e.name.name) && s && (e.value.value = N6(e.value.value)), n.push(t.call(r, "value"));
+        }
+        n.push('"');
+      }
+      return d(n);
+    }, "printAttribute");
+    var K1 = i((e, t) => {
+      e[Y] = false;
+      let r = [e.name];
+      qe(t, r, e);
+      let n = d(r);
+      return r.length === 1 ? n : C(n);
+    }, "printIdentifier");
+    var W1 = H(re());
+    var H1 = i((e, t, r) => {
+      e[Y] = false, e[L] = true;
+      let n = e.trimLeft ? "{{-" : "{{", s = e.trimRight ? "-}}" : "}}", u = fi(e.value) && !W1.Node.isObjectExpression(e.value), a = u ? " " : B, l = d([a, t.call(r, "value")]), p = u ? l : _(l);
+      return C(d([n, p, a, s]));
+    }, "printExpressionStatement");
+    var X1 = i((e, t, r) => {
+      e[Y] = false, e[L] = true;
+      let n = [t.call(r, "object")];
+      return n.push(e.computed ? "[" : "."), n.push(t.call(r, "property")), e.computed && n.push("]"), qe(t, n, e), C(d(n));
+    }, "printMemberExpression");
+    var rl = H(re());
+    var _6 = i((e) => uu(e, (t) => t[Ln] === true), "isInFilterBlock");
+    var R6 = i((e, t, r, n) => {
+      if (!(e.arguments && e.arguments.length > 0))
+        return "";
+      let u = t.map(r, ...n, "arguments");
+      return e.arguments.length === 1 && rl.Node.isObjectExpression(e.arguments[0]) ? e.isDjango ? C(d([":", u[0]])) : C(d(["(", u[0], ")"])) : e.isDjango ? C(d([":", _(d([ne, Ee(d([",", B]), u)])), ne])) : C(d(["(", _(d([ne, Ee(d([",", B]), u)])), ne, ")"]));
+    }, "printArguments");
+    var $1 = i((e, t, r, n) => {
+      let s = R6(e, t, r, n), u = t.call(r, ...n, "name");
+      return d([u, s]);
+    }, "printOneFilterExpression");
+    var P6 = i((e, t = "") => Ee(d([t === "" ? ne : B, "|", t]), e), "joinFilters");
+    var J1 = i((e, t, r, n) => {
+      let s = e;
+      e[Y] = false, e[L] = true;
+      let u = n.twigFollowOfficialCodingStandards === false, a = u ? " " : "", l = ["target"], p = [$1(e, t, r, [])];
+      for (; rl.Node.isFilterExpression(s.target); )
+        p.unshift($1(s.target, t, r, l)), l.push("target"), s = s.target;
+      let f = t.call(r, ...l), m = _6(t), A = Ei(di(e, ...l)), E = [];
+      if (A && E.push("("), E.push(f), A && E.push(")"), m && (E.push(d([" ", p[0]])), p = p.slice(1)), p.length === 1)
+        E.push(`${a}|${a}`, p[0]);
+      else if (p.length > 1) {
+        let F = d([u ? B : ne, `|${a}`, P6(p, a)]);
+        E.push(_(F));
+      }
+      let x = au(t);
+      return x === Y ? (E.push(" }}"), E.unshift("{{ ")) : x === ft && ou(E), C(d(E));
+    }, "printFilterExpression");
+    var Q1 = i((e, t, r, n) => {
+      if (e.properties.length === 0)
+        return "{}";
+      e[Y] = false;
+      let s = t.map(r, "properties"), u = n.twigAlwaysBreakObjects ? P : B, a = d([B, Ee(d([",", u]), s)]), l = ["{", _(a), u, "}"];
+      return qe(t, l, e), C(d(l));
+    }, "printObjectExpression");
+    var z1 = H(re());
+    var Z1 = i((e, t, r, n) => {
+      e[L] = !e.computed && z1.Node.isStringLiteral(e.key) && !go(e.key.value);
+      let s = e.key.wasImplicitConcatenation, u = e.computed && !s, a = [];
+      return u && a.push("("), a.push(t.call(r, "key")), u && a.push(")"), a.push(": "), e[L] = true, a.push(t.call(r, "value")), d(a);
+    }, "printObjectProperty");
+    var eT = H(re());
+    var tT = i((e, t, r) => {
+      e[Y] = false, e[L] = true;
+      let n = t.map(r, "arguments"), s = [t.call(r, "callee"), "("];
+      return e.arguments.length === 0 ? s.push(")") : e.arguments.length === 1 && eT.Node.isObjectExpression(e.arguments[0]) ? s.push(n[0], ")") : s.push(_(d([ne, Ee(d([",", B]), n)])), ne, ")"), qe(t, s, e), C(d(s));
+    }, "printCallExpression");
+    var rT = { TestNullExpression: "null", TestDivisibleByExpression: "divisible by", TestDefinedExpression: "defined", TestEmptyExpression: "empty", TestEvenExpression: "even", TestOddExpression: "odd", TestIterableExpression: "iterable", TestSameAsExpression: "same as" };
+    var L6 = i((e) => e.constructor.name === "UnarySubclass" && e.operator === "not", "isNegator");
+    var nT = i((e, t, r) => {
+      let n = e.__proto__.type, s = [t.call(r, "expression"), " is "], u = sr(t), a = Array.isArray(e.arguments) && e.arguments.length > 0;
+      if (L6(u) && s.push("not "), rT[n] ? s.push(rT[n]) : console.error("TestExpression: No text for " + n + " defined"), a) {
+        let l = t.map(r, "arguments"), p = Ee(d([",", B]), l);
+        s.push(C(d(["(", _(d([ne, p])), ne, ")"])));
+      }
+      return d(s);
+    }, "printTestExpression");
+    var iT = i((e, t, r) => {
+      e[Y] = false, e[L] = true;
+      let n = [e.operator, t.call(r, "argument")];
+      return qe(t, n, e), C(d(n));
+    }, "printUnaryExpression");
+    var sT = H(re());
+    var w6 = i((e) => Ei(e), "argumentNeedsParentheses");
+    var q6 = i((e) => e === "not", "isLogicalOperator");
+    var k6 = i((e, t, r) => {
+      let n = At(t, yr, false);
+      n || (e[yr] = true);
+      let u = sr(t)[hr] !== false, a = [e.operator, " "], l = w6(e.argument), p = t.call(r, "argument");
+      l ? a.push("(", _(d([ne, p])), d([ne, ")"])) : a.push(p);
+      let f = d(a);
+      return !n && u ? C(f) : f;
+    }, "printLogicalExpression");
+    var uT = i((e, t, r) => {
+      let n = [], s = sT.Node.isTestExpression(e.argument);
+      return q6(e.operator) && !s ? k6(e, t, r) : (s || n.push(e.operator, " "), n.push(t.call(r, "argument")), d(n));
+    }, "printUnarySubclass");
+    var M6 = i((e, t = true) => {
+      let r = st(e);
+      return r === 0 ? t ? B : "" : r === 1 ? P : d([P, P]);
+    }, "newlinesOnly");
+    var aT = i((e, t, r) => {
+      let n = e[Dr] === true, s = e[Ar] === true, u = t.call(r, "value");
+      if (_r(u) && e[wn])
+        return M6(u);
+      let a = So(u, n, s);
+      return Ee(d([P, P]), a);
+    }, "printTextStatement");
+    var G6 = i((e, t) => t === 0 || e[t - 1] !== "\\", "isUnmaskedOccurrence");
+    var oT = i((e) => (t) => {
+      let r = t.indexOf(e);
+      for (; r >= 0; ) {
+        if (G6(t, r))
+          return true;
+        r = t.indexOf(e, r + 1);
+      }
+      return false;
+    }, "containsUnmasked");
+    var U6 = oT("'");
+    var Y6 = oT('"');
+    var j6 = i((e, t) => U6(e) ? '"' : Y6(e) ? "'" : En(t), "getQuoteChar");
+    var lT = i((e, t, r, n) => {
+      let s = At(t, L, false), u = At(t, Pn, null);
+      if (s) {
+        let a = u || j6(e.value, n);
+        return a + e.value + a;
+      }
+      return e.value;
+    }, "printStringLiteral");
+    var cT = i((e, t, r) => {
+      e[L] = true;
+      let n = t.map(r, "elements"), s = d([ne, Ee(d([",", B]), n)]);
+      return C(d(["[", _(s), ne, "]"]));
+    }, "printArrayExpression");
+    var pT = i((e, t, r) => {
+      let n = t.call(r, "target"), s = e.start ? t.call(r, "start") : "", u = e.end ? t.call(r, "end") : "";
+      return d([n, "[", s, ":", u, "]"]);
+    }, "printSliceExpression");
+    var fT = i((e, t, r) => {
+      let n = [e.trimLeft ? "{%-" : "{%", ' use "', t.call(r, "source"), '"'];
+      if (e.aliases && e.aliases.length > 0) {
+        n.push(" with");
+        let u = t.map(r, "aliases");
+        n.push(_(d([B, Ee(d([",", B]), u)]))), n.push(B);
+      } else
+        n.push(" ");
+      return n.push(e.trimRight ? "-%}" : "%}"), C(d(n));
+    }, "printUseStatement");
+    var ET = i((e, t, r) => d([t.call(r, "name"), " as ", t.call(r, "alias")]), "printAliasExpression");
+    var dT = H(re());
+    var mT = i((e, t, r, n) => {
+      e[Y] = false;
+      let s = Array.isArray(e.body), u = n.twigOutputEndblockName === true;
+      if (s) {
+        let a = t.call(r, "name"), p = [d([e.trimLeft ? "{%-" : "{%", " block ", a, e.trimRightBlock ? " -%}" : " %}"])];
+        if (e.body.length > 0) {
+          let m = Re(e, t, r, "body");
+          p.push(m);
+        }
+        return p.push(P), p.push(e.trimLeftEndblock ? "{%-" : "{%", " endblock", u ? d([" ", a]) : "", e.trimRight ? " -%}" : " %}"), C(d(p));
+      } else if (dT.Node.isPrintExpressionStatement(e.body)) {
+        let a = [e.trimLeft ? "{%-" : "{%", " block ", t.call(r, "name"), " ", t.call(r, "body", "value"), e.trimRight ? " -%}" : " %}"];
+        return d(a);
+      }
+    }, "printBlockStatement");
+    var DT = i((e, t, r) => {
+      let n = [e.trimLeft ? "{%-" : "{%", " spaceless ", e.trimRightSpaceless ? "-%}" : "%}"];
+      return n.push(Re(e, t, r, "body")), n.push(P), n.push(e.trimLeftEndspaceless ? "{%-" : "{%", " endspaceless ", e.trimRight ? "-%}" : "%}"), C(d(n));
+    }, "printSpacelessBlock");
+    var V6 = i((e, t) => d([e.trimLeft ? "{%-" : "{%", " autoescape ", En(t), e.escapeType || "html", En(t), " ", e.trimRightAutoescape ? "-%}" : "%}"]), "createOpener");
+    var AT = i((e, t, r, n) => {
+      let s = [V6(e, n)];
+      return s.push(Re(e, t, r, "expressions")), s.push(P, e.trimLeftEndautoescape ? "{%-" : "{%", " endautoescape ", e.trimRight ? "-%}" : "%}"), d(s);
+    }, "printAutoescapeBlock");
+    var hT = i((e, t, r) => {
+      let n = e.trimLeft ? "-" : "", s = e.trimRight ? "-" : "";
+      return `{%${n} flush ${s}%}`;
+    }, "printFlushStatement");
+    var yT = i((e, t, r) => {
+      e[L] = true;
+      let n = [e.trimLeft ? "{%-" : "{%", " include ", t.call(r, "source")];
+      if (e.argument) {
+        let s = t.call(r, "argument");
+        n.push(" with "), n.push(s);
+      }
+      return e.contextFree && n.push(" only"), n.push(e.trimRight ? " -%}" : " %}"), C(d(n));
+    }, "printIncludeStatement");
+    var bi = H(re());
+    var TT = Symbol("IS_ELSEIF");
+    var xT = i((e, t, r) => {
+      e[Y] = false;
+      let n = Array.isArray(e.alternate) && e.alternate.length > 0, s = bi.Node.isIfStatement(e.alternate), u = e[TT] === true, a = e.consequent.length === 0, l = e.consequent.length === 1, p = e.consequent[0], f = !u && !e.alternate && (a || l && !bi.Node.isElement(p) && (!bi.Node.isPrintTextStatement(p) || lu(p.value.value)));
+      l && bi.Node.isPrintTextStatement(p) && lu(p.value.value) && (p[Dr] = true, p[Ar] = true);
+      let m = C(d([e.trimLeft ? "{%- " : "{% ", u ? "elseif" : "if", _(d([B, t.call(r, "test")])), " ", e.trimRightIf ? "-%}" : "%}"])), A = f ? a ? "" : t.call(r, "consequent", "0") : Re(e, t, r, "consequent"), E = [m, A];
+      return n ? (E.push(P, e.trimLeftElse ? "{%-" : "{%", " else ", e.trimRightElse ? "-%}" : "%}"), E.push(Re(e, t, r, "alternate"))) : s && (e.alternate[TT] = true, E.push(P), E.push(t.call(r, "alternate"))), u || E.push(f ? "" : P, e.trimLeftEndif ? "{%-" : "{%", " endif ", e.trimRight ? "-%}" : "%}"), d(E);
+    }, "printIfStatement");
+    var K6 = i((e) => "" + e / 1e3 + "s", "formatDelay");
+    var W6 = i((e, t, r) => {
+      let n = [], s = [e.trimLeft ? "{%-" : "{%", " mount"];
+      e.async === true && s.push(" async"), e.name && s.push(" ", t.call(r, "name")), e.name && e.source && s.push(" from"), e.source && s.push(" ", t.call(r, "source")), e.key && s.push(_(d([B, "as ", t.call(r, "key")]))), n.push(C(d(s))), e.argument && n.push(_(d([" with ", t.call(r, "argument")]))), e.delayBy && n.push(_(d([B, "delay placeholder by ", K6(e.delayBy)])));
+      let u = e.body || e.otherwise ? e.trimRightMount : e.trimRight;
+      return n.push(d([B, u ? "-%}" : "%}"])), C(d(n));
+    }, "buildOpener");
+    var H6 = i((e, t) => _(d([P, e.call(t, "body")])), "buildBody");
+    var X6 = i((e, t, r) => {
+      let n = [];
+      return n.push(d([P, e.trimLeftCatch ? "{%-" : "{%", " catch "])), e.errorVariableName && n.push(t.call(r, "errorVariableName"), " "), n.push(e.trimRightCatch ? "-%}" : "%}"), n.push(_(d([P, t.call(r, "otherwise")]))), d(n);
+    }, "buildErrorHandling");
+    var gT = i((e, t, r) => {
+      e[Y] = false, e[L] = true;
+      let n = [W6(e, t, r)];
+      return e.body && n.push(H6(t, r)), e.otherwise && n.push(X6(e, t, r)), (e.body || e.otherwise) && n.push(d([P, e.trimLeftEndmount ? "{%-" : "{%", " endmount ", e.trimRight ? "-%}" : "%}"])), d(n);
+    }, "printMountStatement");
+    var $6 = i((e, t, r) => {
+      let n = [e.trimLeft ? "{%-" : "{%", " for "];
+      return e.keyTarget && n.push(t.call(r, "keyTarget"), ", "), n.push(t.call(r, "valueTarget"), " in ", t.call(r, "sequence")), e.condition && n.push(_(d([B, "if ", t.call(r, "condition")]))), n.push(d([" ", e.trimRightFor ? "-%}" : "%}"])), C(d(n));
+    }, "printFor");
+    var vT = i((e, t, r) => {
+      e[Y] = false;
+      let n = [$6(e, t, r)], s = e.body.expressions.length === 0 || e.body.expressions.length === 1 && mn(e.body.expressions[0]), u = t.call(r, "body");
+      if ((!s || e.otherwise) && n.push(An(u)), e.otherwise) {
+        n.push(P, e.trimLeftElse ? "{%-" : "{%", " else ", e.trimRightElse ? "-%}" : "%}");
+        let a = t.call(r, "otherwise");
+        n.push(An(a));
+      }
+      return n.push(s ? "" : P, e.trimLeftEndfor ? "{%-" : "{%", " endfor ", e.trimRight ? "-%}" : "%}"), d(n);
+    }, "printForStatement");
+    var nl = H(re());
+    var J6 = i((e) => nl.Node.isObjectExpression(e) || xo(e) || nl.Node.isArrayExpression(e), "shouldAvoidBreakBeforeClosing");
+    var Q6 = i((e, t, r, n) => {
+      let s = e.assignments[n];
+      s[hr] = false;
+      let u = J6(s.value);
+      return C(d([e.trimLeft ? "{%-" : "{%", " set ", t.call(r, "assignments", n), u ? " " : B, e.trimRight ? "-%}" : "%}"]));
+    }, "buildSetStatement");
+    var z6 = i((e) => Array.isArray(e.assignments) && e.assignments.length === 1 && Array.isArray(e.assignments[0].value), "isEmbracingSet");
+    var Z6 = i((e, t, r) => {
+      let n = [];
+      return Array.isArray(e.assignments) && e.assignments.length > 0 && e.assignments.forEach((u, a) => {
+        n.length > 0 && n.push(P), n.push(Q6(e, t, r, a));
+      }), d(n);
+    }, "printRegularSet");
+    var ew = i((e, t, r) => {
+      let n = [e.trimLeft ? "{%-" : "{%", " set ", t.call(r, "assignments", "0", "name"), e.trimRightSet ? " -%}" : " %}"];
+      e[L] = false;
+      let s = Re(e, t, r, "assignments", "0", "value");
+      return n.push(s), n.push(P, e.trimLeftEndset ? "{%-" : "{%", " endset ", e.trimRight ? "-%}" : "%}"), d(n);
+    }, "printEmbracingSet");
+    var ST = i((e, t, r) => (e[L] = true, z6(e) ? ew(e, t, r) : Z6(e, t, r)), "printSetStatement");
+    var FT = i((e, t, r) => d([e.trimLeft ? "{%-" : "{%", " do ", t.call(r, "value"), e.trimRight ? " -%}" : " %}"]), "printDoStatement");
+    var CT = i((e, t, r) => (e[L] = true, d([e.trimLeft ? "{%-" : "{%", " extends ", t.call(r, "parentName"), e.trimRight ? " -%}" : " %}"])), "printExtendsStatement");
+    var tw = i((e, t, r) => {
+      e[Y] = false, e[L] = true;
+      let n = [e.trimLeft ? "{%-" : "{%", " embed ", t.call(r, "parent")];
+      return e.argument && n.push(_(d([B, "with ", t.call(r, "argument")]))), n.push(d([B, e.trimRightEmbed ? "-%}" : "%}"])), C(d(n));
+    }, "printOpener");
+    var BT = i((e, t, r) => {
+      let n = Re(e, t, r, "blocks"), s = tw(e, t, r), u = d([P, e.trimLeftEndembed ? "{%-" : "{%", " endembed ", e.trimRight ? "-%}" : "%}"]);
+      return d([s, n, u]);
+    }, "printEmbedStatement");
+    var OT = i((e, t, r) => (e[L] = true, C(d([e.trimLeft ? "{%-" : "{%", " import ", t.call(r, "key"), _(d([B, "as ", t.call(r, "alias")])), B, e.trimRight ? "-%}" : "%}"]))), "printImportDeclaration");
+    var rw = i((e) => {
+      let t = [e.key.name];
+      return e.key.name !== e.alias.name && t.push(" as ", e.alias.name), d(t);
+    }, "printImportDeclaration");
+    var bT = i((e, t, r) => {
+      e[L] = true;
+      let n = e.imports.map(rw), s = _(d([B, Ee(d([",", B]), n)]));
+      return C(d([e.trimLeft ? "{%-" : "{%", " from ", t.call(r, "source"), " import", s, B, e.trimRight ? "-%}" : "%}"]));
+    }, "printFromStatement");
+    var NT = i((e) => {
+      let t = e.value.value || "", r = pu(t), n = t.length >= 3 ? t[2] === "-" : false, s = t.length >= 3 ? t.slice(-3, -2) === "-" : false;
+      return st(r) === 0 ? Eu(r, n, s) : d([n ? "{#-" : "{#", r, s ? "-#}" : "#}"]);
+    }, "printTwigComment");
+    var IT = i((e, t, r) => {
+      let n = cu(e.value.value || "");
+      return st(n) === 0 ? fu(n) : d(["<!-- ", n, " -->"]);
+    }, "printHtmlComment");
+    var _T = i((e, t, r) => {
+      e[L] = true, e[Pn] = '"';
+      let n = "<!" + (e.declarationType || "").toUpperCase(), s = t.map(r, "parts");
+      return Wr([n, " ", Ee(" ", s), ">"]);
+    }, "printDeclaration");
+    var RT = H(re());
+    var PT = i((e, t, r) => {
+      e[L] = true;
+      let s = [BA(e, t, r)], u = t.map(r, "sections");
+      return e.sections.forEach((a, l) => {
+        RT.Node.isGenericTwigTag(a) ? s.push(d([P, u[l]])) : Fo(a) || s.push(An(u[l]));
+      }), d(s);
+    }, "printGenericTwigTag");
+    var LT = i((e, t, r) => e.tokenText, "printGenericToken");
+    var nw = i((e, t, r) => {
+      let n = [e.trimLeft ? "{%-" : "{%", " macro ", t.call(r, "name"), "("], s = t.map(r, "arguments"), u = Ee(d([",", B]), s);
+      return n.push(_(d([ne, u]))), n.push(")", B, e.trimRightMacro ? "-%}" : "%}"), C(d(n));
+    }, "printOpener");
+    var wT = i((e, t, r) => {
+      let n = [nw(e, t, r)];
+      return n.push(_(d([P, t.call(r, "body")]))), n.push(P, e.trimLeftEndmacro ? "{%-" : "{%", " endmacro ", e.trimRight ? "-%}" : "%}"), d(n);
+    }, "printMacroDeclarationStatement");
+    var iw = i((e, t, r) => {
+      let n = [e.trimLeft ? "{%- " : "{% "], s = t.call(r, "filterExpression");
+      return n.push(s, B, e.trimRightFilter ? "-%}" : "%}"), C(d(n));
+    }, "printOpeningGroup");
+    var qT = i((e, t, r) => {
+      e[Ln] = true;
+      let n = iw(e, t, r), s = Re(e, t, r, "body"), u = d([P, e.trimLeftEndfilter ? "{%-" : "{%", " endfilter ", e.trimRight ? "-%}" : "%}"]);
+      return d([n, s, u]);
+    }, "printFilterBlockStatement");
+    var kT = i((e, t, r) => {
+      let n = t.call(r, "name");
+      e[L] = true;
+      let s = t.call(r, "value"), a = fi(e.value) ? d([" ", s]) : _(d([B, s]));
+      return d([n, " =", a]);
+    }, "printVariableDeclarationStatement");
+    var MT = i((e, t, r) => {
+      e[L] = true;
+      let n = t.call(r, "name"), s = t.call(r, "value");
+      return d([n, " = ", s]);
+    }, "printNamedArgumentExpression");
+    var bu = "ORIGINAL_SOURCE";
+    var sw = i((e, ...t) => {
+      let r = new jr(new Fn(e));
+      for (let n of t)
+        n.unaryOperators && r.addOperators(...n.unaryOperators.map((s) => s.text)), n.binaryOperators && r.addOperators(...n.binaryOperators.map((s) => s.text));
+      return r;
+    }, "createConfiguredLexer");
+    var uw = i((e, ...t) => {
+      for (let r of t) {
+        if (r.tags)
+          for (let n of r.tags)
+            e.addTag(n);
+        if (r.unaryOperators)
+          for (let n of r.unaryOperators)
+            e.addUnaryOperator(n);
+        if (r.binaryOperators)
+          for (let n of r.binaryOperators)
+            e.addBinaryOperator(n);
+        if (r.tests)
+          for (let n of r.tests)
+            e.addTest(n);
+      }
+    }, "applyParserExtensions");
+    var aw = i((e, t, ...r) => {
+      let n = new Gr(new Ur(sw(e, ...r), { ignoreWhitespace: true, ignoreComments: false, ignoreHtmlComments: false, applyWhitespaceTrimming: false }), { ignoreComments: false, ignoreHtmlComments: false, ignoreDeclarations: false, decodeEntities: false, multiTags: t, allowUnknownTags: true });
+      return uw(n, ...r), n;
+    }, "createConfiguredParser");
+    var ow = i((e = []) => e.reduce((t, r) => {
+      let n = r.split(",");
+      return t[n[0].trim()] = n.slice(1).map((s) => s.trim()), t;
+    }, {}), "getMultiTagConfig");
+    var GT = i((e, t, r) => {
+      let n = ki(r), s = ow(r.twigMultiTags || []), u = [Cu, ...Vl(n)], l = aw(e, s, ...u).parse();
+      return l[bu] = e, l;
+    }, "parse");
+    var N = {};
+    var lw = i((e) => {
+      if (e && e.printers)
+        for (let t of Object.keys(e.printers))
+          N[t] = e.printers[t];
+    }, "applyPlugin");
+    var cw = i((e) => {
+      let t = ki(e);
+      ku(t).forEach((n) => {
+        lw(n);
+      });
+    }, "applyPlugins");
+    var pw = mi("prettier-ignore");
+    var fw = mi("prettier-ignore-start");
+    var Ew = mi("prettier-ignore-end");
+    var dw = Di("prettier-ignore");
+    var mw = Di("prettier-ignore-start");
+    var Dw = Di("prettier-ignore-end");
+    var Aw = i((e) => pw(e) || dw(e), "isIgnoreNextComment");
+    var hw = i((e) => fw(e) || mw(e), "isIgnoreRegionStartComment");
+    var yw = i((e) => Ew(e) || Dw(e), "isIgnoreRegionEndComment");
+    var sl = "";
+    var Ni = false;
+    var il = false;
+    var UT = i((e) => {
+      il = il && !YT(e) || Aw(e), Ni = Ni || hw(e);
+    }, "checkForIgnoreStart");
+    var Tw = i((e) => {
+      Ni && yw(e) && (Ni = false);
+    }, "checkForIgnoreEnd");
+    var YT = i((e) => !mn(e), "shouldApplyIgnoreNext");
+    var jT = i((e, t, r) => {
+      cw(t);
+      let n = e.getValue(), s = n.constructor.name;
+      n[bu] && (sl = n[bu]), t.twigPrintWidth && (t.printWidth = t.twigPrintWidth), Tw(n);
+      let u = YT(n) && il || Ni, a = N[s];
+      return !u && a ? (UT(n), N[s](n, e, r, t)) : (a || console.warn(`No print function available for node type "${s}"`), UT(n), gw(n) ? xw(n) : "");
+    }, "print");
+    var xw = i((e) => sl.substring(e.loc.start.index, e.loc.end.index), "getSubstringForNode");
+    var gw = i((e) => sl && e.loc && e.loc.start && e.loc.end && e.loc.start.index && e.loc.end.index, "canGetSubstringForNode");
+    N.SequenceExpression = OA;
+    N.ConstantValue = (e) => e.value;
+    N.StringLiteral = lT;
+    N.Identifier = K1;
+    N.UnaryExpression = iT;
+    N.BinaryExpression = Bu;
+    N.BinarySubclass = Bu;
+    N.UnarySubclass = uT;
+    N.TestExpression = nT;
+    N.ConditionalExpression = Y1;
+    N.Element = j1;
+    N.Attribute = V1;
+    N.PrintTextStatement = aT;
+    N.PrintExpressionStatement = H1;
+    N.MemberExpression = X1;
+    N.FilterExpression = J1;
+    N.ObjectExpression = Q1;
+    N.ObjectProperty = Z1;
+    var VT = i((e) => "" + e.value, "returnNodeValue");
+    N.Fragment = (e, t, r) => t.call(r, "value");
+    N.NumericLiteral = VT;
+    N.BooleanLiteral = VT;
+    N.NullLiteral = () => "null";
+    N.ArrayExpression = cT;
+    N.CallExpression = tT;
+    N.NamedArgumentExpression = MT;
+    N.SliceExpression = pT;
+    N.UseStatement = fT;
+    N.AliasExpression = ET;
+    N.BlockStatement = mT;
+    N.SpacelessBlock = DT;
+    N.AutoescapeBlock = AT;
+    N.FlushStatement = hT;
+    N.IncludeStatement = yT;
+    N.IfStatement = xT;
+    N.MountStatement = gT;
+    N.ForStatement = vT;
+    N.BinaryConcatExpression = Bu;
+    N.SetStatement = ST;
+    N.VariableDeclarationStatement = kT;
+    N.DoStatement = FT;
+    N.ExtendsStatement = CT;
+    N.EmbedStatement = BT;
+    N.FilterBlockStatement = qT;
+    N.ImportDeclaration = OT;
+    N.FromStatement = bT;
+    N.MacroDeclarationStatement = wT;
+    N.TwigComment = NT;
+    N.HtmlComment = IT;
+    N.Declaration = _T;
+    N.GenericTwigTag = (e, t, r, n) => {
+      let s = e.tagName;
+      return N[s + "Tag"] ? N[s + "Tag"](e, t, r, n) : PT(e, t, r, n);
+    };
+    N.GenericToken = LT;
+    N.String = (e) => e;
+    var KT = H(re());
+    function WT(e, t, r, n) {
+      let s = e.getValue();
+      if (n.embeddedLanguageFormatting == "auto" && s instanceof KT.Element) {
+        let u = s.name.toLowerCase();
+        if (u == "script" || u == "style") {
+          let a = u == "script" ? "babel" : "css", { value: l } = s.children?.[0].value;
+          if (l) {
+            let p = C(tl(s, e, t)), f = _([ne, r(l, { ...n, parser: a }, { stripTrailingHardline: true })]);
+            return [p, f, P, d(["</", s.name, ">"])];
+          }
+        }
+      }
+      return false;
+    }
+    i(WT, "embed");
+    var vw = [{ name: "melody", parsers: ["melody"], group: "Melody", tmScope: "melody.twig", aceMode: "html", codemirrorMode: "clike", codemirrorMimeType: "text/melody-twig", extensions: [".melody.twig", ".html.twig", ".twig", ".django", ".jinja"], linguistLanguageId: 0, vscodeLanguageIds: ["twig", "django", "django-html"] }];
+    function Sw() {
+      return false;
+    }
+    i(Sw, "hasPragma");
+    function Fw() {
+      return -1;
+    }
+    i(Fw, "locStart");
+    function Cw() {
+      return -1;
+    }
+    i(Cw, "locEnd");
+    var Bw = { melody: { parse: GT, astFormat: "melody", hasPragma: Sw, locStart: Fw, locEnd: Cw } };
+    function Ow(e) {
+      return e.ast_type && e.ast_type !== "comment";
+    }
+    i(Ow, "canAttachComment");
+    function bw(e) {
+      let t = e.getValue();
+      switch (t.ast_type) {
+        case "comment":
+          return t.value;
+        default:
+          throw new Error("Not a comment: " + JSON.stringify(t));
+      }
+    }
+    i(bw, "printComment");
+    function Nw(e, t) {
+      delete t.lineno, delete t.col_offset;
+    }
+    i(Nw, "clean");
+    var Iw = { melody: { print: jT, embed: WT, printComment: bw, canAttachComment: Ow, massageAstNode: Nw, willPrintOwnComments: () => true } };
+    var _w = { twigMelodyPlugins: { type: "path", category: "Global", array: true, default: [{ value: [] }], description: "Provide additional plugins for Melody. Relative file path from the project root." }, twigMultiTags: { type: "path", category: "Global", array: true, default: [{ value: [] }], description: "Make custom Twig tags known to the parser." }, twigSingleQuote: { type: "boolean", category: "Global", default: true, description: "Use single quotes in Twig files?" }, twigAlwaysBreakObjects: { type: "boolean", category: "Global", default: true, description: "Should objects always break in Twig files?" }, twigPrintWidth: { type: "int", category: "Global", default: 80, description: "Print width for Twig files" }, twigFollowOfficialCodingStandards: { type: "boolean", category: "Global", default: true, description: "See https://twig.symfony.com/doc/2.x/coding_standards.html" }, twigOutputEndblockName: { type: "boolean", category: "Global", default: false, description: "Output the Twig block name in the 'endblock' tag" } };
+  }
+});
+
+// src/extension.ts
+var extension_exports = {};
+__export(extension_exports, {
+  activate: () => activate,
+  deactivate: () => deactivate
+});
+module.exports = __toCommonJS(extension_exports);
+var import_vscode3 = require("vscode");
+
+// src/formatting.ts
+var import_prettier = require("prettier");
+var djangoPlugin = __toESM(require_out());
+var htmlPlugin = __toESM(require("prettier/parser-html"));
+var import_vscode = require("vscode");
+function formatting(document, diagnosticCollection) {
+  const options2 = {
+    "tabWidth": 2,
+    "printWidth": 5e3,
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "none",
+    "twigPrintWidth": 5e3,
+    "twigMultiTags": [
+      "with,endwith"
+    ],
+    "twigAlwaysBreakObjects": false,
+    "twigSingleQuote": true,
+    "parser": "melody",
+    "plugins": [],
+    "htmlWhitespaceSensitivity": "ignore",
+    "embeddedLanguageFormatting": "auto"
+  };
+  Object.assign(options2, import_prettier.resolveConfig.sync(document.uri.fsPath) ?? []);
+  options2.twigSingleQuote = true;
+  options2.plugins = [djangoPlugin];
+  options2.parser = "melody";
+  options2.htmlWhitespaceSensitivity = "ignore";
+  options2.embeddedLanguageFormatting = "off";
+  const doc = { text: document.getText() };
+  try {
+    doc.text = (0, import_prettier.format)(doc.text, options2);
+    if (!doc.text) {
+      throw new Error("django-html: formatting failed");
+    }
+    formatStyleAndScript(doc, options2);
+    diagnosticCollection?.clear();
+  } catch (error) {
+    if (diagnosticCollection && error.loc) {
+      diagnosticCollection.clear();
+      const loc = error.loc;
+      if (!loc.end) {
+        loc.end = { line: loc.start.line, column: loc.start.column + 1 };
+      }
+      let line = loc.start.line - 1, col = loc.start.column - 1;
+      let line2 = loc.end.line - 1, col2 = loc.end.column - 1;
+      let range = new import_vscode.Range(line, col, line2, col2);
+      setTimeout(() => diagnosticCollection.set(document.uri, [new import_vscode.Diagnostic(range, error.message.split(" 	 ")[0].split("\n")[0], 0)]), 250);
+    } else {
+      console.log(error);
+    }
+  }
+  return doc.text;
+}
+function formatStyleAndScript(doc, options2) {
+  let indent = "  ";
+  if (options2.useTabs) {
+    indent = "	";
+  } else {
+    if (options2.tabWidth) {
+      indent = " ".repeat(options2.tabWidth);
+    }
+  }
+  let eol = doc.text.includes("\r\n") ? "\r\n" : "\n";
+  let result = htmlPlugin.parsers.html.parse(doc.text, null, {});
+  let incrChars = 0;
+  let incrLines = 0;
+  const doFormat = (root) => {
+    if (!root.children)
+      return;
+    for (let i2 = 0; i2 < root.children.length; i2++) {
+      const node = root.children[i2];
+      if (node.type == "element" && (node.name == "script" || node.name == "style")) {
+        if (node.children.length == 0) {
+          continue;
+        }
+        if (node.prev && node.prev.value) {
+          let pv = node.prev.value.trim();
+          if (pv.endsWith("{# prettier-ignore #}") || pv.endsWith("{% comment %}")) {
+            continue;
+          }
+        }
+        let child = node.children[0];
+        let ctext = child.value;
+        if (ctext.trim()) {
+          options2.parser = node.name == "script" ? "babel" : "css";
+          let tagOffset = node.sourceSpan.start.offset;
+          let tagOffset2 = tagOffset;
+          while (tagOffset2 > -1) {
+            if (doc.text[tagOffset2 + incrChars] == "\n") {
+              break;
+            }
+            tagOffset2--;
+          }
+          let tagIndent = doc.text.slice(tagOffset2 + 1 + incrChars, tagOffset + incrChars).replace(/\S/g, " ");
+          ctext = "\n".repeat(child.sourceSpan.start.line + incrLines) + " ".repeat(child.sourceSpan.start.col) + child.value;
+          ctext = eol + (0, import_prettier.format)(ctext, options2).trim().split(eol).map((line) => tagIndent + indent + line).join(eol) + eol + tagIndent;
+        } else {
+          ctext = "";
+        }
+        const start = child.sourceSpan.start.offset;
+        doc.text = doc.text.slice(0, start + incrChars) + ctext + doc.text.slice(start + child.value.length + incrChars);
+        incrChars += ctext.length - child.value.length;
+        incrLines += ctext.split("\n").length - child.value.split("\n").length;
+      } else {
+        doFormat(node);
+      }
+    }
+  };
+  doFormat(result);
+}
+
+// src/virtualDocument.ts
+var import_vscode2 = require("vscode");
+var virtualDocumentContents = /* @__PURE__ */ new Map();
+var virtualDocumentPaths = /* @__PURE__ */ new Map();
+import_vscode2.workspace.registerTextDocumentContentProvider("dj-embedded-content", {
+  provideTextDocumentContent: (uri) => {
+    const i2 = uri.path.lastIndexOf("/");
+    const originalUri = uri.path.slice(1).slice(0, i2 - 1);
+    const decodedUri = decodeURIComponent(originalUri);
+    return virtualDocumentContents.get(decodedUri);
+  }
+});
+function registerTextDocumentEvents(context, languageIds2) {
+  context.subscriptions.push(import_vscode2.workspace.onDidChangeTextDocument((event) => {
+    if (languageIds2.includes(event.document.languageId)) {
+      virtualDocumentPaths.delete(event.document.uri.toString());
+    }
+  }));
+  context.subscriptions.push(import_vscode2.workspace.onDidCloseTextDocument((doc) => {
+    if (doc.languageId == "html") {
+      virtualDocumentContents.delete(doc.uri.toString());
+    }
+  }));
+  context.subscriptions.push(import_vscode2.workspace.onDidRenameFiles((event) => {
+    event.files.forEach((f) => {
+      virtualDocumentContents.delete(f.oldUri.toString());
+    });
+  }));
+}
+function createVirtualDoc(document, languageId) {
+  languageId = languageId ?? "html";
+  let originalUri = document.uri.toString();
+  if (languageId != "html") {
+    originalUri += "." + languageId;
+  }
+  virtualDocumentContents.set(originalUri, document.getText());
+  let path;
+  if (virtualDocumentPaths.has(originalUri)) {
+    path = virtualDocumentPaths.get(originalUri);
+  } else {
+    path = `/${encodeURIComponent(originalUri)}/${Math.random()}.${languageId}`;
+    virtualDocumentPaths.set(originalUri, path);
+  }
+  return import_vscode2.Uri.from({
+    scheme: "dj-embedded-content",
+    authority: "django-html",
+    path
+  });
+}
+function clearVirtualDocumentContents() {
+  virtualDocumentContents.clear();
+}
+
+// src/extension.ts
+var languageIds = ["django-html"];
+function activate(context) {
+  registerTextDocumentEvents(context, languageIds);
+  const diagnosticCollection = import_vscode3.languages.createDiagnosticCollection("django");
+  context.subscriptions.push(diagnosticCollection);
+  context.subscriptions.push(import_vscode3.languages.registerDocumentFormattingEditProvider("django-html", {
+    provideDocumentFormattingEdits: async (document, options2, token) => {
+      const otext = document.getText();
+      if (!otext) {
+        return;
+      }
+      let newDoc = document;
+      const text = formatting(newDoc, diagnosticCollection);
+      if (text && text != otext) {
+        const range = new import_vscode3.Range(document.positionAt(0), document.positionAt(otext.length));
+        return [new import_vscode3.TextEdit(range, text)];
+      } else {
+        return [];
+      }
+    }
+  }));
+  context.subscriptions.push(import_vscode3.languages.registerCompletionItemProvider(languageIds, {
+    provideCompletionItems: async (document, position, token, context2) => {
+      const vdocUri = createVirtualDoc(document);
+      return await import_vscode3.commands.executeCommand(
+        "vscode.executeCompletionItemProvider",
+        vdocUri,
+        position,
+        context2.triggerCharacter
+      );
+    }
+  }, ".", "(", ":", "<"));
+  context.subscriptions.push(import_vscode3.languages.registerHoverProvider(languageIds, {
+    provideHover: async (document, position, token) => {
+      const vdocUri = createVirtualDoc(document);
+      const hs = await import_vscode3.commands.executeCommand(
+        "vscode.executeHoverProvider",
+        vdocUri,
+        position
+      );
+      return hs?.[0];
+    }
+  }));
+}
+function deactivate() {
+  clearVirtualDocumentContents();
+  return void 0;
+}
+// Annotate the CommonJS export names for ESM import in node:
+0 && (module.exports = {
+  activate,
+  deactivate
+});
+//# sourceMappingURL=extension.js.map
