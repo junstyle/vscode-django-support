@@ -4,7 +4,7 @@
   "description": "📍formatter, django template support, highlight, format, prettier, auto-complete",
   "author": "junstyle",
   "license": "MIT",
-  "version": "1.0.25",
+  "version": "1.0.26",
   "repository": {
     "type": "git",
     "url": "https://github.com/junstyle/vscode-django-support"
@@ -114,10 +114,10 @@
   },
   "dependencies": {
     "prettier": "^2.8.8",
-    "prettier-plugin-django": "^0.5.8"
+    "prettier-plugin-django": "^0.5.9"
   },
   "devDependencies": {
-    "@types/node": "^16.18.48",
+    "@types/node": "^16.18.52",
     "@types/prettier": "^2.7.3",
     "@types/vscode": "1.43.0",
     "esbuild": "^0.14.54",
