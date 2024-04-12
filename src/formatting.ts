@@ -1,8 +1,8 @@
 import { format, Options, ParserOptions, resolveConfig } from 'prettier';
-import * as djangoPlugin from 'prettier-plugin-django';
+// import * as djangoPlugin from 'prettier-plugin-django';
 import * as htmlPlugin from 'prettier/parser-html';
 import { Diagnostic, DiagnosticCollection, Range, TextDocument } from 'vscode';
-// import * as djangoPlugin from "D:/git/prettier-plugin-django/out";
+import * as djangoPlugin from "D:/git/prettier-plugin-django/out";
 
 export function formatting(document: TextDocument, diagnosticCollection?: DiagnosticCollection): string {
 	const options = {
