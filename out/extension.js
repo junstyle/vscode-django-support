@@ -8428,7 +8428,8 @@ function formatting(document, diagnosticCollection) {
     "parser": "melody",
     "plugins": [],
     "htmlWhitespaceSensitivity": "ignore",
-    "embeddedLanguageFormatting": "auto"
+    "embeddedLanguageFormatting": "auto",
+    "templateType": "django"
   };
   Object.assign(options2, import_prettier.resolveConfig.sync(document.uri.fsPath) ?? []);
   options2.twigSingleQuote = true;
@@ -8436,6 +8437,7 @@ function formatting(document, diagnosticCollection) {
   options2.parser = "melody";
   options2.htmlWhitespaceSensitivity = "ignore";
   options2.embeddedLanguageFormatting = "off";
+  options2.templateType = "django";
   const doc = { text: document.getText() };
   try {
     doc.text = (0, import_prettier.format)(doc.text, options2);

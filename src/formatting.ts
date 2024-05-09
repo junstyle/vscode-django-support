@@ -34,6 +34,7 @@ export function formatting(document: TextDocument, diagnosticCollection?: Diagno
 		],
 		"htmlWhitespaceSensitivity": "ignore",
 		"embeddedLanguageFormatting": 'auto',
+		"templateType": 'django' //django | twig
 	};
 	Object.assign(options, resolveConfig.sync(document.uri.fsPath) ?? []);
 	options.twigSingleQuote = true;
@@ -41,6 +42,7 @@ export function formatting(document: TextDocument, diagnosticCollection?: Diagno
 	options.parser = "melody";
 	options.htmlWhitespaceSensitivity = 'ignore';
 	options.embeddedLanguageFormatting = 'off';
+	options.templateType = 'django'
 
 	const doc = { text: document.getText() };
 	try {
